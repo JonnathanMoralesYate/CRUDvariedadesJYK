@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-acale=1.0"/>
+    <link rel="icon" href="/img/logoPesta.ico" type="image/x-icon">
+    <title>Minimarket Variedades JYK</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/DesingBody.css">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row p-4 mt-1">
+            <div class="text-center text-white mt-1">
+                <h2>MINIMARKET VARIEDADES JYK</h2>
+            </div>
+            <div class="text-center text-white mt-1">
+                <h3> Modulo Informe Salida Productos</h3>
+            </div>
+        </div>
+        <div class="row mt-2">
+<!--Inicio Barra General de Navegacion-->
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+            <nav class="navbar navbar-light">
+                <div class="container-fluid">
+                    <a class="navbar-brand text-white" href="#">Menu</a>
+                </div>
+            </nav>
+        </button>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+                    <a class="navbar-brand text-white" href="../form/AccesoEmpleados.html">Inicio</a>
+                    <ul class="nav nav-pills">
+                        <li class="nav-item dropdown active">
+                            <a class="nav-link dropdown-toggle text-white" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Entrada Productos</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="../form/formEntradaProductoRegEmp.html">Registrar Entradas</a></li>
+                            <li><a class="dropdown-item" href="../form/formEntradaProductoActuEmp.html">Actualizar Entradas</a></li>
+                            <li><a class="dropdown-item" href="../form/formRegProductoNuevoEmp.html">Registrar Producto Nuevo</a></li>
+                            <li><a class="dropdown-item" href="../form/formConsulProductoEmp.html">Consultar Productos</a></li>                                        
+                        </ul>
+                        </li>
+                        <li class="nav-item dropdown active">
+                            <a class="nav-link dropdown-toggle text-white" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Salida Productos</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="../form/formSalidaProductoRegEmp.html">Registrar Salidas</a></li>
+                            <li><a class="dropdown-item" href="../form/formSalidaProductoActuEmp.html">Actualizar Salidas Productos</a></li>
+                            <li><a class="dropdown-item" href="../form/formSalidaProductoConsulEmp.html">Consultar Salidas Productos</a></li>
+                        </ul>
+                        </li>
+                        <li class="nav-item dropdown active">
+                            <a class="nav-link dropdown-toggle text-white" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Clientes</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="../form/formClienteRegEmp.html">Registrar</a></li>
+                            <li><a class="dropdown-item" href="../form/formClienteActuEmp.html">Actualizar</a></li>                                        
+                            <li><a class="dropdown-item" href="../form/formClienteConsulEmp.html">Consultar</a></li>
+                        </ul>
+                        </li>
+                        <li class="nav-item dropdown active">
+                            <a class="nav-link dropdown-toggle text-white" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Proveedores</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="../form/formProveedorRegEmp.html">Registrar</a></li>
+                            <li><a class="dropdown-item" href="../form/formProveedorActuEmp.html">Actualizar</a></li>                                        
+                            <li><a class="dropdown-item" href="../form/formProveedorConsulEmp.html">Consultar</a></li>
+                        </ul>
+                        </li>
+                        <li class="nav-item dropdown active">
+                            <a class="nav-link dropdown-toggle text-white" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Reportes</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="../form/formInforEntradaProductosEmp.html">Entrada Productos</a></li>
+                            <li><a class="dropdown-item" href="../form/formInforSalidaProductoEmp.html">Salida Productos</a></li>
+                            <li><a class="dropdown-item" href="../form/formInforInventarioEmp.html">Inventario</a></li>
+                            <li><a class="dropdown-item" href="../form/formInforProximosaVencerEmp.html">Productos a Vencer</a></li>
+                        </ul>
+                        </li>                                    
+                    </ul>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+                    <a class="btn btn-outline-secondary text-white" href="#" role="button">Login Out</a>
+            </div>
+    </div>
+</nav>
+        </div>
+        <div class="row">
+            <!--Incio de formulario Informe Entrada Productos-->
+            <div class="col-3">
+            </div>
+            <div class="col-6">
+            <form class=" mt-2">
+                <div class=" mt-2">
+                    <label for="input1" class="form-label text-white mt-3">Fecha Inicial:</label>
+                    <input type="date" class="form-control" id="input1" placeholder="">
+                </div>
+                <div class="mt-2">
+                    <label for="input2" class="form-label text-white mt-3">Fecha Final:</label>
+                    <input type="date" class="form-control" id="input2" placeholder="">
+                </div>
+                <div class="mt-4">
+                    <div class="text-center">
+                        <div class="">
+                            <label class="check-label text-white" for="flexCheckDefault">Formato PDF</label>
+                        </div>
+                        <div class="">
+                            <input class="checkbox-inline" type="checkbox" value="" id="flexCheckDefault">
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mt-2">
+                    <button type="submit" class="btn btn-outline-secondary text-white mt-3">Generar</button>
+                </div>
+                
+            </form>
+        </div>
+        <div class="col-3">
+        </div>
+        </div>
+        <div class="col-3">
+        </div>
+        </div>
+        <div class="row">
+            <!--Inicio de Pie de Pagina-->
+            <div class="col-12 text-center text-white mt-5">
+                <p>© 2024 - VariedadesJyk® / Minimarket Variedades S.A.S. NIT. 110.370.428-1 - Todos los Derechos Reservados.</p>
+            </div>
+        </div>
+        <!--Fin de Pie de Pagina-->
+        </div>
+    </div>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
