@@ -1,7 +1,5 @@
 <?php
 
-require_once './views/formnosotros.php';
-
 
 $action = $_GET['action'] ?? 'paginaPrincipal';
 
