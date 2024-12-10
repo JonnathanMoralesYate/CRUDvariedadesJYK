@@ -36,28 +36,32 @@
                                 <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
                                     <ul class="navbar-nav me-auto mb-5 mb-lg-0">
                                         <li class="nav-item">
-                                            <a class="nav-link active text-white" aria-current="page" href="./views/formnosotros.php">Nosotros</a>
+                                            <form action="index.php?action=inicio" method="post">
+                                            <a class="btn btn-outline-secondary m-2 text-white" href="/views/paginaPrincipal.php" role="button">Inicio</a>
+                                            </form>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link text-white" href="#">Servicio</a>
+                                            <a class="btn btn-outline-secondary m-2 text-white" href="/VariedadesJyK/views/formnosotros.php" role="button">Nosotros</a>
                                         </li>
                                         <li class="nav-item">
-                                        <li class="nav-item">
-                                            <a class="nav-link text-white" href="#Ubicacion">Ubicacion</a>
+                                            <a class="btn btn-outline-secondary m-2 text-white" href="#" role="button">Servicio</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link text-white" href="#Ubicacion">Contacto</a>
+                                            <a class="btn btn-outline-secondary m-2 text-white" href="#Ubicacion" role="button">Ubicacion</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="btn btn-outline-secondary m-2 text-white" href="#Ubicacion" role="button">Contacto</a>
                                         </li>
                                         <li class="nav-item">
                                             <form class="d-flex" role="search">
-                                                <input class="form-control me-4" type="search" placeholder="Buscar Producto" aria-label="Search">
-                                                <button class="btn btn-outline-secondary text-white" type="submit">Buscar</button>
+                                                <input class="form-control m-2" type="search" placeholder="Buscar Producto" aria-label="Search">
+                                                <button class="btn btn-outline-secondary text-white m-2" type="submit">Buscar</button>
                                             </form>
                                         </li>
                                     </ul>
                                 </div>
                                 <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-                                        <a id="login_inic" class="btn btn-outline-secondary text-white" href="#" role="button">Login</a>
+                                        <a id="login_inic" class="btn btn-outline-secondary text-white m-2" href="#" role="button">Login</a>
                                 </div>
                         </div>
                     </nav>

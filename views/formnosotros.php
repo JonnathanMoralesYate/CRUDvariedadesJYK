@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Nosotros Minimarket</title>
     <!-- <link rel="stylesheet" href="./css/paginanosotros.css?v=1.0"> -->
-    <link rel="stylesheet" href="./css/gf.css?v=1.0">
+    <link rel="stylesheet" href="/css/paginanosotros.css">
   </head>
   <body>
     <header>
