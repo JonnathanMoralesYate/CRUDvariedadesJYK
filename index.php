@@ -1,32 +1,35 @@
 <?php
 
+require_once './controllers/controladorPaginaP.php';
+require_once './controllers/controladorPaginaN.php';
+
+$vistaPaginaP = new ControladorPaginaP();
+$vistaPaginaN = new ControladorPaginaN();
+
 
 $action = $_GET['action'] ?? 'paginaPrincipal';
 
+
 switch($action){
 
-    case'inicio';
-    include './views/formnosotros.php';
+        //Opciones barra navegacion pagina Principal
+    case 'paginaP';
+    $vistaPaginaP->index();
     break;
 
-    case'nosotros';
-    include './views/formnosotros.php';
-    break;
+    case 'paginaN';
+        $vistaPaginaN->index();
+        break;
 
-    case'servicio';
-    include './views/paginaPrincipal.php';
-    break;
-
-
-
-
-
+    
 
 
     default:
         include './views/paginaPrincipal.php';
         break;
 }
+
+
 
 
 ?>

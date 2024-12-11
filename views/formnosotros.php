@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Nosotros Minimarket</title>
     <!-- <link rel="stylesheet" href="./css/paginanosotros.css?v=1.0"> -->
-    <link rel="stylesheet" href="/css/paginanosotros.css">
+    <link rel="stylesheet" href="./css/paginanosotros.css?v=1.0">
   </head>
   <body>
     <header>
@@ -15,7 +15,7 @@
     </header>
     <nav id="nav">
       <ul>
-        <li><a href="#">Inicio</a></li>
+        <li><a href="./views/paginaPrincipal.php">Inicio</a></li>
         <li><a href="#">Visitanos</a></li>
         <li><a href="#">Login</a></li>
       </ul>

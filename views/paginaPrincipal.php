@@ -36,12 +36,15 @@
                                 <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
                                     <ul class="navbar-nav me-auto mb-5 mb-lg-0">
                                         <li class="nav-item">
-                                            <form action="index.php?action=inicio" method="post">
-                                            <a class="btn btn-outline-secondary m-2 text-white" href="/views/paginaPrincipal.php" role="button">Inicio</a>
-                                            </form>
+                                        <form action="index.php?action=paginaP" method="GET">
+                                                <button type="submit" class="btn btn-outline-secondary m-2 text-white" name="action" value="paginaP">Inicio</button>
+                                            </form>                                    
+                                            <!-- <a class="btn btn-outline-secondary m-2 text-white" href="index.php" role="button">Inicio</a> -->
                                         </li>
                                         <li class="nav-item">
-                                            <a class="btn btn-outline-secondary m-2 text-white" href="/VariedadesJyK/views/formnosotros.php" role="button">Nosotros</a>
+                                            <form action="index.php?action=paginaN" method="GET">
+                                                <button type="submit" class="btn btn-outline-secondary m-2 text-white" name="action" value="paginaN">Nosotros</button>
+                                            </form>
                                         </li>
                                         <li class="nav-item">
                                             <a class="btn btn-outline-secondary m-2 text-white" href="#" role="button">Servicio</a>
