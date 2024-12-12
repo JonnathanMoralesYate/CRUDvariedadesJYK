@@ -15,7 +15,7 @@
     </header>
     <nav id="nav">
       <ul>
-        <li><a href="./views/paginaPrincipal.php">Inicio</a></li>
+        <li><a href="index.php">Inicio</a></li>
         <li><a href="#">Visitanos</a></li>
         <li><a href="#">Login</a></li>
       </ul>

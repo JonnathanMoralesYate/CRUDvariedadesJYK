@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Servicios</title>
 </head>
 <body>
-    <img src="./views/paginaServicios.php">
-
-    <img src="./css/paginanosotros.css">
+    <h1>Servicios</h1>
+    
 </body>
 </html>

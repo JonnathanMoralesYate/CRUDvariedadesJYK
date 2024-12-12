@@ -47,7 +47,9 @@
                                             </form>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="btn btn-outline-secondary m-2 text-white" href="#" role="button">Servicio</a>
+                                        <form action="index.php?action=paginaS" method="GET">
+                                                <button type="submit" class="btn btn-outline-secondary m-2 text-white" name="action" value="paginaS">Servicios</button>
+                                            </form>
                                         </li>
                                         <li class="nav-item">
                                             <a class="btn btn-outline-secondary m-2 text-white" href="#Ubicacion" role="button">Ubicacion</a>
@@ -76,8 +78,8 @@
             <div class="col-12">
                 <div id="carouselExampleControls" class="carousel slide mt-3" data-bs-ride="carousel">
                 <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <div class="card mx-auto" style="width: 18rem;">
+                    <div class="carousel-item text-center active">
+                        <div id="" class="card mx-auto" style="width: 18rem;">
                             <img class="img-fluid mx-auto" src="./photo/atun.png" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title">Atun</h5>
@@ -92,7 +94,6 @@
                                 <div class="card-body">
                                     <h5 class="card-title">Cervezas</h5>
                                     <p class="card-text">Vendemos al por mayor y detal</p>
-                                    <a href="#" class="btn btn-primary">Promocion</a>
                                 </div>
                             </div>
                             <div class="card mx-auto" style="width: 18rem;">
@@ -100,7 +101,6 @@
                                 <div class="card-body">
                                     <h5 class="card-title">Cervezas</h5>
                                     <p class="card-text">Vendemos al por mayor y detal</p>
-                                    <a href="#" class="btn btn-primary">Promocion</a>
                                 </div>
                             </div>
                             <div class="card mx-auto" style="width: 18rem;">
@@ -108,7 +108,6 @@
                                 <div class="card-body">
                                     <h5 class="card-title">Cervezas</h5>
                                     <p class="card-text">Vendemos al por mayor y detal</p>
-                                    <a href="#" class="btn btn-primary">Promocion</a>
                                 </div>
                             </div>
                         </div>
@@ -120,7 +119,7 @@
                                 <div class="card-body">
                                     <h5 class="card-title">Atun</h5>
                                     <p class="card-text">En agua y Aceite</p>
-                                    <a href="#" class="btn btn-primary">Promocion</a>
+
                                 </div>
                             </div>
                             <div class="card mx-auto" style="width: 18rem;">
@@ -128,7 +127,6 @@
                                 <div class="card-body">
                                     <h5 class="card-title">Atun</h5>
                                     <p class="card-text">Vendemos al por mayor y detal</p>
-                                    <a href="#" class="btn btn-primary">Promocion</a>
                                 </div>
                             </div>
                             <div class="card mx-auto" style="width: 18rem;">
@@ -136,7 +134,7 @@
                                 <div class="card-body">
                                     <h5 class="card-title">Cervezas</h5>
                                     <p class="card-text">Vendemos al por mayor y detal</p>
-                                    <a href="#" class="btn btn-primary">Promocion</a>
+
                                 </div>
                             </div>
                         </div>
@@ -148,7 +146,6 @@
                             <div class="card-body">
                                 <h5 class="card-title">Frutas</h5>
                                 <p class="card-text">Frescas todos los Dias</p>
-                                <a href="#" class="btn btn-primary">Promocion</a>
                             </div>
                         </div>
                         <div class="card mx-auto" style="width: 18rem;">
@@ -156,7 +153,6 @@
                             <div class="card-body">
                                 <h5 class="card-title">Verduras</h5>
                                 <p class="card-text">Vendemos al por mayor y detal</p>
-                                <a href="#" class="btn btn-primary">Promocion</a>
                             </div>
                         </div>
                         <div class="card mx-auto" style="width: 18rem;">
@@ -164,7 +160,6 @@
                             <div class="card-body">
                                 <h5 class="card-title">Cervezas</h5>
                                 <p class="card-text">Vendemos al por mayor y detal</p>
-                                <a href="#" class="btn btn-primary">Promocion</a>
                             </div>
                         </div>
                     </div>
@@ -176,7 +171,6 @@
                             <div class="card-body">
                                 <h5 class="card-title">Pollo</h5>
                                 <p class="card-text">Vendemos al por mayor y detal</p>
-                                <a href="#" class="btn btn-primary">Promocion</a>
                             </div>
                         </div>
                         <div class="card mx-auto" style="width: 18rem;">
@@ -184,7 +178,6 @@
                             <div class="card-body">
                                 <h5 class="card-title">Carne de Res</h5>
                                 <p class="card-text">Vendemos al por mayor y detal</p>
-                                <a href="#" class="btn btn-primary">Promocion</a>
                             </div>
                         </div>
                         <div class="card mx-auto" style="width: 18rem;">
@@ -192,25 +185,24 @@
                             <div class="card-body">
                                 <h5 class="card-title">Cervezas</h5>
                                 <p class="card-text">Vendemos al por mayor y detal</p>
-                                <a href="#" class="btn btn-primary">Promocion</a>
                             </div>
                         </div>
                     </div>
                 </div>
                 </div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon bg-secondary" aria-hidden="true"></span>
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                             <span class="visually-hidden">Atras</span>
                         </button>
                         <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                            <span class="carousel-control-next-icon bg-secondary" aria-hidden="true"></span>
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
                             <span class="visually-hidden">Adelante</span>
                         </button>
                 </div>
             </div>
         </div>
         <!--Fin Carrusel -->
-        <div class="row container-fluid mt-5">
+<div class="row container-fluid mt-5">
         <!--Inicio de Barra Categorias -->
         <div class="col-2">
             <div class="text-center text-white">
@@ -452,22 +444,23 @@
         <div class="col-1">
         </div>
         <div class="col-9">
-            <div class="card-group text-center">
-                <div class="card mx-auto" style="width: 10rem;">
+            <!--Vista de Productos por categoria-->
+            <!--<div class="card-group text-center">
+                <div class="card mx-auto" style="width: 5rem;">
                     <img id="cateGen1" src="./photo/atun.png" class="img-fluid mx-auto" alt="cateGen1">
                         <div class="card-body container-fluid">
                             <h5 id="marcProduc1" class="card-title">Atun</h5>
                             <p id="descriProduc1" class="card-text">En Aceite</p>
                         </div>
                 </div>
-                <div class="card mx-auto" style="width: 10rem;">
+                <div class="card mx-auto" style="width: 5rem;">
                     <img id="cateGen2" src="./photo/cervezas.png" class="img-fluid mx-auto" alt="cateGen2">
                     <div class="card-body">
                         <h5 id="marcProduc2" class="card-title">Cerveza</h5>
                         <p id="descriProduc2" class="card-text">Al por mayor y detal</p>
                     </div>
                 </div>
-                <div class="card mx-auto" style="width: 10rem;">
+                <div class="card mx-auto" style="width: 5rem;">
                     <img id="cateGen3" src="./photo/Jamoneta.png" class="img-fluid mx-auto" alt="cateGen3">
                     <div class="card-body">
                         <h5 id="marcProduc3" class="card-title">Jamoneta</h5>
@@ -476,21 +469,21 @@
                 </div>
             </div>
             <div class="card-group text-center">
-                <div class="card mx-auto" style="width: 10rem;">
+                <div class="card mx-auto" style="width: 5rem;">
                     <img id="cateGen4" src="./photo/frutas.png" class="img-fluid mx-auto" alt="cateGen4">
                     <div class="card-body">
                         <h5 id="marcProduc4" class="card-title">Frutas</h5>
                         <p id="descriProduc4" class="card-text">Frescas</p>
                     </div>
                 </div>
-                <div class="card mx-auto" style="width: 10rem;">
+                <div class="card mx-auto" style="width: 5rem;">
                     <img id="cateGen5" src="./photo/pollo.png" class="img-fluid mx-auto" alt="cateGen5">
                     <div class="card-body">
                         <h5 id="marcProduc5" class="card-title">Pollo</h5>
                         <p id="descriProduc5" class="card-text">Fresco</p>
                     </div>
                 </div>
-                <div class="card mx-auto" style="width: 10rem;">
+                <div class="card mx-auto" style="width: 5rem;">
                     <img id="cateGen6" src="./photo/atun1.png" class="img-fluid mx-auto" alt="cateGen6">
                     <div class="card-body">
                         <h5 id="marcProduc6" class="card-title">Atun</h5>
@@ -499,21 +492,21 @@
                 </div>
             </div>
             <div class="card-group text-center">
-                <div class="card mx-auto" style="width: 10rem;">
+                <div class="card mx-auto" style="width: 5rem;">
                     <img id="cateGen7" src="./photo/frutas.png" class="img-fluid mx-auto" alt="cateGen7">
                     <div class="card-body">
                         <h5 id="marcProduc7" class="card-title">Frutas</h5>
                         <p id="descriProduc7" class="card-text">Fresca</p>
                 </div>
                 </div>
-                <div class="card mx-auto" style="width: 10rem;">
+                <div class="card mx-auto" style="width: 5rem;">
                     <img id="cateGen8" src="./photo/res.png" class="img-fluid mx-auto" alt="cateGen8">
                     <div class="card-body">
                         <h5 id="marcProduc8" class="card-title">Res</h5>
                         <p id="descriProduc8" class="card-text">Pulpa</p>
                     </div>
                 </div>
-                <div class="card mx-auto" style="width: 10rem;">
+                <div class="card mx-auto" style="width: 5rem;">
                     <img id="cateGen9" src="./photo/srdinas.png" class="img-fluid mx-auto" alt="cateGen9">
                     <div class="card-body">
                         <h5 id="marcProduc9" class="card-title">Sardinas</h5>
@@ -521,15 +514,55 @@
                     </div>
                 </div>
             </div>
+         </div>-->
+
+            <div class="row row-cols-1 row-cols-md-2 g-4">
+                <div class="col">
+                    <div class="card" style="width: 15rem;">
+                        <img src="./photo/res.png" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">This is a longer card with supporting.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <img src="..." class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <img src="..." class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <img src="..." class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         
-        </div>
+    </div>
         <!--Fin Barra Categorias -->
         <div class="row" id="Ubicacion">
             <!--Inicio de Footer-->
             <div class="col-12 col-lg-2 mt-5">
                 <div class="img-fluid d-block text-center">
-                    <a class="navbar-brand" href="#inicio"><img src="./photo/logopest2.ico" alt="Logo" class="img-fluid text-center rounded-3"></a>
+                    <a class="navbar-brand" href="index.php"><img src="./photo/logopest2.ico" alt="Logo" class="img-fluid text-center rounded-3"></a>
                 </div>
             </div>
             <div class="col-12 col-lg-3">
