@@ -5,21 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-acale=1.0"/>
     <link rel="icon" href="./photo/logoPesta.ico" type="image/x-icon">
     <title>Minimarket Variedades JYK</title>
-    <link href="fonts/Montserrat,Pacifico/Montserrat/Montserrat-Italic-VariableFont_wght.ttf" rel="stylesheet">
+    <!-- <link href="fonts/Montserrat,Pacifico/Montserrat/Montserrat-Italic-VariableFont_wght.ttf" rel="stylesheet"> -->
     <link rel="stylesheet" href="./css/bootstrap.min.css?v=1.0">
     <link rel="stylesheet" href="./css/DesingBody.css?v=1.0">
-    <!-- <link rel="stylesheet" href="/css/DesingLogin1.css"> -->
     <link rel="stylesheet" href="./css/DesingLogin2.css?v=1.0">
 </head>
 
 <body>
-    <div class="container-fluid"  id="barra_navegacion">
+<div class="container-fluid"  id="barra_navegacion">
         <div class="row p-5 mt-1">
             <div class="col-2">
     <!--Inicio Barra Navegacion-->
     <nav class="img-fluid d-block text-center" id="inicio">
                         <a class="navbar-brand">
-                            <img src="./photo/logoPrin1.1.jpeg" alt="Logo" width="90" height="80">
+                            <img src="./photo/logoPrin1.1.jpeg" alt="Logo" width="90" height="80" class="rounded-3">
                         </a>
                 </nav>
             </div>
@@ -35,12 +34,6 @@
                             </button>
                                 <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
                                     <ul class="navbar-nav me-auto mb-5 mb-lg-0">
-                                        <li class="nav-item">
-                                        <form action="index.php?action=paginaP" method="GET">
-                                                <button type="submit" class="btn btn-outline-secondary m-2 text-white" name="action" value="paginaP">Inicio</button>
-                                            </form>                                    
-                                            <!-- <a class="btn btn-outline-secondary m-2 text-white" href="index.php" role="button">Inicio</a> -->
-                                        </li>
                                         <li class="nav-item">
                                             <form action="index.php?action=paginaN" method="GET">
                                                 <button type="submit" class="btn btn-outline-secondary m-2 text-white" name="action" value="paginaN">Nosotros</button>
@@ -72,10 +65,11 @@
                     </nav>
             </div>
         </div>
+</div>
     <!--Final Barra Navegacion-->
-        <div class="row">
-            <!--Inicio Carrusel -->
-            <div class="col-12">
+
+<!--Inicio Carrusel-->
+            <div class=" row col-12">
                 <div id="carouselExampleControls" class="carousel slide mt-3" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item text-center active">
@@ -87,108 +81,133 @@
                             </div>
                         </div>
                     </div>
-                    <div class="carousel-item text-center">
-                        <div class="d-flex justify-content-evenly">
-                            <div class="card mx-auto" style="width: 18rem;">
-                                <img class="img-fluid mx-auto" src="./photo/cervezas.png" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Cervezas</h5>
-                                    <p class="card-text">Vendemos al por mayor y detal</p>
+            <div class="carousel-item text-center">
+                <div class="row row-cols-auto g-3 text-center d-flex justify-content-around mt-1">
+                    <div class="col">
+                        <div class="card mx-auto" style="width: 12rem;">
+                            <img id="" src="./photo/atun.png" class="img-fluid mx-auto" alt="">
+                                <div class="card-body container-fluid">
+                                    <h5 id="" class="card-title">Atun</h5>
+                                    <p id="" class="card-text">En Aceite</p>
                                 </div>
-                            </div>
-                            <div class="card mx-auto" style="width: 18rem;">
-                                <img class="img-fluid mx-auto" src="./photo/cervezas.png" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Cervezas</h5>
-                                    <p class="card-text">Vendemos al por mayor y detal</p>
-                                </div>
-                            </div>
-                            <div class="card mx-auto" style="width: 18rem;">
-                                <img class="img-fluid mx-auto" src="./photo/cervezas.png" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Cervezas</h5>
-                                    <p class="card-text">Vendemos al por mayor y detal</p>
-                                </div>
-                            </div>
                         </div>
                     </div>
-                    <div class="carousel-item text-center">
-                        <div class="d-flex justify-content-evenly">
-                            <div class="card mx-auto" style="width: 18rem;">
-                                <img class="img-fluid mx-auto" src="./photo/atun1.png" class="card-img-top" alt="...">
+                    <div class="col">
+                        <div class="card mx-auto" style="width: 12rem;">
+                            <img id="" src="./photo/cervezas.png" class="img-fluid mx-auto" alt="">
                                 <div class="card-body">
-                                    <h5 class="card-title">Atun</h5>
-                                    <p class="card-text">En agua y Aceite</p>
-
+                                    <h5 id="" class="card-title">Cerveza</h5>
+                                    <p id="" class="card-text">Al por mayor y detal</p>
                                 </div>
-                            </div>
-                            <div class="card mx-auto" style="width: 18rem;">
-                                <img class="img-fluid mx-auto" src="./photo/atun1.png" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Atun</h5>
-                                    <p class="card-text">Vendemos al por mayor y detal</p>
-                                </div>
-                            </div>
-                            <div class="card mx-auto" style="width: 18rem;">
-                                <img class="img-fluid mx-auto" src="./photo/atun1.png" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Cervezas</h5>
-                                    <p class="card-text">Vendemos al por mayor y detal</p>
-
-                                </div>
-                            </div>
                         </div>
                     </div>
-                <div class="carousel-item text-center">
-                    <div class="d-flex justify-content-evenly">
-                        <div class="card mx-auto" style="width: 18rem;">
-                            <img class="img-fluid mx-auto" src="./photo/frutas.png" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Frutas</h5>
-                                <p class="card-text">Frescas todos los Dias</p>
-                            </div>
-                        </div>
-                        <div class="card mx-auto" style="width: 18rem;">
-                            <img class="img-fluid mx-auto" src="./photo/frutas.png" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Verduras</h5>
-                                <p class="card-text">Vendemos al por mayor y detal</p>
-                            </div>
-                        </div>
-                        <div class="card mx-auto" style="width: 18rem;">
-                            <img class="img-fluid mx-auto" src="./photo/frutas.png" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Cervezas</h5>
-                                <p class="card-text">Vendemos al por mayor y detal</p>
-                            </div>
+                    <div class="col">
+                        <div class="card mx-auto" style="width: 12rem;">
+                            <img id="" src="./photo/Jamoneta.png" class="img-fluid mx-auto" alt="">
+                                <div class="card-body">
+                                    <h5 id="" class="card-title">Jamoneta</h5>
+                                    <p id="" class="card-text">Zenu</p>
+                                </div>
                         </div>
                     </div>
                 </div>
-                <div class="carousel-item text-center">
-                    <div class="d-flex justify-content-evenly">
-                        <div class="card mx-auto" style="width: 18rem;">
-                            <img class="img-fluid mx-auto" src="./photo/pollo.png" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Pollo</h5>
-                                <p class="card-text">Vendemos al por mayor y detal</p>
-                            </div>
+            </div>
+
+            <div class="carousel-item text-center">
+                <div class="row row-cols-auto g-3 text-center d-flex justify-content-around mt-1">
+                    <div class="col">
+                        <div class="card mx-auto" style="width: 12rem;">
+                            <img id="" src="./photo/atun.png" class="img-fluid mx-auto" alt="">
+                                <div class="card-body container-fluid">
+                                    <h5 id="" class="card-title">Atun</h5>
+                                    <p id="" class="card-text">En Aceite</p>
+                                </div>
                         </div>
-                        <div class="card mx-auto" style="width: 18rem;">
-                            <img class="img-fluid mx-auto" src="./photo/res.png" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Carne de Res</h5>
-                                <p class="card-text">Vendemos al por mayor y detal</p>
-                            </div>
+                    </div>
+                    <div class="col">
+                        <div class="card mx-auto" style="width: 12rem;">
+                            <img id="" src="./photo/cervezas.png" class="img-fluid mx-auto" alt="">
+                                <div class="card-body">
+                                    <h5 id="" class="card-title">Cerveza</h5>
+                                    <p id="" class="card-text">Al por mayor y detal</p>
+                                </div>
                         </div>
-                        <div class="card mx-auto" style="width: 18rem;">
-                            <img class="img-fluid mx-auto" src="./photo/cervezas.png" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Cervezas</h5>
-                                <p class="card-text">Vendemos al por mayor y detal</p>
-                            </div>
+                    </div>
+                    <div class="col">
+                        <div class="card mx-auto" style="width: 12rem;">
+                            <img id="" src="./photo/Jamoneta.png" class="img-fluid mx-auto" alt="">
+                                <div class="card-body">
+                                    <h5 id="" class="card-title">Jamoneta</h5>
+                                    <p id="" class="card-text">Zenu</p>
+                                </div>
                         </div>
                     </div>
                 </div>
+            </div>
+
+            <div class="carousel-item text-center">
+                <div class="row row-cols-auto g-3 text-center d-flex justify-content-around mt-1">
+                    <div class="col">
+                        <div class="card mx-auto" style="width: 12rem;">
+                            <img id="" src="./photo/atun.png" class="img-fluid mx-auto" alt="">
+                                <div class="card-body container-fluid">
+                                    <h5 id="" class="card-title">Atun</h5>
+                                    <p id="" class="card-text">En Aceite</p>
+                                </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card mx-auto" style="width: 12rem;">
+                            <img id="" src="./photo/cervezas.png" class="img-fluid mx-auto" alt="">
+                                <div class="card-body">
+                                    <h5 id="" class="card-title">Cerveza</h5>
+                                    <p id="" class="card-text">Al por mayor y detal</p>
+                                </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card mx-auto" style="width: 12rem;">
+                            <img id="" src="./photo/Jamoneta.png" class="img-fluid mx-auto" alt="">
+                                <div class="card-body">
+                                    <h5 id="" class="card-title">Jamoneta</h5>
+                                    <p id="" class="card-text">Zenu</p>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="carousel-item text-center">
+                <div class="row row-cols-auto g-3 text-center d-flex justify-content-around mt-1">
+                    <div class="col">
+                        <div class="card mx-auto" style="width: 12rem;">
+                            <img id="" src="./photo/atun.png" class="img-fluid mx-auto" alt="">
+                                <div class="card-body container-fluid">
+                                    <h5 id="" class="card-title">Atun</h5>
+                                    <p id="" class="card-text">En Aceite</p>
+                                </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card mx-auto" style="width: 12rem;">
+                            <img id="" src="./photo/cervezas.png" class="img-fluid mx-auto" alt="">
+                                <div class="card-body">
+                                    <h5 id="" class="card-title">Cerveza</h5>
+                                    <p id="" class="card-text">Al por mayor y detal</p>
+                                </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card mx-auto" style="width: 12rem;">
+                            <img id="" src="./photo/Jamoneta.png" class="img-fluid mx-auto" alt="">
+                                <div class="card-body">
+                                    <h5 id="" class="card-title">Jamoneta</h5>
+                                    <p id="" class="card-text">Zenu</p>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
                 </div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -200,10 +219,11 @@
                         </button>
                 </div>
             </div>
-        </div>
-        <!--Fin Carrusel -->
+<!--Fin Carrusel -->
+
+<!--Inicio de Barra Categorias -->
 <div class="row container-fluid mt-5">
-        <!--Inicio de Barra Categorias -->
+        
         <div class="col-2">
             <div class="text-center text-white">
                 <span class="fs-3">Categorias</span>
@@ -441,130 +461,118 @@
                 </div>
             </div>
         </div>
+<!--Fin Barra de Categorias-->
+
+<!--Espacio separador de botones de categoria e imagenes del productos-->
         <div class="col-1">
         </div>
-        <div class="col-9">
-            <!--Vista de Productos por categoria-->
-            <!--<div class="card-group text-center">
-                <div class="card mx-auto" style="width: 5rem;">
+
+<!--Vista de Productos por categoria-->
+<div class="col-9">
+    <div class="row row-cols-auto g-3 text-center d-flex justify-content-around mt-1">
+            <div class="col">
+                <div class="card mx-auto" style="width: 12rem;">
                     <img id="cateGen1" src="./photo/atun.png" class="img-fluid mx-auto" alt="cateGen1">
                         <div class="card-body container-fluid">
                             <h5 id="marcProduc1" class="card-title">Atun</h5>
                             <p id="descriProduc1" class="card-text">En Aceite</p>
                         </div>
                 </div>
-                <div class="card mx-auto" style="width: 5rem;">
+            </div>
+            <div class="col">
+                <div class="card mx-auto" style="width: 12rem;">
                     <img id="cateGen2" src="./photo/cervezas.png" class="img-fluid mx-auto" alt="cateGen2">
-                    <div class="card-body">
-                        <h5 id="marcProduc2" class="card-title">Cerveza</h5>
-                        <p id="descriProduc2" class="card-text">Al por mayor y detal</p>
-                    </div>
+                        <div class="card-body">
+                            <h5 id="marcProduc2" class="card-title">Cerveza</h5>
+                            <p id="descriProduc2" class="card-text">Al por mayor y detal</p>
+                        </div>
                 </div>
-                <div class="card mx-auto" style="width: 5rem;">
+            </div>
+            <div class="col">
+                <div class="card mx-auto" style="width: 12rem;">
                     <img id="cateGen3" src="./photo/Jamoneta.png" class="img-fluid mx-auto" alt="cateGen3">
-                    <div class="card-body">
-                        <h5 id="marcProduc3" class="card-title">Jamoneta</h5>
-                        <p id="descriProduc3" class="card-text">Zenu</p>
-                    </div>
+                        <div class="card-body">
+                            <h5 id="marcProduc3" class="card-title">Jamoneta</h5>
+                            <p id="descriProduc3" class="card-text">Zenu</p>
+                        </div>
                 </div>
             </div>
-            <div class="card-group text-center">
-                <div class="card mx-auto" style="width: 5rem;">
-                    <img id="cateGen4" src="./photo/frutas.png" class="img-fluid mx-auto" alt="cateGen4">
-                    <div class="card-body">
-                        <h5 id="marcProduc4" class="card-title">Frutas</h5>
-                        <p id="descriProduc4" class="card-text">Frescas</p>
-                    </div>
-                </div>
-                <div class="card mx-auto" style="width: 5rem;">
-                    <img id="cateGen5" src="./photo/pollo.png" class="img-fluid mx-auto" alt="cateGen5">
-                    <div class="card-body">
-                        <h5 id="marcProduc5" class="card-title">Pollo</h5>
-                        <p id="descriProduc5" class="card-text">Fresco</p>
-                    </div>
-                </div>
-                <div class="card mx-auto" style="width: 5rem;">
-                    <img id="cateGen6" src="./photo/atun1.png" class="img-fluid mx-auto" alt="cateGen6">
-                    <div class="card-body">
-                        <h5 id="marcProduc6" class="card-title">Atun</h5>
-                        <p id="descriProduc6" class="card-text">En Agua</p>
-                    </div>
-                </div>
-            </div>
-            <div class="card-group text-center">
-                <div class="card mx-auto" style="width: 5rem;">
-                    <img id="cateGen7" src="./photo/frutas.png" class="img-fluid mx-auto" alt="cateGen7">
-                    <div class="card-body">
-                        <h5 id="marcProduc7" class="card-title">Frutas</h5>
-                        <p id="descriProduc7" class="card-text">Fresca</p>
-                </div>
-                </div>
-                <div class="card mx-auto" style="width: 5rem;">
-                    <img id="cateGen8" src="./photo/res.png" class="img-fluid mx-auto" alt="cateGen8">
-                    <div class="card-body">
-                        <h5 id="marcProduc8" class="card-title">Res</h5>
-                        <p id="descriProduc8" class="card-text">Pulpa</p>
-                    </div>
-                </div>
-                <div class="card mx-auto" style="width: 5rem;">
-                    <img id="cateGen9" src="./photo/srdinas.png" class="img-fluid mx-auto" alt="cateGen9">
-                    <div class="card-body">
-                        <h5 id="marcProduc9" class="card-title">Sardinas</h5>
-                        <p id="descriProduc9" class="card-text">En salsa de tomate</p>
-                    </div>
-                </div>
-            </div>
-         </div>-->
-
-            <div class="row row-cols-1 row-cols-md-2 g-4">
-                <div class="col">
-                    <div class="card" style="width: 15rem;">
-                        <img src="./photo/res.png" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a longer card with supporting.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card">
-                        <img src="..." class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card">
-                        <img src="..." class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card">
-                        <img src="..." class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
     </div>
-        <!--Fin Barra Categorias -->
-        <div class="row" id="Ubicacion">
-            <!--Inicio de Footer-->
+
+
+    <div class="row row-cols-auto g-3 text-center d-flex justify-content-around mt-2">
+            <div class="col">
+                <div class="card mx-auto" style="width: 12rem;">
+                    <img id="cateGen4" src="./photo/frutas.png" class="img-fluid mx-auto" alt="cateGen4">
+                        <div class="card-body">
+                            <h5 id="marcProduc4" class="card-title">Frutas</h5>
+                            <p id="descriProduc4" class="card-text">Frescas</p>
+                        </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card mx-auto" style="width: 12rem;">
+                    <img id="cateGen5" src="./photo/pollo.png" class="img-fluid mx-auto" alt="cateGen5">
+                        <div class="card-body">
+                            <h5 id="marcProduc5" class="card-title">Pollo</h5>
+                            <p id="descriProduc5" class="card-text">Fresco</p>
+                        </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card mx-auto" style="width: 12rem;">
+                    <img id="cateGen6" src="./photo/atun1.png" class="img-fluid mx-auto" alt="cateGen6">
+                        <div class="card-body">
+                            <h5 id="marcProduc6" class="card-title">Atun</h5>
+                            <p id="descriProduc6" class="card-text">En Agua</p>
+                        </div>
+                </div>
+            </div>
+    </div>
+
+
+    <div class="row row-cols-auto g-3 text-center d-flex justify-content-around mt-2">
+            <div class="col">
+                <div class="card mx-auto" style="width: 12rem;">
+                    <img id="cateGen7" src="./photo/frutas.png" class="img-fluid mx-auto" alt="cateGen7">
+                        <div class="card-body">
+                            <h5 id="marcProduc7" class="card-title">Frutas</h5>
+                            <p id="descriProduc7" class="card-text">Fresca</p>
+                        </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card mx-auto" style="width: 12rem;">
+                    <img id="cateGen8" src="./photo/res.png" class="img-fluid mx-auto" alt="cateGen8">
+                        <div class="card-body">
+                            <h5 id="marcProduc8" class="card-title">Res</h5>
+                            <p id="descriProduc8" class="card-text">Pulpa</p>
+                        </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card mx-auto" style="width: 12rem;">
+                    <img id="cateGen9" src="./photo/srdinas.png" class="img-fluid mx-auto" alt="cateGen9">
+                        <div class="card-body">
+                            <h5 id="marcProduc9" class="card-title">Sardinas</h5>
+                            <p id="descriProduc9" class="card-text">En salsa de tomate</p>
+                        </div>
+                </div>
+            </div>
+    </div>
+    </div>
+</div>
+<!--Fin Barra Categorias -->
+
+<!--Inicio de Footer-->
+<div class="row" id="Ubicacion">
+<!--Imagen-->
             <div class="col-12 col-lg-2 mt-5">
                 <div class="img-fluid d-block text-center">
                     <a class="navbar-brand" href="index.php"><img src="./photo/logopest2.ico" alt="Logo" class="img-fluid text-center rounded-3"></a>
                 </div>
             </div>
+<!--Informacion general de VariedadesJYK-->
             <div class="col-12 col-lg-3">
                 <div class="text-start">
                     <div class="d-block mt-5 text-white">
@@ -590,6 +598,7 @@
                     </div>
                 </div>
             </div>
+<!--Iconos de Redes Sociales-->
             <div class="col-12 col-sm-3">
                 <div class="text-white mt-5">
                     <h3 class="text-center">Redes Sociales</h3>
@@ -623,16 +632,19 @@
 
                 </div>
             </div>
+</div>
+<!--Final de Footer-->
+
+<!--Inicio de Pie de Pagina-->
+<div class="row">
+        <div class="col-12 text-center text-white">
+            <p>© 2024 - VariedadesJyk® / Minimarket Variedades S.A.S. NIT. 110.370.428-1 - Todos los Derechos Reservados.</p>
         </div>
-        <!--Final de Footer-->
-        <div class="row">
-        <!--Inicio de Pie de Pagina-->
-            <div class="col-12 text-center text-white">
-                <p>© 2024 - VariedadesJyk® / Minimarket Variedades S.A.S. NIT. 110.370.428-1 - Todos los Derechos Reservados.</p>
-            </div>
-        </div>
-        <!--Fin de Pie de Pagina-->
-    </div>
+</div>
+<!--Fin de Pie de Pagina-->
+</div>
+
+<!--Fin ??--->
 
     <!--Formulario de login ej-->
     <!--<form id="login_form"  action="login.php"  class="login_form" method="post">
