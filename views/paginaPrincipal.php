@@ -583,7 +583,7 @@
                             <div class=""><a class="navbar-brand" target="_blank" href="https://g.co/kgs/WpQrABT"><img src="./photo/ubicacion.ico" alt="Ubicacion" width="35" height="35"></a></div>
                         </div>
                         <div class="mt-1"><p>Ibagué - Tolima</p></div>
-                        <div class="mt-1"><p>Email: Servicioalcliente@Variedades.com</p></div>
+                        <div class="mt-1"><p>Servicioalcliente@Variedades.com</p></div>
                     </div>
                 </div>
             </div>
@@ -591,9 +591,8 @@
                 <div class="text-start">
                     <div class="d-block mt-5 text-white">
                         <div class="mt-1"><p>INFORMACIÓN LEGAL</p></div>
-                        <div class="mt-1"><p>Términos y Condiciones Política Tratamiento de Datos Personales</p></div>
-                        <div class="mt-1"><p>Política de Cambios y Devoluciones Derecho de Garantías</p></div>
-                        <div class="mt-1"><p>Política de Cookies Superintendencia de Industria y Comercio - SIC</p></div>
+                        <div class="mt-1"><p>Términos y Condiciones de Cambio </p></div>
+                        <div class="mt-1"><p>Política Tratamiento de Datos Personales</p></div>
                         <div class="mt-1"><p>Términos y Condiciones Eventos</p></div>
                     </div>
                 </div>

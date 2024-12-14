@@ -65,88 +65,80 @@
                     </nav>
             </div>
         </div>
+<!--Final Barra Navegacion-->
+
+<!--Inicio -->
+<div class="row">
+    <div class="">
+    <div class="card bg-dark text-white col-auto">
+        <img src="./photo/logoPesta.ico" class="d-block w-100" alt="...">
+    </div>
+    </div>
 </div>
-    <!--Final Barra Navegacion-->
+<!--Fin -->
 
 
 
 <!--Inicio de Footer-->
 <div class="row" id="Ubicacion">
-<!--Imagen-->
-            <div class="col-12 col-lg-2 mt-5">
-                <div class="img-fluid d-block text-center">
-                    <a class="navbar-brand" href="index.php"><img src="./photo/logopest2.ico" alt="Logo" class="img-fluid text-center rounded-3"></a>
-                </div>
-            </div>
-<!--Informacion general de VariedadesJYK-->
-            <div class="col-12 col-lg-3">
-                <div class="text-start">
-                    <div class="d-block mt-5 text-white">
-                        <div><p>Línea de Servicio al Cliente</p></div>
-                        <div class="mt-1"><p>Cel: 320 338 4589</p></div>
-                        <div class="d-flex mt-1">
-                            <div class="aling-item-center mt-1  me-auto"><p>Cra. 16 Sur # 96-48</p></div>
-                            <div class=""><a class="navbar-brand" target="_blank" href="https://g.co/kgs/WpQrABT"><img src="./photo/ubicacion.ico" alt="Ubicacion" width="35" height="35"></a></div>
-                        </div>
-                        <div class="mt-1"><p>Ibagué - Tolima</p></div>
-                        <div class="mt-1"><p>Email: Servicioalcliente@Variedades.com</p></div>
+            <div class="col-12 justify-content-around aling-item-center">
+                    <div class="mt-5 text-white">
+                            <div class="text-center mt-1 p-2">
+                                <p class="text-center">Cra. 16 Sur # 96-48 Ibagué - Tolima 
+                                    <a class="navbar-brand" target="_blank" href="https://g.co/kgs/WpQrABT">
+                                        <img src="./photo/ubicacion.ico" alt="Ubicacion" width="35" height="35">
+                                    </a>
+                                </p>
+                            </div>
+                            <div class="text-center">
+                                <p>Cel: 320 338 4589</p>
+                            </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-12 col-lg-4">
-                <div class="text-start">
-                    <div class="d-block mt-5 text-white">
-                        <div class="mt-1"><p>INFORMACIÓN LEGAL</p></div>
-                        <div class="mt-1"><p>Términos y Condiciones Política Tratamiento de Datos Personales</p></div>
-                        <div class="mt-1"><p>Política de Cambios y Devoluciones Derecho de Garantías</p></div>
-                        <div class="mt-1"><p>Política de Cookies Superintendencia de Industria y Comercio - SIC</p></div>
-                        <div class="mt-1"><p>Términos y Condiciones Eventos</p></div>
-                    </div>
-                </div>
-            </div>
+</div>
 <!--Iconos de Redes Sociales-->
-            <div class="col-12 col-sm-3">
-                <div class="text-white mt-5">
+        <div class="row">
+            <div class="col-12 justify-content-evenly aling-item-center text-center">
+                <div class="text-white mt-1">
                     <h3 class="text-center">Redes Sociales</h3>
                 </div>
                 <div class="d-flex mt-4 justify-content-evenly aling-item-center">
                     <ul class="nav">
                         <li class="nav-item">
                             <a class="navbar-brand" target="_blank" href="https://es-es.facebook.com/">
-                                <img src="./photo/facebook.ico" alt="Facebook" width="50" height="50">
+                                <img src="./photo/facebook.ico" alt="Facebook" width="40" height="40">
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="navbar-brand" target="_blank" href="https://www.instagram.com/">
-                                <img src="./photo/instagam.ico" alt="instagram" width="50" height="50">
+                                <img src="./photo/instagam.ico" alt="instagram" width="40" height="40">
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="navbar-brand" target="_blank" href="https://www.youtube.com/">
-                                <img src="./photo/youtube.ico" alt="youtube" width="50" height="50">
+                                <img src="./photo/youtube.ico" alt="youtube" width="40" height="40">
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="navbar-brand" target="_blank" href="https://www.whatsapp.com/">
-                                <img src="./photo/whatsapp.ico" alt="whatsapp" width="50" height="50">
+                                <img src="./photo/whatsapp.ico" alt="whatsapp" width="40" height="40">
                             </a>
                         </li>
                     </ul>
                 </div>
                 <div class="text-white text-center mt-4" >
                     <h3>Síguenos</h3>
-
                 </div>
             </div>
-</div>
+        </div>
 <!--Final de Footer-->
 
 <!--Inicio de Pie de Pagina-->
-<div class="row">
-        <div class="col-12 text-center text-white">
+    <div class="row">
+        <div class="col-12 text-center text-white mt-3">
             <p>© 2024 - VariedadesJyk® / Minimarket Variedades S.A.S. NIT. 110.370.428-1 - Todos los Derechos Reservados.</p>
         </div>
-</div>
+    </div>
 <!--Fin de Pie de Pagina-->
 </div>
 

@@ -26,9 +26,11 @@ document.addEventListener('DOMContentLoaded',function(){
 
     document.getElementById("cerrarL").addEventListener('click', function(){
 
-        let elemento = document.getElementById("login_form");
+        var elemento = document.getElementById('login_form');
 
-        elemento.style.display = "none";
+        if (elemento.style.display === "block") {
+            elemento.style.display = 'none';
+        }
 
         //location.reload();  //método de recarga la URL actual, como el botón Actualizar.
 
