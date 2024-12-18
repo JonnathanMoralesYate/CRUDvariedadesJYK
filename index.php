@@ -26,6 +26,14 @@ switch($action){
     case'paginaS':
         $vistaPaginaS->index();
         break;
+
+        case'login':
+            include './views/moduloAdministrativo.php';
+            break;
+
+            case'loginP':
+                include './views/moduloEmpleado.php';
+                break;
     
 
 

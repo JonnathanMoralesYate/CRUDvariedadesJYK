@@ -40,7 +40,7 @@
                                             </form>
                                         </li>
                                         <li class="nav-item">
-                                        <form action="index.php?action=paginaS" method="GET">
+                                            <form action="index.php?action=paginaS" method="GET">
                                                 <button type="submit" class="btn btn-outline-secondary m-2 text-white" name="action" value="paginaS">Servicios</button>
                                             </form>
                                         </li>
@@ -59,7 +59,10 @@
                                     </ul>
                                 </div>
                                 <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-                                        <a id="login_inic" class="btn btn-outline-secondary text-white m-2" href="#" role="button">Login</a>
+                                        <!-- <a id="login_inic" class="btn btn-outline-secondary text-white m-2" href="#" role="button">Login</a> -->
+                                        <form action="index.php?action=login" method="GET">
+                                            <button type="submit" class="btn btn-outline-secondary m-2 text-white" name="action" value="login">Login</button>
+                                        </form>
                                 </div>
                         </div>
                     </nav>
@@ -676,11 +679,11 @@
                     </div>
 
                     <div class="campo">
-                        <button type="submit" href="#" class="boton">Iniciar sesión</button>
+                        <button type="submit" class="boton">Iniciar sesión</button>
                     </div>
 
                     
-                    <button id="cerrarL" hrfe="/form/AccesoAdministrativo.html">X</button>
+                    <button id="cerrarL">X</button>
                     
                     <div id="message"></div>
                 </div>

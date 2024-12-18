@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded',function(){
 
         var elemento = document.getElementById('login_form');
 
-        if (elemento.style.display === "block") {
+        if (elemento.style.display === 'block') {
             elemento.style.display = 'none';
         }
 

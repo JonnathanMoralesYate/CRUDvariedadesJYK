@@ -8,9 +8,9 @@
     text-align: center;
     text-justify: distribute;
     /*margin-right: 2%;*/
-    background-color: #285372;
+    background-color: #0a1527;
     backdrop-filter: blur(10px);
-    border: 1px solid #646464;
+    border: 1px solid rgba(99, 97, 97, 0.364);
     border-radius: 20px;
 }
 h2{
@@ -42,19 +42,22 @@ h2{
     margin-bottom: 10px;
 }
 
-.campo input[type="text"], .campo input[type="password"] {
-    width: 95%;
-    height: 40px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    background-color: transparent;
-    border-radius: 5px;
+.campo input[type="text"]:focus, .campo input[type="password"]:focus {
+    width: 95%;                                     /*ancho del elemento input, será el 95% del ancho de su contenedor padre.*/
+    height: 40px;                                   /*altura del input de 40 píxeles.*/
+    padding: 10px;                                  /*espacio interno de 10 píxeles dentro del campo de entrada, asegurando que el texto no esté pegado a los bordes.*/
+    border: 1px solid #ccc;                       /*Aplica un borde de 1 píxel de ancho, color gris claro (#ccc) y estilo sólido alrededor del campo.*/
+    /*background-color: transparent;*/              /*Hace que el fondo de los campos sea transparente.*/
+    border-radius: 5px;                             /*Redondea las esquinas del borde con un radio de 5 píxeles,*/
+    /*border-color: #007bff; /* Azul para enfoque */
+    /*box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    outline: none; /* Elimina el borde predeterminado */                           
 }
 
 .boton {
     width: 30%;
     height: 50px;
-    background-color: #013d69;
+    background-color: #10213d;
     color: #ffffff;
     text-align: auto;
     padding: 10px;
@@ -64,7 +67,7 @@ h2{
 }
 
 .boton:hover {
-    background-color: #285372;
+    background-color: #081935;
 }
 
 @media (max-width: 768px) {
@@ -92,9 +95,9 @@ h2{
     color: hsl(0, 0%, 100%);
 }
 
-#cerrar,#cerrarL{
+#cerrarL{
     position: absolute;             /*estarán posicionados de manera absoluta dentro de su contenedor.*/
-    width:7%;                       /*anchura será del 7% del contenedor.*/
+    width:8%;                       /*anchura será del 7% del contenedor.*/
     aspect-ratio:1;
     right:2%;
     top:3%;
