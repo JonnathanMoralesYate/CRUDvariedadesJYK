@@ -646,20 +646,8 @@
 <!--Fin de Pie de Pagina-->
 </div>
 
-<!--Fin ??--->
 
-    <!--Formulario de login ej-->
-    <!--<form id="login_form"  action="login.php"  class="login_form" method="post">
-        <div id="formulario1"><h4>Login</h4>
-        <input type="text" name="user" placeholder="Digita tu Usuario o email" class= "input_sign" id="usuario" required>     
-        <input type="password"name="passw" placeholder="Ingresa tu contraseña"  class= "input_sign" id="passw" required>
-        <input type="submit" name="Login_buttom"  class= "boton_Login" id="Login_buttom" value="Login">
-        <button id="cerrarL" >X</button>
-        <div id="message"></div>
-        </div>
-    </form>-->
-
-    <!--Formulario de login-->
+<!--Formulario de login-->
 <div id="login_form" class="contenedor_loginG">
         <div class="contenedor-login mt-2">
 

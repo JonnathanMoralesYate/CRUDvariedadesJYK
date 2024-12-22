@@ -14,7 +14,7 @@
 <body>
 <div class="container-fluid"  id="barra_navegacion">
         <div class="row p-5 mt-1">
-            <div class="col-2">
+            <div class="col-2 mt-2">
     <!--Inicio Barra Navegacion-->
     <nav class="img-fluid d-block text-center" id="inicio">
                         <a class="navbar-brand">
@@ -32,7 +32,7 @@
                                     </div>
                                 </nav>
                             </button>
-                                <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+                                <div class="collapse navbar-collapse mt-2" id="navbarTogglerDemo01">
                                     <ul class="navbar-nav me-auto mb-5 mb-lg-0">
                                         <li class="nav-item">
                                         <form action="index.php?action=paginaP" method="GET">
@@ -59,7 +59,7 @@
                                     </ul>
                                 </div>
                                 <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-                                        <a id="login_inic" class="btn btn-outline-secondary text-white m-2" href="#" role="button">Login</a>
+                                        <a id="login_inic" class="btn btn-outline-secondary text-white m-2 mt-0" href="#" role="button">Login</a>
                                 </div>
                         </div>
                     </nav>

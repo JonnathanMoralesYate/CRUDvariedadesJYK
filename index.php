@@ -52,29 +52,7 @@ switch($action){
 //Login inicio de Sesion
     case'login':
         if($_SERVER["REQUEST_METHOD"] == "POST") {
-
             $sesionUsuario= $controladorLogin->validarUsuario();
-
-            //switch($sesionUsuario){
-            //    case'admin';
-
-            //    $nombre = $controladorLogin->idUsuarioSesion();
-
-            //    include('./views/moduloAdministrativo.php');
-            //    break;
-
-            //    case'emplea';
-
-            //    $nombre = $controladorLogin->idUsuarioSesion();
-
-            //    include('./views/moduloEmpleado.php');
-            //    break;
-
-            //    case'error';
-            //    $vistaPaginaP->index();
-                //include('');
-            //    break;
-            //}
         }
         break;
 

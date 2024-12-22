@@ -1,17 +1,18 @@
 <?php
 session_start();
 
-// Verificar si el usuario tiene el rol de administrador
-//if (!isset($_SESSION['idUsuario'])) {
-    //header("Location: index.php?action=principal");
-    //exit;
-//}
+// Verifica si $_SESSION está vacío (no tiene ninguna variable)
+if (empty($_SESSION)) {
+    // Redirigir a:
+    header("Location: index.php?action=paginaP");
+    exit;
+}
 
 // Verificar si el usuario tiene el rol de Empleado
 if ($_SESSION['rol'] != 'Empleado') {
     // Si no es Empleado, redirigir o mostrar mensaje de acceso denegado
     //echo "Acceso denegado.";
-    header("Location: index.php?action=vistaEmple");
+    header("Location: index.php?action=vistaAdmin");
     exit;
 }
 ?>

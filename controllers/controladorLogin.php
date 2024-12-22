@@ -50,21 +50,18 @@ class ControladorLogin{
                 // Guarda el apellido de usuario
                 $_SESSION['apellido'] = $apellido;
 
-
                 //Redirige según el rol
                 if($rol == 'Administrador') {
 
                     echo "
                         <script>
                             alert('Has ingresado como Administrador!');
+                            window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=vistaAdmin';
                         </script>
                         ";
 
-                    header("Location: index.php?action=vistaAdmin");
+                    //header("Location: index.php?action=vistaAdmin");
                     exit;
-                        //$acceso= "admin";
-
-                        //return $acceso;
 
                 }elseif($rol == 'Empleado'){
 
@@ -76,9 +73,6 @@ class ControladorLogin{
 
                     header("Location: index.php?action=vistaEmple");
                     exit;
-                        //$acceso= "emplea";
-
-                        //return $acceso;
 
                 }
             }else {
@@ -87,15 +81,11 @@ class ControladorLogin{
                     echo "
                         <script>
                             alert('Contraseña incorrecta!');
-                            
+                            window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=paginaP';
                         </script>
                         ";
-                    header("Location: index.php?action=paginaS");
+                    //header("Location: index.php?action=paginaS");
                     exit;
-
-                        //$acceso= "error";
-
-                        //return $acceso;
 
                 } 
 
@@ -108,14 +98,11 @@ class ControladorLogin{
         echo "
             <script>
                 alert('Usuario no encontrado o Incorrecto!');
+                window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=paginaP';
             </script>
             ";
-            header("Location: index.php?action=paginaN");
+            //header("Location: index.php?action=paginaN");
             exit;
-
-            //$acceso= "error";
-
-            //return $acceso;
 
         // Si las credenciales no son válidas
         //$error = "Credenciales incorrectas";
@@ -125,23 +112,6 @@ class ControladorLogin{
 }
 
 }
-
-    //Identificar Usuario de la Sesion
-    public function idUsuarioSesion() {
-
-        //session_start();
-
-        if(isset($_SESSION['idUsua'])){
-
-            $idUsu = $_SESSION['idUsua'];
-
-            return $this->modeloLogin->consultaNombreUsuario($idUsu);
-
-        }
-    }
-
-
-
 
     //Cerrar Sesion
     public function cerraraSesion() {
@@ -159,14 +129,13 @@ class ControladorLogin{
         echo "
             <script>
                 alert('Finalizo Sesion!');
+                window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=paginaP';
             </script>
             ";
 
-        header("Location: http://localhost/CRUDvariedadesJYK/index.php");
+        //header("Location: http://localhost/CRUDvariedadesJYK/index.php");
 
         exit();
-
-        // window.location.href='http://localhost/CRUDvariedadesJYK/index.php';
 
     }
 
