@@ -14,7 +14,7 @@
 <body>
 <div class="container-fluid"  id="barra_navegacion">
         <div class="row p-5 mt-1">
-            <div class="col-2">
+            <div class="col-2 mt-2">
     <!--Inicio Barra Navegacion-->
     <nav class="img-fluid d-block text-center" id="inicio">
                         <a class="navbar-brand">
@@ -28,11 +28,11 @@
                             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
                                 <nav class="navbar navbar-light">
                                     <div class="container-fluid">
-                                        <a class="navbar-brand text-white" href="#">Menu</a>
+                                        <a class="navbar-brand text-white">Menu</a>
                                     </div>
                                 </nav>
                             </button>
-                                <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+                                <div class="collapse navbar-collapse mt-2" id="navbarTogglerDemo01">
                                     <ul class="navbar-nav me-auto mb-5 mb-lg-0">
                                         <li class="nav-item">
                                             <form action="index.php?action=paginaN" method="GET">
@@ -58,11 +58,11 @@
                                         </li>
                                     </ul>
                                 </div>
-                                <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-                                        <!-- <a id="login_inic" class="btn btn-outline-secondary text-white m-2" href="#" role="button">Login</a> -->
-                                        <form action="index.php?action=login" method="GET">
+                                <div class="collapse navbar-collapse mt-0" id="navbarTogglerDemo01">
+                                        <a id="login_inic" class="btn btn-outline-secondary text-white m-2 mt-0" role="button">Login</a> 
+                                        <!-- <form action="index.php?action=login" method="GET">
                                             <button type="submit" class="btn btn-outline-secondary m-2 text-white" name="action" value="login">Login</button>
-                                        </form>
+                                        </form> -->
                                 </div>
                         </div>
                     </nav>
@@ -665,27 +665,30 @@
 
             <h2>Inicio de sesión</h2>
 
-            <form   action="" method="post">
+            <form action="index.php?action=login" method="post">
 
                 <div class="formulario1">
                     <div class="campo mt-3">
-                        <label for="usuario">Usuario:</label>
-                        <input type="text" id="usuario" name="usuario" placeholder="Ingrese su usuario">
+                        <label for="usuarioL">Usuario:</label>
+                        <input type="text" id="usuario" name="usuarioL" placeholder="Ingrese su usuario" required>
                     </div>
 
                     <div class="campo">
-                        <label for="contraseña">Contraseña:</label>
-                        <input type="password" id="contraseña" name="contraseña" placeholder="Ingrese su contraseña">
+                        <label for="contraseñaL">Contraseña:</label>
+                        <input type="password" id="contraseña" name="contraseñaL" placeholder="Ingrese su contraseña" required>
                     </div>
 
                     <div class="campo">
-                        <button type="submit" class="boton">Iniciar sesión</button>
+                        <button type="submit" class="btn btn-outline-secondary m-2 text-white text-center">Iniciar sesión</button>
                     </div>
 
                     
                     <button id="cerrarL">X</button>
                     
-                    <div id="message"></div>
+                    
+                    <div id="message">
+                        <!-- */<?php if (isset($error)) echo "<p>$error</p>"; ?>*/ -->
+                    </div>
                 </div>
         </form>
     </div>
