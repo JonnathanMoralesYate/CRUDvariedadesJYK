@@ -90,7 +90,7 @@ class ControladorLogin{
                             
                         </script>
                         ";
-                    header("Location: index.php?action=paginaN");
+                    header("Location: index.php?action=paginaS");
                     exit;
 
                         //$acceso= "error";
