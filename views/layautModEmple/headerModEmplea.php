@@ -9,7 +9,7 @@ if (empty($_SESSION)) {
 }
 
 // Verificar si el usuario tiene el rol de Empleado
-if ($_SESSION['rol'] != 'Empleado') {
+if ($_SESSION['rol'] == 1) {
     // Si no es Empleado, redirigir o mostrar mensaje de acceso denegado
     //echo "Acceso denegado.";
     header("Location: index.php?action=vistaAdmin");

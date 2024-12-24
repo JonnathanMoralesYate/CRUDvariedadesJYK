@@ -1,25 +1,14 @@
 <?php include('./views/layautModAdmin/headerModAdmin.php'); ?>
 
 <div class="row">
-            <!--Incio de Formulario Registro de Usuario-->
+            <!--Incio de Formulario Actualizar Usuario-->
             <div class="col-3">
             </div>
             <div class="col-6">
                 <div class="text-center text-white mt-3">
-                    <h4>Registro Empleado</h4>
+                    <h4>Actualizar Empleado</h4>
                 </div>
-            <form class=" mt-2" action="index.php?action=registroUsuario" method="post">
-            <div class=" mt-2">
-                        <label for="tipoDocum" class="form-label text-white mt-3">Tipo Documento:</label>
-                        <select id="tipoDocum" name="tipoDocum" class="form-control">
-                            <option selected>Seleccione Tipo Documento</option>
-                            <?php foreach($tipoDocum as $tipos): ?>
-                            <option value="<?= $tipos['idTipoDocum']; ?>">
-                            <?= $tipos['tipoDocum']; ?>
-                            </option>
-                            <?php endforeach; ?>
-                        </select>
-                </div>
+            <form class=" mt-2" action="index.php?action=actualizarUsuario" method="post">
                 <div class=" mt-2">
                     <label for="documUsu" class="form-label text-white mt-3">Numero de Cedula:</label>
                     <input type="text" class="form-control" name="documUsu" required>
@@ -43,9 +32,9 @@
                 <div class="mb-3">
                     <label for="seleccionRol" class="form-label text-white mt-3">Rol:</label>
                         <select id="seleccionRol" name="seleccionRol" class="form-control">
-                            <option selected>Seleccione el Rol</option>
-                            <option value="2">Empleado</option>
-                            <option value="1">Administrador</option>
+                            <option>-Seleccione el Rol-</option>
+                            <option value="Empleado">Empleado</option>
+                            <option value="Administrador">Administrador</option>
                         </select>
                 </div>
                 <div class=" mt-2">
@@ -67,6 +56,3 @@
         </div>
 
 <?php include('./views/layautModAdmin/footerModAdmin.php'); ?>
-
-
-

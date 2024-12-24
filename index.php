@@ -5,6 +5,7 @@ require_once('./controllers/controladorPaginaN.php');
 require_once('./controllers/controladorPaginaS.php');
 require_once('./controllers/contoladorPaginaAdmin.php');
 require_once('./controllers/controladorPaginaEmple.php');
+require_once('./controllers/controladorTipoDocum.php');
 
 require_once('./controllers/controladorUsuario.php');
 require_once('./controllers/controladorLogin.php');
@@ -18,6 +19,7 @@ $vistaEmple = new ControladorPaginaEmple();
 
 $controladorUsuario= new ControladorUsuario();
 $controladorLogin= new ControladorLogin();
+$controladorTipoDocum= new ControladorTipoDocum();
 
 
 
@@ -62,12 +64,32 @@ switch($action){
 
 
 //Usuario
-    case'registroUsuario';
+
+        //Registro usuario
+    case'registroUsuario':
     if($_SERVER["REQUEST_METHOD"] == "POST"){
             $controladorUsuario->registroUsua();
         }else{
+            $tipoDocum= $controladorTipoDocum->listaTiposDocum();
             include('./views/usuarios/registroUsuarios.php');
         }
+        break;
+
+
+        //Consulta Usuarios
+    case'consultaUsuarios':
+        $usuarios = $controladorUsuario->listaUsuariosVista();
+        include('./views/usuarios/consultaUsuario.php');
+        break;
+
+    case'consultaUsuarioId':
+        $usuarios = $controladorUsuario->datosUsuaPorId();
+        include('./views/usuarios/consultaUsuario.php');
+        break;
+
+    case'consultaUsuarioNombre':
+        $usuarios = $controladorUsuario->datosUsuaPorNombre();
+        include('./views/usuarios/consultaUsuario.php');
         break;
 
 

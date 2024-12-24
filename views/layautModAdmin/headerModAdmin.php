@@ -9,7 +9,7 @@ if (empty($_SESSION)) {
 }
 
 // Verificar si el usuario tiene el rol de administrador
-if ($_SESSION['rol'] != 'Administrador') {
+if ($_SESSION['rol'] == 2) {
      // Redirigir a:
     header("Location: index.php?action=vistaEmple");
     exit;
@@ -224,8 +224,8 @@ if ($_SESSION['rol'] != 'Administrador') {
                                         <a class="nav-link dropdown-toggle text-white" data-bs-toggle="dropdown" role="button" aria-expanded="false">Empleados</a>
                                             <ul class="dropdown-menu">
                                                 <li>
-                                                    <form action="index.php?action=" method="GET">
-                                                        <button class="dropdown-item" type="submit" name="action" value="" class="btn btn-light">Consultar Empleado</button>
+                                                    <form action="index.php?action=consultaUsuarios" method="GET">
+                                                        <button class="dropdown-item" type="submit" name="action" value="consultaUsuarios" class="btn btn-light">Consultar Empleado</button>
                                                     </form>
                                                 </li>
                                                 <li>

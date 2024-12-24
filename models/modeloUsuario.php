@@ -9,12 +9,83 @@ class ModeloUsuario{
         $this->conn=$db;
     }
 
+
 //Registro de Usuario
-    public function registroUsuario($numDocumento, $nombre, $apellido, $numCelular, $correoE, $rol, $usuario, $clave) {
-        $query= "INSERT INTO ". $this->table." (NumIdentificacion, Nombres, Apellidos, NumCelular, Email, Rol, Usuario, Contraseña) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
+    public function registroUsuario($idTipoDocum, $numDocumento, $nombre, $apellido, $numCelular, $correoE, $rol, $usuario, $claveSegura) {
+        $query= "INSERT INTO ".$this->table." (idTipoDocum, NumIdentificacion, Nombres, Apellidos, NumCelular, Email, idRol, Usuario, Contraseña) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt=$this->conn->prepare($query);
-        $stmt->execute([$numDocumento, $nombre, $apellido, $numCelular, $correoE, $rol, $usuario, $clave]);
+        $stmt->execute([$idTipoDocum, $numDocumento, $nombre, $apellido, $numCelular, $correoE, $rol, $usuario, $claveSegura]);
     }
+
+
+//Consulta general de la tabla
+    public function consultGenUsua() {
+        $query = "SELECT * FROM ".$this->table;
+        $stmt = $this->conn->query($query);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+
+//consulta general con inner join
+    public function consultGenUsuaVista() {
+        $query = "SELECT idUsuario, tipo_documento.tipoDocum, NumIdentificacion, Nombres, Apellidos, NumCelular, Email, roles.Rol, Usuario, Contraseña FROM ".$this->table." INNER JOIN tipo_documento ON registro_usuarios.idTipoDocum = tipo_documento.idTipoDocum INNER JOIN roles ON registro_usuarios.idRol = roles.idRol";
+        $stmt = $this->conn->query($query);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+
+//Consulta por parametro Id
+    //public function consultUsuaId($idUsua) {
+        //$query = "SELECT * FROM ".$this->table." WHERE idUsuario=?";
+        //$stmt = $this->conn->prepare($query);
+        //$stmt->execute([$idUsua]);
+        //return $stmt->fetch(PDO::FETCH_ASSOC);
+
+    //}
+
+
+//consulta general con inner join por Id
+    public function consultGenUsuaVistaId($idUsua) {
+        $query = "SELECT idUsuario, tipo_documento.tipoDocum, NumIdentificacion, Nombres, Apellidos, NumCelular, Email, roles.Rol, Usuario, Contraseña FROM ".$this->table." INNER JOIN tipo_documento ON registro_usuarios.idTipoDocum = tipo_documento.idTipoDocum INNER JOIN roles ON registro_usuarios.idRol = roles.idRol WHERE idUsuario=?";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute([$idUsua]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+
+//Consulta por parametro Nombre
+    //public function consultUsuaNombre($nombre) {
+        //$query = "SELECT * FROM ".$this->table." WHERE Nombres=?";
+        //$stmt = $this->conn->prepare($query);
+        //$stmt->execute(['%'.$nombre. '%']);
+        //return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    //}
+
+
+//consulta general con inner join por Nombre
+    public function consultGenUsuaVistaNombre($nombre) {
+        $query = "SELECT idUsuario, tipo_documento.tipoDocum, NumIdentificacion, Nombres, Apellidos, NumCelular, Email, roles.Rol, Usuario, Contraseña FROM ".$this->table." INNER JOIN tipo_documento ON registro_usuarios.idTipoDocum = tipo_documento.idTipoDocum INNER JOIN roles ON registro_usuarios.idRol = roles.idRol WHERE Nombres=?";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute(['%'.$nombre. '%']);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+
+//Actualizar usuario
+public function actualizarUsua($numDocumento, $nombre, $apellido, $numCelular, $correoE, $rol, $usuario, $clave, $idUsua) {
+    $query = "UPDATE ".$this->table." SET NumIdentificacion=?, Nombres=?, Apellidos=?, NumCelular=?, Email=?, Rol=?, Usuario=?, Contraseña=? WHERE idUsuario ";
+    $stmt = $this->conn->prepare($query);
+    $stmt->execute([$numDocumento, $nombre, $apellido, $numCelular, $correoE, $rol, $usuario, $clave, $idUsua]);
+}
+
+
+//Eliminar usuario
+public function eliminarUsua($idUsua) {
+    $query = "DELETE FROM ".$this->table." WHERE idUsuario=?";
+    $stmt = $this->conn->prepare($query);
+    $stmt->execute([$idUsua]);    
+}
+
 
 }
 

@@ -29,14 +29,14 @@ class ControladorLogin{
             if ($user) {
                 
                 $idUsua= $user['idUsuario']; 
-                $rol= $user['Rol'];
+                $rol= $user['idRol'];
                 $contraseñaBD= $user['Contraseña'];     // Contraseña encriptada almacenada
                 $nombre= $user['Nombres'];
                 $apellido= $user['Apellidos'];
                 
 
             // Verifica la contraseña
-            if($clave === $contraseñaBD) {
+            if(password_verify($clave, $contraseñaBD)) {
 
                 // Inicia la sesión.
                 session_start();
@@ -51,7 +51,8 @@ class ControladorLogin{
                 $_SESSION['apellido'] = $apellido;
 
                 //Redirige según el rol
-                if($rol == 'Administrador') {
+                //Administrativo
+                if($_SESSION['rol'] == 1) {
 
                     echo "
                         <script>
@@ -63,7 +64,8 @@ class ControladorLogin{
                     //header("Location: index.php?action=vistaAdmin");
                     exit;
 
-                }elseif($rol == 'Empleado'){
+                    //Empleado
+                }elseif($_SESSION['rol'] == 2){
 
                     echo "
                         <script>

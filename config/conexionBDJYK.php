@@ -3,7 +3,7 @@
 class DataBase{
 
     private $host = "localhost";
-    private $db_name = "jykbd";
+    private $db_name = "jykbd1";
     private $username = "root";
     private $password ="";
     public $conn;
