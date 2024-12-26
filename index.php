@@ -6,6 +6,7 @@ require_once('./controllers/controladorPaginaS.php');
 require_once('./controllers/contoladorPaginaAdmin.php');
 require_once('./controllers/controladorPaginaEmple.php');
 require_once('./controllers/controladorTipoDocum.php');
+require_once('./controllers/controladorRol.php');
 
 require_once('./controllers/controladorUsuario.php');
 require_once('./controllers/controladorLogin.php');
@@ -20,6 +21,7 @@ $vistaEmple = new ControladorPaginaEmple();
 $controladorUsuario= new ControladorUsuario();
 $controladorLogin= new ControladorLogin();
 $controladorTipoDocum= new ControladorTipoDocum();
+$controladorRol= new ControladorRol();
 
 
 
@@ -93,11 +95,38 @@ switch($action){
         break;
 
 
+        //Actualizar usuario
+    case'inicioActualizar':
+        $usuarios = $controladorUsuario->listaUsuariosVista();
+        include('./views/usuarios/consultaUsuaActualizar.php');
+        break;
 
+        case'ActualizarUsuarioId':
+            $usuarios = $controladorUsuario->datosUsuaGenPorId();
+            $tipoRoles= $controladorRol->listaRoles();
+            $tipoDocum= $controladorTipoDocum->listaTiposDocum();
+            include('./views/usuarios/actualizarUsuario.php');
+            break;
+
+        case'actualizarUsuario':
+            $controladorUsuario->actualizarUsuario();
+            break;
+
+
+        //Eliminar usuario
+    case'inicioEliminarUsua':
+        $usuarios = $controladorUsuario->listaUsuariosVista();
+        include('./views/usuarios/consultaUsuaEliminar.php');
+        break;
+
+        case'eliminarUsuarioId':
+            $usuarios= $controladorUsuario->eliminarUsuario();
+            include('./views/moduloAdministrativo.php');
+            break;
 
 
     default:
-        include './views/paginaPrincipal.php';
+        include('./views/paginaPrincipal.php');
         break;
 }
 

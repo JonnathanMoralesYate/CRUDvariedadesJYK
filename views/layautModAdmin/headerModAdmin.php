@@ -56,7 +56,7 @@ if ($_SESSION['rol'] == 2) {
                         </nav>
                     </button>
                         <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-                                <a class="navbar-brand text-white">Inicio</a>
+                                <a class="navbar-brand text-white" href="http://localhost/CRUDvariedadesJYK/index.php?action=vistaAdmin">Inicio</a>
                                 <ul class="nav nav-pills">
 <!--Menu Productos-->
                                     <li class="nav-item dropdown active">
@@ -234,13 +234,13 @@ if ($_SESSION['rol'] == 2) {
                                                     </form>
                                                 </li>
                                                 <li>
-                                                    <form action="index.php?action=" method="GET">
-                                                        <button class="dropdown-item" type="submit" name="action" value="" class="btn btn-light fs-6">Actualizar Empleado</button>
+                                                    <form action="index.php?action=inicioActualizar" method="GET">
+                                                        <button class="dropdown-item" type="submit" name="action" value="inicioActualizar" class="btn btn-light fs-6">Actualizar Empleado</button>
                                                     </form>
                                                 </li>
                                                 <li>
-                                                    <form action="index.php?action=" method="GET">
-                                                        <button class="dropdown-item" type="submit" name="action" value="" class="btn btn-light">Eliminar Empleado</button>
+                                                    <form action="index.php?action=inicioEliminarUsua" method="GET">
+                                                        <button class="dropdown-item" type="submit" name="action" value="inicioEliminarUsua" class="btn btn-light">Eliminar Empleado</button>
                                                     </form>
                                                 </li>
                                             </ul>

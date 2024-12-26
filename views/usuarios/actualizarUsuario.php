@@ -9,46 +9,66 @@
                     <h4>Actualizar Empleado</h4>
                 </div>
             <form class=" mt-2" action="index.php?action=actualizarUsuario" method="post">
+                <?php foreach($usuarios as $usuario): ?>
+                <div class="">
+                    <input type="hidden" class="form-control" name="idUsuario" value="<?= $usuario['idUsuario']; ?>" required>
+                </div>
+                <div class=" mt-2">
+                    <label for="tipoDocum" class="form-label text-white mt-3">Tipo Documento:</label>
+                        <?php $tipoDoc= $usuario['idTipoDocum']; ?>
+                            <select id="tipoDocum" name="tipoDocum" class="form-control">
+                                <option selected>Seleccione Tipo Documento</option>
+                                    <?php foreach($tipoDocum as $tipos): ?>
+                                        <option value="<?= $tipos['idTipoDocum']; ?>" <?= $tipos['idTipoDocum'] == $tipoDoc ? 'selected' : '' ?>>
+                                        <?= $tipos['tipoDocum']; ?>
+                                </option>
+                                    <?php endforeach; ?>
+                            </select>
+                </div>
                 <div class=" mt-2">
                     <label for="documUsu" class="form-label text-white mt-3">Numero de Cedula:</label>
-                    <input type="text" class="form-control" name="documUsu" required>
+                    <input type="text" class="form-control" name="documUsu" value="<?= $usuario['NumIdentificacion']; ?>" required>
                 </div>
                 <div class="mt-2">
                     <label for="nomUsu" class="form-label text-white mt-3">Nombres:</label>
-                    <input type="text" class="form-control" name="nomUsu" required>
+                    <input type="text" class="form-control" name="nomUsu" value="<?= $usuario['Nombres']; ?>" required>
                 </div>
                 <div class="mt-2">
                     <label for="apellUsu" class="form-label text-white mt-3">Apellidos:</label>
-                    <input type="text" class="form-control" name="apellUsu" required>
+                    <input type="text" class="form-control" name="apellUsu" value="<?= $usuario['Apellidos']; ?>" required>
                 </div>
                 <div class=" mt-2">
                     <label for="numCel" class="form-label text-white mt-3">Numero Celular:</label>
-                    <input type="text" class="form-control" name="numCel" required>
+                    <input type="text" class="form-control" name="numCel" value="<?= $usuario['NumCelular']; ?>" required>
                 </div>
                 <div class="mt-2">
                     <label for="correoUsu" class="form-label text-white mt-3">Email:</label>
-                    <input type="email" class="form-control" name="correoUsu" required>
+                    <input type="email" class="form-control" name="correoUsu" value="<?= $usuario['Email']; ?>" required>
                 </div>
                 <div class="mb-3">
                     <label for="seleccionRol" class="form-label text-white mt-3">Rol:</label>
-                        <select id="seleccionRol" name="seleccionRol" class="form-control">
-                            <option>-Seleccione el Rol-</option>
-                            <option value="Empleado">Empleado</option>
-                            <option value="Administrador">Administrador</option>
-                        </select>
+                        <?php $tipoRol= $usuario['idRol']; ?>
+                            <select id="seleccionRol" name="seleccionRol" class="form-control">
+                                <option selected>Seleccione el Rol</option>
+                                    <?php foreach($tipoRoles as $tipoRole): ?>
+                                        <option value="<?= $tipoRole['idRol']; ?>" <?= $tipoRole['idRol'] == $tipoRol ? 'selected' : '' ?>>
+                                            <?= $tipoRole['Rol']; ?>
+                                        </option>
+                                    <?php endforeach; ?>
+                            </select>
                 </div>
                 <div class=" mt-2">
                     <label for="usuario" class="form-label text-white mt-3">Usuario:</label>
-                    <input type="text" class="form-control" name="usuario" required>
+                    <input type="text" class="form-control" name="usuario" value="<?= $usuario['Usuario']; ?>" required>
                 </div>
                 <div class=" mt-2">
                     <label for="contraseña" class="form-label text-white mt-3">Contraseña:</label>
-                    <input type="text" class="form-control" name="contraseña" required>
+                    <input type="text" class="form-control" name="contraseña" value="<?= $usuario['Contraseña']; ?>" required>
                 </div>
                 <div class="text-center mt-3">
-                    <button type="submit" class="btn btn-outline-secondary text-white mt-3 text-center">Registrar</button>
+                    <button type="submit" class="btn btn-outline-secondary text-white mt-3 text-center">Actualizar</button>
                 </div>
-                
+                <?php endforeach; ?>
             </form>
         </div>
         <div class="col-3">

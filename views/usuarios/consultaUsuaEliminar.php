@@ -1,27 +1,19 @@
 <?php include('./views/layautModAdmin/headerModAdmin.php'); ?>
 
-<!--Incio de Formulario Consultar Usuario-->
+<!--Incio de Formulario Eliminar Usuario-->
 <div class="row">
     <div class="col-2">
     </div>
 
     <div class="col-8">
             <div class="text-center text-white mt-3">
-                <h4>Consulta de Empleado</h4>
+                <h4>Eliminar Empleado por ID</h4>
             </div>
-            <form class=" mt-4" action="index.php?action=consultaUsuarioId" method="get">
+            <form class=" mt-4" action="index.php?action=eliminarUsuarioId" method="get">
                 <div class="input-group mb-3">
-                    <input type="hidden" class="form-control" name="action" value="consultaUsuarioId">
+                    <input type="hidden" class="form-control" name="action" value="eliminarUsuarioId">
                     <input type="text" class="form-control" placeholder="ID Usuario" name="idUsuario" aria-label="Recipient's usernam" aria-describedby="button-addon2" required>
-                    <button class="btn btn-outline-secondary text-white" type="submit" id="button-addon2">Buscar</button>
-                </div>
-            </form>
-
-            <form class=" mt-2" action="index.php?action=consultaUsuarioNombre" method="get">
-                <div class="input-group mb-3">
-                    <input type="hidden" class="form-control" name="action" value="consultaUsuarioNombre">
-                    <input type="text" class="form-control" placeholder="Nombre de Usuario" name="nombre" aria-label="Recipient's usernam" aria-describedby="button-addon2" required>
-                    <button class="btn btn-outline-secondary text-white" type="submit" id="button-addon2">Buscar</button>
+                    <button class="btn btn-outline-secondary text-white" type="submit" id="button-addon2">Eliminar</button>
                 </div>
             </form>
     </div>

@@ -35,13 +35,13 @@ class ModeloUsuario{
 
 
 //Consulta por parametro Id
-    //public function consultUsuaId($idUsua) {
-        //$query = "SELECT * FROM ".$this->table." WHERE idUsuario=?";
-        //$stmt = $this->conn->prepare($query);
-        //$stmt->execute([$idUsua]);
-        //return $stmt->fetch(PDO::FETCH_ASSOC);
+    public function consultUsuaId($idUsua) {
+        $query = "SELECT * FROM ".$this->table." WHERE idUsuario=?";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute([$idUsua]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    //}
+    }
 
 
 //consulta general con inner join por Id
@@ -64,7 +64,7 @@ class ModeloUsuario{
 
 //consulta general con inner join por Nombre
     public function consultGenUsuaVistaNombre($nombre) {
-        $query = "SELECT idUsuario, tipo_documento.tipoDocum, NumIdentificacion, Nombres, Apellidos, NumCelular, Email, roles.Rol, Usuario, Contraseña FROM ".$this->table." INNER JOIN tipo_documento ON registro_usuarios.idTipoDocum = tipo_documento.idTipoDocum INNER JOIN roles ON registro_usuarios.idRol = roles.idRol WHERE Nombres=?";
+        $query = "SELECT idUsuario, tipo_documento.tipoDocum, NumIdentificacion, Nombres, Apellidos, NumCelular, Email, roles.Rol, Usuario, Contraseña FROM ".$this->table." INNER JOIN tipo_documento ON registro_usuarios.idTipoDocum = tipo_documento.idTipoDocum INNER JOIN roles ON registro_usuarios.idRol = roles.idRol WHERE Nombres LIKE ?";
         $stmt = $this->conn->prepare($query);
         $stmt->execute(['%'.$nombre. '%']);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -72,10 +72,10 @@ class ModeloUsuario{
 
 
 //Actualizar usuario
-public function actualizarUsua($numDocumento, $nombre, $apellido, $numCelular, $correoE, $rol, $usuario, $clave, $idUsua) {
-    $query = "UPDATE ".$this->table." SET NumIdentificacion=?, Nombres=?, Apellidos=?, NumCelular=?, Email=?, Rol=?, Usuario=?, Contraseña=? WHERE idUsuario ";
+public function actualizarUsua($idTipoDocum, $numDocumento, $nombre, $apellido, $numCelular, $correoE, $rol, $usuario, $claveSegura, $idUsua) {
+    $query = "UPDATE ".$this->table." SET idTipoDocum=?, NumIdentificacion=?, Nombres=?, Apellidos=?, NumCelular=?, Email=?, idRol=?, Usuario=?, Contraseña=? WHERE idUsuario=?";
     $stmt = $this->conn->prepare($query);
-    $stmt->execute([$numDocumento, $nombre, $apellido, $numCelular, $correoE, $rol, $usuario, $clave, $idUsua]);
+    $stmt->execute([$idTipoDocum, $numDocumento, $nombre, $apellido, $numCelular, $correoE, $rol, $usuario, $claveSegura, $idUsua]);
 }
 
 

@@ -53,6 +53,12 @@ class ControladorUsuario{
     public function listaUsuarios() {
         return $this->modeloUsuario->consultGenUsua();
     }
+
+    //Consulta por parametro id usuario en tabla general de usuarios
+    public function datosUsuaGenPorId() {
+        $idUsua = $_GET['idUsuario'] ?? '';
+        return $this->modeloUsuario->consultUsuaId($idUsua);
+    }
     
 
     //Consulta general de usuarios vista
@@ -77,7 +83,7 @@ class ControladorUsuario{
     //Actualizar usuario
     public function actualizarUsuario() {
         if($_SERVER["REQUEST_METHOD"] == "POST") {
-            $idUsua= $_POST['idUsuario'];
+            $idTipoDocum= $_POST['tipoDocum'];
             $numDocumento= $_POST['documUsu'];
             $nombre= $_POST['nomUsu'];
             $apellido= $_POST['apellUsu'];
@@ -86,17 +92,37 @@ class ControladorUsuario{
             $rol= $_POST['seleccionRol'];
             $usuario= $_POST['usuario'];
             $clave= $_POST['contraseña'];
+            $idUsua= $_POST['idUsuario'];
             
-            $this->modeloUsuario->registroUsuario($numDocumento, $nombre, $apellido, $numCelular, $correoE, $rol, $usuario, $clave, $idUsua);
-            header("Location: index.php?action=");
+            $claveSegura= password_hash($clave, PASSWORD_BCRYPT);
+            
+            $this->modeloUsuario->actualizarUsua($idTipoDocum, $numDocumento, $nombre, $apellido, $numCelular, $correoE, $rol, $usuario, $claveSegura, $idUsua);
+            
+            echo "
+            <script>
+                alert('Actualizacion Exitosa!');
+                window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=vistaAdmin';
+            </script>
+            ";
+            exit;
+            
+            //header("Location: index.php?action=");
+            }
         }
-    }
 
 
     //Eliminar usuario
     public function eliminarUsuario() {
         $idUsua = $_GET['idUsuario'] ?? '';
         $this->modeloUsuario->eliminarUsua($idUsua);
+
+        echo "
+            <script>
+                alert('Eliminacion Exitosa!');
+                window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=vistaAdmin';
+            </script>
+            ";
+            exit;
     }
 
 

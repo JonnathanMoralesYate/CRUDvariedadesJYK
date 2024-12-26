@@ -1,17 +1,16 @@
 <?php
 
-class ModeloTipoDocum{
+class ModeloRol{
 
     private $conn;
-    private $table= "tipo_documento";
+    private $table= "roles";
 
     public function __construct($db) {
         $this->conn=$db;
     }
 
-
-    //Consulta general tabla tipo documento
-    public function consultGenTipoDocum() {
+    //Consulta general tabla roles
+    public function consultGenRoles() {
         $query = "SELECT * FROM ".$this->table;
         $stmt = $this->conn->query($query);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -20,8 +19,6 @@ class ModeloTipoDocum{
 
 
 }
-
-
 
 
 ?>

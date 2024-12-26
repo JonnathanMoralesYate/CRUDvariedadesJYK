@@ -7,20 +7,12 @@
 
     <div class="col-8">
             <div class="text-center text-white mt-3">
-                <h4>Consulta de Empleado</h4>
+                <h4>Actualizar Empleado</h4>
             </div>
-            <form class=" mt-4" action="index.php?action=consultaUsuarioId" method="get">
+            <form class=" mt-4" action="index.php?action=ActualizarUsuarioId" method="get">
                 <div class="input-group mb-3">
-                    <input type="hidden" class="form-control" name="action" value="consultaUsuarioId">
-                    <input type="text" class="form-control" placeholder="ID Usuario" name="idUsuario" aria-label="Recipient's usernam" aria-describedby="button-addon2" required>
-                    <button class="btn btn-outline-secondary text-white" type="submit" id="button-addon2">Buscar</button>
-                </div>
-            </form>
-
-            <form class=" mt-2" action="index.php?action=consultaUsuarioNombre" method="get">
-                <div class="input-group mb-3">
-                    <input type="hidden" class="form-control" name="action" value="consultaUsuarioNombre">
-                    <input type="text" class="form-control" placeholder="Nombre de Usuario" name="nombre" aria-label="Recipient's usernam" aria-describedby="button-addon2" required>
+                    <input type="hidden" class="form-control" name="action" value="ActualizarUsuarioId">
+                    <input type="text" class="form-control" placeholder="ID Usuario Que Va Actualizar" name="idUsuario" aria-label="Recipient's usernam" aria-describedby="button-addon2" required>
                     <button class="btn btn-outline-secondary text-white" type="submit" id="button-addon2">Buscar</button>
                 </div>
             </form>
@@ -39,7 +31,7 @@
         <div class="container mt-5">
             <div class="text-center">
                 <?php if (isset($usuarios) && count($usuarios) > 0): ?>
-                <h4 class="text-white">Resultados de la Busqueda:</h4>
+                <h4 class="text-white">Lista de Empleados:</h4>
             </div>
     <!-- Tabla responsiva-->
             <div class="table-responsive">
@@ -77,7 +69,7 @@
             </table>
             </div>
                 <?php elseif (isset($usuarios)): ?>
-                    <p class="text-white">No se Encontro Usuario con ese Criterio de Busqueda</p>
+                    <p class="text-white">No se Encontro Empleado Registrados</p>
                 <?php endif; ?>
         </div>
         <div class="col-1">
