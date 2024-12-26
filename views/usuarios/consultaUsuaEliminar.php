@@ -69,7 +69,7 @@
             </table>
             </div>
                 <?php elseif (isset($usuarios)): ?>
-                    <p class="text-white">No se Encontro Usuario con ese Criterio de Busqueda</p>
+                    <p class="text-white">No se Encontro empleados Registrados</p>
                 <?php endif; ?>
         </div>
         <div class="col-1">

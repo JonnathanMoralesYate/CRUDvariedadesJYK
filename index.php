@@ -3,13 +3,17 @@
 require_once('./controllers/controladorPaginaP.php');
 require_once('./controllers/controladorPaginaN.php');
 require_once('./controllers/controladorPaginaS.php');
-require_once('./controllers/contoladorPaginaAdmin.php');
+require_once('./controllers/controladorPaginaAdmin.php');
 require_once('./controllers/controladorPaginaEmple.php');
+
+
+require_once('./controllers/controladorLogin.php');
+require_once('./controllers/controladorUsuario.php');
 require_once('./controllers/controladorTipoDocum.php');
 require_once('./controllers/controladorRol.php');
-
-require_once('./controllers/controladorUsuario.php');
-require_once('./controllers/controladorLogin.php');
+require_once('./controllers/controladorClases.php');
+require_once('./controllers/controladorPresentacion.php');
+require_once('./controllers/controladorUndBase.php');
 
 
 $vistaPaginaP = new ControladorPaginaP();
@@ -18,10 +22,14 @@ $vistaPaginaS = new ControladorPaginaS();
 $vistaAdmin = new ControladorPaginaAdmin();
 $vistaEmple = new ControladorPaginaEmple();
 
-$controladorUsuario= new ControladorUsuario();
+
 $controladorLogin= new ControladorLogin();
+$controladorUsuario= new ControladorUsuario();
 $controladorTipoDocum= new ControladorTipoDocum();
 $controladorRol= new ControladorRol();
+$controladorClases= new ControladorClases();
+$controladorPresentacion= new ControladorPresentacion();
+$controladorUndBase= new ControladorUndBase();
 
 
 
@@ -65,7 +73,7 @@ switch($action){
         break;
 
 
-//Usuario
+//Usuarios
 
         //Registro usuario
     case'registroUsuario':
@@ -124,6 +132,20 @@ switch($action){
             include('./views/moduloAdministrativo.php');
             break;
 
+
+//Productos
+
+            //Registro Producto
+    case'registroProducto':
+        if($_SERVER["REQUEST_METHOD"] == "POST"){
+                
+            }else{
+                $clases = $controladorClases->listaClases();
+                $presentaciones = $controladorPresentacion->listaPresentacion();
+                $undBases = $controladorUndBase->listaUndBase();
+                include('./views/productos/registroProducto.php');
+            }
+            break;
 
     default:
         include('./views/paginaPrincipal.php');

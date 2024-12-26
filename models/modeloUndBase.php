@@ -1,17 +1,17 @@
 <?php
 
-class ModeloTipoDocum{
+class ModeloUndBase{
 
     private $conn;
-    private $table= "tipo_documento";
+    private $table= "unidad_base";
 
     public function __construct($db) {
         $this->conn=$db;
     }
 
 
-    //Consulta general tabla tipo documento
-    public function consultGenTipoDocum() {
+    //Consulta general tabla Unidad Base
+    public function consultGenUndBase() {
         $query = "SELECT * FROM ".$this->table;
         $stmt = $this->conn->query($query);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);

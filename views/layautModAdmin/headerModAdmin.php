@@ -63,8 +63,8 @@ if ($_SESSION['rol'] == 2) {
                                         <a class="nav-link dropdown-toggle text-white" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-label="Toggle navigation">Productos</a>
                                         <ul class="dropdown-menu">
                                             <li>
-                                                <form action="index.php?action=paginaP" method="GET">
-                                                    <button class="dropdown-item" type="submit" name="action" value="paginaP" class="btn btn-light">Registrar Producto</button>
+                                                <form action="index.php?action=registroProducto" method="GET">
+                                                    <button class="dropdown-item" type="submit" name="action" value="registroProducto" class="btn btn-light">Registrar Producto</button>
                                                 </form>
                                             </li>
                                             <li>
