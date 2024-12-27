@@ -14,6 +14,7 @@ require_once('./controllers/controladorRol.php');
 require_once('./controllers/controladorClases.php');
 require_once('./controllers/controladorPresentacion.php');
 require_once('./controllers/controladorUndBase.php');
+require_once('./controllers/controladorProducto.php');
 
 
 $vistaPaginaP = new ControladorPaginaP();
@@ -30,7 +31,7 @@ $controladorRol= new ControladorRol();
 $controladorClases= new ControladorClases();
 $controladorPresentacion= new ControladorPresentacion();
 $controladorUndBase= new ControladorUndBase();
-
+$controladorProducto= new ControladorProducto();
 
 
 
@@ -135,10 +136,10 @@ switch($action){
 
 //Productos
 
-            //Registro Producto
+        //Registro Producto
     case'registroProducto':
         if($_SERVER["REQUEST_METHOD"] == "POST"){
-                
+                $controladorProducto->registroProductos();
             }else{
                 $clases = $controladorClases->listaClases();
                 $presentaciones = $controladorPresentacion->listaPresentacion();
@@ -146,6 +147,28 @@ switch($action){
                 include('./views/productos/registroProducto.php');
             }
             break;
+
+
+        //Consulta Producto
+    case'consultaProductos';
+        $productos = $controladorProducto->listaProductosVista();
+        include('./views/productos/consultaProductos.php');
+        break;
+
+    case'consultaProductosCodigo';
+        $productos = $controladorProducto->productoVistaCodigo();
+        include('./views/productos/consultaProductos.php');
+        break;
+
+    case'consultaProductosNombre';
+        $productos = $controladorProducto->productoVistaNombre();
+        include('./views/productos/consultaProductos.php');
+        break;
+
+
+
+
+
 
     default:
         include('./views/paginaPrincipal.php');

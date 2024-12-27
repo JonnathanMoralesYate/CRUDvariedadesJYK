@@ -63,6 +63,11 @@ if ($_SESSION['rol'] == 2) {
                                         <a class="nav-link dropdown-toggle text-white" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-label="Toggle navigation">Productos</a>
                                         <ul class="dropdown-menu">
                                             <li>
+                                                <form action="index.php?action=consultaProductos" method="GET">
+                                                    <button class="dropdown-item" type="submit" name="action" value="consultaProductos" class="btn btn-light">Consultar Producto</button>
+                                                </form>
+                                            </li>
+                                            <li>
                                                 <form action="index.php?action=registroProducto" method="GET">
                                                     <button class="dropdown-item" type="submit" name="action" value="registroProducto" class="btn btn-light">Registrar Producto</button>
                                                 </form>
@@ -75,11 +80,6 @@ if ($_SESSION['rol'] == 2) {
                                             <li>
                                                 <form action="index.php?action=" method="GET">
                                                     <button class="dropdown-item" type="submit" name="action" value="" class="btn btn-light">Eliminar Producto</button>
-                                                </form>
-                                            </li>
-                                            <li>
-                                                <form action="index.php?action=" method="GET">
-                                                    <button class="dropdown-item" type="submit" name="action" value="" class="btn btn-light">Consultar Producto</button>
                                                 </form>
                                             </li>
                                             <!-- <li>
