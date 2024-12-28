@@ -47,7 +47,7 @@ public function __construct($db) {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    //Consulta general productos con inner join por nombre producto
+//Consulta general productos con inner join por nombre producto
     public function consultGenProductosvistaNombre($nombre) {
         $query= "SELECT idProducto, CodProducto, clase_producto.Clase, Nombre, Marca, Descripcion, 
         presentacion_producto.Presentacion, unidad_base.UndBase, ContNeto, PrecioVenta, Foto FROM ".$this->table.
@@ -57,6 +57,20 @@ public function __construct($db) {
         $stmt= $this->conn->prepare($query);
         $stmt->execute(['%'.$nombre.'%']);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+//Actualizar producto
+    public function actualizarProducto($codigoProducto, $idClase, $nombre, $marca, $descripcion, $idPresentacion, $idUndBase, $contNeto, $precioVenta, $foto, $idProducto) {
+        $query= "UPDATE ".$this->table." SET CodProducto=?, idClase=?, Nombre=?, Marca=?, Descripcion=?, idPresentacion=?, idUndBase=?, ContNeto=?, PrecioVenta=?, Foto=? WHERE idProducto=?";
+        $stmt= $this->conn->prepare($query);
+        $stmt->execute([$codigoProducto, $idClase, $nombre, $marca, $descripcion, $idPresentacion, $idUndBase, $contNeto, $precioVenta, $foto, $idProducto]);
+    }
+
+//Eliminar producto
+    public function eliminarProducto($codigoProducto) {
+        $query= "DELETE FROM ".$this->table." WHERE CodProducto=?";
+        $stmt= $this->conn->prepare($query);
+        $stmt->execute([$codigoProducto]);
     }
 }
 

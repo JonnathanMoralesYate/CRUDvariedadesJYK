@@ -1,27 +1,19 @@
 <?php include('./views/layautModAdmin/headerModAdmin.php'); ?>
 
-<!--Incio de Formulario Consultar Producto-->
+<!--Incio de Formulario Consultar Usuario-->
 <div class="row">
     <div class="col-2">
     </div>
 
     <div class="col-8">
             <div class="text-center text-white mt-3">
-                <h4>Consulta de Productos</h4>
+                <h4>Eliminar Productos</h4>
             </div>
-            <form class=" mt-4" action="index.php?action=consultaProductosCodigo" method="get">
+            <form class=" mt-4" action="index.php?action=eliminarProductoCodigo" method="get">
                 <div class="input-group mb-3">
-                    <input type="hidden" class="form-control" name="action" value="consultaProductosCodigo">
+                    <input type="hidden" class="form-control" name="action" value="eliminarProductoCodigo">
                     <input type="text" class="form-control" placeholder="Codigo Producto" name="codProduc" aria-label="Recipient's usernam" aria-describedby="button-addon2" required>
-                    <button class="btn btn-outline-secondary text-white" type="submit" id="button-addon2">Buscar</button>
-                </div>
-            </form>
-
-            <form class=" mt-2" action="index.php?action=consultaProductosNombre" method="get">
-                <div class="input-group mb-3">
-                    <input type="hidden" class="form-control" name="action" value="consultaProductosNombre">
-                    <input type="text" class="form-control" placeholder="Nombre Producto" name="nombre" aria-label="Recipient's usernam" aria-describedby="button-addon2" required>
-                    <button class="btn btn-outline-secondary text-white" type="submit" id="button-addon2">Buscar</button>
+                    <button class="btn btn-outline-secondary text-white" type="submit" id="button-addon2">Eliminar</button>
                 </div>
             </form>
     </div>
@@ -79,7 +71,7 @@
             </table>
             </div>
                 <?php elseif (isset($productos)): ?>
-                    <p class="text-white">No se Encontro Productos con ese Criterio de Busqueda</p>
+                    <p class="text-white">No se Encontro Ningun Producto Registrado</p>
                 <?php endif; ?>
         </div>
         <div class="col-1">

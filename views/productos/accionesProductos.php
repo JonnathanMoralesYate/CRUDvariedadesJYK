@@ -57,6 +57,7 @@
                         <th>Contenido Neto</th>
                         <th>Precio Venta</th>
                         <th>Foto</th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody class="">
@@ -73,6 +74,10 @@
                         <td class="text-white"><?= $producto['ContNeto']; ?></td>
                         <td class="text-white"><?= $producto['PrecioVenta']; ?></td>
                         <td><img src="photo/<?= $producto['Foto']; ?>" width="100" alt="foto"></td>
+                        <td>                        
+                        <a href="index.php?action=actualizarProductosCodigo&codProduc=<?= $producto['CodProducto']; ?>" class="btn btn-outline-secondary text-white m-2 w-100" role="button">Actualizar</a> 
+                        <a href="index.php?action=eliminarProductoCodigo&codProduc=<?= $producto['CodProducto']; ?>" class="btn btn-outline-secondary text-white m-2 w-100" role="button">Eliminar</a>
+                        </td>
                     </tr>
                 <?php endforeach; ?>
                 </tbody>

@@ -73,13 +73,13 @@ if ($_SESSION['rol'] == 2) {
                                                 </form>
                                             </li>
                                             <li>
-                                                <form action="index.php?action=" method="GET">
-                                                    <button class="dropdown-item" type="submit" name="action" value="" class="btn btn-light fs-6">Actualizar Producto</button>
+                                                <form action="index.php?action=inicioActualizarP" method="GET">
+                                                    <button class="dropdown-item" type="submit" name="action" value="inicioActualizarP" class="btn btn-light fs-6">Actualizar Producto</button>
                                                 </form>
                                             </li>
                                             <li>
-                                                <form action="index.php?action=" method="GET">
-                                                    <button class="dropdown-item" type="submit" name="action" value="" class="btn btn-light">Eliminar Producto</button>
+                                                <form action="index.php?action=inicioEliminarProducto" method="GET">
+                                                    <button class="dropdown-item" type="submit" name="action" value="inicioEliminarProducto" class="btn btn-light">Eliminar Producto</button>
                                                 </form>
                                             </li>
                                             <!-- <li>
@@ -99,8 +99,8 @@ if ($_SESSION['rol'] == 2) {
                                                     </form>
                                                 </li>
                                                 <li>
-                                                    <form action="index.php?action=" method="GET">
-                                                        <button class="dropdown-item" type="submit" name="action" value="" class="btn btn-light fs-6">Actualizar Entrada</button>
+                                                    <form action="index.php?action=prueba" method="GET">
+                                                        <button class="dropdown-item" type="submit" name="action" value="prueba" class="btn btn-light fs-6">Actualizar Entrada</button>
                                                     </form>
                                                 </li>
                                                 <li>
@@ -234,8 +234,8 @@ if ($_SESSION['rol'] == 2) {
                                                     </form>
                                                 </li>
                                                 <li>
-                                                    <form action="index.php?action=inicioActualizar" method="GET">
-                                                        <button class="dropdown-item" type="submit" name="action" value="inicioActualizar" class="btn btn-light fs-6">Actualizar Empleado</button>
+                                                    <form action="index.php?action=inicioActualizarU" method="GET">
+                                                        <button class="dropdown-item" type="submit" name="action" value="inicioActualizarU" class="btn btn-light fs-6">Actualizar Empleado</button>
                                                     </form>
                                                 </li>
                                                 <li>
@@ -257,7 +257,7 @@ if ($_SESSION['rol'] == 2) {
                                                                     <button class="dropdown-item" type="submit" name="action" value="paginaP" class="btn btn-light">Registrar Clase</button>
                                                                 </form>
                                                             </li>
-                                                            <li>
+                                                            <!-- <li>
                                                                 <form action="index.php?action=" method="GET">
                                                                     <button class="dropdown-item" type="submit" name="action" value="" class="btn btn-light">Actualizar Clase</button>
                                                                 </form>
@@ -266,7 +266,7 @@ if ($_SESSION['rol'] == 2) {
                                                                 <form action="index.php?action=" method="GET">
                                                                     <button class="dropdown-item" type="submit" name="action" value="" class="btn btn-light">Eliminar Clase</button>
                                                                 </form>
-                                                            </li>
+                                                            </li> -->
                                                             <li>
                                                                 <form action="index.php?action=" method="GET">
                                                                     <button class="dropdown-item" type="submit" name="action" value="" class="btn btn-light">Consultar Clase</button>

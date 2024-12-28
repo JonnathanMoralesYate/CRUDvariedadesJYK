@@ -105,7 +105,7 @@ switch($action){
 
 
         //Actualizar usuario
-    case'inicioActualizar':
+    case'inicioActualizarU':
         $usuarios = $controladorUsuario->listaUsuariosVista();
         include('./views/usuarios/consultaUsuaActualizar.php');
         break;
@@ -165,8 +165,40 @@ switch($action){
         include('./views/productos/consultaProductos.php');
         break;
 
+        //Actualizar usuario
+    case'inicioActualizarP':
+        $productos = $controladorProducto->listaProductosVista();
+        include('./views/productos/consultaProducActualizar.php');
+        break;
 
+        case'actualizarProductosCodigo':
+            $productos = $controladorProducto->productoCodigo();
+            $clases = $controladorClases->listaClases();
+            $presentaciones = $controladorPresentacion->listaPresentacion();
+            $undBases = $controladorUndBase->listaUndBase();
+            include('./views/productos/actualizarProducto.php');
+            break;
 
+        case'actualizarProducto':
+            $controladorProducto->actualizarProducto();
+            break;
+
+        //Eliminar usuario
+    case'inicioEliminarProducto':
+        $productos = $controladorProducto->listaProductosVista();
+        include('./views/productos/eliminarProducto.php');
+        break;
+
+        case'eliminarProductoCodigo':
+            $productos = $controladorProducto->eliminarProducto();
+            include('./views/moduloAdministrativo.php');
+            break;
+
+        //prueba para definir definir
+    case'prueba':
+        $productos = $controladorProducto->listaProductosVista();
+        include('./views/productos/accionesProductos.php');
+        break;
 
 
 
