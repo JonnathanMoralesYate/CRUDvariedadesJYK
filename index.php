@@ -165,6 +165,7 @@ switch($action){
         include('./views/productos/consultaProductos.php');
         break;
 
+
         //Actualizar usuario
     case'inicioActualizarP':
         $productos = $controladorProducto->listaProductosVista();
@@ -183,6 +184,7 @@ switch($action){
             $controladorProducto->actualizarProducto();
             break;
 
+
         //Eliminar usuario
     case'inicioEliminarProducto':
         $productos = $controladorProducto->listaProductosVista();
@@ -194,10 +196,57 @@ switch($action){
             include('./views/moduloAdministrativo.php');
             break;
 
+
+
         //prueba para definir definir
     case'prueba':
         $productos = $controladorProducto->listaProductosVista();
         include('./views/productos/accionesProductos.php');
+        break;
+
+
+//Clases
+
+        //Registro Clase
+    case'registroClase':
+        if($_SERVER["REQUEST_METHOD"] == "POST"){
+                $controladorClases->registroClase();
+            }else{
+                include('./views/propiedades/registroClase.php');
+            }
+            break;
+
+
+        //Consulta Clase
+    case'consultaClase';
+        $clases= $controladorClases->listaClases();
+        include('./views/propiedades/consultaClase.php');
+        break;
+
+    case'consultaClaseId';
+        $clases= $controladorClases->consultClaseId();
+        include('./views/propiedades/consultaClase.php');
+        break;
+
+    case'consultaClaseNombre';
+        $clases= $controladorClases->consultClaseNombre();
+        include('./views/propiedades/consultaClase.php');
+        break;
+
+
+    //Actualizar Clase
+    case'actualizarClaseId':
+        $clases= $controladorClases->consultClaseId();
+        include('./views/propiedades/actualizarClase.php');
+        break;
+
+        case'actualizarClase':
+            $controladorClases->ActualizarClase();
+            break;
+
+    //Eliminar usuario
+    case'eliminarClaseId':
+        $clases= $controladorClases->eliminarClase();
         break;
 
 

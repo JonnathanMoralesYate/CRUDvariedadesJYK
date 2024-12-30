@@ -67,6 +67,3 @@
         </div>
 
 <?php include('./views/layautModAdmin/footerModAdmin.php'); ?>
-
-
-

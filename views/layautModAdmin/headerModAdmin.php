@@ -253,8 +253,8 @@ if ($_SESSION['rol'] == 2) {
                                                     <a class="dropdown-item dropdown-toggle">Clase Producto</a>
                                                         <ul class="dropdown-menu">
                                                             <li>
-                                                                <form action="index.php?action=paginaP" method="GET">
-                                                                    <button class="dropdown-item" type="submit" name="action" value="paginaP" class="btn btn-light">Registrar Clase</button>
+                                                                <form action="index.php?action=registroClase" method="GET">
+                                                                    <button class="dropdown-item" type="submit" name="action" value="registroClase" class="btn btn-light">Registrar Clase</button>
                                                                 </form>
                                                             </li>
                                                             <!-- <li>
@@ -268,8 +268,8 @@ if ($_SESSION['rol'] == 2) {
                                                                 </form>
                                                             </li> -->
                                                             <li>
-                                                                <form action="index.php?action=" method="GET">
-                                                                    <button class="dropdown-item" type="submit" name="action" value="" class="btn btn-light">Consultar Clase</button>
+                                                                <form action="index.php?action=consultaClase" method="GET">
+                                                                    <button class="dropdown-item" type="submit" name="action" value="consultaClase" class="btn btn-light">Consultar Clase</button>
                                                                 </form>
                                                             </li> 
                                                         </ul>

@@ -61,16 +61,16 @@
                 <tbody class="">
                 <?php foreach ($usuarios as $usuario): ?>
                     <tr>
-                        <td class="text-white"><?= $usuario['idUsuario']; ?></td>
-                        <td class="text-white"><?= $usuario['tipoDocum']; ?></td>
-                        <td class="text-white"><?= $usuario['NumIdentificacion']; ?></td>
-                        <td class="text-white"><?= $usuario['Nombres']; ?></td>
-                        <td class="text-white"><?= $usuario['Apellidos']; ?></td>
-                        <td class="text-white"><?= $usuario['NumCelular']; ?></td>
-                        <td class="text-white"><?= $usuario['Email']; ?></td>
-                        <td class="text-white"><?= $usuario['Rol']; ?></td>
-                        <td class="text-white"><?= $usuario['Usuario']; ?></td>
-                        <td class="text-white"><?= $usuario['Contraseña']; ?></td>
+                        <td class="text-white align-middle"><?= $usuario['idUsuario']; ?></td>
+                        <td class="text-white align-middle"><?= $usuario['tipoDocum']; ?></td>
+                        <td class="text-white align-middle"><?= $usuario['NumIdentificacion']; ?></td>
+                        <td class="text-white align-middle"><?= $usuario['Nombres']; ?></td>
+                        <td class="text-white align-middle"><?= $usuario['Apellidos']; ?></td>
+                        <td class="text-white align-middle"><?= $usuario['NumCelular']; ?></td>
+                        <td class="text-white align-middle"><?= $usuario['Email']; ?></td>
+                        <td class="text-white align-middle"><?= $usuario['Rol']; ?></td>
+                        <td class="text-white align-middle"><?= $usuario['Usuario']; ?></td>
+                        <td class="text-white align-middle"><?= $usuario['Contraseña']; ?></td>
                     </tr>
                 <?php endforeach; ?>
                 </tbody>
