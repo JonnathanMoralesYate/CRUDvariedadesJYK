@@ -257,16 +257,6 @@ if ($_SESSION['rol'] == 2) {
                                                                     <button class="dropdown-item" type="submit" name="action" value="registroClase" class="btn btn-light">Registrar Clase</button>
                                                                 </form>
                                                             </li>
-                                                            <!-- <li>
-                                                                <form action="index.php?action=" method="GET">
-                                                                    <button class="dropdown-item" type="submit" name="action" value="" class="btn btn-light">Actualizar Clase</button>
-                                                                </form>
-                                                            </li>
-                                                            <li>
-                                                                <form action="index.php?action=" method="GET">
-                                                                    <button class="dropdown-item" type="submit" name="action" value="" class="btn btn-light">Eliminar Clase</button>
-                                                                </form>
-                                                            </li> -->
                                                             <li>
                                                                 <form action="index.php?action=consultaClase" method="GET">
                                                                     <button class="dropdown-item" type="submit" name="action" value="consultaClase" class="btn btn-light">Consultar Clase</button>
@@ -285,16 +275,6 @@ if ($_SESSION['rol'] == 2) {
                                                             </li>
                                                             <li>
                                                                 <form action="index.php?action=" method="GET">
-                                                                    <button class="dropdown-item" type="submit" name="action" value="" class="btn btn-light">Actualizar Formato</button>
-                                                                </form>
-                                                            </li>
-                                                            <li>
-                                                                <form action="index.php?action=" method="GET">
-                                                                    <button class="dropdown-item" type="submit" name="action" value="" class="btn btn-light">Eliminar Formato</button>
-                                                                </form>
-                                                            </li>
-                                                            <li>
-                                                                <form action="index.php?action=" method="GET">
                                                                     <button class="dropdown-item" type="submit" name="action" value="" class="btn btn-light">Consultar Formato</button>
                                                                 </form>
                                                             </li> 
@@ -305,23 +285,13 @@ if ($_SESSION['rol'] == 2) {
                                                     <a class="dropdown-item dropdown-toggle">Presentacion Producto</a>
                                                         <ul class="dropdown-menu">
                                                             <li>
-                                                                <form action="index.php?action=paginaP" method="GET">
-                                                                    <button class="dropdown-item" type="submit" name="action" value="paginaP" class="btn btn-light">Registrar Presentacion</button>
+                                                                <form action="index.php?action=registroPresentacion" method="GET">
+                                                                    <button class="dropdown-item" type="submit" name="action" value="registroPresentacion" class="btn btn-light">Registrar Presentacion</button>
                                                                 </form>
                                                             </li>
                                                             <li>
-                                                                <form action="index.php?action=" method="GET">
-                                                                    <button class="dropdown-item" type="submit" name="action" value="" class="btn btn-light">Actualizar Presentacion</button>
-                                                                </form>
-                                                            </li>
-                                                            <li>
-                                                                <form action="index.php?action=" method="GET">
-                                                                    <button class="dropdown-item" type="submit" name="action" value="" class="btn btn-light">Eliminar Presentacion</button>
-                                                                </form>
-                                                            </li>
-                                                            <li>
-                                                                <form action="index.php?action=" method="GET">
-                                                                    <button class="dropdown-item" type="submit" name="action" value="" class="btn btn-light">Consultar Presentacion</button>
+                                                                <form action="index.php?action=consultaPresentacion" method="GET">
+                                                                    <button class="dropdown-item" type="submit" name="action" value="consultaPresentacion" class="btn btn-light">Consultar Presentacion</button>
                                                                 </form>
                                                             </li> 
                                                         </ul>
@@ -331,23 +301,13 @@ if ($_SESSION['rol'] == 2) {
                                                     <a class="dropdown-item dropdown-toggle">Unidad Base</a>
                                                         <ul class="dropdown-menu">
                                                             <li>
-                                                                <form action="index.php?action=paginaP" method="GET">
-                                                                    <button class="dropdown-item" type="submit" name="action" value="paginaP" class="btn btn-light">Registrar Unidad</button>
+                                                                <form action="index.php?action=registroUndBase" method="GET">
+                                                                    <button class="dropdown-item" type="submit" name="action" value="registroUndBase" class="btn btn-light">Registrar Unidad</button>
                                                                 </form>
                                                             </li>
                                                             <li>
-                                                                <form action="index.php?action=" method="GET">
-                                                                    <button class="dropdown-item" type="submit" name="action" value="" class="btn btn-light">Actualizar Unidad</button>
-                                                                </form>
-                                                            </li>
-                                                            <li>
-                                                                <form action="index.php?action=" method="GET">
-                                                                    <button class="dropdown-item" type="submit" name="action" value="" class="btn btn-light">Eliminar Unidad</button>
-                                                                </form>
-                                                            </li>
-                                                            <li>
-                                                                <form action="index.php?action=" method="GET">
-                                                                    <button class="dropdown-item" type="submit" name="action" value="" class="btn btn-light">Consultar Unidad</button>
+                                                                <form action="index.php?action=consultaUndBasen" method="GET">
+                                                                    <button class="dropdown-item" type="submit" name="action" value="consultaUndBasen" class="btn btn-light">Consultar Unidad</button>
                                                                 </form>
                                                             </li> 
                                                         </ul>

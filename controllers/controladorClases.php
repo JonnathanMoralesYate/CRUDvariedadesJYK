@@ -80,10 +80,10 @@ class ControladorClases{
     }
 
 
-    //Eliminar usuario
+    //Eliminar Clase
     public function eliminarClase() {
-        $idUsua = $_GET['idClase'] ?? '';
-        $this->modeloClases->eliminarClase($idUsua);
+        $idClase = $_GET['idClase'] ?? '';
+        $this->modeloClases->eliminarClase($idClase);
 
         echo "
             <script>

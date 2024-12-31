@@ -212,7 +212,7 @@ switch($action){
         if($_SERVER["REQUEST_METHOD"] == "POST"){
                 $controladorClases->registroClase();
             }else{
-                include('./views/propiedades/registroClase.php');
+                include('./views/propiedades/clases/registroClase.php');
             }
             break;
 
@@ -220,34 +220,129 @@ switch($action){
         //Consulta Clase
     case'consultaClase';
         $clases= $controladorClases->listaClases();
-        include('./views/propiedades/consultaClase.php');
+        include('./views/propiedades/clases/consultaClase.php');
         break;
 
     case'consultaClaseId';
         $clases= $controladorClases->consultClaseId();
-        include('./views/propiedades/consultaClase.php');
+        include('./views/propiedades/clases/consultaClase.php');
         break;
 
     case'consultaClaseNombre';
         $clases= $controladorClases->consultClaseNombre();
-        include('./views/propiedades/consultaClase.php');
+        include('./views/propiedades/clases/consultaClase.php');
         break;
 
 
-    //Actualizar Clase
+        //Actualizar Clase
     case'actualizarClaseId':
         $clases= $controladorClases->consultClaseId();
-        include('./views/propiedades/actualizarClase.php');
+        include('./views/propiedades/clases/actualizarClase.php');
         break;
 
         case'actualizarClase':
             $controladorClases->ActualizarClase();
             break;
 
-    //Eliminar usuario
+        //Eliminar usuario
     case'eliminarClaseId':
         $clases= $controladorClases->eliminarClase();
         break;
+
+
+//Presentacion
+
+        //Registro presentacion
+    case'registroPresentacion':
+            if($_SERVER["REQUEST_METHOD"] == "POST"){
+                    $controladorPresentacion->RegistroPresentacion();
+                }else{
+                    include('./views/propiedades/presentacion/registroPresentacion.php');
+                }
+                break;
+
+
+        //Consulta Clase
+    case'consultaPresentacion';
+        $presentaciones = $controladorPresentacion->listaPresentacion();
+        include('./views/propiedades/presentacion/consultaPresentacion.php');
+        break;
+    
+    case'consultaPresentacionId';
+        $presentaciones = $controladorPresentacion->ConsultClaseId();
+        include('./views/propiedades/presentacion/consultaPresentacion.php');
+        break;
+    
+    case'consultaPresentacionNombre';
+        $presentaciones = $controladorPresentacion->ConsultClaseNombre();
+        include('./views/propiedades/presentacion/consultaPresentacion.php');
+        break;
+
+
+        //Actualizar Presentacion
+    case'actualizarPresentacionId':
+        $presentaciones = $controladorPresentacion->ConsultClaseId();
+        include('./views/propiedades/presentacion/actualizarPresentacion.php');
+        break;
+
+        case'actualizarPresentacion':
+            $controladorPresentacion->ActualizarPresentacion();
+            break;
+
+
+        //Eliminar Presentacion
+    case'eliminarPresentacionId':
+        $presentaciones= $controladorPresentacion->EliminarPresentacion();
+        break;
+
+
+//Unidad Base
+
+        //Registro Unidad Base
+    case'registroUndBase':
+            if($_SERVER["REQUEST_METHOD"] == "POST"){
+                    $controladorUndBase->RegistroUndBase();
+                }else{
+                    include('./views/propiedades/unidadBase/registroUndBase.php');
+                }
+                break;
+
+
+        //Consulta Unidad Base
+    case'consultaUndBasen';
+        $undBases = $controladorUndBase->listaUndBase();
+        include('./views/propiedades/unidadBase/consultaUndBase.php');
+        break;
+    
+    case'consultaUndBaseId';
+        $undBases = $controladorUndBase->consultUndBaseId();
+        include('./views/propiedades/unidadBase/consultaUndBase.php');
+        break;
+    
+    case'consultaUndBaseNombre';
+        $undBases = $controladorUndBase->consultUndBaseNombre();
+        include('./views/propiedades/unidadBase/consultaUndBase.php');
+        break;
+
+
+        //Actualizar Unidad Base
+    case'actualizarUndBaseId':
+        $undBases = $controladorUndBase->consultUndBaseId();
+        include('./views/propiedades/unidadBase/actualizarUndBase.php');
+        break;
+
+        case'actualizarUndBase':
+            $controladorUndBase->ActualizarUndBase();
+            break;
+
+
+        //Eliminar Unidad Base
+    case'eliminarUndBaseId':
+        $controladorUndBase->EliminarUndBase();
+        break;
+
+
+
 
 
 
