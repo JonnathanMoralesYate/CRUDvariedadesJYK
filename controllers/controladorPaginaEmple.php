@@ -3,7 +3,7 @@
 class ControladorPaginaEmple{
 
     public function index() {
-        include ('./views/moduloEmpleado.php');
+        include ('./views/modulos/moduloEmpleado.php');
     }
 }
 

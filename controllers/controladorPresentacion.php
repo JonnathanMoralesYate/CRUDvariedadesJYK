@@ -45,14 +45,14 @@ class ControladorPresentacion{
 
 
     //consulta de presentacion por ID
-    public function ConsultClaseId() {
+    public function ConsultPresentacionId() {
         $idPresentacion= $_GET['idPresentacion'] ?? '';
         return $this->modeloPresentacion->consultPresentacionId($idPresentacion);
     }
 
 
     //consulta de presentacion por nombre
-    public function ConsultClaseNombre() {
+    public function ConsultPresentacionNombre() {
         $nombre= $_GET['nomPresentacion'] ?? '';
         return $this->modeloPresentacion->consultPresentacionNombre($nombre);
     }

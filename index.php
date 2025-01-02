@@ -15,7 +15,8 @@ require_once('./controllers/controladorClases.php');
 require_once('./controllers/controladorPresentacion.php');
 require_once('./controllers/controladorUndBase.php');
 require_once('./controllers/controladorProducto.php');
-
+require_once('./controllers/controladorFormatoVenta.php');
+require_once('./controllers/controladorProveedor.php');
 
 $vistaPaginaP = new ControladorPaginaP();
 $vistaPaginaN = new ControladorPaginaN();
@@ -32,6 +33,8 @@ $controladorClases= new ControladorClases();
 $controladorPresentacion= new ControladorPresentacion();
 $controladorUndBase= new ControladorUndBase();
 $controladorProducto= new ControladorProducto();
+$controladorFormatoVenta= new ControladorFormatoVenta();
+$controladorProveedor= new ControladorProveedor();
 
 
 
@@ -262,26 +265,26 @@ switch($action){
                 break;
 
 
-        //Consulta Clase
+        //Consulta Presentacion
     case'consultaPresentacion';
         $presentaciones = $controladorPresentacion->listaPresentacion();
         include('./views/propiedades/presentacion/consultaPresentacion.php');
         break;
     
     case'consultaPresentacionId';
-        $presentaciones = $controladorPresentacion->ConsultClaseId();
+        $presentaciones = $controladorPresentacion->ConsultPresentacionId();
         include('./views/propiedades/presentacion/consultaPresentacion.php');
         break;
     
     case'consultaPresentacionNombre';
-        $presentaciones = $controladorPresentacion->ConsultClaseNombre();
+        $presentaciones = $controladorPresentacion->ConsultPresentacionNombre();
         include('./views/propiedades/presentacion/consultaPresentacion.php');
         break;
 
 
         //Actualizar Presentacion
     case'actualizarPresentacionId':
-        $presentaciones = $controladorPresentacion->ConsultClaseId();
+        $presentaciones = $controladorPresentacion->ConsultPresentacionId();
         include('./views/propiedades/presentacion/actualizarPresentacion.php');
         break;
 
@@ -342,12 +345,118 @@ switch($action){
         break;
 
 
+//Formato Venta
+
+        //Registro Formato Venta
+        case'registroFormatoVenta':
+            if($_SERVER["REQUEST_METHOD"] == "POST"){
+                    $controladorFormatoVenta->RegistroFormatoVenta();
+                }else{
+                    include('./views/propiedades/formatoVenta/registrarFormtVenta.php');
+                }
+                break;
+
+
+        //Consulta Formato Venta
+    case'consultaFormatoVenta';
+        $formatoVentas = $controladorFormatoVenta->listaFormatoVenta();
+        include('./views/propiedades/formatoVenta/consultaFormtVenta.php');
+        break;
+    
+    case'consultaFormatoVentaId';
+        $formatoVentas = $controladorFormatoVenta->ConsultFormatoVentaId();
+        include('./views/propiedades/formatoVenta/consultaFormtVenta.php');
+        break;
+    
+    case'consultaFormatoVentaNombre';
+        $formatoVentas = $controladorFormatoVenta->ConsultFormatoVentaNombre();
+        include('./views/propiedades/formatoVenta/consultaFormtVenta.php');
+        break;
+
+
+        //Actualizar Formato Venta
+    case'actualizarFormatoVentaId':
+        $formatoVentas = $controladorFormatoVenta->ConsultFormatoVentaId();
+        include('./views/propiedades/formatoVenta/actualizarFormtVenta.php');
+        break;
+
+        case'actualizarFormatoVenta':
+            $controladorFormatoVenta->ActualizarFormatoVenta();
+            break;
+
+
+        //Eliminar Formato Venta
+    case'eliminarFormatoVentaId':
+        $controladorFormatoVenta->EliminarFormatoVenta();
+        break;
+
+
+//Proveedor
+
+        //Registro Proveedor
+    case'registroProveedor':
+        if($_SERVER["REQUEST_METHOD"] == "POST"){
+                $controladorProveedor->RegistroProveedor();
+            }else{
+                include('./views/proveedor/registroProveedor.php');
+            }
+            break;
+
+
+        //Consulta Clase
+    case'consultaProveedor';
+        $proveedores= $controladorProveedor->listaProveedores();
+        include('./views/proveedor/consultaProveedor.php');
+        break;
+
+    case'consultaProveedorId';
+        $proveedores= $controladorProveedor->proveedorNit();
+        include('./views/proveedor/consultaProveedor.php');
+        break;
+
+    case'consultaProveedorNombre';
+        $proveedores= $controladorProveedor->nombreProveedor();
+        include('./views/proveedor/consultaProveedor.php');
+        break;
+
+    case'consultaVendedorNombre';
+        $proveedores= $controladorProveedor->nombreVendedor();
+        include('./views/proveedor/consultaProveedor.php');
+        break;
+
+
+        //Actualizar Clase
+    case'actualizarProveedorId':
+        $proveedores= $controladorProveedor->proveedorNit();
+        include('./views/proveedor/actualizarProveedor.php');
+        break;
+
+        case'actualizarProveedor':
+            $controladorProveedor->ActualizarProducto();
+            break;
+
+        //Eliminar usuario
+    case'eliminarProveedorId':
+        $controladorProveedor->EliminarProveedor();
+        include('');
+        break;
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 
     default:
-        include('./views/paginaPrincipal.php');
+        include('./views/paginasWeb/paginaPrincipal.php');
         break;
 }
 

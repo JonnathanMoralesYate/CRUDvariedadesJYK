@@ -3,7 +3,7 @@
 class ControladorPaginaN {
 
     public function index() {
-        include './views/paginaNosotros.php';
+        include './views/paginasWeb/paginaNosotros.php';
     }
 }
 

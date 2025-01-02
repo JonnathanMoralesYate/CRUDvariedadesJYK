@@ -1,11 +1,10 @@
 <?php
-
 class ModeloProducto{
 
     private $conn;
     private $table= "productos";
 
-public function __construct($db) {
+    public function __construct($db) {
         $this->conn=$db;
     }
 
