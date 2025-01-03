@@ -57,7 +57,7 @@ class ModeloUsuario{
     //public function consultUsuaNombre($nombre) {
         //$query = "SELECT * FROM ".$this->table." WHERE Nombres=?";
         //$stmt = $this->conn->prepare($query);
-        //$stmt->execute(['%'.$nombre. '%']);
+        //$stmt->execute(['%'.$nombre.'%']);
         //return $stmt->fetchAll(PDO::FETCH_ASSOC);
     //}
 
@@ -66,7 +66,7 @@ class ModeloUsuario{
     public function consultGenUsuaVistaNombre($nombre) {
         $query = "SELECT idUsuario, tipo_documento.tipoDocum, NumIdentificacion, Nombres, Apellidos, NumCelular, Email, roles.Rol, Usuario, Contraseña FROM ".$this->table." INNER JOIN tipo_documento ON registro_usuarios.idTipoDocum = tipo_documento.idTipoDocum INNER JOIN roles ON registro_usuarios.idRol = roles.idRol WHERE Nombres LIKE ?";
         $stmt = $this->conn->prepare($query);
-        $stmt->execute(['%'.$nombre. '%']);
+        $stmt->execute(['%'.$nombre.'%']);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 

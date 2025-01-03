@@ -17,6 +17,7 @@ require_once('./controllers/controladorUndBase.php');
 require_once('./controllers/controladorProducto.php');
 require_once('./controllers/controladorFormatoVenta.php');
 require_once('./controllers/controladorProveedor.php');
+require_once('./controllers/controladorCliente.php');
 
 $vistaPaginaP = new ControladorPaginaP();
 $vistaPaginaN = new ControladorPaginaN();
@@ -35,6 +36,7 @@ $controladorUndBase= new ControladorUndBase();
 $controladorProducto= new ControladorProducto();
 $controladorFormatoVenta= new ControladorFormatoVenta();
 $controladorProveedor= new ControladorProveedor();
+$controladorCliente= new ControladorCliente();
 
 
 
@@ -169,7 +171,7 @@ switch($action){
         break;
 
 
-        //Actualizar usuario
+        //Actualizar Producto
     case'inicioActualizarP':
         $productos = $controladorProducto->listaProductosVista();
         include('./views/productos/consultaProducActualizar.php');
@@ -188,7 +190,7 @@ switch($action){
             break;
 
 
-        //Eliminar usuario
+        //Eliminar Producto
     case'inicioEliminarProducto':
         $productos = $controladorProducto->listaProductosVista();
         include('./views/productos/eliminarProducto.php');
@@ -247,7 +249,7 @@ switch($action){
             $controladorClases->ActualizarClase();
             break;
 
-        //Eliminar usuario
+        //Eliminar Clase
     case'eliminarClaseId':
         $clases= $controladorClases->eliminarClase();
         break;
@@ -403,7 +405,7 @@ switch($action){
             break;
 
 
-        //Consulta Clase
+        //Consulta Proveedor
     case'consultaProveedor';
         $proveedores= $controladorProveedor->listaProveedores();
         include('./views/proveedor/consultaProveedor.php');
@@ -425,7 +427,7 @@ switch($action){
         break;
 
 
-        //Actualizar Clase
+        //Actualizar Proveedor
     case'actualizarProveedorId':
         $proveedores= $controladorProveedor->proveedorNit();
         include('./views/proveedor/actualizarProveedor.php');
@@ -435,19 +437,57 @@ switch($action){
             $controladorProveedor->ActualizarProducto();
             break;
 
-        //Eliminar usuario
+        //Eliminar Proveedor
     case'eliminarProveedorId':
         $controladorProveedor->EliminarProveedor();
-        include('');
         break;
 
 
+//Clientes
+
+        //Registro Clientes
+    case'registroCliente':
+        if($_SERVER["REQUEST_METHOD"] == "POST"){
+                $controladorCliente->registroCliente();
+            }else{
+                $tipoDocum= $controladorTipoDocum->listaTiposDocum();
+                include('./views/cliente/registroCliente.php');
+            }
+            break;
 
 
+        //Consulta Clientes
+    case'consultaCliente';
+        $clientes = $controladorCliente->listaClientes();
+        include('./views/cliente/consultaCliente.php');
+        break;
+    
+    case'consultaClienteCedula';
+        $clientes = $controladorCliente->datosClienteCedula();
+        include('./views/cliente/consultaCliente.php');
+        break;
+
+    case'consultaClienteNombre';
+        $clientes = $controladorCliente->datosClienteNombre();
+        include('./views/cliente/consultaCliente.php');
+        break;
 
 
+        //Actualizar Cliente
+    case'actualizarClienteId':
+        $clientes = $controladorCliente->datosClienteId();
+        $tipoDocum= $controladorTipoDocum->listaTiposDocum();
+        include('./views/cliente/actualizarCliente.php');
+        break;
 
+        case'actualizarCliente':
+            $controladorCliente->ActualizarCliente();
+            break;
 
+        //Eliminar Cliente
+    case'eliminarClienteId':
+        $controladorCliente->EliminarUsuario();
+        break;
 
 
 
