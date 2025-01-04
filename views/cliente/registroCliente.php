@@ -5,6 +5,9 @@
             <div class="col-3">
             </div>
             <div class="col-6">
+            <div class="text-center text-white mt-3">
+                    <h4>Registro Cliente</h4>
+                </div>
             <form class=" mt-2" action="index.php?action=registroCliente" method="post">
             <div class=" mt-2">
                     <label for="tipoDocum" class="form-label text-white mt-3">Tipo Documento:</label>

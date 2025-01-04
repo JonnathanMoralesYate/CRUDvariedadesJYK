@@ -33,11 +33,11 @@ class ControladorProveedor{
             echo "
                         <script>
                             alert('Registro del Proveedor Exitoso!');
-                            window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=vistaAdmin';
+                            window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=registroProveedor';
                         </script>
                         ";
 
-            //header("Location: index.php?action=vistaAdmin");
+            //header("Location: index.php?action=registroProveedor");
             exit;
         }
 
@@ -87,11 +87,11 @@ class ControladorProveedor{
             echo "
                         <script>
                             alert('Actualizacion del Proveedor Exitoso!');
-                            window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=vistaAdmin';
+                            window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaProveedor';
                         </script>
                         ";
 
-            //header("Location: index.php?action=vistaAdmin");
+            //header("Location: index.php?action=consultaProveedor");
             exit;
         }
 
@@ -105,9 +105,11 @@ class ControladorProveedor{
         echo "
             <script>
                 alert('Eliminacion Exitosa!');
-                window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=vistaAdmin';
+                window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaProveedor';
             </script>
             ";
+
+            //header("Location: index.php?action=consultaProveedor");
             exit;
     }
 

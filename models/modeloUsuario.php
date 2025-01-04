@@ -72,19 +72,19 @@ class ModeloUsuario{
 
 
 //Actualizar usuario
-public function actualizarUsua($idTipoDocum, $numDocumento, $nombre, $apellido, $numCelular, $correoE, $rol, $usuario, $claveSegura, $idUsua) {
-    $query = "UPDATE ".$this->table." SET idTipoDocum=?, NumIdentificacion=?, Nombres=?, Apellidos=?, NumCelular=?, Email=?, idRol=?, Usuario=?, Contraseña=? WHERE idUsuario=?";
-    $stmt = $this->conn->prepare($query);
-    $stmt->execute([$idTipoDocum, $numDocumento, $nombre, $apellido, $numCelular, $correoE, $rol, $usuario, $claveSegura, $idUsua]);
-}
+    public function actualizarUsua($idTipoDocum, $numDocumento, $nombre, $apellido, $numCelular, $correoE, $rol, $usuario, $claveSegura, $idUsua) {
+        $query = "UPDATE ".$this->table." SET idTipoDocum=?, NumIdentificacion=?, Nombres=?, Apellidos=?, NumCelular=?, Email=?, idRol=?, Usuario=?, Contraseña=? WHERE idUsuario=?";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute([$idTipoDocum, $numDocumento, $nombre, $apellido, $numCelular, $correoE, $rol, $usuario, $claveSegura, $idUsua]);
+    }
 
 
 //Eliminar usuario
-public function eliminarUsua($idUsua) {
-    $query = "DELETE FROM ".$this->table." WHERE idUsuario=?";
-    $stmt = $this->conn->prepare($query);
-    $stmt->execute([$idUsua]);    
-}
+    public function eliminarUsua($idUsua) {
+        $query = "DELETE FROM ".$this->table." WHERE idUsuario=?";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute([$idUsua]);    
+    }
 
 
 }

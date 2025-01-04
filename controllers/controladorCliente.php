@@ -33,11 +33,11 @@ class ControladorCliente{
             echo "
                         <script>
                             alert('Registro Exitoso!');
-                            window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=vistaAdmin';
+                            window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=registroCliente';
                         </script>
                         ";
 
-            //header("Location: index.php?action=vistaAdmin");
+            //header("Location: index.php?action=vistaRegistroCliente");
             exit;
         }
 
@@ -87,13 +87,13 @@ class ControladorCliente{
             $this->modeloCliente->ActualizarCliente($idTipoDocumC, $numDocumentoC, $nombreC, $apellidoC, $numCelularC, $correoC, $puntos, $idCliente);
             
             echo "
-                        <script>
-                            alert('Actualizacion Exitoso!');
-                            window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=vistaAdmin';
-                        </script>
-                        ";
+                <script>
+                    alert('Actualizacion Exitoso!');
+                    window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaCliente';
+                </script>
+                ";
 
-            //header("Location: index.php?action=vistaAdmin");
+            //header("Location: index.php?action=consultaCliente");
             exit;
         }
 
@@ -108,9 +108,11 @@ class ControladorCliente{
         echo "
             <script>
                 alert('Eliminacion Exitosa!');
-                window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=vistaAdmin';
+                window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaCliente';
             </script>
             ";
+
+            //header("Location: index.php?action=consultaCliente");
             exit;
 }
 

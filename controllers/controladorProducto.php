@@ -39,11 +39,10 @@ class ControladorProducto{
             echo "
                         <script>
                             alert('Registro del Producto Exitoso!');
-                            window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=vistaAdmin';
+                            window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=registroProducto';
                         </script>
                         ";
-
-            //header("Location: index.php?action=vistaAdmin");
+            //header("Location: index.php?action=registroProducto");
             exit;
         }
 
@@ -103,11 +102,10 @@ class ControladorProducto{
             echo "
                         <script>
                             alert('Actualizacion del Producto Exitoso!');
-                            window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=vistaAdmin';
+                            window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaProductos';
                         </script>
                         ";
-
-            //header("Location: index.php?action=vistaAdmin");
+            //header("Location: index.php?action=consultaProductos");
             exit;
         }
 
@@ -121,9 +119,10 @@ class ControladorProducto{
         echo "
             <script>
                 alert('Eliminacion Exitosa!');
-                window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=vistaAdmin';
+                window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaProductos';
             </script>
             ";
+             //header("Location: index.php?action=consultaProductos");
             exit;
     }
 

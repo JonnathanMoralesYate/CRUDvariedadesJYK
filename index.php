@@ -58,10 +58,14 @@ switch($action){
         $vistaPaginaS->index();
         break;
 
+
+//Redirecciones Modulo Administrativo
     case'vistaAdmin':
         $vistaAdmin->index();
         break;
 
+
+//Redirecciones Modulo Empleado
     case'vistaEmple':
         $vistaEmple->index();
         break;
@@ -78,6 +82,8 @@ switch($action){
         $controladorLogin->cerraraSesion();
         break;
 
+
+//Modulo Administrativo
 
 //Usuarios
 
@@ -110,17 +116,12 @@ switch($action){
 
 
         //Actualizar usuario
-    case'inicioActualizarU':
-        $usuarios = $controladorUsuario->listaUsuariosVista();
-        include('./views/usuarios/consultaUsuaActualizar.php');
+    case'actualizarUsuarioId':
+        $usuarios = $controladorUsuario->datosUsuaGenPorId();
+        $tipoRoles= $controladorRol->listaRoles();
+        $tipoDocum= $controladorTipoDocum->listaTiposDocum();
+        include('./views/usuarios/actualizarUsuario.php');
         break;
-
-        case'ActualizarUsuarioId':
-            $usuarios = $controladorUsuario->datosUsuaGenPorId();
-            $tipoRoles= $controladorRol->listaRoles();
-            $tipoDocum= $controladorTipoDocum->listaTiposDocum();
-            include('./views/usuarios/actualizarUsuario.php');
-            break;
 
         case'actualizarUsuario':
             $controladorUsuario->actualizarUsuario();
@@ -128,15 +129,9 @@ switch($action){
 
 
         //Eliminar usuario
-    case'inicioEliminarUsua':
-        $usuarios = $controladorUsuario->listaUsuariosVista();
-        include('./views/usuarios/consultaUsuaEliminar.php');
+    case'eliminarUsuarioId':
+        $usuarios= $controladorUsuario->eliminarUsuario();
         break;
-
-        case'eliminarUsuarioId':
-            $usuarios= $controladorUsuario->eliminarUsuario();
-            include('./views/moduloAdministrativo.php');
-            break;
 
 
 //Productos
@@ -172,11 +167,6 @@ switch($action){
 
 
         //Actualizar Producto
-    case'inicioActualizarP':
-        $productos = $controladorProducto->listaProductosVista();
-        include('./views/productos/consultaProducActualizar.php');
-        break;
-
         case'actualizarProductosCodigo':
             $productos = $controladorProducto->productoCodigo();
             $clases = $controladorClases->listaClases();
@@ -191,23 +181,9 @@ switch($action){
 
 
         //Eliminar Producto
-    case'inicioEliminarProducto':
-        $productos = $controladorProducto->listaProductosVista();
-        include('./views/productos/eliminarProducto.php');
-        break;
-
-        case'eliminarProductoCodigo':
+    case'eliminarProductoCodigo':
             $productos = $controladorProducto->eliminarProducto();
-            include('./views/moduloAdministrativo.php');
             break;
-
-
-
-        //prueba para definir definir
-    case'prueba':
-        $productos = $controladorProducto->listaProductosVista();
-        include('./views/productos/accionesProductos.php');
-        break;
 
 
 //Clases
@@ -482,12 +458,41 @@ switch($action){
 
         case'actualizarCliente':
             $controladorCliente->ActualizarCliente();
+            include('./views/cliente/consultaCliente.php');
             break;
 
         //Eliminar Cliente
     case'eliminarClienteId':
         $controladorCliente->EliminarUsuario();
+        include('./views/cliente/consultaCliente.php');
         break;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Modulo Empleado
+
+
+
+
+
+
+
+
 
 
 

@@ -27,11 +27,11 @@ class ControladorFormatoVenta{
             echo "
                         <script>
                             alert('Registro Exitoso!');
-                            window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=vistaAdmin';
+                            window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=registroFormatoVenta';
                         </script>
                         ";
 
-            //header("Location: index.php?action=vistaAdmin");
+            //header("Location: index.php?action=registroFormatoVenta");
             exit;
         }
 
@@ -70,12 +70,11 @@ class ControladorFormatoVenta{
                 echo "
                     <script>
                         alert('Actualizacion Exitosa!');
-                        window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=vistaAdmin';
+                        window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaFormatoVenta';
                     </script>
                     ";
-
-            //header("Location: index.php?action=vistaAdmin");
-            exit;
+                //header("Location: index.php?action=consultaFormatoVenta");
+                exit;
         }
 
     }
@@ -89,9 +88,10 @@ class ControladorFormatoVenta{
         echo "
             <script>
                 alert('Eliminacion Exitosa!');
-                window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=vistaAdmin';
+                window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaFormatoVenta';
             </script>
             ";
+            //header("Location: index.php?action=consultaFormatoVenta");
             exit;
     }
 }

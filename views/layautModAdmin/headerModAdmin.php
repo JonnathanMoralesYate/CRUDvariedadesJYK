@@ -63,26 +63,16 @@ if ($_SESSION['rol'] == 2) {
                                         <a class="nav-link dropdown-toggle text-white" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-label="Toggle navigation">Productos</a>
                                         <ul class="dropdown-menu">
                                             <li>
-                                                <form action="index.php?action=consultaProductos" method="GET">
-                                                    <button class="dropdown-item" type="submit" name="action" value="consultaProductos" class="btn btn-light">Consultar Producto</button>
-                                                </form>
-                                            </li>
-                                            <li>
                                                 <form action="index.php?action=registroProducto" method="GET">
                                                     <button class="dropdown-item" type="submit" name="action" value="registroProducto" class="btn btn-light">Registrar Producto</button>
                                                 </form>
                                             </li>
                                             <li>
-                                                <form action="index.php?action=inicioActualizarP" method="GET">
-                                                    <button class="dropdown-item" type="submit" name="action" value="inicioActualizarP" class="btn btn-light fs-6">Actualizar Producto</button>
+                                                <form action="index.php?action=consultaProductos" method="GET">
+                                                    <button class="dropdown-item" type="submit" name="action" value="consultaProductos" class="btn btn-light">Consultar Producto</button>
                                                 </form>
                                             </li>
-                                            <li>
-                                                <form action="index.php?action=inicioEliminarProducto" method="GET">
-                                                    <button class="dropdown-item" type="submit" name="action" value="inicioEliminarProducto" class="btn btn-light">Eliminar Producto</button>
-                                                </form>
-                                            </li>
-                                            <!-- <li>
+                                        <!-- <li>
                                                 <form action="index.php?action=" method="GET">
                                                     <button type="submit" name="action" value="" class="btn btn-light">Actualizar Precios</button>
                                                 </form>
@@ -204,23 +194,13 @@ if ($_SESSION['rol'] == 2) {
                                         <a class="nav-link dropdown-toggle text-white" data-bs-toggle="dropdown" role="button" aria-expanded="false">Empleados</a>
                                             <ul class="dropdown-menu">
                                                 <li>
-                                                    <form action="index.php?action=consultaUsuarios" method="GET">
-                                                        <button class="dropdown-item" type="submit" name="action" value="consultaUsuarios" class="btn btn-light">Consultar Empleado</button>
-                                                    </form>
-                                                </li>
-                                                <li>
                                                     <form action="index.php?action=registroUsuario" method="GET">
                                                         <button class="dropdown-item" type="submit" name="action" value="registroUsuario" class="btn btn-light">Registrar Empleado</button>
                                                     </form>
                                                 </li>
                                                 <li>
-                                                    <form action="index.php?action=inicioActualizarU" method="GET">
-                                                        <button class="dropdown-item" type="submit" name="action" value="inicioActualizarU" class="btn btn-light fs-6">Actualizar Empleado</button>
-                                                    </form>
-                                                </li>
-                                                <li>
-                                                    <form action="index.php?action=inicioEliminarUsua" method="GET">
-                                                        <button class="dropdown-item" type="submit" name="action" value="inicioEliminarUsua" class="btn btn-light">Eliminar Empleado</button>
+                                                    <form action="index.php?action=consultaUsuarios" method="GET">
+                                                        <button class="dropdown-item" type="submit" name="action" value="consultaUsuarios" class="btn btn-light">Consultar Empleado</button>
                                                     </form>
                                                 </li>
                                             </ul>
