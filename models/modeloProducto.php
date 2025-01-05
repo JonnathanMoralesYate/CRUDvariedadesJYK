@@ -71,6 +71,15 @@ class ModeloProducto{
         $stmt= $this->conn->prepare($query);
         $stmt->execute([$codigoProducto]);
     }
+
+
+    //Consulta producto por codigo de barras
+    public function consultaProducto($codigoProducto) {
+        $query= "SELECT idProducto FROM ".$this->table." WHERE CodProducto=?";
+        $stmt= $this->conn->prepare($query);
+        $stmt->execute([$codigoProducto]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
 }
 
 ?>

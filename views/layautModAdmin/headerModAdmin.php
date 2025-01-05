@@ -84,18 +84,8 @@ if ($_SESSION['rol'] == 2) {
                                         <a class="nav-link dropdown-toggle text-white" data-bs-toggle="dropdown" role="button" aria-expanded="false">Entrada de Productos</a>
                                             <ul class="dropdown-menu">
                                                 <li>
-                                                    <form action="index.php?action=paginaP" method="GET">
-                                                        <button class="dropdown-item" type="submit" name="action" value="paginaP" class="btn btn-light">Registrar Entrada</button>
-                                                    </form>
-                                                </li>
-                                                <li>
-                                                    <form action="index.php?action=prueba" method="GET">
-                                                        <button class="dropdown-item" type="submit" name="action" value="prueba" class="btn btn-light fs-6">Actualizar Entrada</button>
-                                                    </form>
-                                                </li>
-                                                <li>
-                                                    <form action="index.php?action=" method="GET">
-                                                        <button class="dropdown-item" type="submit" name="action" value="" class="btn btn-light">Eliminar Entrada</button>
+                                                    <form action="index.php?action=registroEntProductos" method="GET">
+                                                        <button class="dropdown-item" type="submit" name="action" value="registroEntProductos" class="btn btn-light">Registrar Entrada</button>
                                                     </form>
                                                 </li>
                                                 <li>
