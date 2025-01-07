@@ -460,13 +460,11 @@ switch($action){
 
         case'actualizarCliente':
             $controladorCliente->ActualizarCliente();
-            include('./views/cliente/consultaCliente.php');
             break;
 
         //Eliminar Cliente
     case'eliminarClienteId':
-        $controladorCliente->EliminarUsuario();
-        include('./views/cliente/consultaCliente.php');
+        $controladorCliente->EliminarCliente();
         break;
 
 
@@ -480,11 +478,40 @@ switch($action){
                 include('./views/entradaProducto/registrarEntProducto.php');
             }
             break;
-    
 
 
+        //Consulta Entrada Productos
+    case'consultaEntProductos';
+        $entProductos = $controladorEntProducto->consultaGenEntProductosVista();
+        include('./views/entradaProducto/consultaEntProductos.php');
+        break;
+
+    case'consultaEntProductoId';
+        $entProductos = $controladorEntProducto->consultaGenEntProductosVistaId();
+        include('./views/entradaProducto/consultaEntProductos.php');
+        break;
+
+    case'consultaEntProductoFecha';
+        $entProductos = $controladorEntProducto->consultaGenEntProductosVistaFecha();
+        include('./views/entradaProducto/consultaEntProductos.php');
+        break;
 
 
+        //Actualizar Entrada Productos
+    case'actualizarEntProductosId':
+        $entProductos = $controladorEntProducto->consultaGenEntProductosId();
+        include('./views/entradaProducto/actualizarEntProducto.php');
+        break;
+
+        case'actualizarEntProductos':
+            $controladorEntProducto->ActualizarEntProducto();
+            break;
+
+
+        //Eliminar Cliente
+    case'eliminarEntProductoId':
+        $controladorEntProducto->EliminarEntProducto();
+        break;
 
 
 

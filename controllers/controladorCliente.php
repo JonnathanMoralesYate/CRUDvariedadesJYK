@@ -100,8 +100,8 @@ class ControladorCliente{
     }
 
 
-    //Eliminar usuario
-    public function EliminarUsuario() {
+    //Eliminar Cliente
+    public function EliminarCliente() {
         $idCliente = $_GET['idCliente'] ?? '';
         $this->modeloCliente->eliminarCliente($idCliente);
 
@@ -114,7 +114,7 @@ class ControladorCliente{
 
             //header("Location: index.php?action=consultaCliente");
             exit;
-}
+    }
 
 
 }

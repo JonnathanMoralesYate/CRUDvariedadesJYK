@@ -63,16 +63,16 @@
                 <tbody class="">
                 <?php foreach ($productos as $producto): ?>
                     <tr>
-                        <td class="text-white"><?= $producto['idProducto']; ?></td>
-                        <td class="text-white"><?= $producto['CodProducto']; ?></td>
-                        <td class="text-white"><?= $producto['Clase']; ?></td>
-                        <td class="text-white"><?= $producto['Nombre']; ?></td>
-                        <td class="text-white"><?= $producto['Marca']; ?></td>
-                        <td class="text-white"><?= $producto['Descripcion']; ?></td>
-                        <td class="text-white"><?= $producto['Presentacion']; ?></td>
-                        <td class="text-white"><?= $producto['UndBase']; ?></td>
-                        <td class="text-white"><?= $producto['ContNeto']; ?></td>
-                        <td class="text-white"><?= $producto['PrecioVenta']; ?></td>
+                        <td class="text-white align-middle"><?= $producto['idProducto']; ?></td>
+                        <td class="text-white align-middle"><?= $producto['CodProducto']; ?></td>
+                        <td class="text-white align-middle"><?= $producto['Clase']; ?></td>
+                        <td class="text-white align-middle"><?= $producto['Nombre']; ?></td>
+                        <td class="text-white align-middle"><?= $producto['Marca']; ?></td>
+                        <td class="text-white align-middle"><?= $producto['Descripcion']; ?></td>
+                        <td class="text-white align-middle"><?= $producto['Presentacion']; ?></td>
+                        <td class="text-white align-middle"><?= $producto['UndBase']; ?></td>
+                        <td class="text-white align-middle"><?= $producto['ContNeto']; ?></td>
+                        <td class="text-white align-middle"><?= $producto['PrecioVenta']; ?></td>
                         <td><img src="photo/<?= $producto['Foto']; ?>" width="100" alt="foto"></td>
                         <td>                        
                         <a href="index.php?action=actualizarProductosCodigo&codProduc=<?= $producto['CodProducto']; ?>" class="btn btn-outline-secondary text-white m-2 w-100" role="button">Actualizar</a> 
