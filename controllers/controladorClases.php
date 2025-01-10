@@ -22,6 +22,8 @@ class ControladorClases{
             $nombre= $_POST['nomClase'];
             
             $this->modeloClases->registrarClases($nombre);
+
+            //echo json_encode(array('Error'=>'Producto No Encontrado'));
             
             echo "
                         <script>
@@ -94,8 +96,6 @@ class ControladorClases{
     }
 
 
-
 }
-
 
 ?>

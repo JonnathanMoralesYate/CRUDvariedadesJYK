@@ -19,6 +19,7 @@ require_once('./controllers/controladorFormatoVenta.php');
 require_once('./controllers/controladorProveedor.php');
 require_once('./controllers/controladorCliente.php');
 require_once('./controllers/controladorEntProducto.php');
+require_once('./controllers/controladorSalProducto.php');
 
 $vistaPaginaP = new ControladorPaginaP();
 $vistaPaginaN = new ControladorPaginaN();
@@ -39,6 +40,7 @@ $controladorFormatoVenta= new ControladorFormatoVenta();
 $controladorProveedor= new ControladorProveedor();
 $controladorCliente= new ControladorCliente();
 $controladorEntProducto= new ControladorEntProductos();
+$controladorsalProducto= new ControladorSalProducto();
 
 
 
@@ -514,10 +516,26 @@ switch($action){
         break;
 
 
+//Salida de Productos
+
+        //Registro Salida Productos
+    case'registroSalProductos':
+        if($_SERVER["REQUEST_METHOD"] == "POST"){
+                $controladorsalProducto->RegistroSalProducto();
+            }else{
+                include('./views/salidaProducto/registrarSalProducto.php');
+            }
+            break;
 
 
-
-
+        //Registro Salida Productos
+    case'registroSalProductosP':
+        if($_SERVER["REQUEST_METHOD"] == "POST"){
+            
+        }else{
+            include('./views/salidaProducto/registroSalProductos.php');
+        }
+        break;
 
 
 

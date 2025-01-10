@@ -70,8 +70,8 @@
                         <td class="text-white align-middle"><?= $producto['Marca']; ?></td>
                         <td class="text-white align-middle"><?= $producto['Descripcion']; ?></td>
                         <td class="text-white align-middle"><?= $producto['Presentacion']; ?></td>
-                        <td class="text-white align-middle"><?= $producto['UndBase']; ?></td>
                         <td class="text-white align-middle"><?= $producto['ContNeto']; ?></td>
+                        <td class="text-white align-middle"><?= $producto['UndBase']; ?></td>
                         <td class="text-white align-middle"><?= $producto['PrecioVenta']; ?></td>
                         <td><img src="photo/<?= $producto['Foto']; ?>" width="100" alt="foto"></td>
                         <td>                        

@@ -57,8 +57,6 @@ class ControladorEntProductos{
                     exit;
             }else{
 
-                $this->modeloEntProducto->registroEntProducto($idProducto, $idProveedor, $fechaEnt, $fechaVencim, $precioCompra, $cantidadEnt);
-
 //metodo para cuando se registre una entrada de producto, en el inventario se anexe el producto o sume el stock
             $estadoInventario = $this->modeloInventario->consultaInventarioId($idProducto);
 
@@ -90,7 +88,8 @@ class ControladorEntProductos{
                 exit;
 
             }
-
+                //Regista la Entrada del Producto
+            $this->modeloEntProducto->registroEntProducto($idProducto, $idProveedor, $fechaEnt, $fechaVencim, $precioCompra, $cantidadEnt);
 
             }
 
@@ -251,7 +250,6 @@ class ControladorEntProductos{
             //header("Location: index.php?action=consultaEntProductos");
             exit;
     }
-
 
 
 

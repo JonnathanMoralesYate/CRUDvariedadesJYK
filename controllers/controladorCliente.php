@@ -64,7 +64,7 @@ class ControladorCliente{
     }
 
 
-    //Consulta Cedula Cliente
+    //Consulta Nombre Cliente
     public function datosClienteNombre() {
         $nombreC = $_GET['nomCliente'] ?? '';
         return $this->modeloCliente->consultGenClienteNombre($nombreC);
@@ -115,7 +115,6 @@ class ControladorCliente{
             //header("Location: index.php?action=consultaCliente");
             exit;
     }
-
 
 }
 

@@ -43,7 +43,7 @@
             </div>
     <!-- Tabla responsiva-->
             <div class="table-responsive">
-            <table class="table table-hover table-bordered table-striped text-white text-center">
+            <table class="table table-hover table-striped text-white text-center">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -69,8 +69,8 @@
                         <td class="text-white align-middle"><?= $cliente['Email']; ?></td>
                         <td class="text-white align-middle"><?= $cliente['Puntos']; ?></td>
                         <td>                        
-                        <a href="index.php?action=actualizarClienteId&idCliente=<?= $cliente['idCliente']; ?>" class="btn btn-outline-secondary text-white w-20" role="button">Actualizar</a> 
-                        <a href="index.php?action=eliminarClienteId&idCliente=<?= $cliente['idCliente']; ?>" class="btn btn-outline-secondary text-white w-20" role="button">Eliminar</a>
+                        <a href="index.php?action=actualizarClienteId&idCliente=<?= $cliente['idCliente']; ?>" class="btn btn-outline-secondary text-white m-2 w-100" role="button">Actualizar</a> 
+                        <a href="index.php?action=eliminarClienteId&idCliente=<?= $cliente['idCliente']; ?>" class="btn btn-outline-secondary text-white m-2 w-100" role="button">Eliminar</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>

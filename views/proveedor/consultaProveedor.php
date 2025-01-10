@@ -75,8 +75,8 @@
                         <td class="text-white align-middle"><?= $proveedor['NombreVendedor']; ?></td>
                         <td class="text-white align-middle"><?= $proveedor['CelularVendedor']; ?></td>
                         <td class="text-white align-middle">
-                        <a href="index.php?action=actualizarProveedorId&idProveedor=<?= $proveedor['idProveedor']; ?>" class="btn btn-outline-secondary text-white w-20" role="button">Actualizar</a> 
-                        <a href="index.php?action=eliminarProveedorId&idProveedor=<?= $proveedor['idProveedor']; ?>" class="btn btn-outline-secondary text-white w-20" role="button">Eliminar</a>
+                        <a href="index.php?action=actualizarProveedorId&idProveedor=<?= $proveedor['idProveedor']; ?>" class="btn btn-outline-secondary text-white m-2 w-100" role="button">Actualizar</a> 
+                        <a href="index.php?action=eliminarProveedorId&idProveedor=<?= $proveedor['idProveedor']; ?>" class="btn btn-outline-secondary text-white m-2 w-100" role="button">Eliminar</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>

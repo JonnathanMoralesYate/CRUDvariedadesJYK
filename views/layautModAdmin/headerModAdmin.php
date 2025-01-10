@@ -100,18 +100,13 @@ if ($_SESSION['rol'] == 2) {
                                         <a class="nav-link dropdown-toggle text-white" data-bs-toggle="dropdown" role="button" aria-expanded="false">Salida de Productos</a>
                                             <ul class="dropdown-menu">
                                                 <li>
-                                                    <form action="index.php?action=paginaP" method="GET">
-                                                        <button class="dropdown-item" type="submit" name="action" value="paginaP" class="btn btn-light">Registrar Salida</button>
+                                                    <form action="index.php?action=registroSalProductos" method="GET">
+                                                        <button class="dropdown-item" type="submit" name="action" value="registroSalProductos" class="btn btn-light">Registrar Salida</button>
                                                     </form>
                                                 </li>
                                                 <li>
-                                                    <form action="index.php?action=" method="GET">
-                                                        <button class="dropdown-item" type="submit" name="action" value="" class="btn btn-light fs-6">Actualizar Salida</button>
-                                                    </form>
-                                                </li>
-                                                <li>
-                                                    <form action="index.php?action=" method="GET">
-                                                        <button class="dropdown-item" type="submit" name="action" value="" class="btn btn-light">Eliminar Salida</button>
+                                                    <form action="index.php?action=registroSalProductosP" method="GET">
+                                                        <button class="dropdown-item" type="submit" name="action" value="registroSalProductosP" class="btn btn-light">Salida</button>
                                                     </form>
                                                 </li>
                                                 <li>
