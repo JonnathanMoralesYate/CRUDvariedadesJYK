@@ -34,6 +34,15 @@ class ModeloProducto{
     }
 
 
+    //Consulta general productos de clase
+    public function darProductosPorClase($idClase) {
+        $query= "SELECT * FROM ".$this->table." WHERE idClase=?";
+        $stmt= $this->conn->prepare($query);
+        $stmt->execute([$idClase]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+
 //Consulta general productos con inner join por codigo producto
     public function consultGenProductosvistaCodigo($codigoProducto) {
         $query= "SELECT idProducto, CodProducto, clase_producto.Clase, Nombre, Marca, Descripcion, 

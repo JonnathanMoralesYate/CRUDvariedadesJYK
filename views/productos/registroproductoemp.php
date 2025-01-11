@@ -1,6 +1,6 @@
-<?php include('./views/layautModAdmin/headerModAdmin.php'); ?>
+<?php include('./views/layautModEmple/headerModEmplea.php');  ?>
 
-    <div class="row">
+<div class="row">
         <!--Incio de Formulario Registro de Producto-->
             <div class="col-3">
             </div>
@@ -88,7 +88,4 @@
             </div>
     </div>
 
-<?php include('./views/layautModAdmin/footerModAdmin.php'); ?>
-
-
-
+<?php include('./views/layautModEmple/footerModEmplea.php');  ?>

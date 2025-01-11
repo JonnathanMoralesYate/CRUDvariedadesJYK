@@ -54,6 +54,12 @@ class ControladorProducto{
         return $this->modeloProducto->consultGenProductosvista();
     }
 
+    //Consulta general de productos vista
+    // Clase
+    public function darListaProductosPorClase($idClase) {
+        return $this->modeloProducto->darProductosPorClase($idClase);
+    }
+
     //Consulta general de productos por codigo de barras vista
     public function productoVistaCodigo() {
         $codigoProducto = $_GET['codProduc'] ?? '';
@@ -126,6 +132,63 @@ class ControladorProducto{
             ";
             exit;
     }
+
+      //Registro de producto empleado
+      public function registroProductosemp() {
+
+        if($_SERVER["REQUEST_METHOD"] == "POST") {
+            $codigoProducto= $_POST['codProduc'];
+            $idClase= $_POST['tiposClase'];
+            $nombre= $_POST['nombreproduc'];
+            $marca= $_POST['marcaProduc'];
+            $descripcion= $_POST['descriProduc'];
+            $idPresentacion= $_POST['tiposPresenta'];
+            $idUndBase= $_POST['tiposUnd'];
+            $contNeto= $_POST['contNeto'];
+            $precioVenta= $_POST['precioVenta'];
+
+            $foto= $_FILES['fotoProduc']['name'];
+            $target_dir="photo/";
+            $target_file= $target_dir.basename($foto);
+            move_uploaded_file($_FILES['fotoProduc']['tmp_name'], $target_file);
+            
+            $this->modeloProducto->registroProducto($codigoProducto, $idClase, $nombre, $marca, $descripcion, $idPresentacion, $idUndBase, $contNeto, $precioVenta, $foto);
+            
+            echo "
+                        <script>
+                            alert('Registro del Producto Exitoso!');
+                            window.location.href='http://localhost/variedadesjyk/index.php?action=registroProductoemp';
+                        </script>
+                        ";
+
+            //header("Location: index.php?action=vistaemple");
+            exit;
+        }
+
+    }
+
+        //Consulta general de productos vista emppleado
+        public function listaProductosVistaemp() {
+            return $this->modeloProducto->consultGenProductosvista();
+        }
+    
+        //Consulta general de productos por codigo de barras vista empleado
+        public function productoVistaCodigoemp() {
+            $codigoProducto = $_GET['codProduc'] ?? '';
+            return $this->modeloProducto->consultGenProductosvistaCodigo($codigoProducto);
+        }
+    
+        //Consulta general de productos por nombre vista empleado
+        public function productoVistaNombreemp() {
+            $nombre = $_GET['nombre'] ?? '';
+            return $this->modeloProducto->consultGenProductosvistaNombre($nombre);
+        }
+    
+        //Consulta general de productos por codigo de barras empleado
+        public function productoCodigoemp() {
+            $codigoProducto = $_GET['codProduc'] ?? '';
+            return $this->modeloProducto->consultGenProductos($codigoProducto);
+        }
 
 }
 

@@ -38,10 +38,9 @@ $controladorFormatoVenta= new ControladorFormatoVenta();
 $controladorProveedor= new ControladorProveedor();
 $controladorCliente= new ControladorCliente();
 
-
-
 $action = htmlspecialchars($_GET['action'] ?? 'principal', ENT_QUOTES, 'UTF-8');
 
+echo "<script>console.log('Hola desde PHP en la consola!');</script>";
 
 switch($action){
 
@@ -153,7 +152,6 @@ switch($action){
             }
             break;
 
-
         //Consulta Producto
     case'consultaProductos';
         $productos = $controladorProducto->listaProductosVista();
@@ -208,6 +206,37 @@ switch($action){
         $productos = $controladorProducto->listaProductosVista();
         include('./views/productos/accionesProductos.php');
         break;
+
+//registro de producto empleado
+
+        case'registroProductoemp':
+            if($_SERVER["REQUEST_METHOD"] == "POST"){
+                    $controladorProducto->registroProductosemp();
+                }else{
+                    $clases = $controladorClases->listaClases();
+                    $presentaciones = $controladorPresentacion->listaPresentacion();
+                    $undBases = $controladorUndBase->listaUndBase();
+                    include('./views/productos/registroProductoemp.php');
+                }
+                break;
+
+        //Consulta Producto empleado
+    case'consultaProductosemp';
+    $productos = $controladorProducto->listaProductosVistaemp();
+    include('./views/productos/consultaProductoemp.php');
+    break;
+
+
+case'consultaProductosCodigoemp';
+    $productos = $controladorProducto->productoVistaCodigoemp();
+    include('./views/productos/consultaProductoemp.php');
+    break;
+
+case'consultaProductosNombreemp';
+    $productos = $controladorProducto->productoVistaNombreemp();
+    include('./views/productos/consultaProductoemp.php');
+    break;
+        
 
 
 //Clases
@@ -442,6 +471,49 @@ switch($action){
         $controladorProveedor->EliminarProveedor();
         break;
 
+    
+        //Registro Proveedor empleado
+    case'registroProveedorEmp':
+        if($_SERVER["REQUEST_METHOD"] == "POST"){
+                $controladorProveedor->RegistroProveedorEmp();
+            }else{
+                include('./views/proveedor/reguistroProveedorEmp.php');
+            }
+            break;
+
+
+        //Consulta Proveedor empleado
+    case'consultaProveedorEmp';
+        $proveedores= $controladorProveedor->listaProveedoresEmp();
+        include('./views/proveedor/consultaProveedorEmp.php');
+        break;
+
+    case'consultaProveedorIdEmp';
+        $proveedores= $controladorProveedor->proveedorNitEmp();
+        include('./views/proveedor/consultaProveedorEmp.php');
+        break;
+
+    case'consultaProveedorNombreEmp';
+        $proveedores= $controladorProveedor->nombreProveedorEmp();
+        include('./views/proveedor/consultaProveedorEmp.php');
+        break;
+
+    case'consultaVendedorNombreEmp';
+        $proveedores= $controladorProveedor->nombreVendedorEmp();
+        include('./views/proveedor/consultaProveedorEmp.php');
+        break;
+
+
+        //Actualizar Proveedor empleado
+    case'actualizarProveedorIdEmp':
+        $proveedores= $controladorProveedor->proveedorNitEmp();
+        include('./views/proveedor/actualizarProveedorEmp.php');
+        break;
+
+        case'actualizarProveedorEmp':
+            $controladorProveedor->ActualizarProductoEmp();
+            break;
+
 
 //Clientes
 
@@ -489,13 +561,48 @@ switch($action){
         $controladorCliente->EliminarUsuario();
         break;
 
+//Registro Clientes empleado
+    case'registroClienteemp':
+        if($_SERVER["REQUEST_METHOD"] == "POST"){
+                $controladorCliente->registroClienteemp();
+            }else{
+                $tipoDocum= $controladorTipoDocum->listaTiposDocum();
+                include('./views/cliente/registroClienteemp.php');
+            }
+            break;
+        
+        
+        //Consulta Clientes empleado
+    case'consultaClienteemp';
+        $clientes = $controladorCliente->listaClientesemp();
+        include('./views/cliente/consultaClienteemp.php');
+        break;
+            
+    case'consultaClienteCedulaemp';
+        $clientes = $controladorCliente->datosClienteCedulaemp();
+        include('./views/cliente/consultaClienteemp.php');
+        break;
+        
+    case'consultaClienteNombreemp';
+        $clientes = $controladorCliente->datosClienteNombreemp();
+        include('./views/cliente/consultaClienteemp.php');
+        break;
 
-
-
-
-
+        //Actualizar Cliente  empleado
+    case'actualizarClienteIdEmp':
+        $clientes = $controladorCliente->datosClienteIdemp();
+        $tipoDocum= $controladorTipoDocum->listaTiposDocum();
+        include('./views/cliente/actualizarClienteemp.php');
+        break;
+        
+        case'actualizarClienteemp':
+            $controladorCliente->ActualizarClienteemp();
+            break;
 
     default:
+    
+        $clases = $controladorClases->listaClases();
+        $productos = [];
         include('./views/paginasWeb/paginaPrincipal.php');
         break;
 }

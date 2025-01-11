@@ -54,24 +54,24 @@ class ControladorLogin{
                 //Administrativo
                 if($_SESSION['rol'] == 1) {
 
-                    echo "
-                        <script>
-                            alert('Has ingresado como Administrador!');
-                            window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=vistaAdmin';
-                        </script>
-                        ";
+                   // echo "
+                        //<script>
+                            //alert('Has ingresado como Administrador!');
+                            //window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=vistaAdmin';
+                        //</script>
+                        //";
 
-                    //header("Location: index.php?action=vistaAdmin");
+                    header("Location: index.php?action=vistaAdmin");
                     exit;
 
                     //Empleado
                 }elseif($_SESSION['rol'] == 2){
 
-                    echo "
-                        <script>
-                            alert('Has ingresado como Empleado!');
-                        </script>
-                        ";
+                    //echo "
+                       // <script>
+                           // alert('Has ingresado como Empleado!');
+                        //</script>
+                        //";
 
                     header("Location: index.php?action=vistaEmple");
                     exit;
