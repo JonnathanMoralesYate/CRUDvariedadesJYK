@@ -22,15 +22,16 @@ class ControladorClases{
             $nombre= $_POST['nomClase'];
             
             $this->modeloClases->registrarClases($nombre);
+
+            //echo json_encode(array('Error'=>'Producto No Encontrado'));
             
             echo "
                         <script>
                             alert('Registro Exitoso!');
-                            window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=vistaAdmin';
+                            window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=registroClase';
                         </script>
                         ";
-
-            //header("Location: index.php?action=vistaAdmin");
+            //header("Location: index.php?action=registroClase");
             exit;
         }
 
@@ -69,11 +70,10 @@ class ControladorClases{
             echo "
                         <script>
                             alert('Actualizacion Exitosa!');
-                            window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=vistaAdmin';
+                            window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaClase';
                         </script>
                         ";
-
-            //header("Location: index.php?action=vistaAdmin");
+            //header("Location: index.php?action=consultaClase");
             exit;
         }
 
@@ -88,15 +88,14 @@ class ControladorClases{
         echo "
             <script>
                 alert('Eliminacion Exitosa!');
-                window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=vistaAdmin';
+                window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaClase';
             </script>
             ";
+            //header("Location: index.php?action=consultaClase");
             exit;
     }
 
 
-
 }
-
 
 ?>

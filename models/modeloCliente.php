@@ -67,6 +67,32 @@ class ModeloCliente{
         $stmt->execute([$idCliente]);    
     }
 
+
+    //Consulta Cliente por Numero de Identintidad
+    public function consultaCliente($numIdentcliente) {
+        $query= "SELECT idCliente FROM ".$this->table." WHERE NumIdentificacion=?";
+        $stmt= $this->conn->prepare($query);
+        $stmt->execute([$numIdentcliente]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+
+    //Consulta los Puntos del cliente
+    public function consultaPuntos($idCliente) {
+        $query= "SELECT Puntos FROM ".$this->table." WHERE idCliente=?";
+        $stmt= $this->conn->prepare($query);
+        $stmt->execute([$idCliente]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+
+    //Actualiza los Puntos del cliente
+    public function actualizaPuntos($puntosAct, $idCliente) {
+        $query = "UPDATE ".$this->table." SET Puntos=? WHERE idCliente=?";
+        $stmt= $this->conn->prepare($query);
+        $stmt->execute([$puntosAct, $idCliente]);
+    }
+
 }
 
 

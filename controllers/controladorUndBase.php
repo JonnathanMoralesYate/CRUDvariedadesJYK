@@ -27,7 +27,7 @@ class ControladorUndBase{
             echo "
                         <script>
                             alert('Registro Exitoso!');
-                            window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=vistaAdmin';
+                            window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=registroUndBase';
                         </script>
                         ";
 
@@ -69,11 +69,10 @@ class ControladorUndBase{
             echo "
                         <script>
                             alert('Actualizacion Exitosa!');
-                            window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=vistaAdmin';
+                            window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaUndBasen';
                         </script>
                         ";
-
-            //header("Location: index.php?action=vistaAdmin");
+            //header("Location: index.php?action=consultaUndBasen");
             exit;
         }
 
@@ -88,9 +87,10 @@ class ControladorUndBase{
         echo "
             <script>
                 alert('Eliminacion Exitosa!');
-                window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=vistaAdmin';
+                window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaUndBasen';
             </script>
             ";
+            //header("Location: index.php?action=consultaUndBasen");
             exit;
     }
 

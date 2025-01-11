@@ -18,6 +18,8 @@ require_once('./controllers/controladorProducto.php');
 require_once('./controllers/controladorFormatoVenta.php');
 require_once('./controllers/controladorProveedor.php');
 require_once('./controllers/controladorCliente.php');
+require_once('./controllers/controladorEntProducto.php');
+require_once('./controllers/controladorSalProducto.php');
 
 $vistaPaginaP = new ControladorPaginaP();
 $vistaPaginaN = new ControladorPaginaN();
@@ -37,6 +39,8 @@ $controladorProducto= new ControladorProducto();
 $controladorFormatoVenta= new ControladorFormatoVenta();
 $controladorProveedor= new ControladorProveedor();
 $controladorCliente= new ControladorCliente();
+$controladorEntProducto= new ControladorEntProductos();
+$controladorsalProducto= new ControladorSalProducto();
 
 $action = htmlspecialchars($_GET['action'] ?? 'principal', ENT_QUOTES, 'UTF-8');
 
@@ -57,10 +61,14 @@ switch($action){
         $vistaPaginaS->index();
         break;
 
+
+//Redirecciones Modulo Administrativo
     case'vistaAdmin':
         $vistaAdmin->index();
         break;
 
+
+//Redirecciones Modulo Empleado
     case'vistaEmple':
         $vistaEmple->index();
         break;
@@ -77,6 +85,8 @@ switch($action){
         $controladorLogin->cerraraSesion();
         break;
 
+
+//Modulo Administrativo
 
 //Usuarios
 
@@ -109,17 +119,12 @@ switch($action){
 
 
         //Actualizar usuario
-    case'inicioActualizarU':
-        $usuarios = $controladorUsuario->listaUsuariosVista();
-        include('./views/usuarios/consultaUsuaActualizar.php');
+    case'actualizarUsuarioId':
+        $usuarios = $controladorUsuario->datosUsuaGenPorId();
+        $tipoRoles= $controladorRol->listaRoles();
+        $tipoDocum= $controladorTipoDocum->listaTiposDocum();
+        include('./views/usuarios/actualizarUsuario.php');
         break;
-
-        case'ActualizarUsuarioId':
-            $usuarios = $controladorUsuario->datosUsuaGenPorId();
-            $tipoRoles= $controladorRol->listaRoles();
-            $tipoDocum= $controladorTipoDocum->listaTiposDocum();
-            include('./views/usuarios/actualizarUsuario.php');
-            break;
 
         case'actualizarUsuario':
             $controladorUsuario->actualizarUsuario();
@@ -127,15 +132,9 @@ switch($action){
 
 
         //Eliminar usuario
-    case'inicioEliminarUsua':
-        $usuarios = $controladorUsuario->listaUsuariosVista();
-        include('./views/usuarios/consultaUsuaEliminar.php');
+    case'eliminarUsuarioId':
+        $usuarios= $controladorUsuario->eliminarUsuario();
         break;
-
-        case'eliminarUsuarioId':
-            $usuarios= $controladorUsuario->eliminarUsuario();
-            include('./views/moduloAdministrativo.php');
-            break;
 
 
 //Productos
@@ -170,11 +169,6 @@ switch($action){
 
 
         //Actualizar Producto
-    case'inicioActualizarP':
-        $productos = $controladorProducto->listaProductosVista();
-        include('./views/productos/consultaProducActualizar.php');
-        break;
-
         case'actualizarProductosCodigo':
             $productos = $controladorProducto->productoCodigo();
             $clases = $controladorClases->listaClases();
@@ -189,23 +183,9 @@ switch($action){
 
 
         //Eliminar Producto
-    case'inicioEliminarProducto':
-        $productos = $controladorProducto->listaProductosVista();
-        include('./views/productos/eliminarProducto.php');
-        break;
-
-        case'eliminarProductoCodigo':
+    case'eliminarProductoCodigo':
             $productos = $controladorProducto->eliminarProducto();
-            include('./views/moduloAdministrativo.php');
             break;
-
-
-
-        //prueba para definir definir
-    case'prueba':
-        $productos = $controladorProducto->listaProductosVista();
-        include('./views/productos/accionesProductos.php');
-        break;
 
 //registro de producto empleado
 
@@ -558,46 +538,82 @@ case'consultaProductosNombreemp';
 
         //Eliminar Cliente
     case'eliminarClienteId':
-        $controladorCliente->EliminarUsuario();
+        $controladorCliente->EliminarCliente();
         break;
 
-//Registro Clientes empleado
-    case'registroClienteemp':
+
+//Entrada de Productos
+
+        //Registro Entrada Productos
+    case'registroEntProductos':
         if($_SERVER["REQUEST_METHOD"] == "POST"){
-                $controladorCliente->registroClienteemp();
+                $controladorEntProducto->RegistroEntProducto();
             }else{
-                $tipoDocum= $controladorTipoDocum->listaTiposDocum();
-                include('./views/cliente/registroClienteemp.php');
+                include('./views/entradaProducto/registrarEntProducto.php');
             }
             break;
-        
-        
-        //Consulta Clientes empleado
-    case'consultaClienteemp';
-        $clientes = $controladorCliente->listaClientesemp();
-        include('./views/cliente/consultaClienteemp.php');
-        break;
-            
-    case'consultaClienteCedulaemp';
-        $clientes = $controladorCliente->datosClienteCedulaemp();
-        include('./views/cliente/consultaClienteemp.php');
-        break;
-        
-    case'consultaClienteNombreemp';
-        $clientes = $controladorCliente->datosClienteNombreemp();
-        include('./views/cliente/consultaClienteemp.php');
+
+
+        //Consulta Entrada Productos
+    case'consultaEntProductos';
+        $entProductos = $controladorEntProducto->consultaGenEntProductosVista();
+        include('./views/entradaProducto/consultaEntProductos.php');
         break;
 
-        //Actualizar Cliente  empleado
-    case'actualizarClienteIdEmp':
-        $clientes = $controladorCliente->datosClienteIdemp();
-        $tipoDocum= $controladorTipoDocum->listaTiposDocum();
-        include('./views/cliente/actualizarClienteemp.php');
+    case'consultaEntProductoId';
+        $entProductos = $controladorEntProducto->consultaGenEntProductosVistaId();
+        include('./views/entradaProducto/consultaEntProductos.php');
         break;
-        
-        case'actualizarClienteemp':
-            $controladorCliente->ActualizarClienteemp();
+
+    case'consultaEntProductoFecha';
+        $entProductos = $controladorEntProducto->consultaGenEntProductosVistaFecha();
+        include('./views/entradaProducto/consultaEntProductos.php');
+        break;
+
+
+        //Actualizar Entrada Productos
+    case'actualizarEntProductosId':
+        $entProductos = $controladorEntProducto->consultaGenEntProductosId();
+        include('./views/entradaProducto/actualizarEntProducto.php');
+        break;
+
+        case'actualizarEntProductos':
+            $controladorEntProducto->ActualizarEntProducto();
             break;
+
+
+        //Eliminar Cliente
+    case'eliminarEntProductoId':
+        $controladorEntProducto->EliminarEntProducto();
+        break;
+
+
+//Salida de Productos
+
+        //Registro Salida Productos
+    case'registroSalProductos':
+        if($_SERVER["REQUEST_METHOD"] == "POST"){
+                $controladorsalProducto->RegistroSalProducto();
+            }else{
+                include('./views/salidaProducto/registrarSalProducto.php');
+            }
+            break;
+
+
+        //Registro Salida Productos
+    case'registroSalProductosP':
+        if($_SERVER["REQUEST_METHOD"] == "POST"){
+            
+        }else{
+            include('./views/salidaProducto/registroSalProductos.php');
+        }
+        break;
+
+
+
+
+
+
 
     default:
     

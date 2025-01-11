@@ -71,6 +71,10 @@
                         <td class="text-white align-middle"><?= $usuario['Rol']; ?></td>
                         <td class="text-white align-middle"><?= $usuario['Usuario']; ?></td>
                         <td class="text-white align-middle"><?= $usuario['Contraseña']; ?></td>
+                        <td class="text-white align-middle">
+                        <a href="index.php?action=actualizarUsuarioId&idUsuario=<?= $usuario['idUsuario']; ?>" class="btn btn-outline-secondary text-white m-2 w-100" role="button">Actualizar</a> 
+                        <a href="index.php?action=eliminarUsuarioId&idUsuario=<?= $usuario['idUsuario']; ?>" class="btn btn-outline-secondary text-white m-2 w-100" role="button">Eliminar</a>
+                        </td>
                     </tr>
                 <?php endforeach; ?>
                 </tbody>
