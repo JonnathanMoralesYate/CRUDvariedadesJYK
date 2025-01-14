@@ -72,7 +72,7 @@
     <!--Final Barra Navegacion-->
 
 <!--Inicio Carrusel-->
-            <div class=" row col-12">
+        <div class=" row col-12">
                 <div id="carouselExampleControls" class="carousel slide mt-3" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item text-center active">
@@ -221,11 +221,11 @@
                             <span class="visually-hidden">Adelante</span>
                         </button>
                 </div>
-            </div>
+        </div>
 <!--Fin Carrusel -->
 
 <!--Inicio de Barra Categorias -->
-<div class="row container-fluid mt-5 text-center">
+    <div class="row container-fluid mt-5 text-center">
         <div class="col-3">
             <div class="text-center text-white">
                 <span class="fs-3">Categorias</span>

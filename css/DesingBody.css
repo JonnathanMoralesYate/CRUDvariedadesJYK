@@ -1,3 +1,8 @@
 body{
     background-color:  #0a1527  ; 
 }
+
+/*.scrollable-categories {
+    max-height: 600px; /* Ajusta la altura según lo necesites 
+    overflow-y: auto;  /* Esto habilita el scroll vertical 
+}*/

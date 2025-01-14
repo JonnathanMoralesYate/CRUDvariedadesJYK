@@ -27,6 +27,7 @@ class ControladorProducto{
             $idPresentacion= $_POST['tiposPresenta'];
             $idUndBase= $_POST['tiposUnd'];
             $contNeto= $_POST['contNeto'];
+            $idFormatoVent= $_POST['formatovent'];
             $precioVenta= $_POST['precioVenta'];
 
             $foto= $_FILES['fotoProduc']['name'];
@@ -34,7 +35,7 @@ class ControladorProducto{
             $target_file= $target_dir.basename($foto);
             move_uploaded_file($_FILES['fotoProduc']['tmp_name'], $target_file);
             
-            $this->modeloProducto->registroProducto($codigoProducto, $idClase, $nombre, $marca, $descripcion, $idPresentacion, $idUndBase, $contNeto, $precioVenta, $foto);
+            $this->modeloProducto->registroProducto($codigoProducto, $idClase, $nombre, $marca, $descripcion, $idPresentacion, $idUndBase, $contNeto, $idFormatoVent, $precioVenta, $foto);
             
             echo "
                         <script>
@@ -89,6 +90,7 @@ class ControladorProducto{
             $idPresentacion= $_POST['tiposPresenta'];
             $idUndBase= $_POST['tiposUnd'];
             $contNeto= $_POST['contNeto'];
+            $idFormatoVent= $_POST['formatovent'];
             $precioVenta= $_POST['precioVenta'];
 
             $foto= $_FILES['fotoProduc']['name'] ? $_FILES['fotoProduc']['name'] : null;
@@ -103,7 +105,7 @@ class ControladorProducto{
 
             $idProducto= $_POST['idProducto'];
             
-            $this->modeloProducto->actualizarProducto($codigoProducto, $idClase, $nombre, $marca, $descripcion, $idPresentacion, $idUndBase, $contNeto, $precioVenta, $foto, $idProducto);
+            $this->modeloProducto->actualizarProducto($codigoProducto, $idClase, $nombre, $marca, $descripcion, $idPresentacion, $idUndBase, $idFormatoVent, $contNeto, $precioVenta, $foto, $idProducto);
             
             echo "
                         <script>
@@ -133,7 +135,7 @@ class ControladorProducto{
     }
 
       //Registro de producto empleado
-      public function registroProductosemp() {
+    public function registroProductosemp() {
 
         if($_SERVER["REQUEST_METHOD"] == "POST") {
             $codigoProducto= $_POST['codProduc'];
@@ -144,6 +146,7 @@ class ControladorProducto{
             $idPresentacion= $_POST['tiposPresenta'];
             $idUndBase= $_POST['tiposUnd'];
             $contNeto= $_POST['contNeto'];
+            $idFormatoVent= $_POST['formatovent'];
             $precioVenta= $_POST['precioVenta'];
 
             $foto= $_FILES['fotoProduc']['name'];
@@ -151,12 +154,12 @@ class ControladorProducto{
             $target_file= $target_dir.basename($foto);
             move_uploaded_file($_FILES['fotoProduc']['tmp_name'], $target_file);
             
-            $this->modeloProducto->registroProducto($codigoProducto, $idClase, $nombre, $marca, $descripcion, $idPresentacion, $idUndBase, $contNeto, $precioVenta, $foto);
+            $this->modeloProducto->registroProducto($codigoProducto, $idClase, $nombre, $marca, $descripcion, $idPresentacion, $idUndBase, $contNeto, $idFormatoVent, $precioVenta, $foto);
             
             echo "
                         <script>
                             alert('Registro del Producto Exitoso!');
-                            window.location.href='http://localhost/variedadesjyk/index.php?action=registroProductoemp';
+                            window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=registroProductoemp';
                         </script>
                         ";
 

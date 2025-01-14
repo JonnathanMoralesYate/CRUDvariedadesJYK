@@ -5,7 +5,7 @@ require_once('./controllers/controladorPaginaN.php');
 require_once('./controllers/controladorPaginaS.php');
 require_once('./controllers/controladorPaginaAdmin.php');
 require_once('./controllers/controladorPaginaEmple.php');
-
+require_once('./controllers/controladorCategorias.php');
 
 require_once('./controllers/controladorLogin.php');
 require_once('./controllers/controladorUsuario.php');
@@ -26,6 +26,7 @@ $vistaPaginaN = new ControladorPaginaN();
 $vistaPaginaS = new ControladorPaginaS();
 $vistaAdmin = new ControladorPaginaAdmin();
 $vistaEmple = new ControladorPaginaEmple();
+$vistaProducto = new ControladorCategorias();
 
 
 $controladorLogin= new ControladorLogin();
@@ -59,6 +60,10 @@ switch($action){
 
     case'paginaS':
         $vistaPaginaS->index();
+        break;
+
+    case'paginaP2':
+        $vistaProducto->index();
         break;
 
 
@@ -140,13 +145,14 @@ switch($action){
 //Productos
 
         //Registro Producto
-    case'registroProducto':
+    case'registroProductos':
         if($_SERVER["REQUEST_METHOD"] == "POST"){
                 $controladorProducto->registroProductos();
             }else{
                 $clases = $controladorClases->listaClases();
                 $presentaciones = $controladorPresentacion->listaPresentacion();
                 $undBases = $controladorUndBase->listaUndBase();
+                $formatoVents = $controladorFormatoVenta->listaFormatoVenta();
                 include('./views/productos/registroProducto.php');
             }
             break;
@@ -174,6 +180,7 @@ switch($action){
             $clases = $controladorClases->listaClases();
             $presentaciones = $controladorPresentacion->listaPresentacion();
             $undBases = $controladorUndBase->listaUndBase();
+            $formatoVents = $controladorFormatoVenta->listaFormatoVenta();
             include('./views/productos/actualizarProducto.php');
             break;
 
@@ -189,16 +196,17 @@ switch($action){
 
 //registro de producto empleado
 
-        case'registroProductoemp':
-            if($_SERVER["REQUEST_METHOD"] == "POST"){
-                    $controladorProducto->registroProductosemp();
-                }else{
-                    $clases = $controladorClases->listaClases();
-                    $presentaciones = $controladorPresentacion->listaPresentacion();
-                    $undBases = $controladorUndBase->listaUndBase();
-                    include('./views/productos/registroProductoemp.php');
-                }
-                break;
+    case'registroProductoemp':
+        if($_SERVER["REQUEST_METHOD"] == "POST"){
+                $controladorProducto->registroProductosemp();
+            }else{
+                $clases = $controladorClases->listaClases();
+                $presentaciones = $controladorPresentacion->listaPresentacion();
+                $undBases = $controladorUndBase->listaUndBase();
+                $formatoVents = $controladorFormatoVenta->listaFormatoVenta();
+                include('./views/productos/registroProductoemp.php');
+            }
+            break;
 
         //Consulta Producto empleado
     case'consultaProductosemp';
@@ -207,12 +215,12 @@ switch($action){
     break;
 
 
-case'consultaProductosCodigoemp';
+    case'consultaProductosCodigoemp';
     $productos = $controladorProducto->productoVistaCodigoemp();
     include('./views/productos/consultaProductoemp.php');
     break;
 
-case'consultaProductosNombreemp';
+    case'consultaProductosNombreemp';
     $productos = $controladorProducto->productoVistaNombreemp();
     include('./views/productos/consultaProductoemp.php');
     break;
@@ -451,7 +459,7 @@ case'consultaProductosNombreemp';
         $controladorProveedor->EliminarProveedor();
         break;
 
-    
+
         //Registro Proveedor empleado
     case'registroProveedorEmp':
         if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -542,6 +550,45 @@ case'consultaProductosNombreemp';
         break;
 
 
+//Registro Clientes empleado
+    case'registroClienteemp':
+        if($_SERVER["REQUEST_METHOD"] == "POST"){
+                $controladorCliente->registroClienteemp();
+            }else{
+                $tipoDocum= $controladorTipoDocum->listaTiposDocum();
+                include('./views/cliente/registroClienteemp.php');
+            }
+            break;
+        
+        
+        //Consulta Clientes empleado
+    case'consultaClienteemp';
+        $clientes = $controladorCliente->listaClientesemp();
+        include('./views/cliente/consultaClienteemp.php');
+        break;
+            
+    case'consultaClienteCedulaemp';
+        $clientes = $controladorCliente->datosClienteCedulaemp();
+        include('./views/cliente/consultaClienteemp.php');
+        break;
+        
+    case'consultaClienteNombreemp';
+        $clientes = $controladorCliente->datosClienteNombreemp();
+        include('./views/cliente/consultaClienteemp.php');
+        break;
+
+        //Actualizar Cliente  empleado
+    case'actualizarClienteIdEmp':
+        $clientes = $controladorCliente->datosClienteIdemp();
+        $tipoDocum= $controladorTipoDocum->listaTiposDocum();
+        include('./views/cliente/actualizarClienteemp.php');
+        break;
+        
+        case'actualizarClienteemp':
+            $controladorCliente->ActualizarClienteemp();
+            break;
+
+
 //Entrada de Productos
 
         //Registro Entrada Productos
@@ -612,6 +659,21 @@ case'consultaProductosNombreemp';
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
 
 
 

@@ -114,7 +114,7 @@ class ControladorProveedor{
     }
 
  //Registro de producto empleado
-     public function RegistroProveedorEmp() {
+    public function RegistroProveedorEmp() {
 
         if($_SERVER["REQUEST_METHOD"] == "POST") {
             $nitProve= $_POST['nitProveedor'];
@@ -129,7 +129,7 @@ class ControladorProveedor{
             echo "
                         <script>
                             alert('Registro del Proveedor Exitoso!');
-                            window.location.href='http://localhost/variedadesjyk/index.php?action=registroProveedoremp';
+                            window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=registroProveedoremp';
                         </script>
                         ";
 
@@ -183,7 +183,7 @@ class ControladorProveedor{
             echo "
                         <script>
                             alert('Actualizacion del Proveedor Exitoso!');
-                            window.location.href='http://localhost/variedadesjyk/index.php?action=consultaProveedorEmp';
+                            window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaProveedorEmp';
                         </script>
                         ";
 

@@ -10,10 +10,10 @@ class ModeloProducto{
 
 
 //Registar producto
-    public function registroProducto($codigoProducto, $idClase, $nombre, $marca, $descripcion, $idPresentacion, $idUndBase, $contNeto, $precioVenta, $foto) {
-        $query= "INSERT INTO ".$this->table." (CodProducto, idClase, Nombre, Marca, Descripcion, idPresentacion, idUndBase, ContNeto, PrecioVenta, Foto) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    public function registroProducto($codigoProducto, $idClase, $nombre, $marca, $descripcion, $idPresentacion, $idUndBase, $contNeto, $idFormatoVent, $precioVenta, $foto) {
+        $query= "INSERT INTO ".$this->table." (CodProducto, idClase, Nombre, Marca, Descripcion, idPresentacion, idUndBase, ContNeto, idFormatoVenta, PrecioVenta, Foto) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt= $this->conn->prepare($query);
-        $stmt->execute([$codigoProducto, $idClase, $nombre, $marca, $descripcion, $idPresentacion, $idUndBase, $contNeto, $precioVenta, $foto]);
+        $stmt->execute([$codigoProducto, $idClase, $nombre, $marca, $descripcion, $idPresentacion, $idUndBase, $contNeto, $idFormatoVent, $precioVenta, $foto]);
     }
 
 
@@ -36,7 +36,7 @@ class ModeloProducto{
 
     //Consulta general productos de clase
     public function darProductosPorClase($idClase) {
-        $query= "SELECT * FROM ".$this->table." WHERE idClase=?";
+        $query= "SELECT * FROM ".$this->table." WHERE idClase=? LIMIT 9";
         $stmt= $this->conn->prepare($query);
         $stmt->execute([$idClase]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -68,10 +68,10 @@ class ModeloProducto{
     }
 
 //Actualizar producto
-    public function actualizarProducto($codigoProducto, $idClase, $nombre, $marca, $descripcion, $idPresentacion, $idUndBase, $contNeto, $precioVenta, $foto, $idProducto) {
-        $query= "UPDATE ".$this->table." SET CodProducto=?, idClase=?, Nombre=?, Marca=?, Descripcion=?, idPresentacion=?, idUndBase=?, ContNeto=?, PrecioVenta=?, Foto=? WHERE idProducto=?";
+    public function actualizarProducto($codigoProducto, $idClase, $nombre, $marca, $descripcion, $idPresentacion, $idUndBase, $contNeto, $idFormatoVent, $precioVenta, $foto, $idProducto) {
+        $query= "UPDATE ".$this->table." SET CodProducto=?, idClase=?, Nombre=?, Marca=?, Descripcion=?, idPresentacion=?, idUndBase=?, ContNeto=?, idFormatoVenta=?, PrecioVenta=?, Foto=? WHERE idProducto=?";
         $stmt= $this->conn->prepare($query);
-        $stmt->execute([$codigoProducto, $idClase, $nombre, $marca, $descripcion, $idPresentacion, $idUndBase, $contNeto, $precioVenta, $foto, $idProducto]);
+        $stmt->execute([$codigoProducto, $idClase, $nombre, $marca, $descripcion, $idPresentacion, $idUndBase, $contNeto, $idFormatoVent, $precioVenta, $foto, $idProducto]);
     }
 
 //Eliminar producto

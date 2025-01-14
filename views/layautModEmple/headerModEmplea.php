@@ -57,7 +57,7 @@ if ($_SESSION['rol'] == 1) {
                         </nav>
                     </button>
                         <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-                                <a class="navbar-brand text-white">Inicio</a>
+                                <a class="navbar-brand text-white" href="http://localhost/CRUDvariedadesJYK/index.php?action=vistaEmple">Inicio</a>
                                 <ul class="nav nav-pills">
 <!--Menu Productos-->
                                     <li class="nav-item dropdown active">

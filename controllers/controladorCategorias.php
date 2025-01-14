@@ -4,7 +4,7 @@ require_once('./models/modeloClases.php');
 require_once('./models/modeloProducto.php');
 require_once('./config/conexionBDJYK.php');
 
-class ControladorPaginaP {
+class ControladorCategorias {
 
     private $db;
     private $modeloClase;
@@ -24,12 +24,19 @@ class ControladorPaginaP {
 
         $idClase = htmlspecialchars($_GET['clase'] ?? '0', ENT_QUOTES, 'UTF-8');
 
+        //var_dump($idClase);
+
         $clases = $this->modeloClase->consultGenClases();
         $productos= $this->modeloProducto->darProductosPorClase($idClase);
 
-        include ('./views/paginasWeb/paginaPrincipal.php');
+        //var_dump($productos);
+
+        include ('./views/paginasWeb/productos.php');
 
     }
-}
 
-?>
+
+
+
+
+}
