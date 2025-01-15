@@ -26,7 +26,7 @@ class ModeloEntProducto{
     }
 
 
-    //Consulta para verificar cantidad entrada al actualizar tabla Entrada Productos
+//Consulta para verificar cantidad entrada al actualizar tabla Entrada Productos
     public function consultaCantidadEntProductos($idEntProducto) {
         $query = "SELECT idProducto, CantEnt FROM ".$this->table." WHERE idEntProducto=?";
         $stmt= $this->conn->prepare($query);
@@ -43,7 +43,7 @@ class ModeloEntProducto{
     }
 
 
-    //Consulta por Id tabla Entrada Productos INNER JOIN
+//Consulta por Id tabla Entrada Productos INNER JOIN
     public function consultaGenEntProductosVistaId($idEntProducto) {
         $query = "SELECT idEntProducto, FechaEnt, proveedores.NombreProveedor, productos.CodProducto, productos.Nombre, productos.Marca, productos.Descripcion, CONCAT(presentacion_producto.Presentacion,' ', productos.ContNeto,' ', unidad_base.UndBase) AS 'Contenido Neto', FechaVencimiento, PrecioCompra, CantEnt FROM ".$this->table." INNER JOIN productos ON entrada_productos.idProducto=productos.idProducto INNER JOIN proveedores ON entrada_productos.idProveedor=proveedores.idProveedor INNER JOIN presentacion_producto ON productos.idPresentacion=presentacion_producto.idPresentacion INNER JOIN unidad_base ON productos.idUndBase=unidad_base.idUndBase WHERE idEntProducto=?";
         $stmt= $this->conn->prepare($query);
@@ -52,7 +52,7 @@ class ModeloEntProducto{
     }
 
 
-    //Consulta por Id tabla Entrada Productos INNER JOIN
+//Consulta por Id tabla Entrada Productos INNER JOIN
     public function consultaGenEntProductosVistaFecha($fecha) {
         $query = "SELECT idEntProducto, FechaEnt, proveedores.NombreProveedor, productos.CodProducto, productos.Nombre, productos.Marca, productos.Descripcion, CONCAT(presentacion_producto.Presentacion,' ', productos.ContNeto,' ', unidad_base.UndBase) AS 'Contenido Neto', FechaVencimiento, PrecioCompra, CantEnt FROM ".$this->table." INNER JOIN productos ON entrada_productos.idProducto=productos.idProducto INNER JOIN proveedores ON entrada_productos.idProveedor=proveedores.idProveedor INNER JOIN presentacion_producto ON productos.idPresentacion=presentacion_producto.idPresentacion INNER JOIN unidad_base ON productos.idUndBase=unidad_base.idUndBase WHERE DATE(FechaEnt) LIKE ?";
         $stmt= $this->conn->prepare($query);
@@ -61,7 +61,7 @@ class ModeloEntProducto{
     }
 
 
-    //Actualizar Entrada Productos
+//Actualizar Entrada Productos
     public function actualizarEntProducto($idProducto, $idProveedor, $fechaEnt, $fechaVencim, $precioCompra, $cantidadEnt, $idEntProducto) {
         $query = "UPDATE ".$this->table." SET idProducto=?, idProveedor=?, FechaEnt=?, FechaVencimiento=?, PrecioCompra=?, CantEnt=? WHERE idEntProducto=?";
         $stmt = $this->conn->prepare($query);
@@ -69,7 +69,7 @@ class ModeloEntProducto{
     }
 
 
-    //Eliminar Registro de tabla Entrada Productos
+//Eliminar Registro de tabla Entrada Productos
     public function eliminarEntProductos($idEntProducto) {
         $query = "DELETE FROM ".$this->table." WHERE idEntProducto=?";
         $stmt= $this->conn->prepare($query);

@@ -64,7 +64,8 @@ class ControladorEntProductos{
                 //el producto ya existe
                 $cantidadAct= $cantidadEnt + $estadoInventario['CantActual'];
                 $this->modeloInventario->actualizarStock($cantidadAct, $idProducto);
-
+                 //Regista la Entrada del Producto
+                $this->modeloEntProducto->registroEntProducto($idProducto, $idProveedor, $fechaEnt, $fechaVencim, $precioCompra, $cantidadEnt);
                 echo "
                     <script>
                         alert('Registro Exitoso!');
@@ -77,7 +78,8 @@ class ControladorEntProductos{
                 //el Producto no existe
 
                 $this->modeloInventario->registroInventario($idProducto, $cantidadEnt);
-
+                 //Regista la Entrada del Producto
+                $this->modeloEntProducto->registroEntProducto($idProducto, $idProveedor, $fechaEnt, $fechaVencim, $precioCompra, $cantidadEnt);
                 echo "
                 <script>
                     alert('Registro Exitoso!');
@@ -88,8 +90,6 @@ class ControladorEntProductos{
                 exit;
 
             }
-                //Regista la Entrada del Producto
-            $this->modeloEntProducto->registroEntProducto($idProducto, $idProveedor, $fechaEnt, $fechaVencim, $precioCompra, $cantidadEnt);
 
             }
 

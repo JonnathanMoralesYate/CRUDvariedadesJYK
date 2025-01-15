@@ -657,6 +657,37 @@ switch($action){
         break;
 
 
+        //Consulta Salida Productos
+    case'consultaSalProductos';
+        $salProductos = $controladorsalProducto->consultaGenSalProductosVista();
+        include('./views/salidaProducto/consultaSalProducto.php');
+        break;
+
+    case'consultaSalProductoId';
+        $salProductos = $controladorsalProducto->consultaGenSalProductosVistaId();
+        include('./views/salidaProducto/consultaSalProducto.php');
+        break;
+
+    case'consultaSalProductoFecha';
+        $salProductos = $controladorsalProducto->consultaGenSalProductosVistaFecha();
+        include('./views/salidaProducto/consultaSalProducto.php');
+        break;
+
+
+        //Actualizar Salida Productos
+    case'actualizarSalProductosId':
+        $salProductos = $controladorsalProducto->consultaGenSalProductosId();
+        include('./views/salidaProducto/actualizarSalProducto.php');
+        break;
+
+        case'actualizarSalProductos':
+            $controladorsalProducto->ActualizarSalProductos();
+            break;
+
+            //Eliminar Salida Producto
+    case'eliminarSalProductoId':
+        $controladorsalProducto->EliminarSalProducto();
+        break;
 
 
 
@@ -669,11 +700,6 @@ switch($action){
 
 
 
-
-
-
-
-        
 
 
 

@@ -110,8 +110,8 @@ if ($_SESSION['rol'] == 2) {
                                                     </form>
                                                 </li>
                                                 <li>
-                                                    <form action="index.php?action=" method="GET">
-                                                        <button class="dropdown-item" type="submit" name="action" value="" class="btn btn-light">Consultar Salida</button>
+                                                    <form action="index.php?action=consultaSalProductos" method="GET">
+                                                        <button class="dropdown-item" type="submit" name="action" value="consultaSalProductos" class="btn btn-light">Consultar Salida</button>
                                                     </form>
                                                 </li>                                    
                                             </ul>
