@@ -20,6 +20,7 @@ require_once('./controllers/controladorProveedor.php');
 require_once('./controllers/controladorCliente.php');
 require_once('./controllers/controladorEntProducto.php');
 require_once('./controllers/controladorSalProducto.php');
+require_once('./controllers/controladorInventario.php');
 
 $vistaPaginaP = new ControladorPaginaP();
 $vistaPaginaN = new ControladorPaginaN();
@@ -42,6 +43,7 @@ $controladorProveedor= new ControladorProveedor();
 $controladorCliente= new ControladorCliente();
 $controladorEntProducto= new ControladorEntProductos();
 $controladorsalProducto= new ControladorSalProducto();
+$controladorInventario= new ControladorInventario();
 
 $action = htmlspecialchars($_GET['action'] ?? 'principal', ENT_QUOTES, 'UTF-8');
 
@@ -690,10 +692,36 @@ switch($action){
         break;
 
 
+//Reportes
+
+        //Inventario
+    case'reporteInventario':
+        $inventarios= $controladorInventario->inventarioActual();
+        include('./views/inventario/inventarioActual.php');
+        break;
 
 
+        //Entrada de Productos
+    case'reporteEntProducto':
+        include('./views/entradaProducto/generarInforEntProductos.php');
+        break;
+
+        case'reporteEntProductoFecha';
+            $entProductos = $controladorEntProducto->ReporteEntProductos();
+            include('./views/entradaProducto/reporteEntProductos.php');
+            break;
 
 
+        //Salida de Productos
+    case'reporteSalProducto':
+        include('./views/salidaProducto/generarInfSalProducto.php');
+        break;
+    
+        case'reporteSalProductoFecha';
+        $salProductos = $controladorsalProducto->ReporteSalProductos();
+            include('./views/salidaProducto/reporteSalProducto.php');
+            break;
+    
 
 
 

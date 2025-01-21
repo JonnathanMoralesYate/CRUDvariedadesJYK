@@ -153,18 +153,18 @@ if ($_SESSION['rol'] == 2) {
                                         <a class="nav-link dropdown-toggle text-white" data-bs-toggle="dropdown" role="button" aria-expanded="false">Reportes</a>
                                             <ul class="dropdown-menu">
                                                 <li>
-                                                    <form action="index.php?action=paginaP" method="GET">
-                                                        <button class="dropdown-item" type="submit" name="action" value="paginaP" class="btn btn-light">Entradas Productos</button>
+                                                    <form action="index.php?action=reporteEntProducto" method="GET">
+                                                        <button class="dropdown-item" type="submit" name="action" value="reporteEntProducto" class="btn btn-light">Entradas Productos</button>
                                                     </form>
                                                 </li>
                                                 <li>
-                                                    <form action="index.php?action=" method="GET">
-                                                        <button class="dropdown-item" type="submit" name="action" value="" class="btn btn-light fs-6">Salidas Productos</button>
+                                                    <form action="index.php?action=reporteSalProducto" method="GET">
+                                                        <button class="dropdown-item" type="submit" name="action" value="reporteSalProducto" class="btn btn-light fs-6">Salidas Productos</button>
                                                     </form>
                                                 </li>
                                                 <li>
-                                                    <form action="index.php?action=" method="GET">
-                                                        <button class="dropdown-item" type="submit" name="action" value="" class="btn btn-light">Inventario</button>
+                                                    <form action="index.php?action=reporteInventario" method="GET">
+                                                        <button class="dropdown-item" type="submit" name="action" value="reporteInventario" class="btn btn-light">Inventario</button>
                                                     </form>
                                                 </li>
                                                 <li>

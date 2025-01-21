@@ -35,6 +35,12 @@ class ModeloInventario{
     }
 
 
+//Vista reporte actualizado de inventario
+    public function inventarioActualizado() {
+        $query= "SELECT idInventario, productos.CodProducto, productos.Nombre, productos.Marca, productos.Descripcion, CONCAT(presentacion_producto.Presentacion,' ', productos.ContNeto,' ', unidad_base.UndBase) AS 'Contenido Neto', formato_venta.FormatoVenta, CantActual, productos.Foto FROM ".$this->table." INNER JOIN productos ON inventario.idProducto=productos.idProducto INNER JOIN presentacion_producto ON productos.idPresentacion=presentacion_producto.idPresentacion INNER JOIN unidad_base ON productos.idUndBase=unidad_base.idUndBase INNER JOIN formato_venta ON productos.idFormatoVenta=formato_venta.idFormatoVenta";
+        $stmt= $this->conn->query($query);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 
 
 }

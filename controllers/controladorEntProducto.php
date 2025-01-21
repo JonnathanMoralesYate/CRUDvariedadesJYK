@@ -252,6 +252,13 @@ class ControladorEntProductos{
     }
 
 
+    //Generar reporte de entrada de productos
+    public function ReporteEntProductos() {       
+        $fechaInc= $_GET['fechaInc'] ?? '';
+        $fechaFin= $_GET['fechaFin'] ?? '';
+        return $this->modeloEntProducto->reporteEntProductos($fechaInc, $fechaFin);
+        }
+
 
 }
 

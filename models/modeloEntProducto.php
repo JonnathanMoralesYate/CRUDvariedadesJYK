@@ -76,6 +76,17 @@ class ModeloEntProducto{
         $stmt->execute([$idEntProducto]);
     }
 
+
+//Consulta para generar informe de entrada de productos
+    public function reporteEntProductos($fechaInc, $fechaFin) {
+        $query = "SELECT idEntProducto, FechaEnt, proveedores.NombreProveedor, productos.CodProducto, productos.Nombre, productos.Marca, productos.Descripcion, CONCAT(presentacion_producto.Presentacion,' ', productos.ContNeto,' ', unidad_base.UndBase) AS 'Contenido Neto', FechaVencimiento, PrecioCompra, CantEnt FROM ".$this->table." INNER JOIN productos ON entrada_productos.idProducto=productos.idProducto INNER JOIN proveedores ON entrada_productos.idProveedor=proveedores.idProveedor INNER JOIN presentacion_producto ON productos.idPresentacion=presentacion_producto.idPresentacion INNER JOIN unidad_base ON productos.idUndBase=unidad_base.idUndBase WHERE FechaEnt BETWEEN ? AND ?";
+        $stmt= $this->conn->prepare($query);
+        $stmt->execute([$fechaInc, $fechaFin]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
+
+
+
 }
 
 ?>

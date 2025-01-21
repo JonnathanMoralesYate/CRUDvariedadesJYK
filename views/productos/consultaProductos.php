@@ -53,8 +53,9 @@
                         <th>Marca</th>
                         <th>Descripcion</th>
                         <th>Presentacion</th>
-                        <th>Unidad Base</th>
                         <th>Contenido Neto</th>
+                        <th>Unidad Base</th>
+                        <th>Formato Venta</th>
                         <th>Precio Venta</th>
                         <th>Foto</th>
                         <th>Acciones</th>
@@ -72,6 +73,7 @@
                         <td class="text-white align-middle"><?= $producto['Presentacion']; ?></td>
                         <td class="text-white align-middle"><?= $producto['ContNeto']; ?></td>
                         <td class="text-white align-middle"><?= $producto['UndBase']; ?></td>
+                        <td class="text-white align-middle"><?= $producto['FormatoVenta']; ?></td>
                         <td class="text-white align-middle"><?= $producto['PrecioVenta']; ?></td>
                         <td><img src="photo/<?= $producto['Foto']; ?>" width="100" alt="foto"></td>
                         <td>                        
