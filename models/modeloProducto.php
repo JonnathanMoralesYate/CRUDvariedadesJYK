@@ -36,7 +36,7 @@ class ModeloProducto{
 
     //Consulta general productos de clase
     public function darProductosPorClase($idClase) {
-        $query= "SELECT * FROM ".$this->table." WHERE idClase=? LIMIT 9";
+        $query= "SELECT * FROM ".$this->table." WHERE idClase=? LIMIT 10";
         $stmt= $this->conn->prepare($query);
         $stmt->execute([$idClase]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);

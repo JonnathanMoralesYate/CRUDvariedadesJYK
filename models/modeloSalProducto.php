@@ -11,16 +11,25 @@ class ModeloSalProducto{
 
 
 //Registrar Salida Productos
-    public function registroSalProducto($idProducto, $idCliente, $fechaSal, $cantSal, $precioVenta) {
-        $query = "INSERT INTO ".$this->table." (idProducto, idCliente, FechaSalida, CantSalida, PrecioVenta ) VALUES(?, ?, ?, ?, ?)";
+    public function registroSalProducto($idProducto, $idCliente, $fechaSal, $cantSal, $precioVenta, $idModoPago) {
+        $query = "INSERT INTO ".$this->table." (idProducto, idCliente, FechaSalida, CantSalida, PrecioVenta, idModoPago ) VALUES(?, ?, ?, ?, ?, ?)";
         $stmt = $this->conn->prepare($query);
-        $stmt->execute([$idProducto, $idCliente, $fechaSal, $cantSal, $precioVenta]);
+        $stmt->execute([$idProducto, $idCliente, $fechaSal, $cantSal, $precioVenta, $idModoPago]);
     }
 
 
 //Consulta para actualizar tabla salida Productos
     public function consultaSalProductoId($idSalProducto) {
-        $query = "SELECT idSalProducto, productos.CodProducto, clientes.NumIdentificacion, FechaSalida, CantSalida, salida_productos.PrecioVenta FROM ".$this->table." INNER JOIN productos ON salida_productos.idProducto=productos.idProducto INNER JOIN clientes ON salida_productos.idCliente=clientes.idCliente WHERE idSalProducto=?";
+        $query = "SELECT idSalProducto, productos.CodProducto, clientes.NumIdentificacion, FechaSalida, CantSalida, salida_productos.PrecioVenta, modo_pago.ModoPago FROM ".$this->table." INNER JOIN productos ON salida_productos.idProducto=productos.idProducto INNER JOIN clientes ON salida_productos.idCliente=clientes.idCliente INNER JOIN modo_pago ON salida_productos.idModoPago=modo_pago.idModoPago WHERE idSalProducto=?";
+        $stmt= $this->conn->prepare($query);
+        $stmt->execute([$idSalProducto]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+
+    //Consulta para actualizar tabla salida Productos
+    public function consultaSalProductoIdP($idSalProducto) {
+        $query = "SELECT idSalProducto, productos.CodProducto, clientes.NumIdentificacion, FechaSalida, CantSalida, salida_productos.PrecioVenta, idModoPago FROM ".$this->table." INNER JOIN productos ON salida_productos.idProducto=productos.idProducto INNER JOIN clientes ON salida_productos.idCliente=clientes.idCliente WHERE idSalProducto=?";
         $stmt= $this->conn->prepare($query);
         $stmt->execute([$idSalProducto]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -38,7 +47,7 @@ class ModeloSalProducto{
 
 //Consulta general tabla Salida Productos INNER JOIN
     public function consultaGenSalProductosVista() {
-        $query = "SELECT idSalProducto, FechaSalida, clientes.NumIdentificacion, productos.CodProducto, productos.Nombre, productos.Marca, productos.Descripcion, CONCAT(presentacion_producto.Presentacion,' ', productos.ContNeto,' ', unidad_base.UndBase) AS 'Contenido Neto', salida_productos.PrecioVenta, CantSalida FROM ".$this->table." INNER JOIN productos ON salida_productos.idProducto=productos.idProducto INNER JOIN clientes ON salida_productos.idCliente=clientes.idCliente INNER JOIN presentacion_producto ON productos.idPresentacion=presentacion_producto.idPresentacion INNER JOIN unidad_base ON productos.idUndBase=unidad_base.idUndBase";
+        $query = "SELECT idSalProducto, FechaSalida, clientes.NumIdentificacion, productos.CodProducto, productos.Nombre, productos.Marca, productos.Descripcion, CONCAT(presentacion_producto.Presentacion,' ', productos.ContNeto,' ', unidad_base.UndBase) AS 'Contenido Neto', salida_productos.PrecioVenta, CantSalida, modo_pago.ModoPago FROM ".$this->table." INNER JOIN productos ON salida_productos.idProducto=productos.idProducto INNER JOIN clientes ON salida_productos.idCliente=clientes.idCliente INNER JOIN presentacion_producto ON productos.idPresentacion=presentacion_producto.idPresentacion INNER JOIN unidad_base ON productos.idUndBase=unidad_base.idUndBase INNER JOIN modo_pago ON salida_productos.idModoPago=modo_pago.idModoPago";
         $stmt= $this->conn->query($query);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -63,10 +72,10 @@ class ModeloSalProducto{
 
 
 //Actualizar Entrada Productos
-    public function actualizarSalProducto($idProducto, $idCliente, $fechaSal, $cantSal, $precioVenta, $idSalProducto) {
-        $query = "UPDATE ".$this->table." SET idProducto=?, idCliente=?, FechaSalida=?, CantSalida=?, PrecioVenta=? WHERE idSalProducto=?";
+    public function actualizarSalProducto($idProducto, $idCliente, $fechaSal, $cantSal, $precioVenta, $idModoPago, $idSalProducto) {
+        $query = "UPDATE ".$this->table." SET idProducto=?, idCliente=?, FechaSalida=?, CantSalida=?, PrecioVenta=?, idModoPago=? WHERE idSalProducto=?";
         $stmt = $this->conn->prepare($query);
-        $stmt->execute([$idProducto, $idCliente, $fechaSal, $cantSal, $precioVenta, $idSalProducto]);
+        $stmt->execute([$idProducto, $idCliente, $fechaSal, $cantSal, $precioVenta, $idModoPago, $idSalProducto]);
     }
 
 

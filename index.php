@@ -5,7 +5,6 @@ require_once('./controllers/controladorPaginaN.php');
 require_once('./controllers/controladorPaginaS.php');
 require_once('./controllers/controladorPaginaAdmin.php');
 require_once('./controllers/controladorPaginaEmple.php');
-require_once('./controllers/controladorCategorias.php');
 
 require_once('./controllers/controladorLogin.php');
 require_once('./controllers/controladorUsuario.php');
@@ -21,13 +20,13 @@ require_once('./controllers/controladorCliente.php');
 require_once('./controllers/controladorEntProducto.php');
 require_once('./controllers/controladorSalProducto.php');
 require_once('./controllers/controladorInventario.php');
+require_once('./controllers/controladorModoPago.php');
 
 $vistaPaginaP = new ControladorPaginaP();
 $vistaPaginaN = new ControladorPaginaN();
 $vistaPaginaS = new ControladorPaginaS();
 $vistaAdmin = new ControladorPaginaAdmin();
 $vistaEmple = new ControladorPaginaEmple();
-$vistaProducto = new ControladorCategorias();
 
 
 $controladorLogin= new ControladorLogin();
@@ -42,8 +41,9 @@ $controladorFormatoVenta= new ControladorFormatoVenta();
 $controladorProveedor= new ControladorProveedor();
 $controladorCliente= new ControladorCliente();
 $controladorEntProducto= new ControladorEntProductos();
-$controladorsalProducto= new ControladorSalProducto();
+$controladorSalProducto= new ControladorSalProducto();
 $controladorInventario= new ControladorInventario();
+$controladorModoPago= new ControladorModoPago();
 
 $action = htmlspecialchars($_GET['action'] ?? 'principal', ENT_QUOTES, 'UTF-8');
 
@@ -53,8 +53,8 @@ switch($action){
 
 //Opciones barra navegacion pagina Principal
     case'paginaP':
-    $vistaPaginaP->index();
-    break;
+        $vistaPaginaP->index();
+        break;
 
     case'paginaN':
         $vistaPaginaN->index();
@@ -62,10 +62,6 @@ switch($action){
 
     case'paginaS':
         $vistaPaginaS->index();
-        break;
-
-    case'paginaP2':
-        $vistaProducto->index();
         break;
 
 
@@ -642,8 +638,9 @@ switch($action){
         //Registro Salida Productos
     case'registroSalProductos':
         if($_SERVER["REQUEST_METHOD"] == "POST"){
-                $controladorsalProducto->RegistroSalProducto();
+                $controladorSalProducto->RegistroSalProducto();
             }else{
+                $formaPagos = $controladorModoPago->listaModoPago();
                 include('./views/salidaProducto/registrarSalProducto.php');
             }
             break;
@@ -661,34 +658,35 @@ switch($action){
 
         //Consulta Salida Productos
     case'consultaSalProductos';
-        $salProductos = $controladorsalProducto->consultaGenSalProductosVista();
+        $salProductos = $controladorSalProducto->consultaGenSalProductosVista();
         include('./views/salidaProducto/consultaSalProducto.php');
         break;
 
     case'consultaSalProductoId';
-        $salProductos = $controladorsalProducto->consultaGenSalProductosVistaId();
+        $salProductos = $controladorSalProducto->consultaGenSalProductosVistaId();
         include('./views/salidaProducto/consultaSalProducto.php');
         break;
 
     case'consultaSalProductoFecha';
-        $salProductos = $controladorsalProducto->consultaGenSalProductosVistaFecha();
+        $salProductos = $controladorSalProducto->consultaGenSalProductosVistaFecha();
         include('./views/salidaProducto/consultaSalProducto.php');
         break;
 
 
         //Actualizar Salida Productos
     case'actualizarSalProductosId':
-        $salProductos = $controladorsalProducto->consultaGenSalProductosId();
+        $salProductos = $controladorSalProducto->consultaGenSalProductosIdP();
+        $formaPagos = $controladorModoPago->listaModoPago();
         include('./views/salidaProducto/actualizarSalProducto.php');
         break;
 
         case'actualizarSalProductos':
-            $controladorsalProducto->ActualizarSalProductos();
+            $controladorSalProducto->ActualizarSalProductos();
             break;
 
             //Eliminar Salida Producto
     case'eliminarSalProductoId':
-        $controladorsalProducto->EliminarSalProducto();
+        $controladorSalProducto->EliminarSalProducto();
         break;
 
 

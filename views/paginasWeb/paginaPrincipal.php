@@ -235,7 +235,7 @@
                     <?php foreach($clases as $clase): ?>
                         <div class="mt-1">
                             <div class="btn-group dropend w-100">
-                                <button type="button" class="btn btn-outline-secondary text-white" aria-expanded="false" onclick="location.href='index.php?action=paginaP2&clase=<?= $clase['idClase']; ?>'"><?= $clase['Clase']; ?></button>
+                                <button type="button" class="btn btn-outline-secondary text-white" aria-expanded="false" onclick="location.href='index.php?action=paginaP&clase=<?= $clase['idClase']; ?>'"><?= $clase['Clase']; ?></button>
                             </div>
                         </div>
                     <?php endforeach; ?>

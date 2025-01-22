@@ -43,6 +43,7 @@ class ControladorSalProducto{
             $fechaSal= $_POST['fechaSal'];
             $cantSal= $_POST['cantSal'];
             $precioVenta= $_POST['precioVenta'];
+            $idModoPago= $_POST['tipoPago'];
 
             if($clienteId == false){
 
@@ -83,7 +84,7 @@ class ControladorSalProducto{
 
                                                 $puntosBd= $puntosCliente['Puntos'];
 
-                                                $puntosGanados= ($precioVenta/25000);
+                                                $puntosGanados= ($precioVenta*0.005);
 
                                                 $puntosAct= $puntosBd + $puntosGanados;
 
@@ -92,7 +93,7 @@ class ControladorSalProducto{
                                             }
 
                                 //registrar salida producto
-                                    $this->modeloSalProducto->registroSalProducto($idProducto, $idCliente, $fechaSal, $cantSal, $precioVenta);
+                                    $this->modeloSalProducto->registroSalProducto($idProducto, $idCliente, $fechaSal, $cantSal, $precioVenta, $idModoPago);
 
                                 echo "
                                     <script>
@@ -127,8 +128,8 @@ class ControladorSalProducto{
 
     //Consulta por Id Inner Join
     public function consultaGenSalProductosVistaId() {
-        $idEntProducto = $_GET['idSalProducto'] ?? '';
-        return $this->modeloSalProducto->consultaGenSalProductosVistaId($idEntProducto);
+        $idSalProducto = $_GET['idSalProducto'] ?? '';
+        return $this->modeloSalProducto->consultaGenSalProductosVistaId($idSalProducto);
     }
 
 
@@ -143,6 +144,13 @@ class ControladorSalProducto{
     public function consultaGenSalProductosId() {
         $idSalProducto = $_GET['idSalProducto'] ?? '';
         return $this->modeloSalProducto->consultaSalProductoId($idSalProducto);
+    }
+
+
+    //Consulta general por Id para actualizar
+    public function consultaGenSalProductosIdP() {
+        $idSalProducto = $_GET['idSalProducto'] ?? '';
+        return $this->modeloSalProducto->consultaSalProductoIdP($idSalProducto);
     }
 
 
@@ -165,6 +173,7 @@ class ControladorSalProducto{
             $cantSal= $_POST['cantSal'];
             $precioVenta= $_POST['precioVenta'];
             $idSalProducto= $_POST['idSalProducto'];
+            $idModoPago= $_POST['tipoPago'];
 
             $cantidadSal= $this->modeloSalProducto->consultaCantidadSalProductos($idSalProducto);
 
@@ -178,11 +187,11 @@ class ControladorSalProducto{
 
                 $cantidadActual= $cantSal;
 
-                $this->modeloSalProducto->actualizarSalProducto($idProducto, $idCliente, $fechaSal, $cantidadActual, $precioVenta, $idSalProducto);
+                $this->modeloSalProducto->actualizarSalProducto($idProducto, $idCliente, $fechaSal, $cantidadActual, $precioVenta, $idModoPago, $idSalProducto);
 
                 echo "
                 <script>
-                    alert('Actualizacion Exitosa hh!');
+                    alert('Actualizacion Exitosa!');
                     window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaSalProductos';
                 </script>
                 ";
@@ -207,7 +216,7 @@ class ControladorSalProducto{
 
                         $puntosBd= $puntosCliente['Puntos'];
 
-                        $puntosGanados= ($precioDifer/25000);
+                        $puntosGanados= ($precioDifer*0.005);
 
                         $puntosAct= $puntosBd - $puntosGanados;
 
@@ -216,7 +225,7 @@ class ControladorSalProducto{
                     }
 
                     //actualiza el registro de salida producto
-                $this->modeloSalProducto->actualizarSalProducto($idProducto, $idCliente, $fechaSal, $cantidadActual, $precioVentaAct, $idSalProducto);
+                $this->modeloSalProducto->actualizarSalProducto($idProducto, $idCliente, $fechaSal, $cantidadActual, $precioVentaAct, $idModoPago, $idSalProducto);
 
                 $estadoInventario = $this->modeloInventario->consultaInventarioId($idProducto);
 
@@ -228,7 +237,7 @@ class ControladorSalProducto{
 
                 echo "
                 <script>
-                    alert('Actualizacion Exitosa RR!');
+                    alert('Actualizacion Exitosa!');
                     window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaSalProductos';
                 </script>
                 ";
@@ -252,7 +261,7 @@ class ControladorSalProducto{
 
                         $puntosBd= $puntosCliente['Puntos'];
 
-                        $puntosGanados= ($precioDifer/25000);
+                        $puntosGanados= ($precioDifer*0.005);
 
                         $puntosAct= $puntosBd + $puntosGanados;
 
@@ -260,7 +269,7 @@ class ControladorSalProducto{
                     }
 
                     //actualiza el registro de salida productos
-                $this->modeloSalProducto->actualizarSalProducto($idProducto, $idCliente, $fechaSal, $cantidadActual, $precioVentaAct, $idSalProducto);
+                $this->modeloSalProducto->actualizarSalProducto($idProducto, $idCliente, $fechaSal, $cantidadActual, $precioVentaAct, $idModoPago, $idSalProducto);
 
                 $estadoInventario = $this->modeloInventario->consultaInventarioId($idProducto);
 
@@ -272,7 +281,7 @@ class ControladorSalProducto{
 
                 echo "
                 <script>
-                    alert('Actualizacion Exitosa DD!');
+                    alert('Actualizacion Exitosa!');
                     window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaSalProductos';
                 </script>
                 ";
@@ -313,7 +322,7 @@ class ControladorSalProducto{
 
                         $puntosBd= $puntosCliente['Puntos'];
 
-                        $puntosMenos= ($valorVenta/25000);
+                        $puntosMenos= ($valorVenta*0.005);
 
                         $puntosAct= $puntosBd - $puntosMenos;
 

@@ -1,13 +1,13 @@
 <?php include('./views/layautModAdmin/headerModAdmin.php'); ?>
 
-<!--Incio de Formulario Consultar Entradas Producto-->
+<!--Incio de Formulario Consultar ESalida Producto-->
 <div class="row">
     <div class="col-2">
     </div>
 
     <div class="col-8">
             <div class="text-center text-white mt-3">
-                <h4>Consulta Entrada de Productos</h4>
+                <h4>Consulta Salida de Productos</h4>
             </div>
             <form class=" mt-4" action="index.php?action=consultaSalProductoId" method="get">
                 <div class="input-group mb-3">
@@ -56,6 +56,7 @@
                         <th>Contenido</th>
                         <th>Precio Venta</th>
                         <th>Cantidad Salida</th>
+                        <th>Forma de Pago</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -72,6 +73,7 @@
                         <td class="text-white align-middle"><?= $salProducto['Contenido Neto']; ?></td>
                         <td class="text-white align-middle"><?= $salProducto['PrecioVenta']; ?></td>
                         <td class="text-white align-middle"><?= $salProducto['CantSalida']; ?></td>
+                        <td class="text-white align-middle"><?= $salProducto['ModoPago']; ?></td>
                         <td>                        
                         <a href="index.php?action=actualizarSalProductosId&idSalProducto=<?= $salProducto['idSalProducto']; ?>" class="btn btn-outline-secondary text-white m-2 w-100" role="button">Actualizar</a> 
                         <a href="index.php?action=eliminarSalProductoId&idSalProducto=<?= $salProducto['idSalProducto']; ?>" class="btn btn-outline-secondary text-white m-2 w-100" role="button">Eliminar</a>

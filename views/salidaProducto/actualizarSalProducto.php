@@ -33,6 +33,18 @@
                     <label for="precioVenta" class="form-label text-white mt-3">Precio Venta:</label>
                     <input type="number" class="form-control" name="precioVenta" value="<?= $salProducto['PrecioVenta']; ?>" placeholder="" required>
                 </div>
+                <div class=" mt-2">
+                <label for="tipoPago" class="form-label text-white mt-3">Modo de Pago:</label>
+                <?php $formaDePago= $salProducto['idModoPago']; ?>
+                        <select id="tipoPago" name="tipoPago" class="form-control">
+                            <option selected>Seleccione la Forma de Pago</option>
+                            <?php foreach($formaPagos as $formaPago): ?>
+                            <option value="<?= $formaPago['idModoPago']; ?>" <?= $formaPago['idModoPago'] == $formaDePago ? 'selected' : '' ?>>
+                            <?= $formaPago['ModoPago']; ?>
+                            </option>
+                            <?php endforeach; ?>
+                        </select>
+                </div>
                 <div class="text-center mt-2">
                     <button type="submit" class="btn btn-outline-secondary text-white mt-3 text-center">Actualizar Salida</button>
                 </div>
