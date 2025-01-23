@@ -719,9 +719,13 @@ switch($action){
         $salProductos = $controladorsalProducto->ReporteSalProductos();
             include('./views/salidaProducto/reporteSalProducto.php');
             break;
-    
 
 
+        //Productos Proximos a Vencer
+    case'productosAvencer':
+        $productosAvencer= $controladorInventario->ProductosAvencer();
+        include('./views/productosAvencer/productosProximosAvencer.php');
+        break;
 
 
 

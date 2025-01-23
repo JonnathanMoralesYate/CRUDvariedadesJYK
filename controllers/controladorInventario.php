@@ -22,6 +22,12 @@ class ControladorInventario{
     }
 
 
+    //Reporte de Productos Proximos a Vencer
+    public function ProductosAvencer() {
+        return $this->modeloInventario->productosAvencer();
+    }
+
+
 
 }
 

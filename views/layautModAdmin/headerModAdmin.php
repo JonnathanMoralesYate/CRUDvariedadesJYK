@@ -168,8 +168,8 @@ if ($_SESSION['rol'] == 2) {
                                                     </form>
                                                 </li>
                                                 <li>
-                                                    <form action="index.php?action=" method="GET">
-                                                        <button class="dropdown-item" type="submit" name="action" value="" class="btn btn-light">Productos a Vencer</button>
+                                                    <form action="index.php?action=productosAvencer" method="GET">
+                                                        <button class="dropdown-item" type="submit" name="action" value="productosAvencer" class="btn btn-light">Productos a Vencer</button>
                                                     </form>
                                                 </li> 
                                             </ul>
