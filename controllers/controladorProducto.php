@@ -192,6 +192,7 @@ class ControladorProducto{
             return $this->modeloProducto->consultGenProductos($codigoProducto);
         }
 
+
 }
 
 ?>

@@ -12,19 +12,19 @@
         </div>
         <div class="col-6">
             <div class="mt-2">
-                <form class=" mt-4" action="index.php?action=" method="get">
+                <form class=" mt-4" onsubmit="event.preventDefault(); agregarProducto();">
                 <div class=" mt-2">
                     <label for="codProducto" class="form-label text-white mt-3">Codigo Producto:</label>
                     <input type="text" class="form-control" name="codProducto" placeholder="Codigo de barras">
                 </div>
-                    <div class="mt-2">
+                    <!-- <div class="mt-2">
                         <label for="fechaSal" class="form-label text-white mt-3">Fecha Salida:</label>
                         <input type="datetime-local" class="form-control" id="fechaSal" placeholder="">
                     </div>
                     <div class="mt-2">
                         <label for="numIdentCliente" class="form-label text-white mt-3">Cliente:</label>
                         <input type="text" class="form-control" id="numIdentCliente" placeholder="Numero de Cedula">
-                    </div>
+                    </div> -->
                     <div class="text-center mt-2">
                     <button type="submit" class="btn btn-outline-secondary text-white mt-3 text-center">Agregar Producto</button>
                 </div>
@@ -47,20 +47,16 @@
                         <tr>
                             <th>Item</th>
                             <th>Codigo</th>
-                            <th>Marca</th>
                             <th>Nombre</th>
-                            <th>Descripcion</th>
                             <th>Contenido</th>
+                            <th>Precio</th>
                             <th>Cantidad</th>
-                            <th>Valor Producto</th>
-                            <th>Precio Venta</th>
-                            <th>Acciones</th>
+                            <th>Total</th>
+                            <th>Accion</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td class="text-white align-middle"></td>
-                            <td class="text-white align-middle"></td>
                             <td class="text-white align-middle"></td>
                             <td class="text-white align-middle"></td>
                             <td class="text-white align-middle"></td>
@@ -73,15 +69,15 @@
                             </td>
                         </tr>
                         <tr>
-                        <td colspan="7"></td>
+                        <td colspan="5"></td>
                         <td class="text-white align-middle">Total Venta:</td>
                         <td class="text-white align-middle">Cantidad</td>
-                        <td class="text-white align-middle"></td>
+                
                         </tr>
                     </tbody>
                 </table>
                 </div>
             </div>
     </div>
-
+    <script src="./js/agregaProductoTabla.js"></script>
 <?php include('./views/layautModAdmin/footerModAdmin.php'); ?>

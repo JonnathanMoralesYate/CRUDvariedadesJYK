@@ -47,7 +47,7 @@ $controladorModoPago= new ControladorModoPago();
 
 $action = htmlspecialchars($_GET['action'] ?? 'principal', ENT_QUOTES, 'UTF-8');
 
-echo "<script>console.log('Hola desde PHP en la consola!');</script>";
+//echo "<script>console.log('Hola desde PHP en la consola!');</script>";
 
 switch($action){
 
@@ -191,6 +191,7 @@ switch($action){
     case'eliminarProductoCodigo':
             $productos = $controladorProducto->eliminarProducto();
             break;
+
 
 //registro de producto empleado
 

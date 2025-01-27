@@ -89,6 +89,16 @@ class ModeloProducto{
         $stmt->execute([$codigoProducto]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
+
+
+    //Consulta del productos con inner join para agregar a la tabla
+    public function consultaProductoCodigo($codigoProducto) {
+        $query= "SELECT CodProducto, CONCAT(Nombre,' ',Marca) AS 'Producto', CONCAT(presentacion_producto.Presentacion,' ', ContNeto,' ', unidad_base.UndBase) AS 'Contenido Neto', PrecioVenta FROM ".$this->table." INNER JOIN presentacion_producto ON productos.idPresentacion = presentacion_producto.idPresentacion INNER JOIN unidad_base ON productos.idUndBase = unidad_base.idUndBase WHERE CodProducto=?";
+        $stmt= $this->conn->prepare($query);
+        $stmt->execute([$codigoProducto]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+    
 }
 
 ?>
