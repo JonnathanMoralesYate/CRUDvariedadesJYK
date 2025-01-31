@@ -649,12 +649,9 @@ switch($action){
 
         //Registro Salida Productos
     case'registroSalProductosP':
-        if($_SERVER["REQUEST_METHOD"] == "POST"){
-            
-        }else{
+            $formaPagos = $controladorModoPago->listaModoPago();
             include('./views/salidaProducto/registroSalProductos.php');
-        }
-        break;
+            break;
 
 
         //Consulta Salida Productos

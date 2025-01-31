@@ -10,8 +10,8 @@
                     <h4>Registro Entrada de Productos</h4>
                 </div>
                 <div class=" mt-2">
-                    <label for="idProducto" class="form-label text-white mt-3">Codigo Producto:</label>
-                    <input type="text" class="form-control" name="codProducto" placeholder="Codigo de barras" required>
+                    <label for="codProducto" class="form-label text-white mt-3">Codigo Producto:</label>
+                    <input type="text" class="form-control" id="codProducto"  name="codProducto" placeholder="Codigo de barras" required>
                 </div>
                 <div class="mt-2">
                     <label for="idProveedor" class="form-label text-white mt-3">Codigo Proveedor:</label>
@@ -19,7 +19,7 @@
                 </div>
                 <div class="mt-2">
                     <label for="fechaEnt" class="form-label text-white mt-3">Fecha de Entrada:</label>
-                    <input type="datetime-local" class="form-control" name="fechaEnt" placeholder="" required>
+                    <input type="datetime-local" class="form-control" id="fechaEnt" name="fechaEnt" placeholder="" required>
                 </div>
                 <div class="mt-2">
                     <label for="fechaVencim" class="form-label text-white mt-3">Fecha de Vencimiento:</label>
@@ -39,5 +39,5 @@
                 
             </form>
         </div>
-
+        <script src="./js/agregaFechaActualEntProductos.js?v=1.0"></script>
 <?php include('./views/layautModAdmin/footerModAdmin.php'); ?>

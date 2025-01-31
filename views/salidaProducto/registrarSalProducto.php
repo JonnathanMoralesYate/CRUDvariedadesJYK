@@ -23,7 +23,7 @@
                 </div>
                 <div class="mt-2">
                     <label for="fechaSal" class="form-label text-white mt-3">Fecha Salida:</label>
-                    <input type="datetime-local" class="form-control" name="fechaSal" placeholder="" required>
+                    <input type="datetime-local" class="form-control" id="fechaSal" name="fechaSal" placeholder="" required>
                 </div>
                 <div class="mt-2">
                     <label for="cantSal" class="form-label text-white mt-3">Cantidad de Salida:</label>

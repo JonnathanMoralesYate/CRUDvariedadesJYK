@@ -50,7 +50,7 @@ class ControladorSalProducto{
                 header("Location: index.php?action=registroCliente");
                 //echo "
                     //<script>
-                        //alert('Producto No Registardo, Realice el Registro!');
+                        //alert('Cliente No Registardo, Realice el Registro del cliente!');
                         //window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=registroCliente';
                     //</script>
                     //";
