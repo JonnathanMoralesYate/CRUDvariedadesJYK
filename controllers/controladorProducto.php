@@ -1,5 +1,6 @@
 <?php
 
+require_once('./models/modeloGenerarCodigo.php');
 require_once('./models/modeloProducto.php');
 require_once('./config/conexionBDJYK.php');
 
@@ -7,19 +8,23 @@ class ControladorProducto{
 
     private $db;
     private $modeloProducto;
+    private $modeloGenerarCodigo;
 
     public function __construct() {
 
         $database= new DataBase();
         $this->db= $database->getConnectionJYK();
         $this->modeloProducto= new ModeloProducto($this->db);
+        $this->modeloGenerarCodigo= new ModeloGenerarCodigo($this->db);
     }
 
     //Registro de producto
     public function registroProductos() {
 
         if($_SERVER["REQUEST_METHOD"] == "POST") {
+
             $codigoProducto= $_POST['codProduc'];
+            $codigoGenerado= $_POST['codigoGenerado'];
             $idClase= $_POST['tiposClase'];
             $nombre= $_POST['nombreproduc'];
             $marca= $_POST['marcaProduc'];
@@ -34,17 +39,42 @@ class ControladorProducto{
             $target_dir="photo/";
             $target_file= $target_dir.basename($foto);
             move_uploaded_file($_FILES['fotoProduc']['tmp_name'], $target_file);
-            
-            $this->modeloProducto->registroProducto($codigoProducto, $idClase, $nombre, $marca, $descripcion, $idPresentacion, $idUndBase, $contNeto, $idFormatoVent, $precioVenta, $foto);
+
+
+            if($codigoGenerado){
+
+
+
+                $this->modeloProducto->registroProducto($codigoProducto, $idClase, $nombre, $marca, $descripcion, $idPresentacion, $idUndBase, $contNeto, $idFormatoVent, $precioVenta, $foto);
+
+                $this->modeloGenerarCodigo->actualizarCodigoGenerado($codigoProducto);
             
             echo "
                         <script>
                             alert('Registro del Producto Exitoso!');
-                            window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=registroProducto';
+                            window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=registroProductos';
                         </script>
                         ";
-            //header("Location: index.php?action=registroProducto");
+            //header("Location: index.php?action=registroProductos");
             exit;
+
+
+            }else{
+
+                $this->modeloProducto->registroProducto($codigoProducto, $idClase, $nombre, $marca, $descripcion, $idPresentacion, $idUndBase, $contNeto, $idFormatoVent, $precioVenta, $foto);
+            
+            echo "
+                        <script>
+                            alert('Registro del Producto Exitoso!');
+                            window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=registroProductos';
+                        </script>
+                        ";
+            //header("Location: index.php?action=registroProductos");
+            exit;
+
+            }
+            
+            
         }
 
     }
