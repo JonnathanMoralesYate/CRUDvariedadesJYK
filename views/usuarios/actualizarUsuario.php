@@ -16,7 +16,7 @@
                 <div class=" mt-2">
                     <label for="tipoDocum" class="form-label text-white mt-3">Tipo Documento:</label>
                         <?php $tipoDoc= $usuario['idTipoDocum']; ?>
-                            <select id="tipoDocum" name="tipoDocum" class="form-control">
+                            <select id="tipoDocum" name="tipoDocum" class="form-control" required>
                                 <option selected>Seleccione Tipo Documento</option>
                                     <?php foreach($tipoDocum as $tipos): ?>
                                         <option value="<?= $tipos['idTipoDocum']; ?>" <?= $tipos['idTipoDocum'] == $tipoDoc ? 'selected' : '' ?>>
@@ -48,7 +48,7 @@
                 <div class="mb-3">
                     <label for="seleccionRol" class="form-label text-white mt-3">Rol:</label>
                         <?php $tipoRol= $usuario['idRol']; ?>
-                            <select id="seleccionRol" name="seleccionRol" class="form-control">
+                            <select id="seleccionRol" name="seleccionRol" class="form-control" required>
                                 <option selected>Seleccione el Rol</option>
                                     <?php foreach($tipoRoles as $tipoRole): ?>
                                         <option value="<?= $tipoRole['idRol']; ?>" <?= $tipoRole['idRol'] == $tipoRol ? 'selected' : '' ?>>

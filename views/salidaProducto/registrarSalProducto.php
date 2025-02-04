@@ -35,8 +35,7 @@
                 </div>
                 <div class=" mt-2">
                 <label for="tipoPago" class="form-label text-white mt-3">Modo de Pago:</label>
-                        <select id="tipoPago" name="tipoPago" class="form-control">
-                            
+                        <select id="tipoPago" name="tipoPago" class="form-control" required>
                             <?php foreach($formaPagos as $formaPago): ?>
                             <option value="<?= $formaPago['idModoPago']; ?>">
                             <?= $formaPago['ModoPago']; ?>

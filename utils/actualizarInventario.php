@@ -34,7 +34,7 @@
         //la actualización solo se realizará si la cantidad actual es mayor o igual que la cantidad a restar.
         $sql = "UPDATE inventario SET CantActual= CantActual - ? WHERE idProducto=? AND CantActual >= ?";
 
-       // Preparar la declaración
+        // Preparar la declaración
         if ($stmt = $mysqli->prepare($sql)) {
 
             // Vincular los parámetros (i = integer, s = string)

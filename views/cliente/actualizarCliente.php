@@ -13,7 +13,7 @@
                 <div class=" mt-2">
                 <label for="tipoDocum" class="form-label text-white mt-3">Tipo Documento:</label>
                         <?php $tipoDoc= $cliente['idTipoDocum']; ?>
-                            <select id="tipoDocum" name="tipoDocum" class="form-control">
+                            <select id="tipoDocum" name="tipoDocum" class="form-control" required>
                                 <option selected>Seleccione Tipo Documento</option>
                                     <?php foreach($tipoDocum as $tipos): ?>
                                         <option value="<?= $tipos['idTipoDocum']; ?>" <?= $tipos['idTipoDocum'] == $tipoDoc ? 'selected' : '' ?>>

@@ -11,7 +11,7 @@
             <form class=" mt-2" action="index.php?action=registroUsuario" method="post">
             <div class=" mt-2">
                         <label for="tipoDocum" class="form-label text-white mt-3">Tipo Documento:</label>
-                        <select id="tipoDocum" name="tipoDocum" class="form-control">
+                        <select id="tipoDocum" name="tipoDocum" class="form-control" required>
                             <option selected>Seleccione Tipo Documento</option>
                             <?php foreach($tipoDocum as $tipos): ?>
                             <option value="<?= $tipos['idTipoDocum']; ?>">
@@ -42,7 +42,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="seleccionRol" class="form-label text-white mt-3">Rol:</label>
-                        <select id="seleccionRol" name="seleccionRol" class="form-control">
+                        <select id="seleccionRol" name="seleccionRol" class="form-control" required>
                             <option selected>Seleccione el Rol</option>
                             <option value="2">Empleado</option>
                             <option value="1">Administrador</option>
