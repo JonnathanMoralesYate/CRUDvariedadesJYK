@@ -13,16 +13,16 @@
 
 <body>
 <div class="container-fluid"  id="barra_navegacion">
-        <div class="row p-5 mt-1">
+        <div class="row p-5">
             <div class="col-2 mt-2">
     <!--Inicio Barra Navegacion-->
-    <nav class="img-fluid d-block text-center" id="inicio">
+                <nav class="img-fluid d-block text-center" id="inicio">
                         <a class="navbar-brand">
                             <img src="./photo/logoPrin1.1.jpeg" alt="Logo" width="90" height="80" class="rounded-3">
                         </a>
                 </nav>
             </div>
-            <div class="col-10 mt-2">
+            <div class="col-10">
                     <nav class="navbar navbar-expand-lg bg-body-tertiary">
                         <div class="container-fluid">
                             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
@@ -36,30 +36,30 @@
                                     <ul class="navbar-nav me-auto mb-5 mb-lg-0">
                                         <li class="nav-item">
                                             <form action="index.php?action=paginaN" method="GET">
-                                                <button type="submit" class="btn btn-outline-secondary m-2 text-white" name="action" value="paginaN">Nosotros</button>
+                                                <button type="submit" class="btn btn-outline-secondary m-1 text-white" name="action" value="paginaN">Nosotros</button>
                                             </form>
                                         </li>
                                         <li class="nav-item">
                                             <form action="index.php?action=paginaS" method="GET">
-                                                <button type="submit" class="btn btn-outline-secondary m-2 text-white" name="action" value="paginaS">Servicios</button>
+                                                <button type="submit" class="btn btn-outline-secondary m-1 text-white" name="action" value="paginaS">Servicios</button>
                                             </form>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="btn btn-outline-secondary m-2 text-white" href="#Ubicacion" role="button">Ubicacion</a>
+                                            <a class="btn btn-outline-secondary m-1 text-white" href="#Ubicacion" role="button">Ubicacion</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="btn btn-outline-secondary m-2 text-white" href="#Ubicacion" role="button">Contacto</a>
+                                            <a class="btn btn-outline-secondary m-1 text-white" href="#Ubicacion" role="button">Contacto</a>
                                         </li>
                                         <li class="nav-item">
                                             <form class="d-flex" role="search">
-                                                <input class="form-control m-2" type="search" placeholder="Buscar Producto" aria-label="Search">
-                                                <button class="btn btn-outline-secondary text-white m-2" type="submit">Buscar</button>
+                                                <input class="form-control m-1" type="search" placeholder="Buscar Producto" aria-label="Search">
+                                                <button class="btn btn-outline-secondary text-white m-1" type="submit">Buscar</button>
                                             </form>
                                         </li>
                                     </ul>
                                 </div>
-                                <div class="collapse navbar-collapse mt-0" id="navbarTogglerDemo01">
-                                        <a id="login_inic" class="btn btn-outline-secondary text-white m-2 mt-0" role="button">Login</a> 
+                                <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+                                        <a id="login_inic" class="btn btn-outline-secondary text-white" role="button">Login</a> 
                                         <!-- <form action="index.php?action=login" method="GET">
                                             <button type="submit" class="btn btn-outline-secondary m-2 text-white" name="action" value="login">Login</button>
                                         </form> -->

@@ -137,7 +137,7 @@ for (let i = 0; i < tabla.rows.length; i++) {
         codigoCell.textContent = producto.CodProducto;
         nombreCell.textContent = producto.Producto;
         contenidoCell.textContent = producto.Contenido;
-        precioCell.textContent = `$${producto.PrecioVenta}`;
+        precioCell.textContent = `$${producto.PrecioVenta.toLocaleString()}`;
         
         // Input de cantidad
         const cantidadInput = document.createElement('input');
@@ -151,7 +151,7 @@ for (let i = 0; i < tabla.rows.length; i++) {
         cantidadCell.appendChild(cantidadInput);
 
         // Total calculado
-        totalCell.textContent = `$${producto.PrecioVenta}`;
+        totalCell.textContent = `$${producto.PrecioVenta.toLocaleString()}`;
 
         // Botón para quitar el producto
         const quitarBtn = document.createElement('button');
@@ -189,7 +189,7 @@ for (let i = 0; i < tabla.rows.length; i++) {
 function actualizarTotal(fila, precioUnitario, cantidad) {
     const totalCell = fila.cells[6];
     const total = precioUnitario * cantidad;
-    totalCell.textContent = `$${total.toFixed(2)}`;
+    totalCell.textContent = `$${total.toLocaleString()}`;
     actualizarTotalVenta();
 }
 
@@ -199,10 +199,10 @@ function actualizarTotalVenta() {
     let totalVenta = 0;
     filas.forEach(fila => {
         const totalCell = fila.cells[6];
-        const total = parseFloat(totalCell.textContent.replace('$', '')) || 0;
+        const total = parseFloat(totalCell.textContent.replace('$', '').replace('.', '')) || 0;
         totalVenta += total;
     });
-    document.getElementById('totalVenta').textContent = `$${totalVenta.toFixed(2)}`;
+    document.getElementById('totalVenta').textContent = `$${totalVenta.toLocaleString()}`;
 }
 
 
@@ -266,7 +266,7 @@ document.getElementById('registrarSalida').addEventListener('click', async funct
 
             // Total, lo tomamos de la celda correspondiente
             const total = celdas[6].innerText.trim();
-            const precio = parseInt(total.replace('$', ''), 10);  // Convertimos el valor de precio a número
+            const precio = parseInt(total.replace('$', '').replace('.', ''), 10);  // Convertimos el valor de precio a número
 
             // Verificamos que el total también esté disponible
             if (!total || total <= 0) {

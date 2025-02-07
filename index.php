@@ -696,6 +696,12 @@ switch($action){
         include('./views/inventario/inventarioActual.php');
         break;
 
+        //Genera reporte de inventario en PDF
+    case'reporteInventarioPDF':
+        $inventarios= $controladorInventario->inventarioActual();
+        include('./views/inventario/reporteInventarioPDF.php');
+        break;
+
 
         //Entrada de Productos
     case'reporteEntProducto':
@@ -723,6 +729,13 @@ switch($action){
     case'productosAvencer':
         $productosAvencer= $controladorInventario->ProductosAvencer();
         include('./views/productosAvencer/productosProximosAvencer.php');
+        break;
+
+    
+        //Genera reporte de productos a vencer en pdf
+    case'productosAvencerPDF':
+        $productosAvencer= $controladorInventario->ProductosAvencer();
+        include('./views/productosAvencer/reporteProductosAvencerPDF.php');
         break;
 
 

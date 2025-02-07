@@ -1,17 +1,25 @@
 <?php include('./views/layautModAdmin/headerModAdmin.php'); ?>
 
-<!--Incio de Reporte de Productos Proximos a Vencer-->
+<!--Incio de Reporte de Inventario de Productos-->
 <div class="row">
     <div class="col-2">
     </div>
-
     <div class="col-8">
-            <div class="text-center text-white mt-3">
-                <h4>Productos Proximos a Vencer</h4>
-            </div>
+        <div class="text-center text-white mt-3">
+            <h4>Reporte de Productos Proximo a vencer</h4>
+        </div>
     </div>
     <div class="col-2">
     </div>
+</div>
+<div class="row">
+    <div class="col-5">
+    </div>
+    <div class="col-2 justify-content-center">
+        <a class="btn btn-outline-secondary text-white mt-3 text-center w-100" href="http://localhost/CRUDvariedadesJYK/index.php?action=productosAvencerPDF" target="_blank">Generar PDF</a>
+    </div>
+    <div class="col-5">
+    </div> 
 </div>
 <!--Fin de consultar-->
 
