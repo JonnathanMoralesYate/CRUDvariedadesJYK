@@ -256,7 +256,18 @@ class ControladorEntProductos{
     public function ReporteEntProductos() {       
         $fechaInc= $_GET['fechaInc'] ?? '';
         $fechaFin= $_GET['fechaFin'] ?? '';
-        return $this->modeloEntProducto->reporteEntProductos($fechaInc, $fechaFin);
+
+        // Depuración: mostrar las fechas antes de la consulta
+        //echo "Fecha inicio: $fechaInc, Fecha fin: $fechaFin";
+
+        $reporteEntProductos= $this->modeloEntProducto->reporteEntProductos($fechaInc, $fechaFin);
+
+        return [
+            'fechaInc' => $fechaInc,
+            'fechaFin' => $fechaFin,
+            'reporteEntProductos' => $reporteEntProductos
+        ];
+
         }
 
 

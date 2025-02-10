@@ -347,7 +347,13 @@ class ControladorSalProducto{
     public function ReporteSalProductos() {
         $fechaInc= $_GET['fechaInc'] ?? '';
         $fechaFin= $_GET['fechaFin'] ?? '';
-        return $this->modeloSalProducto->reporteSalProductos($fechaInc, $fechaFin);
+        $reporteSalProductos = $this->modeloSalProducto->reporteSalProductos($fechaInc, $fechaFin);
+
+        return [
+            'fechaInc' => $fechaInc,
+            'fechaFin' => $fechaFin,
+            'reporteEntProductos' => $reporteSalProductos
+        ];
     }
 
 

@@ -9,9 +9,23 @@
             <div class="text-center text-white mt-3">
                 <h4>Reporte de Salida de Productos</h4>
             </div>
+            <div class="text-center text-white mt-3">
+                <p>Fecha de Inicio: <?= htmlspecialchars($salProductos['fechaInc']); ?></p>
+                <p>Fecha de Fin: <?= htmlspecialchars($salProductos['fechaFin']); ?></p>
+            </div>
     </div>
     <div class="col-2">
     </div>
+</div>
+
+<div class="row">
+    <div class="col-5">
+    </div>
+    <div class="col-2 justify-content-center">
+        <a class="btn btn-outline-secondary text-white mt-3 text-center w-100" href="http://localhost/CRUDvariedadesJYK/index.php?action=reporteSalProductosPDF" target="_blank">Generar PDF</a>
+    </div>
+    <div class="col-5">
+    </div> 
 </div>
 <!--Fin de consultar-->
 
@@ -23,7 +37,7 @@
     <!--Inicio de tabla-->
         <div class="container mt-5">
             <div class="text-center">
-                <?php if (isset($salProductos) && count($salProductos) > 0): ?>
+            <?php if (isset($salProductos['reporteEntProductos']) && count($salProductos['reporteEntProductos']) > 0): ?>
                 <h4 class="text-white"></h4>
             </div>
     <!-- Tabla responsiva-->
@@ -44,7 +58,7 @@
                     </tr>
                 </thead>
                 <tbody class="">
-                <?php foreach ($salProductos as $salProducto): ?>
+                <?php foreach ($salProductos['reporteEntProductos'] as $salProducto): ?>
                     <tr>
                         <td class="text-white align-middle"><?= $salProducto['idSalProducto']; ?></td>
                         <td class="text-white align-middle"><?= $salProducto['FechaSalida']; ?></td>
@@ -61,7 +75,7 @@
                 </tbody>
             </table>
             </div>
-                <?php elseif (isset($salProductos)): ?>
+                <?php else: ?>
                     <p class="text-white">No se Encontro Productos con ese Criterio de Busqueda</p>
                 <?php endif; ?>
         </div>

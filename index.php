@@ -714,14 +714,28 @@ switch($action){
             break;
 
 
+        //Genera reporte de Entrada producto en PDF
+        case'reporteEntProductosPDF':
+            $entProductos = $controladorEntProducto->ReporteEntProductos();
+            include('./views/entradaProducto/reporteEntProductosPDF.php');
+            break;
+
+
         //Salida de Productos
     case'reporteSalProducto':
         include('./views/salidaProducto/generarInfSalProducto.php');
         break;
     
         case'reporteSalProductoFecha';
-        $salProductos = $controladorsalProducto->ReporteSalProductos();
+        $salProductos = $controladorSalProducto->ReporteSalProductos();
             include('./views/salidaProducto/reporteSalProducto.php');
+            break;
+
+
+        //Genera reporte de Salida producto en PDF
+    case'reporteSalProductosPDF':
+        $salProductos = $controladorSalProducto->ReporteSalProductos();
+            include('');
             break;
 
 
@@ -731,7 +745,7 @@ switch($action){
         include('./views/productosAvencer/productosProximosAvencer.php');
         break;
 
-    
+
         //Genera reporte de productos a vencer en pdf
     case'productosAvencerPDF':
         $productosAvencer= $controladorInventario->ProductosAvencer();
