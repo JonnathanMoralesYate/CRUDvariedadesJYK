@@ -27,100 +27,180 @@ ob_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="icon" href="/img/logoPesta.ico" type="image/x-icon">
     <title>Reporte Inventario PDF JYK</title>
-    <link rel="stylesheet" href="./css/bootstrap.min.css?v=1.0">
-    <link rel="stylesheet" href="./css/DesingBody.css?v=1.0">
-    <link rel="stylesheet" href="./css/DesingExtraModulo.css?v=1.0">
+
     <style>
-        body {
-            background-color: #f8f9fa; /* Color de fondo claro */
-            color: #343a40; /* Color de texto oscuro para mejor legibilidad */
-        }
+/* Configurar el tamaño de la página para PDF */
+@page {
+    size: A4 landscape;
+    margin: 20px;
+}
 
-        h1 {
-            color: #007bff; /* Color azul para el título */
-            margin-bottom: 30px;
-        }
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    margin: 0;
+    padding: 20px;
+    background: white;
+}
 
-        .table {
-            background-color: #343a40; /* Fondo oscuro para la tabla */
-            border: 1px solid #dee2e6; /* Borde sutil */
-            border-radius: 8px; /* Bordes redondeados */
-        }
+/* Encabezado */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: #004080;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+}
 
-        .table th {
-            background-color: #007bff; /* Fondo azul para los encabezados */
-            color: white; /* Texto blanco */
-            text-align: center;
-        }
+.logo {
+    width: 100px;
+    height: 100px;
+    margin-right: 20px;
+}
 
-        .table td {
-            color: white; /* Texto blanco en las celdas */
-            text-align: center; /* Centrar el texto en las celdas */
-            vertical-align: middle;
-        }
+/* Contenedor principal: usa flexbox para dividir en dos columnas */
+.report-container {
+    display: flex;
+    justify-content: center; /* Distribuye los elementos a los extremos */
+    padding: 5px;
+    margin-bottom: 5px;
+}
 
-        .img-thumbnail {
-            max-width: 100px;
-            border-radius: 8px;
-            border: 2px solid #007bff; /* Bordes azules a las imágenes */
-        }
+/* Estilos para ambas secciones */
+.report-info, .report-date {
+    display: grid;
+    justify-content: center; /* Distribuye los elementos a los extremos */
+    align-items: center; /* Alinea verticalmente */
+    padding: 15px;
+    background-color: #f8f8f8; /* Fondo gris claro */
+    border-radius: 5px;
+}
 
-        footer {
-            background-color: #343a40; /* Fondo oscuro para el pie de página */
-            color: white; /* Texto blanco */
-            padding: 20px;
-        }
-    </style>
+/* Texto dentro de las secciones */
+.report-info h4, .report-info h5, 
+.report-date h4, .report-date p {
+    margin: 5px 0;
+}
+
+.report-info span {
+    font-weight: bold;
+    color: #004080;
+}
+
+/* Tabla optimizada para PDF */
+.table-container {
+    width: 100%;
+    overflow: hidden;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 10px;  /* Reducimos el tamaño de la fuente */
+}
+
+thead {
+    background-color: #004080;
+    color: white;
+    font-weight: bold;
+}
+
+th, td {
+    border: 1px solid #000;
+    padding: 5px;
+    text-align: center;
+    word-wrap: break-word;
+}
+
+/* Alternar colores de filas */
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Pie de página */
+footer {
+    text-align: center;
+    font-size: 10px;
+    padding: 5px;
+    margin-top: 10px;
+    /*border-top: 2px solid #004080;*/
+}
+
+.imagen {
+    width: 80px;  /* Ajusta el ancho según lo necesites */
+    height: 80px; /* Ajusta la altura según lo necesites */
+    object-fit: cover; /* Mantiene la imagen centrada y recortada */
+    border-radius: 10px; /* Ajusta el redondeo de las esquinas */
+    /*border: 2px solid #ddd; /* Borde opcional */
+    padding: 5px; /* Espaciado opcional */
+    background-color: #fff; /* Fondo opcional */
+}
+</style>
 </head>
 <body>
-    <h1 class="text-center">Reporte de Inventario Actualizado</h1>
 
-    <!-- Inicio para mostrar datos para buscar y consultar -->
-    <div class="row">
-        <div class="col-1"></div>
-        <div class="col-10">
-            <!-- Inicio de tabla -->
-            <div class="container mt-5">
-                <?php if (isset($inventarios) && count($inventarios) > 0): ?>
-                    <!-- Tabla responsiva -->
-                    <div class="table-responsive">
-                        <table class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Código</th>
-                                    <th>Nombre</th>
-                                    <th>Marca</th>
-                                    <th>Descripción</th>
-                                    <th>Presentación</th>
-                                    <th>Formato Venta</th>
-                                    <th>Cantidad Actual</th>
-                                    <th>Foto</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php foreach ($inventarios as $inventario): ?>
-                                    <tr>
-                                        <td><?= $inventario['idInventario']; ?></td>
-                                        <td><?= $inventario['CodProducto']; ?></td>
-                                        <td><?= $inventario['Nombre']; ?></td>
-                                        <td><?= $inventario['Marca']; ?></td>
-                                        <td><?= $inventario['Descripcion']; ?></td>
-                                        <td><?= $inventario['Contenido Neto']; ?></td>
-                                        <td><?= $inventario['FormatoVenta']; ?></td>
-                                        <td><?= $inventario['CantActual']; ?></td>
-                                        <td><img class="img-thumbnail rounded" src="http://<?php echo $_SERVER['HTTP_HOST'];?>/CRUDvariedadesJYK/photo/<?=$inventario['Foto'];?>" alt="foto"></td>
-                                    </tr>
-                                <?php endforeach; ?>
-                            </tbody>
-                        </table>
-                    </div>
-                <?php elseif (isset($inventarios)): ?>
-                    <p class="text-white">No se Encontraron Productos en Stock</p>
-                <?php endif; ?>
-            </div>
-        </div>
-        <div class="col-1"></div>
+    <!-- Encabezado con Logo -->
+    <div class="header">
+        <img src="http://<?php echo $_SERVER['HTTP_HOST'];?>/CRUDvariedadesJYK/photo/logoPrin1.1.jpeg" alt="Logo" class="logo">
+        <h2>MINIMARKET VARIEDADES JYK</h2>
+    </div>
+
+    <!-- Contenedor principal para los datos generales -->
+    <div class="report-container">
+    
+    <!-- Datos Generales del Reporte (Izquierda) -->
+    <div class="report-info">
+        <div><h4>Reporte generado por: <span><?= htmlspecialchars($_SESSION['nombre']); ?></span></h4></div>
+        <div><h5>Fecha generación: <span><?php date_default_timezone_set('America/Bogota'); echo date('Y-m-d H:i:s'); ?></span></h5></div>
+    </div>
+
+    <!-- Información del Reporte (Derecha) -->
+    <div class="report-date">
+        <div><h4>Reporte de Inventario</h4></div>
+    </div>
+
+</div>
+
+    <!-- Tabla de Inventario de Productos -->
+    <div class="table-container">
+        <?php if (isset($inventarios) && count($inventarios) > 0): ?>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Código</th>
+                        <th>Nombre</th>
+                        <th>Marca</th>
+                        <th>Descripción</th>
+                        <th>Presentación</th>
+                        <th>Formato Venta</th>
+                        <th>Cantidad Actual</th>
+                        <th>Foto</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($inventarios as $inventario): ?>
+                        <tr>
+                            <td><?= $inventario['idInventario']; ?></td>
+                            <td><?= $inventario['CodProducto']; ?></td>
+                            <td><?= $inventario['Nombre']; ?></td>
+                            <td><?= $inventario['Marca']; ?></td>
+                            <td><?= $inventario['Descripcion']; ?></td>
+                            <td><?= $inventario['Contenido Neto']; ?></td>
+                            <td><?= $inventario['FormatoVenta']; ?></td>
+                            <td><?= $inventario['CantActual']; ?></td>
+                            <td><img class="imagen" src="http://<?php echo $_SERVER['HTTP_HOST'];?>/CRUDvariedadesJYK/photo/<?=$inventario['Foto'];?>" alt="foto"></td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        <?php else: ?>
+            <p class="no-data">No se Encontraron Productos en Stock</p>
+        <?php endif; ?>
     </div>
 
     <!-- Inicio de Pie de Página -->
@@ -129,7 +209,6 @@ ob_start();
     </footer>
     <!-- Fin de Pie de Página -->
 
-    <script src="./js/bootstrap.bundle.min.js?v=1.0"></script>
 </body>
 </html>
 <?php

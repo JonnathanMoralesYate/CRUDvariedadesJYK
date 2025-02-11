@@ -22,7 +22,7 @@
     <div class="col-5">
     </div>
     <div class="col-2 justify-content-center">
-        <a class="btn btn-outline-secondary text-white mt-3 text-center w-100" href="http://localhost/CRUDvariedadesJYK/index.php?action=reporteSalProductosPDF" target="_blank">Generar PDF</a>
+        <a class="btn btn-outline-secondary text-white mt-3 text-center w-100" href="http://localhost/CRUDvariedadesJYK/index.php?action=reporteSalProductosPDF&fechaInc=<?= htmlspecialchars($salProductos['fechaInc']); ?>&action=reporteSalProductosPDF&fechaFin=<?= htmlspecialchars($salProductos['fechaFin']); ?>" target="_blank">Generar PDF</a>
     </div>
     <div class="col-5">
     </div> 
@@ -37,7 +37,7 @@
     <!--Inicio de tabla-->
         <div class="container mt-5">
             <div class="text-center">
-            <?php if (isset($salProductos['reporteEntProductos']) && count($salProductos['reporteEntProductos']) > 0): ?>
+            <?php if (isset($salProductos['reporteSalProductos']) && count($salProductos['reporteSalProductos']) > 0): ?>
                 <h4 class="text-white"></h4>
             </div>
     <!-- Tabla responsiva-->
@@ -58,7 +58,7 @@
                     </tr>
                 </thead>
                 <tbody class="">
-                <?php foreach ($salProductos['reporteEntProductos'] as $salProducto): ?>
+                <?php foreach ($salProductos['reporteSalProductos'] as $salProducto): ?>
                     <tr>
                         <td class="text-white align-middle"><?= $salProducto['idSalProducto']; ?></td>
                         <td class="text-white align-middle"><?= $salProducto['FechaSalida']; ?></td>

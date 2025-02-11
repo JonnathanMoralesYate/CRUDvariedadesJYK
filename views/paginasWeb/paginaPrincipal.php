@@ -76,11 +76,10 @@
                 <div id="carouselExampleControls" class="carousel slide mt-3" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item text-center active">
-                        <div id="" class="card mx-auto" style="width: 18rem;">
-                            <img class="img-fluid mx-auto" src="./photo/atun.png" class="card-img-top" alt="...">
+                        <div id="" class="card mx-auto" style="width: 30rem;">
+                            <img class="img-fluid mx-auto" src="./photo/variedadesJyK.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
-                                <h5 class="card-title">Atun</h5>
-                                <p class="card-text">En Agua o Aceite</p>
+                                <h5 class="card-title">Nuestra Sede</h5>
                             </div>
                         </div>
                     </div>
@@ -266,7 +265,7 @@
 <!--Inicio de Footer-->
 <div class="row" id="Ubicacion">
 <!--Imagen-->
-            <div class="col-12 col-lg-2 mt-5">
+            <div class="col-12 col-lg-3 mt-5">
                 <div class="img-fluid d-block text-center">
                     <a class="navbar-brand" href="index.php"><img src="./photo/logopest2.ico" alt="Logo" class="img-fluid text-center rounded-3"></a>
                 </div>
@@ -286,7 +285,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-lg-4">
+            <div class="col-12 col-lg-3">
                 <div class="text-start">
                     <div class="d-block mt-5 text-white">
                         <div class="mt-1"><p>INFORMACIÓN LEGAL</p></div>

@@ -35,31 +35,24 @@
                                 <div class="collapse navbar-collapse mt-2" id="navbarTogglerDemo01">
                                     <ul class="navbar-nav me-auto mb-5 mb-lg-0">
                                         <li class="nav-item">
-                                        <form action="index.php?action=paginaP" method="GET">
-                                                <button type="submit" class="btn btn-outline-secondary m-2 text-white" name="action" value="paginaP">Inicio</button>
-                                            </form>                                    
-                                            <!-- <a class="btn btn-outline-secondary m-2 text-white" href="index.php" role="button">Inicio</a> -->
+                                            <a class="nav-link text-white m-2" onclick="location.href='index.php?action=paginaP'" role="button">Inicio</a>
                                         </li>
                                         <li class="nav-item">
-                                            <form action="index.php?action=paginaN" method="GET">
-                                                <button type="submit" class="btn btn-outline-secondary m-2 text-white" name="action" value="paginaN">Nosotros</button>
-                                            </form>
+                                            <a class="nav-link text-white m-2" onclick="location.href='index.php?action=paginaN'" role="button">Nosotros</a>
                                         </li>
                                         <li class="nav-item">
-                                        <form action="index.php?action=paginaS" method="GET">
-                                                <button type="submit" class="btn btn-outline-secondary m-2 text-white" name="action" value="paginaS">Servicios</button>
-                                            </form>
+                                            <a class="nav-link text-white m-2" onclick="location.href='index.php?action=paginaS'" role="button">Servicios</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="btn btn-outline-secondary m-2 text-white" href="#Ubicacion" role="button">Ubicacion</a>
+                                            <a class="nav-link text-white m-2" href="#Ubicacion" role="button">Ubicacion</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="btn btn-outline-secondary m-2 text-white" href="#Ubicacion" role="button">Contacto</a>
+                                            <a class="nav-link text-white m-2" href="#Ubicacion" role="button">Contacto</a>
                                         </li>
                                     </ul>
                                 </div>
                                 <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-                                        <a id="login_inic" class="btn btn-outline-secondary text-white m-2 mt-0" href="#" role="button">Login</a>
+                                    <a id="login_inic" class="nav-link text-white" role="button">Login</a>
                                 </div>
                         </div>
                     </nav>

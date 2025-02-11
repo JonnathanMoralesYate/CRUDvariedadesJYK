@@ -42,7 +42,7 @@
                 </div>
                 <div class="mt-2">
                     <label for="puntos" class="form-label text-white mt-3">Puntos Acumulados:</label>
-                    <input type="number" class="form-control" name="puntos" placeholder="" required>
+                    <input type="number" class="form-control" name="puntos" placeholder="" value="0" required readonly>
                 </div>
                 <div class="text-center mt-2">
                     <button type="submit" class="btn btn-outline-secondary text-white mt-3 text-center">Registrar</button>

@@ -25,7 +25,7 @@ ob_start();
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Reporte Entrada de Productos PDF JYK</title>
+    <title>Reporte Salida Productos PDF JYK</title>
 
 <style>
 /* Configurar el tamaño de la página para PDF */
@@ -150,52 +150,50 @@ footer {
 
     <!-- Información del Reporte (Derecha) -->
     <div class="report-date">
-        <div><h4>Reporte de Entradas de Productos</h4></div>
-        <div><p><strong>Fecha de Inicio:</strong> <?= htmlspecialchars($entProductos['fechaInc']); ?></p></div>
-        <div><p><strong>Fecha de Fin:</strong> <?= htmlspecialchars($entProductos['fechaFin']); ?></p></div>
+        <div><h4>Reporte de Salidas de Productos</h4></div>
+        <div><p><strong>Fecha de Inicio:</strong> <?= htmlspecialchars($salProductos['fechaInc']); ?></p></div>
+        <div><p><strong>Fecha de Fin:</strong> <?= htmlspecialchars($salProductos['fechaFin']); ?></p></div>
     </div>
 
 </div>
 
-    <!-- Tabla de Reporte de Entradas de Productos -->
+    <!-- Tabla de reportes de Salida de Productos -->
     <div class="table-container">
-        <?php if (!empty($entProductos['reporteEntProductos'])): ?>
+        <?php if (!empty($salProductos['reporteSalProductos'])): ?>
             <table>
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Fecha Entrada</th>
-                        <th>Proveedor</th>
-                        <th>Código Producto</th>
+                        <th>Fecha Salida</th>
+                        <th>Cliente</th>
+                        <th>Codigo Producto</th>
                         <th>Nombre</th>
                         <th>Marca</th>
-                        <th>Descripción</th>
+                        <th>Descripcion</th>
                         <th>Contenido</th>
-                        <th>Fecha Vencimiento</th>
-                        <th>Precio Compra</th>
-                        <th>Cantidad Entrada</th>
+                        <th>Cantidad Salida</th>
+                        <th>Total Venta</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <?php foreach ($entProductos['reporteEntProductos'] as $entProducto): ?>
+                <tbody class="">
+                    <?php foreach ($salProductos['reporteSalProductos'] as $salProducto): ?>
                         <tr>
-                            <td><?= htmlspecialchars($entProducto['idEntProducto']); ?></td>
-                            <td><?= htmlspecialchars($entProducto['FechaEnt']); ?></td>
-                            <td><?= htmlspecialchars($entProducto['NombreProveedor']); ?></td>
-                            <td><?= htmlspecialchars($entProducto['CodProducto']); ?></td>
-                            <td><?= htmlspecialchars($entProducto['Nombre']); ?></td>
-                            <td><?= htmlspecialchars($entProducto['Marca']); ?></td>
-                            <td><?= htmlspecialchars($entProducto['Descripcion']); ?></td>
-                            <td><?= htmlspecialchars($entProducto['Contenido Neto']); ?></td>
-                            <td><?= htmlspecialchars($entProducto['FechaVencimiento']); ?></td>
-                            <td><?= htmlspecialchars($entProducto['PrecioCompra']); ?></td>
-                            <td><?= htmlspecialchars($entProducto['CantEnt']); ?></td>
+                            <td><?= $salProducto['idSalProducto']; ?></td>
+                            <td><?= $salProducto['FechaSalida']; ?></td>
+                            <td><?= $salProducto['NumIdentificacion']; ?></td>
+                            <td><?= $salProducto['CodProducto']; ?></td>
+                            <td><?= $salProducto['Nombre']; ?></td>
+                            <td><?= $salProducto['Marca']; ?></td>
+                            <td><?= $salProducto['Descripcion']; ?></td>
+                            <td><?= $salProducto['Contenido Neto']; ?></td>
+                            <td><?= $salProducto['CantSalida']; ?></td>
+                            <td><?= $salProducto['PrecioVenta']; ?></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
             </table>
         <?php else: ?>
-            <p class="no-data">No se encontraron productos con ese criterio de búsqueda.</p>
+            <p class="text-white">No se Encontro Productos con ese Criterio de Busqueda</p>
         <?php endif; ?>
     </div>
 
@@ -233,7 +231,7 @@ $dompdf->setPaper('A4', 'landscape');
 $dompdf->render();
 
 // Enviar el PDF al navegador
-$dompdf->stream("ReperteEntProductos.pdf", array("Attachment" => false));
+$dompdf->stream("ReperteSalProductos.pdf", array("Attachment" => false));
 
 
 ?>

@@ -713,12 +713,11 @@ switch($action){
             include('./views/entradaProducto/reporteEntProductos.php');
             break;
 
-
         //Genera reporte de Entrada producto en PDF
-        case'reporteEntProductosPDF':
-            $entProductos = $controladorEntProducto->ReporteEntProductos();
-            include('./views/entradaProducto/reporteEntProductosPDF.php');
-            break;
+    case'reporteEntProductosPDF':
+        $entProductos = $controladorEntProducto->ReporteEntProductos();
+        include('./views/entradaProducto/reporteEntProductosPDF.php');
+        break;
 
 
         //Salida de Productos
@@ -727,16 +726,15 @@ switch($action){
         break;
     
         case'reporteSalProductoFecha';
-        $salProductos = $controladorSalProducto->ReporteSalProductos();
+            $salProductos = $controladorSalProducto->ReporteSalProductos();
             include('./views/salidaProducto/reporteSalProducto.php');
             break;
 
-
         //Genera reporte de Salida producto en PDF
-    case'reporteSalProductosPDF':
+    case'reporteSalProductosPDF';
         $salProductos = $controladorSalProducto->ReporteSalProductos();
-            include('');
-            break;
+        include('./views/salidaProducto/reporteSalProductosPDF.php');
+        break;
 
 
         //Productos Proximos a Vencer
