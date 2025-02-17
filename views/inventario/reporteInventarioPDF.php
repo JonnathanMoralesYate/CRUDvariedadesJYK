@@ -154,7 +154,7 @@ footer {
     
     <!-- Datos Generales del Reporte (Izquierda) -->
     <div class="report-info">
-        <div><h4>Reporte generado por: <span><?= htmlspecialchars($_SESSION['nombre']); ?></span></h4></div>
+        <div><h4>Reporte generado por: <span><?= htmlspecialchars($_SESSION['nombre']); ?> <?= htmlspecialchars($_SESSION['apellido']); ?></span></h4></div>
         <div><h5>Fecha generación: <span><?php date_default_timezone_set('America/Bogota'); echo date('Y-m-d H:i:s'); ?></span></h5></div>
     </div>
 

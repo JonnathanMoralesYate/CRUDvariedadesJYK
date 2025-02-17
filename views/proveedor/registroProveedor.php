@@ -6,6 +6,9 @@
             </div>
             <div class="col-6">
             <form class=" mt-2" action="index.php?action=registroProveedor" method="post">
+            <div class="text-center text-white mt-3">
+                    <h4>Registro Proveedor</h4>
+                </div>
                 <div class=" mt-2">
                     <label for="nitProveedor" class="form-label text-white mt-3">Codigo Empresa:</label>
                     <input type="text" class="form-control" name="nitProveedor" placeholder="Nit" required>

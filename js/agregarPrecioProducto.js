@@ -102,7 +102,7 @@ document.getElementById('cantSal').addEventListener('input', function() {
 
                 const precioVenta = precioInput * cantSalInput;
 
-                precioVentaInput.value = precioVenta.toFixed(2);
+                precioVentaInput.value = precioVenta.toLocaleString();
 
             } else {
 

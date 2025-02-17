@@ -24,7 +24,7 @@ if ($_SESSION['rol'] == 2) {
     <link rel="icon" href="/img/logoPesta.ico" type="image/x-icon">
     <title>Modulo Administrativo JYK</title>
     <link rel="stylesheet" href="./css/bootstrap.min.css?v=1.0">
-    <link rel="stylesheet" href="./css/DesingBody.css?v=1.0">
+    <link rel="stylesheet" href="./css/DesingBody.css">
     <link rel="stylesheet" href="./css/DesingExtraModulo.css?v=1.0">
 </head>
 
@@ -39,7 +39,7 @@ if ($_SESSION['rol'] == 2) {
                 <h3> Modulo Administrativo</h3>
             </div>
             <div class="text-white mt-3">
-            <h6>Bienvenido: <?= $_SESSION['nombre'] ?></h6>
+            <h6>Bienvenido: <?= $_SESSION['nombre'] ?> <?= $_SESSION['apellido'] ?></h6>
             </div>
         </div>
 <!--Fin-->

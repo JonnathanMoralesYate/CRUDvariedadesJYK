@@ -135,7 +135,7 @@ class ControladorProducto{
 
             $idProducto= $_POST['idProducto'];
             
-            $this->modeloProducto->actualizarProducto($codigoProducto, $idClase, $nombre, $marca, $descripcion, $idPresentacion, $idUndBase, $idFormatoVent, $contNeto, $precioVenta, $foto, $idProducto);
+            $this->modeloProducto->actualizarProducto($codigoProducto, $idClase, $nombre, $marca, $descripcion, $idPresentacion, $contNeto, $idUndBase, $idFormatoVent, $precioVenta, $foto, $idProducto);
             
             echo "
                         <script>

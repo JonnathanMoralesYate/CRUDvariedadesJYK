@@ -14,8 +14,9 @@
                     <input type="text" class="form-control" id="codProducto"  name="codProducto" placeholder="Codigo de barras" required>
                 </div>
                 <div class="mt-2">
-                    <label for="idProveedor" class="form-label text-white mt-3">Codigo Proveedor:</label>
-                    <input type="text" class="form-control" name="nitProveedor" placeholder="Nit" required>
+                    <label for="nitProveedor" class="form-label text-white mt-3">Codigo Proveedor:</label>
+                    <input type="text" class="form-control" id="nitProveedor" name="nitProveedor"  placeholder="Nit" required>
+                    <p id="resultado"></p>
                 </div>
                 <div class="mt-2">
                     <label for="fechaEnt" class="form-label text-white mt-3">Fecha de Entrada:</label>

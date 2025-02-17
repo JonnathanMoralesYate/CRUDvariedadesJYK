@@ -537,10 +537,15 @@ document.getElementById('registrarSalida').addEventListener('click', async funct
 
 
     //Funcion al ingresar identificacion del cliente agrege la fecha actual automaticamente
-    document.getElementById('numIdentCliente').addEventListener('input', async function()  {
+    document.getElementById('numIdentCliente').addEventListener('blur', async function()  {
 
     // Obtener los valores de los inputs fijos (fuera de la tabla)
     const cliente = document.getElementById('numIdentCliente').value;
+
+    if (cliente === "") {
+
+        return; // Evita consultas si el campo está vacío
+    }
 
     // Llamamos a la función para obtener el id del cliente
     const clienteId = await obtenerIdCliente(cliente);  
@@ -555,8 +560,9 @@ document.getElementById('registrarSalida').addEventListener('click', async funct
 
         alert(' Cliente no registrado, realice el registro.');
 
-        // Limpiar el campo de código de barras después de agregar el producto
+        // Limpiar el campo de cliente y fecha de salida despues cuando el cliente no esta registrado
         document.getElementById('numIdentCliente').value = '';
+        document.getElementById("fechaSal").value = '';
 
         return;
 

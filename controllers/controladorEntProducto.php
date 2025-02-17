@@ -55,6 +55,10 @@ class ControladorEntProductos{
                     //</script>
                     //";
                     exit;
+            }elseif($proveedorId == false) {
+
+                header("Location: index.php?action=registroProveedor");
+
             }else{
 
 //metodo para cuando se registre una entrada de producto, en el inventario se anexe el producto o sume el stock

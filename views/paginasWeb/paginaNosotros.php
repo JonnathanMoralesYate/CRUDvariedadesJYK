@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-acale=1.0"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="./photo/logoPesta.ico" type="image/x-icon">
     <title>Minimarket Variedades JYK</title>
     <!-- <link href="fonts/Montserrat,Pacifico/Montserrat/Montserrat-Italic-VariableFont_wght.ttf" rel="stylesheet"> -->
@@ -13,7 +13,7 @@
 
 <body>
 <div class="container-fluid"  id="barra_navegacion">
-        <div class="row p-5 mt-1">
+        <div class="row p-3">
             <div class="col-2 mt-2">
     <!--Inicio Barra Navegacion-->
     <nav class="img-fluid d-block text-center" id="inicio">
@@ -22,49 +22,45 @@
                         </a>
                 </nav>
             </div>
-            <div class="col-10 mt-2">
+            <div class="col-10">
                     <nav class="navbar navbar-expand-lg bg-body-tertiary">
                         <div class="container-fluid">
                             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
                                 <nav class="navbar navbar-light">
                                     <div class="container-fluid">
-                                        <a class="navbar-brand text-white" href="#">Menu</a>
+                                        <a class="navbar-brand text-white">Menu</a>
                                     </div>
                                 </nav>
                             </button>
-                                <div class="collapse navbar-collapse mt-2" id="navbarTogglerDemo01">
-                                    <ul class="navbar-nav me-auto mb-5 mb-lg-0">
-                                        <li class="nav-item">
-                                        <form action="index.php?action=paginaP" method="GET">
-                                                <button type="submit" class="btn btn-outline-secondary m-2 text-white" name="action" value="paginaP">Inicio</button>
-                                            </form>                                    
-                                            <!-- <a class="btn btn-outline-secondary m-2 text-white" href="index.php" role="button">Inicio</a> -->
-                                        </li>
-                                        <li class="nav-item">
-                                            <form action="index.php?action=paginaN" method="GET">
-                                                <button type="submit" class="btn btn-outline-secondary m-2 text-white" name="action" value="paginaN">Nosotros</button>
-                                            </form>
-                                        </li>
-                                        <li class="nav-item">
-                                        <form action="index.php?action=paginaS" method="GET">
-                                                <button type="submit" class="btn btn-outline-secondary m-2 text-white" name="action" value="paginaS">Servicios</button>
-                                            </form>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="btn btn-outline-secondary m-2 text-white" href="#Ubicacion" role="button">Ubicacion</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="btn btn-outline-secondary m-2 text-white" href="#Ubicacion" role="button">Contacto</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-                                        <a id="login_inic" class="btn btn-outline-secondary text-white m-2 mt-0" href="#" role="button">Login</a>
-                                </div>
+                            <div class="collapse navbar-collapse mt-2" id="navbarTogglerDemo01">
+                                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                    <li class="nav-item me-5">
+                                        <a class="nav-link text-white m-1 fs-5" href='index.php?action=paginaP' role="button">Inicio</a>
+                                    </li>
+                                    <li class="nav-item me-5">
+                                    <a class="nav-link text-white m-1 fs-5" href='index.php?action=paginaN' role="button">Nosotros</a>
+                                    </li>
+                                    <li class="nav-item me-5">
+                                    <a class="nav-link text-white m-1 fs-5" href='index.php?action=paginaS' role="button">Servicios</a>
+                                    </li>
+                                    <li class="nav-item me-5">
+                                        <a class="nav-link text-white m-1 fs-5" href="#Ubicacion">Ubicación</a>
+                                    </li>
+                                    <li class="nav-item me-5">
+                                        <a class="nav-link text-white m-1 fs-5" href="#Contacto">Contacto</a>
+                                    </li>
+                                </ul>
+                                <ul class="navbar-nav">
+                                    <li class="nav-item">
+                                    <a id="login_inic" class="nav-link text-white fs-5" role="button">Login</a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </nav>
             </div>
         </div>
+</div>
 <!--Final Barra Navegacion-->
 
 <!--Inicio -->
@@ -197,7 +193,7 @@
                                     </a>
                                 </p>
                             </div>
-                            <div class="text-center">
+                            <div id="Contacto" class="text-center">
                                 <p>Cel: 320 338 4589</p>
                             </div>
                     </div>
@@ -251,44 +247,36 @@
 
 <!--Fin ??--->
 
-    <!--Formulario de login ej-->
-    <!--<form id="login_form"  action="login.php"  class="login_form" method="post">
-        <div id="formulario1"><h4>Login</h4>
-        <input type="text" name="user" placeholder="Digita tu Usuario o email" class= "input_sign" id="usuario" required>     
-        <input type="password"name="passw" placeholder="Ingresa tu contraseña"  class= "input_sign" id="passw" required>
-        <input type="submit" name="Login_buttom"  class= "boton_Login" id="Login_buttom" value="Login">
-        <button id="cerrarL" >X</button>
-        <div id="message"></div>
-        </div>
-    </form>-->
-
     <!--Formulario de login-->
 <div id="login_form" class="contenedor_loginG">
         <div class="contenedor-login mt-2">
 
             <h2>Inicio de sesión</h2>
 
-            <form   action="" method="post">
+            <form action="index.php?action=login" method="post">
 
                 <div class="formulario1">
                     <div class="campo mt-3">
-                        <label for="usuario">Usuario:</label>
-                        <input type="text" id="usuario" name="usuario" placeholder="Ingrese su usuario">
+                        <label for="usuarioL">Usuario:</label>
+                        <input type="text" id="usuario" name="usuarioL" placeholder="Ingrese su usuario" required>
                     </div>
 
                     <div class="campo">
-                        <label for="contraseña">Contraseña:</label>
-                        <input type="password" id="contraseña" name="contraseña" placeholder="Ingrese su contraseña">
+                        <label for="contraseñaL">Contraseña:</label>
+                        <input type="password" id="contraseña" name="contraseñaL" placeholder="Ingrese su contraseña" required>
                     </div>
 
                     <div class="campo">
-                        <button type="submit" href="#" class="boton">Iniciar sesión</button>
+                        <button type="submit" class="btn btn-outline-secondary m-2 text-white text-center">Iniciar sesión</button>
                     </div>
 
                     
-                    <button id="cerrarL" hrfe="/form/AccesoAdministrativo.html">X</button>
+                    <button id="cerrarL">X</button>
                     
-                    <div id="message"></div>
+                    
+                    <div id="message">
+                        <!-- */<?php if (isset($error)) echo "<p>$error</p>"; ?>*/ -->
+                    </div>
                 </div>
         </form>
     </div>
@@ -297,7 +285,6 @@
 
 
         <script src="./js/bootstrap.bundle.min.js?v=1.0"></script>
-        <script src="./js/cambioImgBarraCateg.js?v=1.0"></script>
         <script src="./js/LoginInicio.js?v=1.0"></script>
 
 </body>

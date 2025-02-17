@@ -68,10 +68,10 @@ class ModeloProducto{
     }
 
 //Actualizar producto
-    public function actualizarProducto($codigoProducto, $idClase, $nombre, $marca, $descripcion, $idPresentacion, $idUndBase, $contNeto, $idFormatoVent, $precioVenta, $foto, $idProducto) {
-        $query= "UPDATE ".$this->table." SET CodProducto=?, idClase=?, Nombre=?, Marca=?, Descripcion=?, idPresentacion=?, idUndBase=?, ContNeto=?, idFormatoVenta=?, PrecioVenta=?, Foto=? WHERE idProducto=?";
+    public function actualizarProducto($codigoProducto, $idClase, $nombre, $marca, $descripcion, $idPresentacion, $contNeto, $idUndBase, $idFormatoVent, $precioVenta, $foto, $idProducto) {
+        $query= "UPDATE ".$this->table." SET CodProducto=?, idClase=?, Nombre=?, Marca=?, Descripcion=?, idPresentacion=?, ContNeto=?, idUndBase=?, idFormatoVenta=?, PrecioVenta=?, Foto=? WHERE idProducto=?";
         $stmt= $this->conn->prepare($query);
-        $stmt->execute([$codigoProducto, $idClase, $nombre, $marca, $descripcion, $idPresentacion, $idUndBase, $contNeto, $idFormatoVent, $precioVenta, $foto, $idProducto]);
+        $stmt->execute([$codigoProducto, $idClase, $nombre, $marca, $descripcion, $idPresentacion, $contNeto, $idUndBase, $idFormatoVent, $precioVenta, $foto, $idProducto]);
     }
 
 //Eliminar producto
