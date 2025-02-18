@@ -1,0 +1,104 @@
+.contenedor_loginG{
+    display: none;                      /* al actualizar la pagina esconde el formulario*/
+    position: fixed;                    /*se mantendrá en su lugar incluso si se hace scroll.*/
+    right: 35%;                         /*desplazado un % desde el borde derecho de la ventana.*/
+    top: 30%;                           /*desplazado un % desde el borde superior de la ventana.*/
+    width: 30%;
+    aspect-ratio: 1.8;
+    text-align: center;
+    text-justify: distribute;
+    /*margin-right: 2%;*/
+    background-color: #0a1527;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(99, 97, 97, 0.364);
+    border-radius: 20px;
+}
+h2{
+    color: white;
+}
+
+#formulario1{
+    display: flex;
+    position: relative;
+    flex-direction: column; 
+    height: 100%;
+    width: 100%;
+    padding: 2%;
+    justify-content: space-around;
+}
+
+.contenedor-login {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #000000
+}
+
+.campo {
+    margin-bottom: 20px;
+}
+
+.campo label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.campo input[type="text"]:focus, .campo input[type="password"]:focus {
+    width: 95%;                                     /*ancho del elemento input, será el 95% del ancho de su contenedor padre.*/
+    height: 40px;                                   /*altura del input de 40 píxeles.*/
+    padding: 10px;                                  /*espacio interno de 10 píxeles dentro del campo de entrada, asegurando que el texto no esté pegado a los bordes.*/
+    border: 1px solid #ccc;                       /*Aplica un borde de 1 píxel de ancho, color gris claro (#ccc) y estilo sólido alrededor del campo.*/
+    /*background-color: transparent;*/              /*Hace que el fondo de los campos sea transparente.*/
+    border-radius: 5px;                             /*Redondea las esquinas del borde con un radio de 5 píxeles,*/
+    /*border-color: #007bff; /* Azul para enfoque */
+    /*box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    outline: none; /* Elimina el borde predeterminado */                           
+}
+
+.boton {
+    width: 30%;
+    height: 50px;
+    background-color: #10213d;
+    color: #ffffff;
+    text-align: auto;
+    padding: 10px;
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.boton:hover {
+    background-color: #081935;
+}
+
+@media (max-width: 768px) {
+    .contenerodor_loginG {
+    width: 90%;
+    margin: 20px auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .contenerodor_loginG {
+    width: 100%;
+    margin: 10px auto;
+    padding: 10px;
+    }
+}
+#usuario::placeholder{
+    color: hsl(0, 0%, 100%);
+}
+#contraseña::placeholder{
+    color: rgb(255, 255, 255);
+}
+
+.campo label, .campo label {
+    color: hsl(0, 0%, 100%);
+}
+
+#cerrarL{
+    position: absolute;             /*estarán posicionados de manera absoluta dentro de su contenedor.*/
+    width:8%;                       /*anchura será del 7% del contenedor.*/
+    aspect-ratio:1;
+    right:2%;
+    top:3%;
+}

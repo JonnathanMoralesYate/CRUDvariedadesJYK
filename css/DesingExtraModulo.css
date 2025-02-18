@@ -1,0 +1,31 @@
+/* Posiciona los submenús correctamente */
+.dropdown-menu .dropdown-menu {
+    left: 100%; /* Alinea el submenú al lado derecho */
+    top: 0;
+    margin-left: 0.1rem;
+}
+
+/* Ajuste para hover si se desea habilitar */
+.dropdown:hover>.dropdown-menu {
+    display: block;
+}
+
+/* Eliminar el fondo azul al hacer clic */
+.dropdown-item:focus, 
+.dropdown-item:active {
+    background-color: transparent !important; /* Quita el color de fondo */
+    color: inherit !important; /* Mantiene el color del texto original */
+    outline: none !important; /* Quita el borde de enfoque */
+}
+
+/* Opcional: Eliminar cualquier cambio de color en hover */
+.dropdown-item:hover {
+    background-color: transparent !important;
+    color: inherit !important;
+}
+
+/* Quitar el hover azul en select */
+select.form-select:focus {
+    box-shadow: none;
+    border-color: #ced4da; /* Color predeterminado del borde */
+}
