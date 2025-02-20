@@ -71,6 +71,36 @@ class ControladorCliente{
     }
 
 
+    // Consulta para verificar si el Cliente esta registrado en BD
+    public function verificacionCliente() {
+
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    
+            // Leer JSON desde la solicitud
+            $inputJSON = file_get_contents("php://input");
+
+            $input = json_decode($inputJSON, true);
+    
+            if (!isset($input['numIdentCliente']) || empty($input['numIdentCliente'])) {
+                echo json_encode(['error' => 'La Identificacion del cliente es requerido']);
+                exit;
+            }
+    
+            $numCliente = $input['numIdentCliente'];
+    
+            $cliente = $this->modeloCliente->consultaCliente($numCliente);
+    
+            if ($cliente) {
+                echo json_encode(["success" => true, "cliente" => $cliente]);
+            } else {
+                echo json_encode(["success" => false, "error" => "Cliente No Registrado"]);
+            }
+        } else {
+            echo json_encode(['error' => 'Método no permitido']);
+        }
+    }
+
+
     //Actualizar de Clientes
     public function ActualizarCliente() {
 

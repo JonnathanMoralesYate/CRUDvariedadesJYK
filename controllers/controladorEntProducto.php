@@ -47,7 +47,7 @@ class ControladorEntProductos{
 
             if($productoId == false){
 
-                header("Location: index.php?action=registroProducto");
+                header("Location: index.php?action=registroProductos");
                 //echo "
                     //<script>
                         //alert('Producto No Registardo, Realice el Registro!');

@@ -9,9 +9,12 @@
                 <div class="text-center text-white mt-3">
                     <h4>Registro de Salida Producto</h4>
                 </div>
-                <div class=" mt-2">
-                    <label for="codProducto" class="form-label text-white mt-3">Codigo Producto:</label>
-                    <input type="text" class="form-control" id="codProducto" name="codProducto" placeholder="Codigo de barras" required>
+                <div class="mt-2">
+                    <label for="codProducto" class="form-label text-white mt-3">Código Producto:</label>
+                <div class="contenedor">
+                    <input type="text" class="form-control" id="codProducto" name="codProducto" placeholder="Código de barras" required>
+                    <p id="resultado"></p>
+                </div>
                 </div>
                 <div class=" mt-2">
                     <label for="precioProducto" class="form-label text-white mt-3">Precio Producto:</label>
@@ -19,7 +22,10 @@
                 </div>
                 <div class="mt-2">
                     <label for="numIdentCliente" class="form-label text-white mt-3">Cliente:</label>
-                    <input type="text" class="form-control" name="numIdentCliente" placeholder="Numero de Cedula" required>
+                <div class="contenedor">
+                    <input type="text" class="form-control" id="numIdentCliente" name="numIdentCliente" placeholder="Numero de Cedula" required>
+                    <p id="resultado1"></p>
+                </div>
                 </div>
                 <div class="mt-2">
                     <label for="fechaSal" class="form-label text-white mt-3">Fecha Salida:</label>
@@ -52,5 +58,5 @@
         <div class="col-3">
         </div>
         </div>
-        <script src="./js/agregarPrecioProducto.js"></script>
+        <script src="./js/agregarPrecioProducto.js?v=1.0"></script>
 <?php include('./views/layautModAdmin/footerModAdmin.php'); ?>

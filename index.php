@@ -366,13 +366,13 @@ switch($action){
 //Formato Venta
 
         //Registro Formato Venta
-        case'registroFormatoVenta':
-            if($_SERVER["REQUEST_METHOD"] == "POST"){
-                    $controladorFormatoVenta->RegistroFormatoVenta();
-                }else{
-                    include('./views/propiedades/formatoVenta/registrarFormtVenta.php');
-                }
-                break;
+    case'registroFormatoVenta':
+        if($_SERVER["REQUEST_METHOD"] == "POST"){
+                $controladorFormatoVenta->RegistroFormatoVenta();
+            }else{
+            include('./views/propiedades/formatoVenta/registrarFormtVenta.php');
+            }
+            break;
 
 
         //Consulta Formato Venta
@@ -590,26 +590,7 @@ switch($action){
 
 //Entrada de Productos
 
-            //verificaciones entrada de productos
-    case'verificacionCodigoProductos':
-        if($_SERVER["REQUEST_METHOD"] == "POST"){
-                $controladorProducto->productoCodProducto();
-            }else{
-                include('./views/entradaProducto/registrarEntProducto.php');
-            }
-            break;
-
-        //verificaciones Nit proveedor
-    case'verificacionNitProveedor':
-        if($_SERVER["REQUEST_METHOD"] == "POST"){
-                $controladorProveedor->nitProveedor();
-            }else{
-                include('./views/entradaProducto/registrarEntProducto.php');
-            }
-            break;
-
-
-        //Registro Entrada Productos
+       //Registro Entrada Productos
     case'registroEntProductos':
         if($_SERVER["REQUEST_METHOD"] == "POST"){
                 $controladorEntProducto->RegistroEntProducto();
@@ -768,6 +749,37 @@ switch($action){
         $productosAvencer= $controladorInventario->ProductosAvencer();
         include('./views/productosAvencer/reporteProductosAvencerPDF.php');
         break;
+
+
+
+//Verificaciones
+
+         //verificacion entrada de productos
+    case'verificacionCodigoProductos':
+        if($_SERVER["REQUEST_METHOD"] == "POST"){
+                $controladorProducto->productoCodProducto();
+            }else{
+                include('./views/entradaProducto/registrarEntProducto.php');
+            }
+            break;
+
+        //verificacion Nit proveedor
+    case'verificacionNitProveedor':
+        if($_SERVER["REQUEST_METHOD"] == "POST"){
+                $controladorProveedor->nitProveedor();
+            }else{
+                include('./views/entradaProducto/registrarEntProducto.php');
+            }
+            break;
+
+    //verificacion Identificacion Cliente
+    case'verificacionCliente':
+        if($_SERVER["REQUEST_METHOD"] == "POST"){
+                $controladorCliente->verificacionCliente();
+            }else{
+                include('./views/salidaProducto/registrarSalProducto.php');
+            }
+            break;
 
 
 

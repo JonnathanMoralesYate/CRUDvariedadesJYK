@@ -1,5 +1,5 @@
 //Funcion obtener los datos del producto al ingresar el codigo de barras
-document.getElementById('codProducto').addEventListener('input', function()  {
+document.getElementById('codProducto').addEventListener('blur', async function()  {
 
     const codProductoInput = document.getElementById('codProducto');
     const precioInput = document.getElementById('precioProducto');
@@ -8,70 +8,101 @@ document.getElementById('codProducto').addEventListener('input', function()  {
     const inputFechaSalida = document.getElementById("fechaSal");
 
     // Obtén el valor del input
-    const codigoBarras = document.getElementById('codProducto').value; 
+    const codigoBarras = document.getElementById('codProducto').value.trim(); 
+
+
+    agregarFechaActual();
+
+    // Evita consulta si el campo del input está vacío
+    if (codigoBarras === "") {
+        //remueve el contenido de la eqtiqueta <p id"resultado"></p>
+        document.getElementById("resultado").textContent = "";
+        //limpia el campo de fecha de entrada
+        document.getElementById("fechaSal").value = "";
+        //limpia el campo de Precio Venta Producto
+        document.getElementById("precioProducto").value = "";
+        // Evita consultas si el campo está vacío
+        return; 
+    }
 
     //imprime el valor de codproducto
     //console.log('valor codProducto: ', + codigoBarras)
 
-    if (codigoBarras) {
-        fetch('./utils/obtenerPrecioProducto.php', {
+    try {
+        const response = await fetch('index.php?action=verificacionCodigoProductos', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
+                'Content-Type': 'application/json',
             },
-            // Envía el código de barras al servidor
-            body: 'codigo_barras=' + encodeURIComponent(codigoBarras)  
-        })
+            body: JSON.stringify({ codProducto: codigoBarras })  // Enviar datos al servidor como JSON
+        });
 
-        // Conviértelo a un objeto JSON
-        .then(response => response.json())  
-        .then(data => {
+        const data = await response.json();
 
-        // Aquí puedes manipular los datos devueltos por PHP
-        //console.log(data);
+        //console.log('Datos recibidos:', data);
 
         if (data.success) {
+            document.getElementById("resultado").innerText = "✅";
 
-               // Verifica que data.producto esté disponible y tenga CodProducto y PrecioVenta
-            if (data.producto && data.producto.CodProducto && data.producto.PrecioVenta) {
+            //Precio del Producto encontrado, lo mostramos en los campo del formulario
+            precioInput.value = data.producto[0].PrecioVenta.toLocaleString();
 
-                // Muestra los datos del producto
-                //alert('Producto encontrado: Código ' + data.producto.CodProducto + ', Precio: $' + data.producto.PrecioVenta);
-
-                //Precio del Producto encontrado, lo mostramos en los campo del formulario
-                precioInput.value = data.producto.PrecioVenta;
-
-                agregarFechaActual();
-
-                ventaTotal();
-
-            } else {
-
-                alert('Datos del producto no disponibles.');
-
-            }
+            //ventaTotal();
 
         } else {
-
-            alert('No se encontró el producto.');
-
+            document.getElementById("resultado").innerText = "❌";
+            document.getElementById("fechaSal").value = "";
+            document.getElementById("precioProducto").value = "";
         }
-        })
-        .catch(error => console.error('Error:', error));
-    } else {
-
-        alert('Por favor, ingresa un código de barras.');
-
-        // Si el código está vacío, limpiar todos los campos relacionados
-        codProductoInput.value = '';
-        precioProducto.value = '';
-        cantSalInput.value = '';
-        precioVentaInput.value = '';
-        inputFechaSalida.value = '';
-
+    } catch (error) {
+        console.error('Error al obtener la información del producto:', error);
+        document.getElementById("resultado").innerText = "⚠️";
     }
 
 });
+
+
+//Funcion para verificar si el cliente esta registrado
+document.getElementById('numIdentCliente').addEventListener('blur', async function()  {
+
+    // Obtén el valor del input
+    const numCliente = document.getElementById('numIdentCliente').value.trim();
+
+
+    // Evita consulta si el campo del input está vacío
+    if (numCliente === "") {
+        //remueve el contenido de la eqtiqueta <p id"resultado"></p>
+        document.getElementById("resultado1").textContent = "";
+        //limpia el campo de fecha de entrada
+        document.getElementById("numIdentCliente").value = "";
+        return; 
+    }
+    
+    try {
+        const response = await fetch('index.php?action=verificacionCliente', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ numIdentCliente: numCliente })  // Enviar datos al servidor como JSON
+        });
+
+        const data = await response.json();
+
+        //console.log('Datos recibidos:', data);
+
+        if (data.success) {
+            document.getElementById("resultado1").innerText = "✅";
+        } else {
+            document.getElementById("resultado1").innerText = "❌";
+        }
+    } catch (error) {
+        console.error('Error al obtener la información del producto:', error);
+        document.getElementById("resultado").innerText = "⚠️";
+    }
+
+});
+
 
 //Funcion para Calcular el precio de la venta al digitar la cantidad
 document.getElementById('cantSal').addEventListener('input', function() {
@@ -81,6 +112,7 @@ document.getElementById('cantSal').addEventListener('input', function() {
 });
 
 
+//Funcion para Calcular venta de la venta
     function ventaTotal() {
 
         const precioVentaInput = document.getElementById('precioVenta');
@@ -91,23 +123,19 @@ document.getElementById('cantSal').addEventListener('input', function() {
         //Obtiene el valor del precio producto
         const precioInput = document.getElementById('precioProducto').value;
 
-        //imprime el valor de cantidad salida 
-        //console.log('valor cantidad salida Producto: ', + cantSalInput)
+        //replace(/\./g, '') → Elimina los puntos que puedan ser separadores de miles. 
+        //replace(',', '.') → Convierte la coma decimal en un punto (.) para que Number() lo interprete correctamente.
 
-        //imprime el valor de cantidad salida 
-        //console.log('valor Producto: ', + precioInput)
+        const precioProducto = precioInput.replace(/\./g, '').replace(',', '.'); 
+
+        const precioNumero = Number(precioProducto);
     
             //verifica los valores que sean numericos para poder realizar opreciones
-            if (!isNaN(precioInput) && !isNaN(cantSalInput) && cantSalInput > 0) {
-
-                const precioVenta = precioInput * cantSalInput;
-
+            if (!isNaN(precioNumero) && !isNaN(cantSalInput) && cantSalInput > 0) {
+                const precioVenta = precioNumero * cantSalInput;
                 precioVentaInput.value = precioVenta.toLocaleString();
-
             } else {
-
                 precioVentaInput.value = '';
-
             }
 
     }

@@ -46,28 +46,12 @@ class ControladorSalProducto{
             $idModoPago= $_POST['tipoPago'];
 
             if($clienteId == false){
-
                 header("Location: index.php?action=registroCliente");
-                //echo "
-                    //<script>
-                        //alert('Cliente No Registardo, Realice el Registro del cliente!');
-                        //window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=registroCliente';
-                    //</script>
-                    //";
-                    exit;
-            
+                exit;
             }elseif($productoId == false) {
-            
                 header("Location: index.php?action=registroProducto");
-                //echo "
-                    //<script>
-                        //alert('Producto No Registardo, Realice el Registro!');
-                        //window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=registroProducto';
-                    //</script>
-                    //";
-                    exit;          
-            
-                }else{
+                exit;          
+            }else{
 
                     //metodo para cuando se registre una Salida de producto, en el inventario se reste el producto del stock
                     $estadoInventario = $this->modeloInventario->consultaInventarioId($idProducto);
