@@ -590,6 +590,25 @@ switch($action){
 
 //Entrada de Productos
 
+            //verificaciones entrada de productos
+    case'verificacionCodigoProductos':
+        if($_SERVER["REQUEST_METHOD"] == "POST"){
+                $controladorProducto->productoCodProducto();
+            }else{
+                include('./views/entradaProducto/registrarEntProducto.php');
+            }
+            break;
+
+        //verificaciones Nit proveedor
+    case'verificacionNitProveedor':
+        if($_SERVER["REQUEST_METHOD"] == "POST"){
+                $controladorProveedor->nitProveedor();
+            }else{
+                include('./views/entradaProducto/registrarEntProducto.php');
+            }
+            break;
+
+
         //Registro Entrada Productos
     case'registroEntProductos':
         if($_SERVER["REQUEST_METHOD"] == "POST"){

@@ -70,6 +70,39 @@ class ControladorProveedor{
     }
 
 
+    // Consulta para verificar Proveedor si esta registrado en BD
+    public function nitProveedor() {
+
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    
+            // Leer JSON desde la solicitud
+            $inputJSON = file_get_contents("php://input");
+
+            $input = json_decode($inputJSON, true);
+    
+            if (!isset($input['nitProveedor']) || empty($input['nitProveedor'])) {
+                echo json_encode(['error' => 'El código del producto es requerido']);
+                exit;
+            }
+    
+            $ProveedorNit = $input['nitProveedor'];
+            
+            //para ver variable en consola
+            //echo "<script>console.log(" . json_encode($ProveedorNit) . ");</script>";
+    
+            $proveedor = $this->modeloProveedor->consultaProveedor($ProveedorNit);
+    
+            if ($proveedor) {
+                echo json_encode(["success" => true, "proveedor" => $proveedor]);
+            } else {
+                echo json_encode(["success" => false, "error" => "Provedor No Registrado"]);
+            }
+        } else {
+            echo json_encode(['error' => 'Método no permitido']);
+        }
+    }
+
+
     //Actualizar proveedor
     public function ActualizarProducto() {
 

@@ -29,3 +29,26 @@ select.form-select:focus {
     box-shadow: none;
     border-color: #ced4da; /* Color predeterminado del borde */
 }
+
+.contenedor {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espacio entre el input y el resultado */
+    justify-content: center; /* Centra los elementos horizontalmente */
+}
+
+#resultado {
+    margin: 0;
+    white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+    color: white; /* Ajusta el color del texto según el diseño */
+    text-align: center; /* Centra el texto dentro del elemento */
+    font-size: 1.2rem; /* Ajusta el tamaño del icono/texto */
+}
+
+#resultado1 {
+    margin: 0;
+    white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+    color: white; /* Ajusta el color del texto según el diseño */
+    text-align: center; /* Centra el texto dentro del elemento */
+    font-size: 1.2rem; /* Ajusta el tamaño del icono/texto */
+}

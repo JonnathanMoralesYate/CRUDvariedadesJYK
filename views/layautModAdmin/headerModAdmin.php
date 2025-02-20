@@ -25,7 +25,7 @@ if ($_SESSION['rol'] == 2) {
     <title>Modulo Administrativo JYK</title>
     <link rel="stylesheet" href="./css/bootstrap.min.css?v=1.0">
     <link rel="stylesheet" href="./css/DesingBody.css">
-    <link rel="stylesheet" href="./css/DesingExtraModulo.css?v=1.0">
+    <link rel="stylesheet" href="./css/DesingExtraModulo.css">
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>

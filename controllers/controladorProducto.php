@@ -107,6 +107,37 @@ class ControladorProducto{
         $codigoProducto = $_GET['codProduc'] ?? '';
         return $this->modeloProducto->consultGenProductos($codigoProducto);
     }
+    
+
+    // Consulta para verificar si el producto esta registrado en BD
+    public function productoCodProducto() {
+
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    
+            // Leer JSON desde la solicitud
+            $inputJSON = file_get_contents("php://input");
+
+            $input = json_decode($inputJSON, true);
+    
+            if (!isset($input['codProducto']) || empty($input['codProducto'])) {
+                echo json_encode(['error' => 'El código del producto es requerido']);
+                exit;
+            }
+    
+            $codProducto = $input['codProducto'];
+    
+            $producto = $this->modeloProducto->consultGenProductos($codProducto);
+    
+            if ($producto) {
+                echo json_encode(["success" => true, "producto" => $producto]);
+            } else {
+                echo json_encode(["success" => false, "error" => "Producto No Registrado"]);
+            }
+        } else {
+            echo json_encode(['error' => 'Método no permitido']);
+        }
+    }
+
 
     //Actualizar producto
     public function actualizarProducto() {

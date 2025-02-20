@@ -1,126 +1,118 @@
 
-    //Funcion al ingresar el codigo del Producto agrege la fecha actual automaticamente
-    document.getElementById('codProducto').addEventListener('input', function()  {
+   //Funcion al ingresar el codigo del Producto verifica si esta registrado y agrege la fecha actual automaticamente y 
+document.getElementById('codProducto').addEventListener('blur', async function() {
 
-            agregarFechaActual();
+    const codigoBarras = document.getElementById("codProducto").value.trim();
 
-    });
+    agregarFechaActual();
 
-
-    //Funcion para agregar la fecha actual de salida del producto
-    function agregarFechaActual() {
-
-        const inputFechaEnt = document.getElementById("fechaEnt");
-
-        // Obtener la fecha y hora actual
-        const fechaHoraActual = new Date();
-
-        // Obtener el año, mes, día, hora, minutos y formatearlos, // Los meses en JavaScript son de 0 a 11
-        const anio = fechaHoraActual.getFullYear();
-        const mes = String(fechaHoraActual.getMonth() + 1).padStart(2, '0'); 
-        const dia = String(fechaHoraActual.getDate()).padStart(2, '0');
-        const hora = String(fechaHoraActual.getHours()).padStart(2, '0');
-        const minutos = String(fechaHoraActual.getMinutes()).padStart(2, '0');
-
-        // Formatear la fecha y hora en el formato requerido (YYYY-MM-DDTHH:MM)
-        const fechaHoraFormateada = `${anio}-${mes}-${dia}T${hora}:${minutos}`;
-
-        // Asignar la fecha y hora formateada al input
-        inputFechaEnt.value = fechaHoraFormateada;
-
+        // Evita consulta si el campo del input está vacío
+    if (codigoBarras === "") {
+        //remueve el contenido de la eqtiqueta <p id"resultado"></p>
+        document.getElementById("resultado").textContent = "";
+        //limpia el campo de fecha de entrada
+        document.getElementById("fechaEnt").value = "";
+        // Evita consultas si el campo está vacío
+        return; 
     }
 
+    try {
+        const response = await fetch('index.php?action=verificacionCodigoProductos', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ codProducto: codigoBarras })  // Enviar datos al servidor como JSON
+        });
 
-    // Funcion verificar el proveedor
-    document.getElementById('nitProveedor').addEventListener('blur', async function () {
+        const data = await response.json();
 
-        const nit = document.getElementById("nitProveedor").value.trim(); // el trim() se utiliza cuando el valor es del input es string
+        //console.log('Datos recibidos:', data);
 
-        //alert("nit: "+nit);
-        //console.log("valor del NIT: " + nit);
+        if (data.success) {
+            document.getElementById("resultado").innerText = "✅";
+        } else {
+            document.getElementById("resultado").innerText = "❌";
+            document.getElementById("fechaEnt").value = "";
+        }
+    } catch (error) {
+        console.error('Error al obtener la información del producto:', error);
+        document.getElementById("resultado").innerText = "⚠️";
+    }
+
     
+});
+
+
+//Aquí data.producto es un array, por lo que data.producto.idProducto no existe.
+//En su lugar, deberías acceder al primer elemento del array:
+//if (data.success) {
+    //if (data.producto.length > 0 && data.producto[0].idProducto) {
+//   data.producto es un array, por lo que hay que acceder a su primer elemento con data.producto[0].
+//   Se verifica que el array tenga al menos un elemento con data.producto.length > 0.
+//   Se accede a data.producto[0].idProducto en lugar de data.producto.idProducto.
+
+
+//Funcion al ingresar el nit del Proveedor verifica si esta registrado 
+document.getElementById('nitProveedor').addEventListener('blur', async function() {
+
+    const nit = document.getElementById("nitProveedor").value.trim();
+
+    //alert("nit: " + nit);
+
             // Evita consulta si el campo del input está vacío
         if (nit === "") {
             //remueve el contenido de la eqtiqueta <p id"resultado"></p>
-            document.getElementById("resultado").textContent = "";
-
+            document.getElementById("resultado1").textContent = "";
             return; // Evita consultas si el campo está vacío
         }
-    
+
         try {
-            const response = await fetch('./utils/verificacionProveedor.php', {
+            const response = await fetch('index.php?action=verificacionNitProveedor', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'Content-Type': 'application/json',
                 },
-                body: 'nit=' + encodeURIComponent(nit)  // Envía el NIT al servidor
+                body: JSON.stringify({ nitProveedor: nit })  // Enviar datos al servidor como JSON
             });
 
             const data = await response.json();
     
+            //console.log('Datos recibidos:', data);
+    
             if (data.success) {
-                if (data.proveedor && data.proveedor.idProveedor) {
-                    document.getElementById("resultado").innerText = "✅ Proveedor registrado";
-                    document.getElementById("resultado").style.color = "green";
-                    //alert("nit valido:" + nit);
-                } 
+                document.getElementById("resultado1").innerText = "✅";
             } else {
-                document.getElementById("resultado").innerText = "❌ Proveedor NO registrado";
-                document.getElementById("resultado").style.color = "red";
-                //alert("nit no valido:");
+                document.getElementById("resultado1").innerText = "❌";
             }
         } catch (error) {
             console.error('Error al obtener la información del proveedor:', error);
-            document.getElementById("resultado").innerText = "⚠️ Error en la consulta";
-            document.getElementById("resultado").style.color = "orange";
+            document.getElementById("resultado1").innerText = "⚠️";
+            
         }
-    });
+
+});
 
 
+//Funcion para agregar la fecha actual de salida del producto
+function agregarFechaActual() {
 
-    // Funcion verificar el producto esta registrado en BD
-    document.getElementById('codProducto').addEventListener('blur', async function () {
+    const inputFechaEnt = document.getElementById("fechaEnt");
 
-        const codigoBarras = document.getElementById("codProducto").value.trim(); // el trim() se utiliza cuando el valor es del input es string
+    // Obtener la fecha y hora actual
+    const fechaHoraActual = new Date();
 
-         // Evita consulta si el campo del input está vacío
-            if (codigoBarras === "") {
-                return;
-            }
+    // Obtener el año, mes, día, hora, minutos y formatearlos, // Los meses en JavaScript son de 0 a 11
+    const anio = fechaHoraActual.getFullYear();
+    const mes = String(fechaHoraActual.getMonth() + 1).padStart(2, '0'); 
+    const dia = String(fechaHoraActual.getDate()).padStart(2, '0');
+    const hora = String(fechaHoraActual.getHours()).padStart(2, '0');
+    const minutos = String(fechaHoraActual.getMinutes()).padStart(2, '0');
 
-        try {
-            const response = await fetch('./utils/obtenerIdProducto.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                },
-                // Envía el código de barras al servidor
-                body: 'codProducto=' + encodeURIComponent(codigoBarras)  
-            });
+    // Formatear la fecha y hora en el formato requerido (YYYY-MM-DDTHH:MM)
+    const fechaHoraFormateada = `${anio}-${mes}-${dia}T${hora}:${minutos}`;
 
-            // Conviértelo a un objeto JSON
-            const data = await response.json();
-    
-            if (data.success) {
+    // Asignar la fecha y hora formateada al input
+    inputFechaEnt.value = fechaHoraFormateada;
 
-                // Verifica que data.producto esté disponible y tenga idProducto
-                if (data.producto && data.producto.idProducto) {
-
-                    //return data.producto.idProducto;
-                    alert("Producto esta registrado");
-
-                } 
-            } else {
-                alert('Producto No Registrado.');
-                document.getElementById("codProducto").value = "";
-                document.getElementById("fechaEnt").value = "";
-                //return null;
-            }
-            } catch (error) {
-                console.error('Error al obtener el id del producto:', error);
-                return null;
-            }
-
-    });
-
-
+}
