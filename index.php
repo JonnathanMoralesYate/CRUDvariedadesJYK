@@ -366,13 +366,13 @@ switch($action){
 //Formato Venta
 
         //Registro Formato Venta
-    case'registroFormatoVenta':
-        if($_SERVER["REQUEST_METHOD"] == "POST"){
-                $controladorFormatoVenta->RegistroFormatoVenta();
-            }else{
-            include('./views/propiedades/formatoVenta/registrarFormtVenta.php');
-            }
-            break;
+        case'registroFormatoVenta':
+            if($_SERVER["REQUEST_METHOD"] == "POST"){
+                    $controladorFormatoVenta->RegistroFormatoVenta();
+                }else{
+                    include('./views/propiedades/formatoVenta/registrarFormtVenta.php');
+                }
+                break;
 
 
         //Consulta Formato Venta
@@ -590,7 +590,7 @@ switch($action){
 
 //Entrada de Productos
 
-       //Registro Entrada Productos
+        //Registro Entrada Productos
     case'registroEntProductos':
         if($_SERVER["REQUEST_METHOD"] == "POST"){
                 $controladorEntProducto->RegistroEntProducto();
@@ -713,11 +713,12 @@ switch($action){
             include('./views/entradaProducto/reporteEntProductos.php');
             break;
 
+
         //Genera reporte de Entrada producto en PDF
-    case'reporteEntProductosPDF':
-        $entProductos = $controladorEntProducto->ReporteEntProductos();
-        include('./views/entradaProducto/reporteEntProductosPDF.php');
-        break;
+        case'reporteEntProductosPDF':
+            $entProductos = $controladorEntProducto->ReporteEntProductos();
+            include('./views/entradaProducto/reporteEntProductosPDF.php');
+            break;
 
 
         //Salida de Productos
@@ -735,6 +736,16 @@ switch($action){
         $salProductos = $controladorSalProducto->ReporteSalProductos();
         include('./views/salidaProducto/reporteSalProductosPDF.php');
         break;
+        $salProductos = $controladorSalProducto->ReporteSalProductos();
+            include('./views/salidaProducto/reporteSalProducto.php');
+            break;
+
+
+        //Genera reporte de Salida producto en PDF
+    case'reporteSalProductosPDF':
+        $salProductos = $controladorSalProducto->ReporteSalProductos();
+            include('');
+            break;
 
 
         //Productos Proximos a Vencer
@@ -780,6 +791,35 @@ switch($action){
                 include('./views/salidaProducto/registrarSalProducto.php');
             }
             break;
+        
+
+//Entrada de Productos Empleado
+
+        //Registro Entrada Productos
+    case'registroEntProductosEmp':
+        if($_SERVER["REQUEST_METHOD"] == "POST"){
+                $controladorEntProducto->RegistroEntProductoEmp();
+            }else{
+                include('./views/entradaProducto/registrarEntProductosEmp.php');
+            }
+            break;
+
+
+        //Consulta Entrada Productos
+    case'consultaEntProductosEmp';
+        $entProductos = $controladorEntProducto->consultaGenEntProductosVista();
+        include('./views/entradaProducto/consultaEntProductosEmp.php');
+        break;
+
+    case'consultaEntProductoIdEmp';
+        $entProductos = $controladorEntProducto->consultaGenEntProductosVistaId();
+        include('./views/entradaProducto/consultaEntProductosEmp.php');
+        break;
+
+    case'consultaEntProductoFechaEmp';
+        $entProductos = $controladorEntProducto->consultaGenEntProductosVistaFecha();
+        include('./views/entradaProducto/consultaEntProductos.php');
+        break;
 
 
 

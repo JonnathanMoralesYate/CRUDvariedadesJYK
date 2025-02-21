@@ -70,17 +70,15 @@
                     <label for="contNeto" class="form-label text-white mt-3">Contenido Neto:</label>
                     <input type="number" class="form-control" name="contNeto" placeholder="" required>
                 </div>
-                <div class="mt-2">
                 <label for="formatovent" class="form-label text-white mt-3">Formato Venta:</label>
                         <select id="formatoVent" name="formatovent" class="form-control" required>
                             <option selected>Seleccione Formato Venta</option>
                             <?php foreach($formatoVents as $formatoVent): ?>
-                            <option value="<?= $formatoVent['idFormatoVenta']; ?>">
-                            <?= $formatoVent['FormatoVenta']; ?>
-                            </option>
+                                <option value="<?= $formatoVent['idFormatoVenta']; ?>">
+                                    <?= $formatoVent['FormatoVenta']; ?>
+                                </option>
                             <?php endforeach; ?>
                         </select>
-                </div>
                 <div class=" mt-2">
                     <label for="precioVenta" class="form-label text-white mt-3">Precio de Venta:</label>
                     <input type="number" class="form-control" name="precioVenta" placeholder="" required>
@@ -93,10 +91,9 @@
                     <button type="submit" class="btn btn-outline-secondary text-white mt-3 text-center">Registrar Producto</button>
                 </div>
             </form>
-            
-            </div>
-            <div class="col-3">
-            </div>
-    </div>
-    <script src="./js/generarCodigoProducto.js"></script>
+        </div>
+</div>
+        <div class="col-3">
+        </div>
+
 <?php include('./views/layautModEmple/footerModEmplea.php');  ?>

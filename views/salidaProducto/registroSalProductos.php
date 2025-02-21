@@ -87,5 +87,5 @@
         </div>
     </div>
 
-    <script src="./js/agregaProductoTabla.js"></script>
+    <script src="./js/agregaProductoTabla.js?v=1.0"></script>
 <?php include('./views/layautModAdmin/footerModAdmin.php'); ?>

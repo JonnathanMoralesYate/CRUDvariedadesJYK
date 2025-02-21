@@ -19,26 +19,26 @@ class ControladorConsultaPrecioProducto{
 
 
         //Obtiene Precio del producto 
-        public function valorProducto() {
-            $codigoBarras = $_GET['codigo'] ?? '';
+       // public function valorProducto() {
+           // $codigoBarras = $_GET['codigo'] ?? '';
 
-            $datos = $this->modeloProducto->ProductoCodigo($codigoBarras);
+           // $datos = $this->modeloProducto->ProductoCodigo($codigoBarras);
 
             // Establecer el encabezado de tipo JSON
-            header('Content-Type: application/json');
+           // header('Content-Type: application/json');
 
             // Verificar si se encontro un producto
-            if ($datos !== null) {
+          //  if ($datos !== null) {
 
                 // Devuelve el precio en formato JSON para el front-end
-                echo json_encode(['Precio Producto' => $datos]);
+         //       echo json_encode(['Precio Producto' => $datos]);
 
-            } else {
+         //   } else {
 
                 // Si no se encuentran producto, enviar un mensaje de error
-                echo json_encode(['error' => 'Producto no encontrado']);
-            }
-        }
+          //      echo json_encode(['error' => 'Producto no encontrado']);
+          //  }
+       // }
 
 }
 
