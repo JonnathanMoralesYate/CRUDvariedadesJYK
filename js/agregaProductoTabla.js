@@ -537,7 +537,7 @@ document.getElementById('registrarSalida').addEventListener('click', async funct
 
 
     //Funcion al ingresar identificacion del cliente agrege la fecha actual automaticamente
-    document.getElementById('numIdentCliente').addEventListener('blur', async function()  {
+    document.getElementById('numIdentCliente').addEventListener('input', async function()  {
 
     // Obtener los valores de los inputs fijos (fuera de la tabla)
     const cliente = document.getElementById('numIdentCliente').value;
