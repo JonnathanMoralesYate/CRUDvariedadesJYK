@@ -37,7 +37,7 @@ class ModeloInventario{
 
 //Vista reporte actualizado de inventario
     public function inventarioActualizado() {
-        $query= "SELECT idInventario, productos.CodProducto, productos.Nombre, productos.Marca, productos.Descripcion, CONCAT(presentacion_producto.Presentacion,' ', productos.ContNeto,' ', unidad_base.UndBase) AS 'Contenido Neto', formato_venta.FormatoVenta, CantActual, productos.Foto FROM ".$this->table." INNER JOIN productos ON inventario.idProducto=productos.idProducto INNER JOIN presentacion_producto ON productos.idPresentacion=presentacion_producto.idPresentacion INNER JOIN unidad_base ON productos.idUndBase=unidad_base.idUndBase INNER JOIN formato_venta ON productos.idFormatoVenta=formato_venta.idFormatoVenta";
+        $query= "SELECT idInventario, productos.CodProducto, productos.Nombre, productos.Marca, productos.Descripcion, CONCAT(presentacion_producto.Presentacion,' ', productos.ContNeto,' ', unidad_base.UndBase) AS 'Contenido Neto', formato_venta.FormatoVenta, CantActual, productos.Foto FROM ".$this->table." INNER JOIN productos ON inventario.idProducto=productos.idProducto INNER JOIN presentacion_producto ON productos.idPresentacion=presentacion_producto.idPresentacion INNER JOIN unidad_base ON productos.idUndBase=unidad_base.idUndBase INNER JOIN formato_venta ON productos.idFormatoVenta=formato_venta.idFormatoVenta WHERE CantActual > 0";
         $stmt= $this->conn->query($query);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -46,6 +46,14 @@ class ModeloInventario{
     //Vista reporte Productos Proximos a Vencer de inventario
     public function productosAvencer() {
         $query= "SELECT idInventario, entrada_productos.FechaVencimiento, CantActual, productos.CodProducto, productos.Nombre, productos.Marca, productos.Descripcion, CONCAT(presentacion_producto.Presentacion,' ', productos.ContNeto,' ', unidad_base.UndBase) AS 'Contenido Neto', proveedores.NombreProveedor, productos.Foto FROM ".$this->table." INNER JOIN productos ON inventario.idProducto=productos.idProducto INNER JOIN entrada_productos ON productos.idProducto=entrada_productos.idProducto INNER JOIN presentacion_producto ON productos.idPresentacion=presentacion_producto.idPresentacion INNER JOIN unidad_base ON productos.idUndBase=unidad_base.idUndBase INNER JOIN proveedores ON entrada_productos.idProveedor=proveedores.idProveedor WHERE entrada_productos.FechaVencimiento >= CURRENT_DATE ORDER BY entrada_productos.FechaVencimiento ASC";
+        $stmt= $this->conn->query($query);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+
+    //Consulta para ver que prodcutos hay en inventario que estan no tienen estok
+    public function productoSinStock() {
+        $query= "SELECT idInventario, productos.CodProducto, productos.Nombre, productos.Marca, productos.Descripcion, CONCAT(presentacion_producto.Presentacion,' ', productos.ContNeto,' ', unidad_base.UndBase) AS 'Contenido Neto', formato_venta.FormatoVenta, CantActual, productos.Foto FROM ".$this->table." INNER JOIN productos ON inventario.idProducto=productos.idProducto INNER JOIN presentacion_producto ON productos.idPresentacion=presentacion_producto.idPresentacion INNER JOIN unidad_base ON productos.idUndBase=unidad_base.idUndBase INNER JOIN formato_venta ON productos.idFormatoVenta=formato_venta.idFormatoVenta WHERE CantActual = 0";
         $stmt= $this->conn->query($query);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }

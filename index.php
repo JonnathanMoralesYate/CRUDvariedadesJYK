@@ -209,21 +209,19 @@ switch($action){
 
         //Consulta Producto empleado
     case'consultaProductosemp';
-    $productos = $controladorProducto->listaProductosVistaemp();
-    include('./views/productos/consultaProductoemp.php');
-    break;
-
+        $productos = $controladorProducto->listaProductosVistaemp();
+        include('./views/productos/consultaProductoemp.php');
+        break;
 
     case'consultaProductosCodigoemp';
-    $productos = $controladorProducto->productoVistaCodigoemp();
-    include('./views/productos/consultaProductoemp.php');
-    break;
+        $productos = $controladorProducto->productoVistaCodigoemp();
+        include('./views/productos/consultaProductoemp.php');
+        break;
 
     case'consultaProductosNombreemp';
-    $productos = $controladorProducto->productoVistaNombreemp();
-    include('./views/productos/consultaProductoemp.php');
-    break;
-        
+        $productos = $controladorProducto->productoVistaNombreemp();
+        include('./views/productos/consultaProductoemp.php');
+        break;
 
 
 //Clases
@@ -565,7 +563,7 @@ switch($action){
         $clientes = $controladorCliente->listaClientesemp();
         include('./views/cliente/consultaClienteemp.php');
         break;
-            
+
     case'consultaClienteCedulaemp';
         $clientes = $controladorCliente->datosClienteCedulaemp();
         include('./views/cliente/consultaClienteemp.php');
@@ -582,7 +580,7 @@ switch($action){
         $tipoDocum= $controladorTipoDocum->listaTiposDocum();
         include('./views/cliente/actualizarClienteemp.php');
         break;
-        
+
         case'actualizarClienteemp':
             $controladorCliente->ActualizarClienteemp();
             break;
@@ -785,7 +783,7 @@ switch($action){
                 $controladorCliente->verificacionCliente();
             }
             break;
-        
+
 
 //Entrada de Productos Empleado
 
