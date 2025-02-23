@@ -754,12 +754,10 @@ switch($action){
 
 //Verificaciones
 
-         //verificacion entrada de productos
+         //verificacion codigo de barra del productos
     case'verificacionCodigoProductos':
         if($_SERVER["REQUEST_METHOD"] == "POST"){
                 $controladorProducto->productoCodProducto();
-            }else{
-                include('./views/entradaProducto/registrarEntProducto.php');
             }
             break;
 
@@ -767,8 +765,6 @@ switch($action){
     case'verificacionNitProveedor':
         if($_SERVER["REQUEST_METHOD"] == "POST"){
                 $controladorProveedor->nitProveedor();
-            }else{
-                include('./views/entradaProducto/registrarEntProducto.php');
             }
             break;
 
@@ -776,8 +772,6 @@ switch($action){
     case'verificacionCliente':
         if($_SERVER["REQUEST_METHOD"] == "POST"){
                 $controladorCliente->verificacionCliente();
-            }else{
-                include('./views/salidaProducto/registrarSalProducto.php');
             }
             break;
 
