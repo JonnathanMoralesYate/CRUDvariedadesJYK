@@ -28,6 +28,35 @@ class ControladorInventario{
     }
 
 
+    // Consulta para verificar si el stock disponible del producto en BD
+    public function disponibilidadProducto() {
+
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    
+            // Leer JSON desde la solicitud
+            $inputJSON = file_get_contents("php://input");
+
+            $input = json_decode($inputJSON, true);
+    
+            if (!isset($input['idProducto']) || empty($input['idProducto'])) {
+                echo json_encode(['error' => 'El ID producto es requerido']);
+                exit;
+            }
+    
+            $idProducto = $input['idProducto'];
+    
+            $stock = $this->modeloInventario->consultaInventario($idProducto);
+    
+            if ($stock) {
+                echo json_encode(["success" => true, "stock" => $stock]);
+            } else {
+                echo json_encode(["success" => false, "error" => "Producto No esta en Inventario o no hay stock"]);
+            }
+        } else {
+            echo json_encode(['error' => 'Método no permitido']);
+        }
+    }
+
 
 }
 

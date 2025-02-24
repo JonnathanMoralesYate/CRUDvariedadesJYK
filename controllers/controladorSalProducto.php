@@ -42,7 +42,10 @@ class ControladorSalProducto{
             $idCliente= $clienteId['idCliente'];
             $fechaSal= $_POST['fechaSal'];
             $cantSal= $_POST['cantSal'];
-            $precioVenta= $_POST['precioVenta'];
+            $precioVentaString = $_POST['precioVenta'];    // Recibimos el valor como string
+            $precioVentaSinPunto = str_replace('.', '', $precioVentaString);    // Intentamos eliminar el punto
+            $precioVenta = (int) $precioVentaSinPunto;  // Convertir a entero
+
             $idModoPago= $_POST['tipoPago'];
 
             if($clienteId == false){

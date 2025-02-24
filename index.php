@@ -763,7 +763,7 @@ switch($action){
 
 //Verificaciones
 
-         //verificacion codigo de barra del productos
+        //verificacion codigo de barra del productos
     case'verificacionCodigoProductos':
         if($_SERVER["REQUEST_METHOD"] == "POST"){
                 $controladorProducto->productoCodProducto();
@@ -777,12 +777,20 @@ switch($action){
             }
             break;
 
-    //verificacion Identificacion Cliente
+        //verificacion Identificacion Cliente
     case'verificacionCliente':
         if($_SERVER["REQUEST_METHOD"] == "POST"){
                 $controladorCliente->verificacionCliente();
             }
             break;
+
+    
+    //verificacion de Stock del producto
+    case'verificacionStock':
+        if($_SERVER["REQUEST_METHOD"] == "POST"){
+            $controladorInventario->disponibilidadProducto();
+        }
+        break;
 
 
 //Entrada de Productos Empleado

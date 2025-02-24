@@ -27,6 +27,15 @@ class ModeloInventario{
     }
 
 
+    //Consulta de Producto en Inventario con Cantidad Actual > 0
+    public function consultaInventario($idProducto) {
+        $query= "SELECT * FROM ".$this->table." WHERE idProducto=? AND CantActual > 0" ;
+        $stmt= $this->conn->prepare($query);
+        $stmt->execute([$idProducto]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+
 //Actualiza la Cantidad Actual del Producto
     public function actualizarStock($cantidadAct, $idProducto) {
         $query = "UPDATE ".$this->table." SET CantActual=? WHERE idProducto=?";

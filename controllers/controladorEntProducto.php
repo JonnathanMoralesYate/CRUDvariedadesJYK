@@ -51,7 +51,7 @@ class ControladorEntProductos{
                 //echo "
                     //<script>
                         //alert('Producto No Registardo, Realice el Registro!');
-                        //window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=registroProducto';
+                        //window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=registroProductos';
                     //</script>
                     //";
                     exit;

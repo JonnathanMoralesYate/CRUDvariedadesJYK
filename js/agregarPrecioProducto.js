@@ -42,15 +42,16 @@ document.getElementById('codProducto').addEventListener('blur', async function()
         //console.log('Datos recibidos:', data);
 
         if (data.success) {
-            document.getElementById("resultado").innerText = "✅";
-
             //Precio del Producto encontrado, lo mostramos en los campo del formulario
             precioInput.value = data.producto[0].PrecioVenta.toLocaleString();
 
-            //ventaTotal();
+            //ID del producto 
+            productoId = data.producto[0].idProducto;
+
+            stockDisponible(productoId);
 
         } else {
-            document.getElementById("resultado").innerText = "❌";
+            document.getElementById("resultado").innerText = "❌❌";
             document.getElementById("fechaSal").value = "";
             document.getElementById("precioProducto").value = "";
         }
@@ -60,6 +61,37 @@ document.getElementById('codProducto').addEventListener('blur', async function()
     }
 
 });
+
+//Funcion para verificar disponibilidad del producto en Stock 
+async function stockDisponible(productoId) {
+
+    try {
+        const response = await fetch('index.php?action=verificacionStock', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ idProducto: productoId })  // Enviar datos al servidor como JSON
+        });
+
+        const data = await response.json();
+
+        //console.log('Datos recibidos:', data);
+
+        if (data.success) {
+            document.getElementById("resultado").innerText = "✅";
+            cantidadDisponible = parseFloat(data.stock.CantActual);
+            //alert("Producto Con Stock Disponible" + cantidadDisponible);
+
+        } else {
+            document.getElementById("resultado").innerText = "❌";
+            //alert("Producto Sin Stock Disponible");
+        }
+    } catch (error) {
+        console.error('Error al obtener Stock Disponible del producto:', error);
+    }
+    
+}
 
 
 //Funcion para verificar si el cliente esta registrado
@@ -105,9 +137,28 @@ document.getElementById('numIdentCliente').addEventListener('blur', async functi
 
 
 //Funcion para Calcular el precio de la venta al digitar la cantidad
-document.getElementById('cantSal').addEventListener('input', function() {
+document.getElementById('cantSal').addEventListener('blur', function() {
 
-    ventaTotal();
+    // Obtén el valor del input y lo conviete a numero
+    const cantidadSal = parseInt(document.getElementById('cantSal').value);
+
+     // Evita consulta si el campo del input está vacío
+    if (isNaN(cantidadSal)) {
+        //remueve el contenido de la eqtiqueta <p id"resultado"></p>
+        document.getElementById('precioVenta').value = '';
+        return; 
+    }
+
+        if(cantidadDisponible >= cantidadSal) {
+            ventaTotal();
+            return;
+        }else{
+            if(cantidadDisponible !== 0){
+                alert("Cantidad Maxima disponible del Producto en Stock: "+ cantidadDisponible);
+                document.getElementById('cantSal').value = ''; 
+                document.getElementById('precioVenta').value = '';
+            }
+            }
 
 });
 
@@ -118,7 +169,7 @@ document.getElementById('cantSal').addEventListener('input', function() {
         const precioVentaInput = document.getElementById('precioVenta');
 
         // Obtén el valor del input
-        const cantSalInput = document.getElementById('cantSal').value;
+        const cantSalInput = parseFloat(document.getElementById('cantSal').value);
 
         //Obtiene el valor del precio producto
         const precioInput = document.getElementById('precioProducto').value;
@@ -133,12 +184,14 @@ document.getElementById('cantSal').addEventListener('input', function() {
             //verifica los valores que sean numericos para poder realizar opreciones
             if (!isNaN(precioNumero) && !isNaN(cantSalInput) && cantSalInput > 0) {
                 const precioVenta = precioNumero * cantSalInput;
-                precioVentaInput.value = precioVenta.toLocaleString();
+                //parseInt(document.getElementById('precioVentaRaw').value = precioVenta);
+                precioVentaInput.value = Math.floor( precioVenta).toLocaleString();
             } else {
                 precioVentaInput.value = '';
             }
 
     }
+
 
 
         //Funcion para agregar la fecha actual de salida del producto

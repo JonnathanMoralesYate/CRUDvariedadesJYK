@@ -12,6 +12,11 @@ class ModeloSalProducto{
 
 //Registrar Salida Productos
     public function registroSalProducto($idProducto, $idCliente, $fechaSal, $cantSal, $precioVenta, $idModoPago) {
+        //var_dump($precioVenta);
+        //exit();  // Detiene la ejecución
+        // die();  // Hace lo mismo que exit()
+        // sleep(5);  // Espera 5 segundos antes de continuar
+        // echo "<script>alert('Precio Venta Entero: $precioVentaEntero');</script>";
         $query = "INSERT INTO ".$this->table." (idProducto, idCliente, FechaSalida, CantSalida, PrecioVenta, idModoPago ) VALUES(?, ?, ?, ?, ?, ?)";
         $stmt = $this->conn->prepare($query);
         $stmt->execute([$idProducto, $idCliente, $fechaSal, $cantSal, $precioVenta, $idModoPago]);
@@ -72,10 +77,10 @@ class ModeloSalProducto{
 
 
 //Actualizar Entrada Productos
-    public function actualizarSalProducto($idProducto, $idCliente, $fechaSal, $cantSal, $precioVenta, $idModoPago, $idSalProducto) {
+    public function actualizarSalProducto($idProducto, $idCliente, $fechaSal, $cantSal, $precioVentaEntero, $idModoPago, $idSalProducto) {
         $query = "UPDATE ".$this->table." SET idProducto=?, idCliente=?, FechaSalida=?, CantSalida=?, PrecioVenta=?, idModoPago=? WHERE idSalProducto=?";
         $stmt = $this->conn->prepare($query);
-        $stmt->execute([$idProducto, $idCliente, $fechaSal, $cantSal, $precioVenta, $idModoPago, $idSalProducto]);
+        $stmt->execute([$idProducto, $idCliente, $fechaSal, $cantSal, $precioVentaEntero, $idModoPago, $idSalProducto]);
     }
 
 
