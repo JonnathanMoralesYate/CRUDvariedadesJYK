@@ -41,7 +41,7 @@ if ($_SESSION['rol'] == 2) {
                 <h3> Modulo Administrativo</h3>
             </div>
             <div class="text-white mt-3">
-            <h6>Bienvenido: <?= $_SESSION['nombre'] ?> <?= $_SESSION['apellido'] ?></h6>
+                <h6>Bienvenido: <?= $_SESSION['nombre'] ?> <?= $_SESSION['apellido'] ?></h6>
             </div>
         </div>
 <!--Fin-->
