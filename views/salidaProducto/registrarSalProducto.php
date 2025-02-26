@@ -59,5 +59,5 @@
         <div class="col-3">
         </div>
         </div>
-        <script src="./js/agregarPrecioProducto.js"></script>
+        <script src="./js/agregarPrecioProducto.js?v=1.0"></script>
 <?php include('./views/layautModAdmin/footerModAdmin.php'); ?>

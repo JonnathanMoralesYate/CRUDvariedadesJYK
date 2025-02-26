@@ -7,6 +7,6 @@
 <!--Fin de Pie de Pagina-->
 </div>
 
-    <script src="./js/bootstrap.bundle.min.jsv=1.0"></script>
+    <script src="./js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
