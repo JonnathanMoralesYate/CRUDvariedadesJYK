@@ -275,7 +275,7 @@ class ControladorEntProductos{
         }
 
 
-    //registro de Entrada Productos Emleado
+    //registro de Entrada Productos Empleado
     public function RegistroEntProductoEmp() {
 
         if($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -296,7 +296,7 @@ class ControladorEntProductos{
 
             if($productoId == false){
 
-                header("Location: index.php?action=registroProductoEmp");
+                header("Location: index.php?action=registroEntProductosEmp");
                 //echo "
                     //<script>
                         //alert('Producto No Registardo, Realice el Registro!');
@@ -370,6 +370,101 @@ class ControladorEntProductos{
         public function consultaGenEntProductosIdEmp() {
         $idEntProducto = $_GET['idEntProducto'] ?? '';
         return $this->modeloEntProducto->consultaGenEntProductos($idEntProducto);
+    }
+
+
+    //Actualizar de Entrada Productos
+    public function ActualizarEntProductoEmp() {
+
+        if($_SERVER["REQUEST_METHOD"] == "POST") {
+            $codProducto= $_POST['codProducto'];
+            $nitProveedor= $_POST['nitProveedor'];
+
+            $productoId= $this->modeloProducto->consultaProducto($codProducto);
+
+            $proveedorId= $this->modeloProveedor->consultaProveedor($nitProveedor);
+
+
+            $idProducto= $productoId['idProducto'];
+            $idProveedor= $proveedorId['idProveedor'];
+            $fechaEnt= $_POST['fechaEnt'];
+            $fechaVencim= $_POST['fechaVencim'];
+            $precioCompra= $_POST['precioCompra'];
+            $cantidadEnt= $_POST['cantidadEnt'];
+            $idEntProducto= $_POST['idEntProducto'];
+
+            $cantEnt= $this->modeloEntProducto->consultaCantidadEntProductos($idEntProducto);
+
+            $cantidadEntAnterior= $cantEnt['CantEnt'];
+
+            if($cantidadEntAnterior == $cantidadEnt) {
+
+                $cantidadEntAct= $cantidadEnt;
+
+                $this->modeloEntProducto->actualizarEntProducto($idProducto, $idProveedor, $fechaEnt, $fechaVencim, $precioCompra, $cantidadEntAct, $idEntProducto);
+
+                echo "
+                <script>
+                    alert('Actualizacion Exitosa!');
+                    window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaEntProductosEmp';
+                </script>
+                ";
+
+                //header("Location: index.php?action=consultaEntProductos");
+                exit;
+
+            }elseif ($cantidadEntAnterior > $cantidadEnt) {
+
+                $cantidadEntAct= $cantidadEnt;
+
+                $this->modeloEntProducto->actualizarEntProducto($idProducto, $idProveedor, $fechaEnt, $fechaVencim, $precioCompra, $cantidadEntAct, $idEntProducto);
+
+                $estadoInventario = $this->modeloInventario->consultaInventarioId($idProducto);
+
+                //Modifica la cantidad Entrada
+                $cantidad= $cantidadEntAnterior - $cantidadEnt;
+
+                $cantidadAct= $estadoInventario['CantActual'] - $cantidad;
+                $this->modeloInventario->actualizarStock($cantidadAct, $idProducto);
+
+                echo "
+                <script>
+                    alert('Actualizacion Exitosa!');
+                    window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaEntProductosEmp';
+                </script>
+                ";
+
+                //header("Location: index.php?action=consultaEntProductos");
+                exit;
+
+            } else {
+
+                $cantidadEntAct= $cantidadEnt;
+
+                $this->modeloEntProducto->actualizarEntProducto($idProducto, $idProveedor, $fechaEnt, $fechaVencim, $precioCompra, $cantidadEntAct, $idEntProducto);
+
+                $estadoInventario = $this->modeloInventario->consultaInventarioId($idProducto);
+
+                //Modifica la cantidad Entrada
+                $cantidad= $cantidadEnt - $cantidadEntAnterior;
+
+                $cantidadAct= $estadoInventario['CantActual'] + $cantidad;
+                $this->modeloInventario->actualizarStock($cantidadAct, $idProducto);
+
+                echo "
+                <script>
+                    alert('Actualizacion Exitosa!');
+                    window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaEntProductosEmp';
+                </script>
+                ";
+
+                //header("Location: index.php?action=consultaEntProductos");
+                exit;
+
+            }
+
+        }
+
     }
 
 }
