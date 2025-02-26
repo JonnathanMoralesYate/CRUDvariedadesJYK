@@ -820,8 +820,8 @@ switch($action){
         $entProductos = $controladorEntProducto->consultaGenEntProductosVistaFechaEmp();
         include('./views/entradaProducto/consultaEntProductosEmp.php');
         break;
-       
-       
+
+
         //Actualizar Entrada Productos empleado
     case'actualizarEntProductosIdEmp':
         $entProductos = $controladorEntProducto->consultaGenEntProductosIdEmp();
