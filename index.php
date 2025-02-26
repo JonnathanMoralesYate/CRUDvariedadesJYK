@@ -807,22 +807,30 @@ switch($action){
 
         //Consulta Entrada Productos
     case'consultaEntProductosEmp';
-        $entProductos = $controladorEntProducto->consultaGenEntProductosVista();
+        $entProductos = $controladorEntProducto->consultaGenEntProductosVistaEmp();
         include('./views/entradaProducto/consultaEntProductosEmp.php');
         break;
 
     case'consultaEntProductoIdEmp';
-        $entProductos = $controladorEntProducto->consultaGenEntProductosVistaId();
+        $entProductos = $controladorEntProducto->consultaGenEntProductosVistaIdEmp();
         include('./views/entradaProducto/consultaEntProductosEmp.php');
         break;
 
     case'consultaEntProductoFechaEmp';
-        $entProductos = $controladorEntProducto->consultaGenEntProductosVistaFecha();
-        include('./views/entradaProducto/consultaEntProductos.php');
+        $entProductos = $controladorEntProducto->consultaGenEntProductosVistaFechaEmp();
+        include('./views/entradaProducto/consultaEntProductosEmp.php');
+        break;
+       
+       
+        //Actualizar Entrada Productos empleado
+    case'actualizarEntProductosIdEmp':
+        $entProductos = $controladorEntProducto->consultaGenEntProductosIdEmp();
+        include('./views/entradaProducto/actualizarEntProductoEmp.php');
         break;
 
-
-
+        case'actualizarEntProductosEmp':
+            $controladorEntProducto->ActualizarEntProducto();
+            break;
 
 
 

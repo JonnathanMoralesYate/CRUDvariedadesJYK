@@ -12,7 +12,7 @@
             </div>
             <form class=" mt-4" action="index.php?action=consultaEntProductoIdEmp" method="get">
                 <div class="input-group mb-3">
-                    <input type="hidden" class="form-control" name="action" value="consultaEntProductoId">
+                    <input type="hidden" class="form-control" name="action" value="consultaEntProductoIdEmp">
                     <input type="text" class="form-control" placeholder="ID Entrada Producto" name="idEntProducto" aria-label="Recipient's usernam" aria-describedby="button-addon2" required>
                     <button class="btn btn-outline-secondary text-white" type="submit" id="button-addon2">Buscar</button>
                 </div>
@@ -20,7 +20,7 @@
 
             <form class=" mt-2" action="index.php?action=consultaEntProductoFechaEmp" method="get">
                 <div class="input-group mb-3">
-                    <input type="hidden" class="form-control" name="action" value="consultaEntProductoFecha">
+                    <input type="hidden" class="form-control" name="action" value="consultaEntProductoFechaEmp">
                     <input type="date" class="form-control" placeholder="Fecha Entrada Producto" name="fechaEnt" aria-label="Recipient's usernam" aria-describedby="button-addon2" required>
                     <button class="btn btn-outline-secondary text-white" type="submit" id="button-addon2">Buscar</button>
                 </div>
@@ -77,8 +77,7 @@
                         <td class="text-white align-middle"><?= $entProducto['PrecioCompra']; ?></td>
                         <td class="text-white align-middle"><?= $entProducto['CantEnt']; ?></td>
                         <td>                        
-                        <a href="index.php?action=actualizarEntProductosId&idEntProducto=<?= $entProducto['idEntProducto']; ?>" class="btn btn-outline-secondary text-white m-2 w-100" role="button">Actualizar</a> 
-                        <a href="index.php?action=eliminarEntProductoId&idEntProducto=<?= $entProducto['idEntProducto']; ?>" class="btn btn-outline-secondary text-white m-2 w-100" role="button">Eliminar</a>
+                        <a href="index.php?action=actualizarEntProductosIdEmp&idEntProducto=<?= $entProducto['idEntProducto']; ?>" class="btn btn-outline-secondary text-white m-2 w-100" role="button">Actualizar</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>
