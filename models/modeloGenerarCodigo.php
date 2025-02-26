@@ -18,6 +18,15 @@ class ModeloGenerarCodigo{
     }
 
 
+//consulta para obtener consecutivo al generar codigo barras
+    public function consecutivoCodigo($idConsecutivo) {
+        $query= "SELECT CodigoBarra FROM codigos_barras WHERE idCodigoBarra=?";
+        $stmt= $this->conn->prepare($query);
+        $stmt->execute([$idConsecutivo]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+
 }
 
 ?>

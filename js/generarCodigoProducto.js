@@ -1,4 +1,4 @@
-
+//Funcion para cuando seleccione el checbox genere codigo de barras 
 const codigoBarras = document.getElementById('codProduc');
 
 // Obtener el checkbox por su ID
@@ -38,7 +38,7 @@ checkboxGeneraCodigoB.addEventListener('change', async function() {
 async function consultarConsecutivoCodigo($idConsecutivo) {
     if ($idConsecutivo) {
         try {
-            const response = await fetch('./utils/obtenerConsecutivoCodigoB.php', {
+            const response = await fetch('index.php?action=generaCodigoProducto', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',

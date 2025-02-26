@@ -21,6 +21,7 @@ require_once('./controllers/controladorEntProducto.php');
 require_once('./controllers/controladorSalProducto.php');
 require_once('./controllers/controladorInventario.php');
 require_once('./controllers/controladorModoPago.php');
+require_once('./controllers/controladorGenerarCodigo.php');
 
 $vistaPaginaP = new ControladorPaginaP();
 $vistaPaginaN = new ControladorPaginaN();
@@ -44,6 +45,7 @@ $controladorEntProducto= new ControladorEntProductos();
 $controladorSalProducto= new ControladorSalProducto();
 $controladorInventario= new ControladorInventario();
 $controladorModoPago= new ControladorModoPago();
+$controladorGenerarCodigo= new ControladorGenerarCodigo();
 
 $action = htmlspecialchars($_GET['action'] ?? 'principal', ENT_QUOTES, 'UTF-8');
 
@@ -791,6 +793,16 @@ switch($action){
             $controladorInventario->disponibilidadProducto();
         }
         break;
+
+
+    //consulta para generar codigo de barras
+    case'generaCodigoProducto':
+        if($_SERVER["REQUEST_METHOD"] == "POST"){
+            $controladorGenerarCodigo->ConsecutivoCodigo();
+        }
+        break;
+
+
 
 
 //Entrada de Productos Empleado

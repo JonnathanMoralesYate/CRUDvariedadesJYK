@@ -55,5 +55,5 @@
 
 </div>
 
-<script src="./js/graficasModulos.js?v=1.0"></script>
+<script src="./js/graficasModulos.js"></script>
 <?php include('./views/layautModAdmin/footerModAdmin.php'); ?>
