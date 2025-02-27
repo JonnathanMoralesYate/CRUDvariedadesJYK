@@ -19,9 +19,12 @@
         <div class="col-5 d-flex justify-content-center align-items-center">
             <div>
             <div class="mt-2">
-                <label for="numIdentCliente" class="form-label text-white mt-3">Cliente:</label>
-                <input type="text" class="form-control" id="numIdentCliente" name="numIdentCliente" placeholder="Numero de Cedula" required>
-            </div>
+                    <label for="numIdentCliente" class="form-label text-white mt-3">Cliente:</label>
+                <div class="contenedor">
+                    <input type="text" class="form-control" id="numIdentCliente" name="numIdentCliente" placeholder="Numero de Cedula" required>
+                    <p id="resultado1"></p>
+                </div>
+                </div>
             <div class="mt-2">
                 <label for="fechaSal" class="form-label text-white mt-3">Fecha Salida:</label>
                 <input type="datetime-local" class="form-control" id="fechaSal" name="fechaSal" placeholder="" required>
@@ -87,5 +90,5 @@
         </div>
     </div>
 
-    <script src="./js/agregaProductoTabla.js?v=1.0"></script>
+    <script src="./js/agregaProductoTabla.js"></script>
 <?php include('./views/layautModAdmin/footerModAdmin.php'); ?>

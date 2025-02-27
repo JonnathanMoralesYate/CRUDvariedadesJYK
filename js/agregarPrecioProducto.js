@@ -45,13 +45,19 @@ document
       //console.log('Datos recibidos:', data);
 
       if (data.success) {
-        //Precio del Producto encontrado, lo mostramos en los campo del formulario
-        precioInput.value = data.producto[0].PrecioVenta.toLocaleString();
 
-        //ID del producto
-        productoId = data.producto[0].idProducto;
+        if(data.producto && data.producto.idProducto && data.producto.PrecioVenta) { 
+          //Precio del Producto encontrado, lo mostramos en los campo del formulario
+          precioInput.value = data.producto.PrecioVenta.toLocaleString();
 
-        stockDisponible(productoId);
+          //ID del producto
+          productoId = data.producto.idProducto;
+
+          stockDisponible(productoId);
+        }else {
+          alert('Datos del Producto no Disponibles.');
+        }
+
       } else {
         document.getElementById("resultado").innerText = "❌❌";
         document.getElementById("fechaSal").value = "";

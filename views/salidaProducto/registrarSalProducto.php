@@ -37,7 +37,6 @@
                 </div>
                 <div class=" mt-2">
                     <label for="precioVenta" class="form-label text-white mt-3">Precio Venta:</label>
-                    <!-- <input type="hidden" name="precioVentaRaw" id="precioVentaRaw" value=""> -->
                     <input type="text" class="form-control" id="precioVenta" name="precioVenta" placeholder="" required readonly>
                 </div>
                 <div class=" mt-2">
@@ -59,5 +58,5 @@
         <div class="col-3">
         </div>
         </div>
-        <script src="./js/agregarPrecioProducto.js?v=1.0"></script>
+        <script src="./js/agregarPrecioProducto.js"></script>
 <?php include('./views/layautModAdmin/footerModAdmin.php'); ?>

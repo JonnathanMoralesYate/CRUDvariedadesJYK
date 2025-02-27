@@ -126,7 +126,7 @@ class ControladorProducto{
     
             $codProducto = $input['codProducto'];
     
-            $producto = $this->modeloProducto->consultGenProductos($codProducto);
+            $producto = $this->modeloProducto->consultaProducto($codProducto);
     
             if ($producto) {
                 echo json_encode(["success" => true, "producto" => $producto]);

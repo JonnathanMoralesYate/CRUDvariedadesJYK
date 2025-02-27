@@ -145,6 +145,14 @@ for (let i = 0; i < tabla.rows.length; i++) {
         cantidadInput.value = 1;
         cantidadInput.min = 1;
         cantidadInput.max = CantActual;
+        cantidadInput.addEventListener('input', function (){
+            const cantidad = cantidadInput.value;
+                if (cantidad > CantActual) {
+                    alert(`La cantidad maxima que se puede agregar para la venta ${CantActual}`);
+                    cantidadInput.value = CantActual;
+                    cantidad = CantActual; // Ajustar cantidad para evitar errores
+                }   
+        });
         cantidadInput.addEventListener('input', function () {
             actualizarTotal(fila, producto.PrecioVenta, cantidadInput.value);
         });
@@ -292,7 +300,7 @@ document.getElementById('registrarSalida').addEventListener('click', async funct
         return;
     }
 
-    // Mostrar los datos en la consola o lo que desees hacer con ellos
+    // Mostrar los datos en la consola
     console.log('Datos a enviar:', datosSalida);
 
     registroSalProductos(datosSalida);
@@ -452,19 +460,21 @@ document.getElementById('registrarSalida').addEventListener('click', async funct
 
 
     // Función asincrónica para obtener el idProducto
-    async function obtenerIdProducto(codProducto) {
+    async function obtenerIdProducto(codigoBarras) {
 
-        if (codProducto) {
+        if (codigoBarras) {
 
-        try {
-            const response = await fetch('./utils/obtenerIdProducto.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                },
-                // Envía el código de barras al servidor
-                body: 'codProducto=' + encodeURIComponent(codProducto)  
-            });
+                try {
+                    const response = await fetch(
+                    "index.php?action=verificacionCodigoProductos",
+                    {
+                    method: "POST",
+                    headers: {
+                    "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ codProducto: codigoBarras }), // Enviar datos al servidor como JSON
+                    }
+                );
 
             // Conviértelo a un objeto JSON
             const data = await response.json();
@@ -497,16 +507,13 @@ document.getElementById('registrarSalida').addEventListener('click', async funct
     // Función asincrónica para obtener el idProducto
     async function obtenerIdCliente(cliente) {
 
-        if (cliente) {
-
         try {
-            const response = await fetch('./utils/obtenerIdCliente.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                },
-                // Envía el código de barras al servidor
-                body: 'cliente=' + encodeURIComponent(cliente)  
+            const response = await fetch("index.php?action=verificacionCliente", {
+            method: "POST",
+            headers: {
+            "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ numIdentCliente: cliente }), // Enviar datos al servidor como JSON
             });
 
             // Conviértelo a un objeto JSON
@@ -516,9 +523,7 @@ document.getElementById('registrarSalida').addEventListener('click', async funct
 
                 // Verifica que data.cliente esté disponible y tenga idCliente
                 if (data.cliente && data.cliente.idCliente) {
-                    
                     return data.cliente.idCliente;
-
                 } else {
                     alert('Datos del Cliente no disponibles.');
                     return null;
@@ -531,45 +536,47 @@ document.getElementById('registrarSalida').addEventListener('click', async funct
             console.error('Error al obtener el id del Cliente:', error);
             return null;
         }
+    }
+
+
+    //Funcion al ingresar identificacion verifica si esta registrado el cliente y agrege la fecha actual automaticamente
+    document.getElementById('numIdentCliente').addEventListener('blur', async function()  {
+
+        // Obtén el valor del input
+        const numCliente = document.getElementById("numIdentCliente").value.trim();
+
+        // Evita consulta si el campo del input está vacío
+        if (numCliente === "") {
+            //remueve el contenido de la eqtiqueta <p id"resultado"></p>
+            document.getElementById("resultado1").textContent = "";
+            //limpia el campo de fecha de entrada
+            document.getElementById("fechaSal").value = '';
+            return;
         }
-        return null;
-    }
 
+    try {
+        const response = await fetch("index.php?action=verificacionCliente", {
+        method: "POST",
+        headers: {
+        "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ numIdentCliente: numCliente }), // Enviar datos al servidor como JSON
+        });
 
-    //Funcion al ingresar identificacion del cliente agrege la fecha actual automaticamente
-    document.getElementById('numIdentCliente').addEventListener('input', async function()  {
+        const data = await response.json();
 
-    // Obtener los valores de los inputs fijos (fuera de la tabla)
-    const cliente = document.getElementById('numIdentCliente').value;
+        //console.log('Datos recibidos:', data);
 
-    if (cliente === "") {
-
-        return; // Evita consultas si el campo está vacío
-    }
-
-    // Llamamos a la función para obtener el id del cliente
-    const clienteId = await obtenerIdCliente(cliente);  
-    //alert("idCliente." + clienteId);
-
-    //si el cliente no esta registrado, manejar o mejorar los demas errorres tanto de la consulta y fetch
-
-    //Convertimos el resultado en numero
-    const idCliente = parseFloat(clienteId);
-
-    if (isNaN(idCliente)) {
-
-        alert(' Cliente no registrado, realice el registro.');
-
-        // Limpiar el campo de cliente y fecha de salida despues cuando el cliente no esta registrado
-        document.getElementById('numIdentCliente').value = '';
-        document.getElementById("fechaSal").value = '';
-
-        return;
-
-    }else{
-
+        if (data.success) {
+        document.getElementById("resultado1").innerText = "✅";
         agregarFechaActual();
-
+        } else {
+        document.getElementById("resultado1").innerText = "❌";
+        document.getElementById("fechaSal").value = '';
+        }
+    } catch (error) {
+        console.error("Error al obtener la información del producto:", error);
+        document.getElementById("resultado").innerText = "⚠️";
     }
 
     });
@@ -601,23 +608,18 @@ document.getElementById('registrarSalida').addEventListener('click', async funct
 
     // Función asincrónica para obtener verificar que el producto este en inventario y existencia para la venta
     async function existenciaInventario(idProducto) {
-        if (idProducto) {
-            try {
-                // Hacer la solicitud al servidor para obtener los datos del producto
-                const response = await fetch('./utils/verificarProductoInventario.php', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded',
-                    },
-                    body: 'idProducto=' + encodeURIComponent(idProducto)
-                });
-    
-                // Verificamos si la respuesta fue exitosa
-                if (!response.ok) {
-                    throw new Error('Error en la respuesta del servidor');
-                }
-    
+
+        try {
+            const response = await fetch("index.php?action=verificacionStock", {
+                method: "POST",
+                headers: {
+                "Content-Type": "application/json",
+                },
+              body: JSON.stringify({ idProducto: idProducto }), // Enviar datos al servidor como JSON
+            });
+        
                 const data = await response.json();
+                //console.log('Datos recibidos:', data);
     
                 // Verificamos que data y data.cantidadActual y data.cantidadActual.CantActual estén definidos
                 if (data && data.success && data.stock && data.stock.CantActual) {
@@ -633,5 +635,5 @@ document.getElementById('registrarSalida').addEventListener('click', async funct
                 console.error('Error al obtener los datos del producto:', error);
                 alert('Hubo un error al obtener los datos del producto.');
             }
-        }
+        
     }
