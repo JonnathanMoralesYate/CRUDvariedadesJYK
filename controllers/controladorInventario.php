@@ -58,6 +58,43 @@ class ControladorInventario{
     }
 
 
+    //Metodo para actualizar inventario del formulario de salida de productos pór varios productos
+    public function actualizarInventario() {
+
+        // Configurar cabeceras para aceptar solicitudes JSON
+        header('Content-Type: application/json');
+
+        // Permite el acceso desde cualquier origen (CORS)
+        header('Access-Control-Allow-Origin: *');
+
+        // Obtener los datos JSON enviados
+        $data = json_decode(file_get_contents('php://input'), true);
+
+        // Verifica si los datos se han recibido correctamente
+        if (!isset($data['idProducto']) || !isset($data['cantidad'])) {
+
+            // Preparar y ejecutar la inserción de cada fila
+            foreach ($data as $fila) {
+
+                $idProducto = $fila['idProducto'];
+                $cantSal = $fila['cantidad'];
+
+                $this->modeloInventario->stockActualizado($cantSal, $idProducto);
+
+            }
+
+            //respuesta al cliente Proceso de actualizacion
+            echo json_encode(['success' => true, 'message' => 'Datos actualizados en inventario correctamente']);
+
+        }else{
+            //mejorar respuesta cuando no envien todos los datos requeridos
+            echo json_encode(['success' => false, 'error' => 'Datos No recibidos']);
+        }
+
+
+    }
+
+
 }
 
 ?>

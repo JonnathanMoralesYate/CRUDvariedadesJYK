@@ -101,6 +101,46 @@ class ControladorCliente{
     }
 
 
+    //Metodo para actualizar los puntos del cliente del formulario de salida de productos pór varios productos
+    public function PuntosActualizados() {
+
+        // Configurar cabeceras para aceptar solicitudes JSON
+        header('Content-Type: application/json');
+
+        // Permite el acceso desde cualquier origen (CORS)
+        header('Access-Control-Allow-Origin: *');
+
+        // Obtener los datos JSON enviados
+        $data = json_decode(file_get_contents('php://input'), true);
+
+        // Verifica si los datos se han recibido correctamente
+        if (!isset($data['idCliente']) || !isset($data['precio'])) {
+
+
+            foreach ($data as $fila) {
+
+                $idCliente = $fila['idCliente'];
+                $precioVenta = $fila['precio'];
+
+                $puntosAcumulados = ($precioVenta*0.005);
+
+                $this->modeloCliente->puntosActualizados($puntosAcumulados, $idCliente);
+
+            }
+
+            //respuesta al cliente Proceso de actualizacion
+            echo json_encode(['success' => true, 'message' => 'Puntos actualizados del Cliente']);
+
+        }else{
+
+            //mejorar respuesta cuando no envien todos lod datos requeridos
+            echo json_encode(['success' => false, 'error' => 'Datos No Recibidos']);
+    
+        }
+
+    }
+
+
     //Actualizar de Clientes
     public function ActualizarCliente() {
 

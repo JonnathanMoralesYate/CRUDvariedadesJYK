@@ -787,7 +787,7 @@ switch($action){
             break;
 
     
-    //verificacion de Stock del producto
+        //verificacion de Stock del producto
     case'verificacionStock':
         if($_SERVER["REQUEST_METHOD"] == "POST"){
             $controladorInventario->disponibilidadProducto();
@@ -795,7 +795,7 @@ switch($action){
         break;
 
 
-    //consulta para generar codigo de barras
+        //consulta para generar codigo de barras
     case'generaCodigoProducto':
         if($_SERVER["REQUEST_METHOD"] == "POST"){
             $controladorGenerarCodigo->ConsecutivoCodigo();
@@ -803,7 +803,7 @@ switch($action){
         break;
 
 
-    //consulta para traer datos del producto
+        //consulta para traer datos del producto
     case'informacionProducto':
         if($_SERVER["REQUEST_METHOD"] == "POST"){
             $controladorProducto->informacionProducto();
@@ -811,6 +811,28 @@ switch($action){
         break;
 
 
+        //verificacion Identificacion Cliente
+    case'actualizarPuntosCliente':
+        if($_SERVER["REQUEST_METHOD"] == "POST"){
+                $controladorCliente->PuntosActualizados();
+            }
+            break;
+
+
+        //verificacion de Stock del producto
+    case'actualizarStock':
+        if($_SERVER["REQUEST_METHOD"] == "POST"){
+            $controladorInventario->actualizarInventario();
+        }
+        break;
+
+
+        //verificacion de Stock del producto
+    case'registrarSalProductos':
+        if($_SERVER["REQUEST_METHOD"] == "POST"){
+            $controladorSalProducto->registrosSalProductos();
+        }
+        break;
 
 
 //Entrada de Productos Empleado

@@ -86,11 +86,18 @@ class ModeloCliente{
     }
 
 
-    //Actualiza los Puntos del cliente
+    //Actualiza los Puntos del cliente en formulario de actualizar cliente y salida de producto por un solo producto
     public function actualizaPuntos($puntosAct, $idCliente) {
         $query = "UPDATE ".$this->table." SET Puntos=? WHERE idCliente=?";
         $stmt= $this->conn->prepare($query);
         $stmt->execute([$puntosAct, $idCliente]);
+    }
+
+    //Actualizar los puntos del cliente del formulario de salida de productos pór varios productos
+    public function puntosActualizados($puntosAcumulados, $idCliente) {
+        $query = "UPDATE clientes SET Puntos= Puntos + ? WHERE idCliente=?";
+        $stmt= $this->conn->prepare($query);
+        $stmt->execute([$puntosAcumulados, $idCliente]);
     }
 
 }

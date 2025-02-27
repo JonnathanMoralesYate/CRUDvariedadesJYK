@@ -58,7 +58,7 @@ document.getElementById('codProductoS').addEventListener('input', async function
                 });
 
                 const data = await response.json();
-                console.log('Datos recibidos:', data);
+                //console.log('Datos recibidos:', data);
 
                     if (data.success) {
                         const producto = data.producto;
@@ -144,7 +144,7 @@ for (let i = 0; i < tabla.rows.length; i++) {
         cantidadInput.min = 1;
         cantidadInput.max = CantActual;
         cantidadInput.addEventListener('input', function (){
-            const cantidad = cantidadInput.value;
+            let cantidad = cantidadInput.value;
                 if (cantidad > CantActual) {
                     alert(`La cantidad maxima que se puede agregar para la venta ${CantActual}`);
                     cantidadInput.value = CantActual;
@@ -299,7 +299,7 @@ document.getElementById('registrarSalida').addEventListener('click', async funct
     }
 
     // Mostrar los datos en la consola
-    console.log('Datos a enviar:', datosSalida);
+    //console.log('Datos a enviar:', datosSalida);
 
     registroSalProductos(datosSalida);
 
@@ -310,10 +310,8 @@ document.getElementById('registrarSalida').addEventListener('click', async funct
     //Funcion para registrar salida de productos
     function registroSalProductos(datosSalida) {
 
-        if(datosSalida) {
-
             // Enviar los datos al servidor usando AJAX (fetch)
-            fetch('./utils/registrarSalidasProductos.php', {
+            fetch('index.php?action=registrarSalProductos', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -323,12 +321,12 @@ document.getElementById('registrarSalida').addEventListener('click', async funct
 
                 .then(response => response.text())  // Cambié a 'text()' para obtener la respuesta en formato texto
                 .then(text => {
-                console.log('Respuesta del servidor:', text);  // Imprime la respuesta que entrega el servidor
+                //console.log('Respuesta del servidor:', text);  // Imprime la respuesta que entrega el servidor
 
             try {
 
                 const data = JSON.parse(text);  // Intenta convertir a JSON
-                console.log('Datos enviados registrar salida productos correctamente:', data);
+                //console.log('Datos enviados registrar salida productos correctamente:', data);
                 //alert('Los datos se han registrado correctamente.');
 
                 //Funcion para actualizar inventario con respecto de salidas del producto
@@ -348,10 +346,6 @@ document.getElementById('registrarSalida').addEventListener('click', async funct
 
             });
 
-        }else{
-
-        }
-
     }
 
 
@@ -359,10 +353,8 @@ document.getElementById('registrarSalida').addEventListener('click', async funct
     //Funcion asincrona para actualizar inventario
     function actualizarInventario(datosSalida) {
 
-        if(datosSalida) {
-
             // Enviar los datos al servidor usando AJAX (fetch)
-            fetch('./utils/actualizarInventario.php', {
+            fetch('index.php?action=actualizarStock', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -372,46 +364,34 @@ document.getElementById('registrarSalida').addEventListener('click', async funct
 
                 .then(response => response.text())  // Cambié a 'text()' para obtener la respuesta en formato texto
                 .then(text => {
-                console.log('Respuesta del servidor:', text);  // Imprime la respuesta
+                //console.log('Respuesta del servidor en actualizar Inventario:', text);  // Imprime la respuesta
 
             try {
 
                 const data = JSON.parse(text);  // Intenta convertir a JSON
-                console.log('Datos enviados actualizar inventario correctamente:', data);
+                //console.log('Datos enviados actualizar inventario correctamente:', data);
                 //alert('Se ha Actualizado el inventario correctamente.');
 
                 //Funcion para actualizar puntos con respecto de salidas del producto
                 actualizarPuntosCliente(datosSalida);
 
             } catch (error) {
-
-            console.error('Error al convertir la respuesta:', error);
-            alert('Hubo un error al actualizar los datos. La respuesta del servidor no es válida.');
-
+                console.error('Error al convertir la respuesta:', error);
+                alert('Hubo un error al actualizar los datos. La respuesta del servidor no es válida.');
             }
             })
             .catch(error => {
-
                 console.error('Error al enviar los datos:', error);
                 alert('Hubo un error al actualizar los datos. Inténtalo nuevamente.');
-
             });
-
-        }else{
-
-        }
-
-        
     }
 
 
     //Funcion asincrona para actualizar inventario
     function actualizarPuntosCliente(datosSalida) {
 
-        if(datosSalida) {
-
             // Enviar los datos al servidor usando AJAX (fetch)
-            fetch('./utils/actualizarPuntosCliente.php', {
+            fetch('index.php?action=actualizarPuntosCliente', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -421,12 +401,12 @@ document.getElementById('registrarSalida').addEventListener('click', async funct
 
                 .then(response => response.text())  // Cambié a 'text()' para obtener la respuesta en formato texto
                 .then(text => {
-                console.log('Respuesta del servidor:', text);  // Imprime la respuesta
+                //console.log('Respuesta del servidor:', text);  // Imprime la respuesta
 
             try {
 
                 const data = JSON.parse(text);  // Intenta convertir a JSON
-                console.log('Datos enviados actualizar punto clientes correctamente:', data);
+                //console.log('Datos enviados actualizar punto clientes correctamente:', data);
                 //alert('Se ha Actualizado puntos del cliente correctamente.');
 
                 //mensaje proceso terminado y borrar datos de tabla o actualizar pagina ??
@@ -435,24 +415,14 @@ document.getElementById('registrarSalida').addEventListener('click', async funct
                 location.reload();
 
             } catch (error) {
-
-            console.error('Error al convertir la respuesta:', error);
-            alert('Hubo un error al actualizar los datos. La respuesta del servidor no es válida.');
-
+                console.error('Error al convertir la respuesta:', error);
+                alert('Hubo un error al actualizar los datos. La respuesta del servidor no es válida.');
             }
             })
             .catch(error => {
-
                 console.error('Error al enviar los datos:', error);
                 alert('Hubo un error al actualizar los datos. Inténtalo nuevamente.');
-
-            });
-
-        }else{
-
-        }
-
-        
+            });        
     }
 
 

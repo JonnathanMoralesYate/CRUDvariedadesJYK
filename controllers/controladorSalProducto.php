@@ -343,6 +343,48 @@ class ControladorSalProducto{
         ];
     }
 
+    //Registro de salidas de productos por salida de varios producto
+    public function registrosSalProductos() {
+
+        // Configurar cabeceras para aceptar solicitudes JSON
+        header('Content-Type: application/json');
+
+        // Permite el acceso desde cualquier origen (CORS)
+        header('Access-Control-Allow-Origin: *');
+
+        // Obtener los datos JSON enviados
+        $data = json_decode(file_get_contents('php://input'), true);
+
+        // Verifica si los datos se han recibido correctamente
+        if (!isset($data['idProducto']) || !isset($data['idCliente']) || !isset($data['fechaSal'])
+            || !isset($data['cantidad']) || !isset($data['precio']) || !isset($data['formaPago'])) {
+
+
+                // Preparar y ejecutar la inserción de cada fila
+                foreach ($data as $fila) {
+
+                    $codProducto = $fila['idProducto'];
+                    $numIdentCliente = $fila['idCliente'];
+                    $fechaSal = $fila['fechaSal'];
+                    $cantSal = $fila['cantidad'];
+                    $precioVenta = $fila['precio'];
+                    $idModoPago = $fila['formaPago'];
+
+                    $this->modeloSalProducto->registroSalProducto($codProducto, $numIdentCliente, $fechaSal, $cantSal, $precioVenta, $idModoPago);
+
+                }
+
+                //Respuesta al cliente Proceso exitoso
+                echo json_encode(['success' => true, 'message' => 'Registro de salida productos correctamente']);
+
+        }else{
+            //mejorar respuesta cuando no envien todos lod datos requeridos
+            echo "Faltan datos necesarios";
+            exit;
+        }
+
+    }
+
 
 }
 

@@ -67,6 +67,14 @@ class ModeloInventario{
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+
+    //Actualiza la Cantidad Actual del Producto por salida de varios producto, solo se realizará si la cantidad actual es mayor o igual que la cantidad a restar.
+    public function stockActualizado($cantSal, $idProducto) {
+        $query = "UPDATE inventario SET CantActual= CantActual - ? WHERE idProducto=? AND CantActual >= ?";
+        $stmt= $this->conn->prepare($query);
+        $stmt->execute([$cantSal, $idProducto, $cantSal]);
+    }
+
 }
 
 ?>
