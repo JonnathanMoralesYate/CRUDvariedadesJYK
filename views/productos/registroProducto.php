@@ -98,7 +98,7 @@
             <div class="col-3">
             </div>
     </div>
-    <script src="./js/generarCodigoProducto.js"></script>
+    <script src="./js/generarCodigoProducto.js?v=1.0"></script>
 <?php include('./views/layautModAdmin/footerModAdmin.php'); ?>
 
 

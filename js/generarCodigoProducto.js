@@ -35,15 +35,15 @@ checkboxGeneraCodigoB.addEventListener('change', async function() {
 
 
 //Funcion para taer el consecutivo del codigo de barras
-async function consultarConsecutivoCodigo($idConsecutivo) {
-    if ($idConsecutivo) {
+async function consultarConsecutivoCodigo(idConsecutivo) {
+    
         try {
             const response = await fetch('index.php?action=generaCodigoProducto', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
+                    "Content-Type": "application/json",
                 },
-                body: 'idConsecutivo=' + encodeURIComponent($idConsecutivo)
+                body: JSON.stringify({ idConsecutivo: idConsecutivo }), // Enviar datos al servidor como JSON
             });
 
             const data = await response.json();
@@ -53,7 +53,7 @@ async function consultarConsecutivoCodigo($idConsecutivo) {
 
             if (data.success) {
 
-                return data.consecutivo.CodigoBarra;
+                return data.consecutivoCodigo.CodigoBarra;
 
             } else {
                 console.error('Error:', data.error);
@@ -64,5 +64,3 @@ async function consultarConsecutivoCodigo($idConsecutivo) {
             return null;
         }
     }
-    return null;  // Si no se proporciona $idConsecutivo
-}
