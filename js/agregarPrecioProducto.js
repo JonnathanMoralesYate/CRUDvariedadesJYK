@@ -41,7 +41,6 @@ document
       );
 
       const data = await response.json();
-
       //console.log('Datos recibidos:', data);
 
       if (data.success) {

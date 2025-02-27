@@ -44,34 +44,32 @@ document.getElementById('codProductoS').addEventListener('input', async function
 });
 
     //Funcion traer la informacion del producto
-    function obtenerInforProducto(idProducto, CantActual) {
+    async function obtenerInforProducto(idProducto, CantActual) {
 
-        if (idProducto) {
-            // Hacer la solicitud al servidor para obtener los datos del producto
-            fetch('./utils/inforProducto.php', {
-                method: 'POST',
+            try {
+                const response = await fetch(
+                "index.php?action=informacionProducto",
+                {
+                method: "POST",
                 headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
+                "Content-Type": "application/json",
                 },
-                body: 'idProducto=' + encodeURIComponent(idProducto)
-            })
-        
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
+                body: JSON.stringify({ idProducto: idProducto }), // Enviar datos al servidor como JSON
+                });
 
-                    const producto = data.producto;
+                const data = await response.json();
+                console.log('Datos recibidos:', data);
 
-                    agregarProductoATabla(producto, CantActual);  // Función para agregar el producto a la tabla
+                    if (data.success) {
+                        const producto = data.producto;
+                        agregarProductoATabla(producto, CantActual);  // Función para agregar el producto a la tabla
+                    }
 
-                } 
-            
-            })
-            .catch(error => {
-                console.error('Error al obtener los datos del producto:', error);
-            });
+            } catch (error) {
+            console.error('Error al obtener los datos del producto:', error);
+            }
         }
-    }
+
 
 // Función para agregar el producto a la tabla
 function agregarProductoATabla(producto, CantActual) {

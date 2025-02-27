@@ -803,6 +803,14 @@ switch($action){
         break;
 
 
+    //consulta para traer datos del producto
+    case'informacionProducto':
+        if($_SERVER["REQUEST_METHOD"] == "POST"){
+            $controladorProducto->informacionProducto();
+        }
+        break;
+
+
 
 
 //Entrada de Productos Empleado

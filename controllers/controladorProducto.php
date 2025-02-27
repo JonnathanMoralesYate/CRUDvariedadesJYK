@@ -139,6 +139,36 @@ class ControladorProducto{
     }
 
 
+    // Consulta para traer informacion del producto
+    public function informacionProducto() {
+
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    
+            // Leer JSON desde la solicitud
+            $inputJSON = file_get_contents("php://input");
+
+            $input = json_decode($inputJSON, true);
+    
+            if (!isset($input['idProducto']) || empty($input['idProducto'])) {
+                echo json_encode(['error' => 'El código del producto es requerido']);
+                exit;
+            }
+    
+            $idProducto = $input['idProducto'];
+    
+            $producto = $this->modeloProducto->consultaProductoCodigo($idProducto);
+    
+            if ($producto) {
+                echo json_encode(["success" => true, "producto" => $producto]);
+            } else {
+                echo json_encode(["success" => false, "error" => "Producto No Registrado"]);
+            }
+        } else {
+            echo json_encode(['error' => 'Método no permitido']);
+        }
+    }
+
+
     //Actualizar producto
     public function actualizarProducto() {
 
