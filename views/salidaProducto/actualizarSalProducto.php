@@ -17,6 +17,10 @@
                     <label for="codProducto" class="form-label text-white mt-3">Codigo Producto:</label>
                     <input type="text" class="form-control" name="codProducto" value="<?= $salProducto['CodProducto']; ?>" placeholder="Codigo de barras" required>
                 </div>
+                <div class=" mt-2">
+                    <label for="precioProducto" class="form-label text-white mt-3">Precio Producto:</label>
+                    <input type="number" class="form-control" id="precioProducto" name="precioProducto" placeholder="" required readonly>
+                </div>
                 <div class="mt-2">
                     <label for="numIdentCliente" class="form-label text-white mt-3">Cliente:</label>
                     <input type="text" class="form-control" name="numIdentCliente" value="<?= $salProducto['NumIdentificacion']; ?>" placeholder="Numero de Cedula" required>
@@ -29,9 +33,13 @@
                     <label for="cantSal" class="form-label text-white mt-3">Cantidad de Salida:</label>
                     <input type="number" class="form-control" name="cantSal" value="<?= $salProducto['CantSalida']; ?>" placeholder="" required>
                 </div>
-                <div class=" mt-2">
+                <!-- <div class=" mt-2">
                     <label for="precioVenta" class="form-label text-white mt-3">Precio Venta:</label>
                     <input type="number" class="form-control" name="precioVenta" value="<?= $salProducto['PrecioVenta']; ?>" placeholder="" required>
+                </div> -->
+                <div class=" mt-2">
+                    <label for="precioVenta" class="form-label text-white mt-3">Precio Venta:</label>
+                    <input type="text" class="form-control" id="precioVenta" name="precioVenta" value="<?= $salProducto['PrecioVenta']; ?>" placeholder="" required readonly>
                 </div>
                 <div class=" mt-2">
                 <label for="tipoPago" class="form-label text-white mt-3">Modo de Pago:</label>
@@ -54,5 +62,5 @@
         <div class="col-3">
         </div>
         </div>
-
+        <script src="./js/agregarPrecioProducto.js"></script>
 <?php include('./views/layautModAdmin/footerModAdmin.php'); ?>

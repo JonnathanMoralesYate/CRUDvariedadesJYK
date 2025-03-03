@@ -166,9 +166,9 @@ class ControladorSalProducto{
 
             $cantidadSalAnterior= $cantidadSal['CantSalida'];
 
-            //echo "<script>
-                    //alert('variable: " . $precioProducto . "');
-                //</script>";
+            echo "<script>
+                    alert('variable: " . $precioVenta . "');
+                </script>";
 
             if($cantidadSalAnterior == $cantSal) {
 
