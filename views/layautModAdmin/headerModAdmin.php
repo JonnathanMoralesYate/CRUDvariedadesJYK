@@ -33,15 +33,24 @@ if ($_SESSION['rol'] == 2) {
 <body>
 <!--Inicio-->
 <div class="container-fluid">
-        <div class="row p-4 mt-1">
+        <div class="row p-3 mt-1">
             <div class="text-center text-white mt-1">
                 <h2>MINIMARKET VARIEDADES JYK</h2>
             </div>
             <div class="text-center text-white mt-2">
                 <h3> Modulo Administrativo</h3>
             </div>
-            <div class="text-white mt-3">
-                <h6>Bienvenido: <?= $_SESSION['nombre'] ?> <?= $_SESSION['apellido'] ?></h6>
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center text-white mt-3">
+                <div class="text-center text-md-start">
+                    <h6>Bienvenido: <?= $_SESSION['nombre'] ?> <?= $_SESSION['apellido'] ?></h6>
+                </div>
+                <div class="text-center text-md-end">
+                    <?php
+                        date_default_timezone_set('America/Bogota');
+                        $formatter = new IntlDateFormatter('es_ES', IntlDateFormatter::LONG, IntlDateFormatter::NONE);
+                        echo $formatter->format(new DateTime());
+                    ?>
+                </div>
             </div>
         </div>
 <!--Fin-->
