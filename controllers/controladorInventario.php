@@ -82,7 +82,6 @@ class ControladorInventario{
                 $this->modeloInventario->stockActualizado($cantSal, $idProducto);
 
             }
-
             //respuesta al cliente Proceso de actualizacion
             echo json_encode(['success' => true, 'message' => 'Datos actualizados en inventario correctamente']);
 
@@ -90,8 +89,21 @@ class ControladorInventario{
             //mejorar respuesta cuando no envien todos los datos requeridos
             echo json_encode(['success' => false, 'error' => 'Datos No recibidos']);
         }
+    }
 
 
+    //Metodo para traer datos de productos con menor stock
+    public function ProductosMenorStock() {
+
+        header("Content-Type: application/json; charset=UTF-8");
+
+            $menorStock = $this->modeloInventario->productosMenorStock();
+
+            if ($menorStock) {
+                echo json_encode(["success" => true, "menorStock" => $menorStock]);
+            } else {
+                echo json_encode(["success" => false, "error" => "Producto No esta en Inventario o no hay stock"]);
+            }
     }
 
 

@@ -386,6 +386,38 @@ class ControladorSalProducto{
     }
 
 
+    //Metodo para traer datos de productos con mayor Venta
+    public function ProductosMasVendidos() {
+
+        //echo "<script>alert('Controlador salida producto');</script>";
+
+        header("Content-Type: application/json; charset=UTF-8");
+
+            $mayorVenta = $this->modeloSalProducto->productosMasVendidos();
+
+            if ($mayorVenta) {
+                echo json_encode(["success" => true, "mayorVenta" => $mayorVenta]);
+            } else {
+                echo json_encode(["success" => false, "error" => "Producto No esta en Inventario o no hay stock"]);
+            }
+    }
+
+
+    //Metodo para traer datos de ventas por dias
+    public function VentasPorDias() {
+
+        header("Content-Type: application/json; charset=UTF-8");
+
+            $ventaPorDia = $this->modeloSalProducto->ventasPorDias();
+
+            if ($ventaPorDia) {
+                echo json_encode(["success" => true, "ventaPorDia" => $ventaPorDia]);
+            } else {
+                echo json_encode(["success" => false, "error" => "Producto No esta en Inventario o no hay stock"]);
+            }
+    }
+
+
 }
 
 ?>

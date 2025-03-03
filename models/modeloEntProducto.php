@@ -90,6 +90,12 @@ class ModeloEntProducto{
         }
 
 
+//consulta para ver los Productos con mayor entrada
+    public function productosMayorEntrada() {
+        $query = "SELECT CONCAT(productos.Nombre,' ', productos.Marca) AS Producto, SUM(entrada_productos.CantEnt) AS TotalEntradas FROM ".$this->table." INNER JOIN productos ON entrada_productos.idProducto=productos.idProducto  WHERE entrada_productos.FechaEnt >= DATE_SUB(CURDATE(), INTERVAL 1 MONTH) GROUP BY productos.idProducto, productos.Nombre, productos.Marca ORDER BY TotalEntradas limit 10";
+        $stmt= $this->conn->query($query);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 
 }
 

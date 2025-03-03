@@ -5,6 +5,11 @@ document.getElementById('codProductoS').addEventListener('input', async function
     // Obtener el código de barras
     const codigoBarras = document.getElementById('codProductoS').value;
 
+    // Evita consulta si el campo del input está vacío
+    if (codigoBarras === "") {
+        return;
+    }
+
     // Llamamos a la función para obtener el id del producto, el resultado es un string
     const idProducto = await obtenerIdProducto(codigoBarras);
     //alert(idProducto);

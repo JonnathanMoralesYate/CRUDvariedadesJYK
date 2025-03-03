@@ -275,6 +275,26 @@ class ControladorEntProductos{
         }
 
 
+        //Metodo para traer datos de productos con mayor entrada 
+        public function ProductosMayorEntrada() {
+
+            header("Content-Type: application/json; charset=UTF-8");
+
+                $mayorEntrada = $this->modeloEntProducto->productosMayorEntrada();
+
+                    if ($mayorEntrada) {
+                        echo json_encode(["success" => true, "mayorEntrada" => $mayorEntrada]);
+                    } else {
+                        echo json_encode(["success" => false, "error" => "Producto No esta en Inventario o no hay stock"]);
+                    }
+        }
+
+
+
+
+
+
+
     //registro de Entrada Productos Empleado
     public function RegistroEntProductoEmp() {
 

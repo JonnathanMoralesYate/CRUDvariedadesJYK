@@ -101,6 +101,22 @@ class ModeloSalProducto{
     }
 
 
+    //Consulta para ver los productos mas vendidos 
+    public function productosMasVendidos() {
+        //echo "<script>alert('Modelo salida producto');</script>";
+        $query = "SELECT CONCAT(productos.Nombre, ' ', productos.Marca) AS 'Producto', SUM(salida_productos.CantSalida) AS totalVendido FROM ".$this->table." INNER JOIN productos ON salida_productos.idProducto = productos.idProducto GROUP BY productos.idProducto, productos.Nombre, productos.Descripcion ORDER BY totalVendido DESC LIMIT 10";
+        $stmt= $this->conn->query($query);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+
+    //Consulta para ver las ventas por dias
+    public function ventasPorDias() {
+        $query = "SELECT DATE(FechaSalida) AS Fecha, SUM(precioVenta) AS TotalVendido FROM ".$this->table." GROUP BY Fecha ORDER BY Fecha DESC limit 8";
+        $stmt= $this->conn->query($query);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
 }
 
 ?>

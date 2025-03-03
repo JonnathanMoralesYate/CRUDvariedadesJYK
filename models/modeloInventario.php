@@ -60,7 +60,7 @@ class ModeloInventario{
     }
 
 
-    //Consulta para ver que prodcutos hay en inventario que estan no tienen estok
+    //Consulta para ver que prodcutos hay en inventario que estan y no tienen estok
     public function productoSinStock() {
         $query= "SELECT idInventario, productos.CodProducto, productos.Nombre, productos.Marca, productos.Descripcion, CONCAT(presentacion_producto.Presentacion,' ', productos.ContNeto,' ', unidad_base.UndBase) AS 'Contenido Neto', formato_venta.FormatoVenta, CantActual, productos.Foto FROM ".$this->table." INNER JOIN productos ON inventario.idProducto=productos.idProducto INNER JOIN presentacion_producto ON productos.idPresentacion=presentacion_producto.idPresentacion INNER JOIN unidad_base ON productos.idUndBase=unidad_base.idUndBase INNER JOIN formato_venta ON productos.idFormatoVenta=formato_venta.idFormatoVenta WHERE CantActual = 0";
         $stmt= $this->conn->query($query);
@@ -73,6 +73,14 @@ class ModeloInventario{
         $query = "UPDATE inventario SET CantActual= CantActual - ? WHERE idProducto=? AND CantActual >= ?";
         $stmt= $this->conn->prepare($query);
         $stmt->execute([$cantSal, $idProducto, $cantSal]);
+    }
+
+
+    //Consulta para mostrar los productos con menor stock
+    public function productosMenorStock() {
+        $query = "SELECT CONCAT(productos.Nombre, ' ', productos.Marca) AS 'Producto', CantActual FROM ".$this->table." INNER JOIN productos ON inventario.idProducto = productos.idProducto ORDER BY inventario.CantActual ASC limit 10";
+        $stmt= $this->conn->query($query);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
 }

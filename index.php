@@ -765,21 +765,21 @@ switch($action){
 
 //Verificaciones
 
-        //verificacion codigo de barra del productos
+        //Verificacion codigo de barra del productos
     case'verificacionCodigoProductos':
         if($_SERVER["REQUEST_METHOD"] == "POST"){
                 $controladorProducto->productoCodProducto();
             }
             break;
 
-        //verificacion Nit proveedor
+        //Verificacion Nit proveedor
     case'verificacionNitProveedor':
         if($_SERVER["REQUEST_METHOD"] == "POST"){
                 $controladorProveedor->nitProveedor();
             }
             break;
 
-        //verificacion Identificacion Cliente
+        //Verificacion Identificacion Cliente
     case'verificacionCliente':
         if($_SERVER["REQUEST_METHOD"] == "POST"){
                 $controladorCliente->verificacionCliente();
@@ -787,7 +787,7 @@ switch($action){
             break;
 
     
-        //verificacion de Stock del producto
+        //Verificacion de Stock del producto
     case'verificacionStock':
         if($_SERVER["REQUEST_METHOD"] == "POST"){
             $controladorInventario->disponibilidadProducto();
@@ -795,7 +795,7 @@ switch($action){
         break;
 
 
-        //consulta para generar codigo de barras
+        //Consulta para generar codigo de barras
     case'generaCodigoProducto':
         if($_SERVER["REQUEST_METHOD"] == "POST"){
             $controladorGenerarCodigo->ConsecutivoCodigo();
@@ -803,7 +803,7 @@ switch($action){
         break;
 
 
-        //consulta para traer datos del producto
+        //Consulta para traer datos del producto
     case'informacionProducto':
         if($_SERVER["REQUEST_METHOD"] == "POST"){
             $controladorProducto->informacionProducto();
@@ -811,7 +811,7 @@ switch($action){
         break;
 
 
-        //verificacion Identificacion Cliente
+        //Actualizacion de puntos Cliente vista salida de productos Varios
     case'actualizarPuntosCliente':
         if($_SERVER["REQUEST_METHOD"] == "POST"){
                 $controladorCliente->PuntosActualizados();
@@ -819,7 +819,7 @@ switch($action){
             break;
 
 
-        //verificacion de Stock del producto
+        //Actualizacion del Stock del producto del vista salida de productos Varios
     case'actualizarStock':
         if($_SERVER["REQUEST_METHOD"] == "POST"){
             $controladorInventario->actualizarInventario();
@@ -827,12 +827,37 @@ switch($action){
         break;
 
 
-        //verificacion de Stock del producto
+        //Proceso de Registro de Salida de Productos Varios
     case'registrarSalProductos':
         if($_SERVER["REQUEST_METHOD"] == "POST"){
             $controladorSalProducto->registrosSalProductos();
         }
         break;
+
+
+        //Consulta de Productos con menor Stock
+    case'productosMenorStock':
+        $controladorInventario->ProductosMenorStock();
+        break;
+
+
+        //Consulta de Productos con menor Stock
+    case'productosMayorVenta':
+        $controladorSalProducto->ProductosMasVendidos();
+        break;
+
+
+        //Consulta de Ventas por Dias
+    case'ventasPorDias':
+        $controladorSalProducto->VentasPorDias();
+        break;
+
+
+        //Consulta Mayor Entrada de Producto
+    case'mayorEntProductos':
+        $controladorEntProducto->ProductosMayorEntrada();
+        break;
+
 
 
 //Entrada de Productos Empleado

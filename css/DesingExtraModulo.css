@@ -52,3 +52,11 @@ select.form-select:focus {
     text-align: center; /* Centra el texto dentro del elemento */
     font-size: 1.2rem; /* Ajusta el tamaño del icono/texto */
 }
+
+
+#myChart, #myChart1, #myChart2, #myChart3  {
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 100%;
+    max-height: 100%;
+}
