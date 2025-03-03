@@ -30,28 +30,26 @@
 <!--Fin de consultar-->
 
 <!--Inicio para mostrar datos para buscar y consultar-->
-<div class="row">
-    <div class="col-1">
-    </div>
-    <div class="col-10">
-    <!--Inicio de tabla-->
-        <div class="container mt-5">
+<div class="container-fluid mt-5">
+    <div class="row">
+        <div class="col-12 col-md-10 offset-md-1"> <!-- Ocupa toda la pantalla en móviles, con margen en pantallas grandes -->
+            <!-- Inicio de tabla -->
             <div class="text-center">
                 <?php if (isset($salProductos) && count($salProductos) > 0): ?>
-                <h4 class="text-white">Resultados de la Busqueda:</h4>
+                <h4 class="text-white">Resultados de la Búsqueda:</h4>
             </div>
-    <!-- Tabla responsiva-->
+            <!-- Tabla responsiva -->
             <div class="table-responsive">
                 <table class="table table-hover text-white">
                     <thead>
                         <tr>
-                            <th>ID</th>
+                            <!-- <th>ID</th> -->
                             <th>Fecha Salida</th>
                             <th>Cliente</th>
-                            <th>Codigo Producto</th>
+                            <th>Código Producto</th>
                             <th>Nombre</th>
                             <th>Marca</th>
-                            <th>Descripcion</th>
+                            <th>Descripción</th>
                             <th>Contenido</th>
                             <th>Precio Venta</th>
                             <th>Cantidad Salida</th>
@@ -59,10 +57,10 @@
                             <th>Acciones</th>
                         </tr>
                     </thead>
-                    <tbody class="">
+                    <tbody>
                         <?php foreach ($salProductos as $salProducto): ?>
                         <tr>
-                            <td class="text-white align-middle"><?= $salProducto['idSalProducto']; ?></td>
+                            <!-- <td class="text-white align-middle"><?= $salProducto['idSalProducto']; ?></td> -->
                             <td class="text-white align-middle"><?= $salProducto['FechaSalida']; ?></td>
                             <td class="text-white align-middle"><?= $salProducto['NumIdentificacion']; ?></td>
                             <td class="text-white align-middle"><?= $salProducto['CodProducto']; ?></td>
@@ -73,9 +71,9 @@
                             <td class="text-white align-middle"><?= $salProducto['PrecioVenta']; ?></td>
                             <td class="text-white align-middle"><?= $salProducto['CantSalida']; ?></td>
                             <td class="text-white align-middle"><?= $salProducto['ModoPago']; ?></td>
-                            <td>                        
-                            <a href="index.php?action=actualizarSalProductosId&idSalProducto=<?= $salProducto['idSalProducto']; ?>" class="btn btn-outline-secondary text-white m-2 w-100" role="button">Actualizar</a> 
-                            <a href="index.php?action=eliminarSalProductoId&idSalProducto=<?= $salProducto['idSalProducto']; ?>" class="btn btn-outline-secondary text-white m-2 w-100" role="button">Eliminar</a>
+                            <td>
+                                <a href="index.php?action=actualizarSalProductosId&idSalProducto=<?= $salProducto['idSalProducto']; ?>" class="btn btn-outline-secondary text-white m-2 w-100">Actualizar</a>
+                                <a href="index.php?action=eliminarSalProductoId&idSalProducto=<?= $salProducto['idSalProducto']; ?>" class="btn btn-outline-secondary text-white m-2 w-100">Eliminar</a>
                             </td>
                         </tr>
                         <?php endforeach; ?>
@@ -83,11 +81,9 @@
                 </table>
             </div>
                 <?php elseif (isset($salProductos)): ?>
-                    <p class="text-white">No se Encontro Productos con ese Criterio de Busqueda</p>
+                    <p class="text-white text-center">No se encontraron productos con ese criterio de búsqueda</p>
                 <?php endif; ?>
         </div>
-    </div>
-    <div class="col-1">
     </div>
 </div>
 
