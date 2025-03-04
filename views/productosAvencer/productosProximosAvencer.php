@@ -39,7 +39,7 @@
             <table class="table table-hover text-white">
                 <thead>
                     <tr>
-                        <th>ID</th>
+                        <!-- <th>ID</th> -->
                         <th>Fecha de Vencimiento</th>
                         <th>Cantidad Actual</th>
                         <th>Codigo Producto</th>
@@ -54,7 +54,7 @@
                 <tbody class="">
                 <?php foreach ($productosAvencer as $productosVence): ?>
                     <tr>
-                        <td class="text-white align-middle"><?= $productosVence['idInventario']; ?></td>
+                        <!-- <td class="text-white align-middle"><?= $productosVence['idInventario']; ?></td> -->
                         <td class="text-white align-middle"><?= $productosVence['FechaVencimiento']; ?></td>
                         <td class="text-white align-middle"><?= $productosVence['CantActual']; ?></td>
                         <td class="text-white align-middle"><?= $productosVence['CodProducto']; ?></td>

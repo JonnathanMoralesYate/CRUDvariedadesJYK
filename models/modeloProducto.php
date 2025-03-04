@@ -28,7 +28,7 @@ class ModeloProducto{
 
 //Consulta general productos con inner join
     public function consultGenProductosvista() {
-        $query= "SELECT idProducto, CodProducto, clase_producto.Clase, Nombre, Marca, Descripcion, presentacion_producto.Presentacion, CONCAT(ContNeto,' ', unidad_base.UndBase) AS Contenido, formato_venta.FormatoVenta, PrecioVenta, Foto FROM ".$this->table." INNER JOIN clase_producto ON productos.idClase = clase_producto.idClase INNER JOIN presentacion_producto ON productos.idPresentacion = presentacion_producto.idPresentacion INNER JOIN unidad_base ON productos.idUndBase = unidad_base.idUndBase INNER JOIN formato_venta ON productos.idFormatoVenta=formato_venta.idFormatoVenta";
+        $query= "SELECT idProducto, CodProducto, clase_producto.Clase, Nombre, Marca, Descripcion, presentacion_producto.Presentacion, CONCAT(ContNeto,' ', unidad_base.UndBase) AS Contenido, formato_venta.FormatoVenta, PrecioVenta, Foto FROM ".$this->table." INNER JOIN clase_producto ON productos.idClase = clase_producto.idClase INNER JOIN presentacion_producto ON productos.idPresentacion = presentacion_producto.idPresentacion INNER JOIN unidad_base ON productos.idUndBase = unidad_base.idUndBase INNER JOIN formato_venta ON productos.idFormatoVenta=formato_venta.idFormatoVenta ORDER BY Nombre ASC";
         $stmt= $this->conn->query($query);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }

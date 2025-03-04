@@ -8,7 +8,7 @@
     <!-- <link href="fonts/Montserrat,Pacifico/Montserrat/Montserrat-Italic-VariableFont_wght.ttf" rel="stylesheet"> -->
     <link rel="stylesheet" href="./css/bootstrap.min.css?v=1.0">
     <link rel="stylesheet" href="./css/DesingBody.css?v=1.0">
-    <link rel="stylesheet" href="./css/DesingLogin2.css?v=1.0">
+    <link rel="stylesheet" href="./css/DesingLogin2.css">
 </head>
 
 <body>
@@ -69,21 +69,23 @@
     <!--Final Barra Navegacion-->
 
 <!--Inicio Carrusel-->
-            <div class=" row col-12">
-                <div id="carouselExampleControls" class="carousel slide mt-3" data-bs-ride="carousel">
-                <div class="carousel-inner text-center">
-                    <div class="carousel-item active">
-                        <div id="" class="card mx-auto" style="width: 30rem;">
-                            <img class="img-fluid mx-auto" src="./photo/variedadesJyK.jpg" class="img-fluid mx-auto" alt="...">
-                                <div class="card-body container-fluid text-center">
-                                    <h5 class="card-title">Nuestra Sede</h5>
-                                </div>
-                        </div>
+<div class="row col-12">
+    <div id="carouselExampleControls" class="carousel slide mt-3" data-bs-ride="carousel">
+        <div class="carousel-inner text-center">
+            <!-- Primera imagen (sede) -->
+            <div class="carousel-item active">
+                <div class="card mx-auto" style="max-width: 30rem;">
+                    <img src="./photo/variedadesJyK.jpg" class="img-fluid mx-auto rounded" alt="Sede">
+                    <div class="card-body container-fluid">
+                        <h5 class="card-title">Nuestra Sede</h5>
                     </div>
+                </div>
+            </div>
+            <!-- Segunda sección (productos promocion1) -->
             <div class="carousel-item text-center">
-                <div class="row row-cols-auto g-3 text-center d-flex justify-content-around mt-1">
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3 d-flex justify-content-evenly">
                     <div class="col">
-                        <div class="card mx-auto" style="width: 12rem;">
+                    <div class="card mx-auto" style="width: 16rem;">
                             <img id="" src="./photo/atun.png" class="img-fluid mx-auto" alt="">
                                 <div class="card-body container-fluid">
                                     <h5 id="" class="card-title">Atun</h5>
@@ -92,7 +94,7 @@
                         </div>
                     </div>
                     <div class="col">
-                        <div class="card mx-auto" style="width: 12rem;">
+                    <div class="card mx-auto" style="width: 16rem;">
                             <img id="" src="./photo/cervezas.png" class="img-fluid mx-auto" alt="">
                                 <div class="card-body">
                                     <h5 id="" class="card-title">Cerveza</h5>
@@ -101,7 +103,7 @@
                         </div>
                     </div>
                     <div class="col">
-                        <div class="card mx-auto" style="width: 12rem;">
+                    <div class="card mx-auto" style="width: 16rem;">
                             <img id="" src="./photo/Jamoneta.png" class="img-fluid mx-auto" alt="">
                                 <div class="card-body">
                                     <h5 id="" class="card-title">Jamoneta</h5>
@@ -111,88 +113,95 @@
                     </div>
                 </div>
             </div>
+            <!-- Tercera sección (productos promocion2) -->
+            <div class="carousel-item text-center">
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3 d-flex justify-content-evenly">
+                <div class="col">
+                        <div class="card mx-auto" style="width: 16rem;">
+                            <img id="" src="./photo/atun.png" class="img-fluid mx-auto" alt="">
+                                <div class="card-body container-fluid">
+                                    <h5 id="" class="card-title">Atun</h5>
+                                    <p id="" class="card-text">En Aceite</p>
+                                </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card mx-auto" style="width: 16rem;">
+                            <img id="" src="./photo/cervezas.png" class="img-fluid mx-auto" alt="">
+                                <div class="card-body">
+                                    <h5 id="" class="card-title">Cerveza</h5>
+                                    <p id="" class="card-text">Al por mayor y detal</p>
+                                </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card mx-auto" style="width: 16rem;">
+                            <img id="" src="./photo/Jamoneta.png" class="img-fluid mx-auto" alt="">
+                                <div class="card-body">
+                                    <h5 id="" class="card-title">Jamoneta</h5>
+                                    <p id="" class="card-text">Zenu</p>
+                                </div>
+                        </div>
+                    </div>
 
-            <div class="carousel-item text-center">
-                <div class="row row-cols-auto g-3 text-center d-flex justify-content-around mt-1">
-                    <div class="col">
-                        <div class="card mx-auto" style="width: 12rem;">
-                            <img id="" src="./photo/atun.png" class="img-fluid mx-auto" alt="">
-                                <div class="card-body container-fluid">
-                                    <h5 id="" class="card-title">Atun</h5>
-                                    <p id="" class="card-text">En Aceite</p>
-                                </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card mx-auto" style="width: 12rem;">
-                            <img id="" src="./photo/cervezas.png" class="img-fluid mx-auto" alt="">
-                                <div class="card-body">
-                                    <h5 id="" class="card-title">Cerveza</h5>
-                                    <p id="" class="card-text">Al por mayor y detal</p>
-                                </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card mx-auto" style="width: 12rem;">
-                            <img id="" src="./photo/Jamoneta.png" class="img-fluid mx-auto" alt="">
-                                <div class="card-body">
-                                    <h5 id="" class="card-title">Jamoneta</h5>
-                                    <p id="" class="card-text">Zenu</p>
-                                </div>
-                        </div>
-                    </div>
                 </div>
             </div>
-                </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Atras</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Adelante</span>
-                        </button>
-                </div>
-            </div>
+        </div>
+
+        <!-- Controles del Carrusel -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Atras</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Adelante</span>
+        </button>
+    </div>
+</div>
 <!--Fin Carrusel -->
 
 <!--Inicio de Barra Categorias -->
 <div class="row container-fluid mt-5 text-center">
-        <div class="col-12 col-lg-3">
-            <div class="text-center text-white">
-                <span class="fs-3">Categorias</span>
-            </div>
-            <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-offset="0" class="scrollspy-example" tabindex="0">
-                <div class="overflow-auto" style="max-height: 500px;">
-                    <?php foreach($clases as $clase): ?>
-                        <div class="mt-1">
-                            <div class="btn-group dropend w-100">
-                                <button type="button" class="btn btn-outline-secondary text-white" aria-expanded="false" onclick="location.href='index.php?action=paginaP&clase=<?= $clase['idClase']; ?>'"><?= $clase['Clase']; ?></button>
-                            </div>
-                        </div>
-                    <?php endforeach; ?>
-                </div>
-            </div>
+    <!-- Sección de Categorías -->
+    <div class="col-12 col-md-4 col-lg-3">
+        <div class="text-center text-white">
+            <span class="fs-3">Categorías</span>
         </div>
-
-<!--Vista de Productos por categoria-->
-        <div class="col-12 col-lg-9">
-            <div class="row row-cols-auto g-3 text-center d-flex justify-content-around mt-1">
-                <?php foreach ($productos as $producto): ?>
-                    <div class="col">
-                        <div class="card mx-auto" style="width: 12rem;">
-                            <img id="cateGen1" src="photo/<?= $producto['Foto']; ?>" class="img-fluid mx-auto" alt="cateGen1">
-                                <div class="card-body container-fluid">
-                                    <h5 id="marcProduc1" class="card-title"><?= $producto['Nombre']; ?></h5>
-                                    <p id="descriProduc1" class="card-text"><?= $producto['Descripcion']; ?></p>
-                                </div>
+        <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-offset="0" class="scrollspy-example" tabindex="0">
+            <div class="overflow-auto" style="max-height: 500px;">
+                <?php foreach($clases as $clase): ?>
+                    <div class="mt-1">
+                        <div class="btn-group dropend w-100">
+                            <button type="button" class="btn btn-outline-secondary text-white w-100" 
+                                    aria-expanded="false" 
+                                    onclick="location.href='index.php?action=paginaP&clase=<?= $clase['idClase']; ?>'">
+                                <?= $clase['Clase']; ?>
+                            </button>
                         </div>
                     </div>
                 <?php endforeach; ?>
             </div>
-                
         </div>
     </div>
+
+    <!-- Vista de Productos por Categoría -->
+    <div class="col-12 col-md-8 col-lg-9">
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3 text-center d-flex justify-content-around mt-1">
+            <?php foreach ($productos as $producto): ?>
+                <div class="col">
+                    <div class="card mx-auto" style="width: 14rem;">
+                        <img id="cateGen1" src="photo/<?= $producto['Foto']; ?>" class="img-fluid mx-auto rounded" alt="Producto">
+                        <div class="card-body">
+                            <h5 id="marcProduc1" class="card-title"><?= $producto['Nombre']; ?></h5>
+                            <p id="descriProduc1" class="card-text"><?= $producto['Descripcion']; ?></p>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+</div>
 <!--Fin Barra Categorias -->
 
 <!--Inicio de Footer-->
@@ -277,35 +286,23 @@
 
 <!--Formulario de login-->
 <div id="login_form" class="contenedor_loginG">
-        <div class="contenedor-login mt-2">
-
-            <h2>Inicio de sesión</h2>
-
-            <form action="index.php?action=login" method="post">
-
-                <div class="formulario1">
-                    <div class="campo mt-3">
-                        <label for="usuarioL">Usuario:</label>
-                        <input type="text" id="usuario" name="usuarioL" placeholder="Ingrese su usuario" required>
-                    </div>
-
-                    <div class="campo">
-                        <label for="contraseñaL">Contraseña:</label>
-                        <input type="password" id="contraseña" name="contraseñaL" placeholder="Ingrese su contraseña" required>
-                    </div>
-
-                    <div class="campo">
-                        <button type="submit" class="btn btn-outline-secondary m-2 text-white text-center">Iniciar sesión</button>
-                    </div>
-
-                    
-                    <button id="cerrarL">X</button>
-                    
-                    
-                    <div id="message">
-                        <!-- */<?php if (isset($error)) echo "<p>$error</p>"; ?>*/ -->
-                    </div>
+    <div class="contenedor-login mt-2">
+        <h2>Inicio de sesión</h2>
+        <form action="index.php?action=login" method="post">
+            <div class="formulario1">
+                <div class="campo mt-3">
+                    <label for="usuarioL">Usuario:</label>
+                    <input type="text" id="usuario" name="usuarioL" placeholder="Ingrese su usuario" required>
                 </div>
+                <div class="campo">
+                    <label for="contraseñaL">Contraseña:</label>
+                    <input type="password" id="contraseña" name="contraseñaL" placeholder="Ingrese su contraseña" required>
+                </div>
+                <div class="campo">
+                    <button type="submit" class="btn btn-outline-secondary m-2 text-white text-center">Iniciar sesión</button>
+                </div>
+                <button id="cerrarL">X</button>
+            </div>
         </form>
     </div>
 </div>

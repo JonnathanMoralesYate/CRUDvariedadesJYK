@@ -1,26 +1,26 @@
-.contenedor_loginG{
-    display: none;                      /* al actualizar la pagina esconde el formulario*/
-    position: fixed;                    /*se mantendrá en su lugar incluso si se hace scroll.*/
-    right: 35%;                         /*desplazado un % desde el borde derecho de la ventana.*/
-    top: 30%;                           /*desplazado un % desde el borde superior de la ventana.*/
+.contenedor_loginG {
+    display: none;
+    position: fixed;
+    right: 35%;
+    top: 30%;
     width: 30%;
+    max-width: 400px;
     aspect-ratio: 1.8;
     text-align: center;
-    text-justify: distribute;
-    /*margin-right: 2%;*/
     background-color: #0a1527;
     backdrop-filter: blur(10px);
     border: 1px solid rgba(99, 97, 97, 0.364);
     border-radius: 20px;
+    padding: 20px;
 }
-h2{
+
+h2 {
     color: white;
 }
 
-#formulario1{
+.formulario1 {
     display: flex;
-    position: relative;
-    flex-direction: column; 
+    flex-direction: column;
     height: 100%;
     width: 100%;
     padding: 2%;
@@ -30,7 +30,7 @@ h2{
 .contenedor-login {
     text-align: center;
     margin-bottom: 20px;
-    color: #000000
+    color: #000000;
 }
 
 .campo {
@@ -40,26 +40,24 @@ h2{
 .campo label {
     display: block;
     margin-bottom: 10px;
+    color: white;
 }
 
-.campo input[type="text"]:focus, .campo input[type="password"]:focus {
-    width: 95%;                                     /*ancho del elemento input, será el 95% del ancho de su contenedor padre.*/
-    height: 40px;                                   /*altura del input de 40 píxeles.*/
-    padding: 10px;                                  /*espacio interno de 10 píxeles dentro del campo de entrada, asegurando que el texto no esté pegado a los bordes.*/
-    border: 1px solid #ccc;                       /*Aplica un borde de 1 píxel de ancho, color gris claro (#ccc) y estilo sólido alrededor del campo.*/
-    /*background-color: transparent;*/              /*Hace que el fondo de los campos sea transparente.*/
-    border-radius: 5px;                             /*Redondea las esquinas del borde con un radio de 5 píxeles,*/
-    /*border-color: #007bff; /* Azul para enfoque */
-    /*box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-    outline: none; /* Elimina el borde predeterminado */                           
+.campo input[type="text"],
+.campo input[type="password"] {
+    width: 100%;
+    height: 40px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
 .boton {
-    width: 30%;
+    width: 100%;
     height: 50px;
     background-color: #10213d;
     color: #ffffff;
-    text-align: auto;
+    text-align: center;
     padding: 10px;
     border: 1px solid #ffffff;
     border-radius: 5px;
@@ -70,35 +68,39 @@ h2{
     background-color: #081935;
 }
 
+#cerrarL {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    right: 10px;
+    top: 10px;
+    font-size: 18px;
+    background: transparent;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+/* 🔹 Media Queries para pantallas medianas */
 @media (max-width: 768px) {
-    .contenerodor_loginG {
-    width: 90%;
-    margin: 20px auto;
+    .contenedor_loginG {
+        right: 10%;
+        width: 80%;
+        max-width: 90%;
     }
 }
 
+/* 🔹 Media Queries para pantallas pequeñas (móviles) */
 @media (max-width: 480px) {
-    .contenerodor_loginG {
-    width: 100%;
-    margin: 10px auto;
-    padding: 10px;
+    .contenedor_loginG {
+        width: 90%;
+        right: 5%;
+        top: 20%;
+        padding: 15px;
     }
-}
-#usuario::placeholder{
-    color: hsl(0, 0%, 100%);
-}
-#contraseña::placeholder{
-    color: rgb(255, 255, 255);
-}
-
-.campo label, .campo label {
-    color: hsl(0, 0%, 100%);
-}
-
-#cerrarL{
-    position: absolute;             /*estarán posicionados de manera absoluta dentro de su contenedor.*/
-    width:8%;                       /*anchura será del 7% del contenedor.*/
-    aspect-ratio:1;
-    right:2%;
-    top:3%;
+    #cerrarL {
+        width: 25px;
+        height: 25px;
+        font-size: 14px;
+    }
 }

@@ -109,8 +109,8 @@ class ControladorEntProductos{
 
     //Consulta por Id Inner Join
     public function consultaGenEntProductosVistaId() {
-        $idEntProducto = $_GET['idEntProducto'] ?? '';
-        return $this->modeloEntProducto->consultaGenEntProductosVistaId($idEntProducto);
+        $codProducto = $_GET['codProducto'] ?? '';
+        return $this->modeloEntProducto->consultaGenEntProductosVistaId($codProducto);
     }
 
 

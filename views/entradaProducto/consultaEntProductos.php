@@ -12,7 +12,7 @@
             <form class=" mt-4" action="index.php?action=consultaEntProductoId" method="get">
                 <div class="input-group mb-3">
                     <input type="hidden" class="form-control" name="action" value="consultaEntProductoId">
-                    <input type="text" class="form-control" placeholder="ID Entrada Producto" name="idEntProducto" aria-label="Recipient's usernam" aria-describedby="button-addon2" required>
+                    <input type="text" class="form-control" placeholder="Codigo del Producto" name="codProducto" aria-label="Recipient's usernam" aria-describedby="button-addon2" required>
                     <button class="btn btn-outline-secondary text-white" type="submit" id="button-addon2">Buscar</button>
                 </div>
             </form>
@@ -46,7 +46,7 @@
             <table class="table table-hover text-white">
                 <thead>
                     <tr>
-                        <th>ID</th>
+                        <!-- <th>ID</th> -->
                         <th>Fecha Entrada</th>
                         <th>Proveedor</th>
                         <th>Codigo Producto</th>
@@ -63,7 +63,7 @@
                 <tbody class="">
                 <?php foreach ($entProductos as $entProducto): ?>
                     <tr>
-                        <td class="text-white align-middle"><?= $entProducto['idEntProducto']; ?></td>
+                        <!-- <td class="text-white align-middle"><?= $entProducto['idEntProducto']; ?></td> -->
                         <td class="text-white align-middle"><?= $entProducto['FechaEnt']; ?></td>
                         <td class="text-white align-middle"><?= $entProducto['NombreProveedor']; ?></td>
                         <td class="text-white align-middle"><?= $entProducto['CodProducto']; ?></td>

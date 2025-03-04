@@ -682,6 +682,7 @@ switch($action){
             $controladorSalProducto->ActualizarSalProductos();
             break;
 
+
             //Eliminar Salida Producto
     case'eliminarSalProductoId':
         $controladorSalProducto->EliminarSalProducto();
@@ -696,11 +697,11 @@ switch($action){
         include('./views/inventario/inventarioActual.php');
         break;
 
-        //Genera reporte de inventario en PDF
-    case'reporteInventarioPDF':
-        $inventarios= $controladorInventario->inventarioActual();
-        include('./views/inventario/reporteInventarioPDF.php');
-        break;
+            //Genera reporte de inventario en PDF
+        case'reporteInventarioPDF':
+            $inventarios= $controladorInventario->inventarioActual();
+            include('./views/inventario/reporteInventarioPDF.php');
+            break;
 
 
         //Entrada de Productos
@@ -712,7 +713,6 @@ switch($action){
             $entProductos = $controladorEntProducto->ReporteEntProductos();
             include('./views/entradaProducto/reporteEntProductos.php');
             break;
-
 
         //Genera reporte de Entrada producto en PDF
         case'reporteEntProductosPDF':
@@ -731,20 +731,10 @@ switch($action){
             include('./views/salidaProducto/reporteSalProducto.php');
             break;
 
-        //Genera reporte de Salida producto en PDF
-    case'reporteSalProductosPDF';
-        $salProductos = $controladorSalProducto->ReporteSalProductos();
-        include('./views/salidaProducto/reporteSalProductosPDF.php');
-        break;
-        $salProductos = $controladorSalProducto->ReporteSalProductos();
-            include('./views/salidaProducto/reporteSalProducto.php');
-            break;
-
-
-        //Genera reporte de Salida producto en PDF
-    case'reporteSalProductosPDF':
-        $salProductos = $controladorSalProducto->ReporteSalProductos();
-            include('');
+            //Genera Consulta de reporte de Salida producto en PDF
+        case'reporteSalProductosPDF';
+            $salProductos = $controladorSalProducto->ReporteSalProductos();
+            include('./views/salidaProducto/reporteSalProductosPDF.php');
             break;
 
 
@@ -754,12 +744,11 @@ switch($action){
         include('./views/productosAvencer/productosProximosAvencer.php');
         break;
 
-
-        //Genera reporte de productos a vencer en pdf
-    case'productosAvencerPDF':
-        $productosAvencer= $controladorInventario->ProductosAvencer();
-        include('./views/productosAvencer/reporteProductosAvencerPDF.php');
-        break;
+            //Genera reporte de productos a vencer en pdf
+        case'productosAvencerPDF':
+            $productosAvencer= $controladorInventario->ProductosAvencer();
+            include('./views/productosAvencer/reporteProductosAvencerPDF.php');
+            break;
 
 
 

@@ -45,7 +45,7 @@
             <table class="table table-hover text-white">
                 <thead>
                     <tr>
-                        <th>ID</th>
+                        <!-- <th>ID</th> -->
                         <th>Fecha Salida</th>
                         <th>Cliente</th>
                         <th>Codigo Producto</th>
@@ -60,7 +60,7 @@
                 <tbody class="">
                 <?php foreach ($salProductos['reporteSalProductos'] as $salProducto): ?>
                     <tr>
-                        <td class="text-white align-middle"><?= $salProducto['idSalProducto']; ?></td>
+                        <!-- <td class="text-white align-middle"><?= $salProducto['idSalProducto']; ?></td> -->
                         <td class="text-white align-middle"><?= $salProducto['FechaSalida']; ?></td>
                         <td class="text-white align-middle"><?= $salProducto['NumIdentificacion']; ?></td>
                         <td class="text-white align-middle"><?= $salProducto['CodProducto']; ?></td>
