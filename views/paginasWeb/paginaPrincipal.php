@@ -175,7 +175,7 @@
                         <div class="btn-group dropend w-100">
                             <button type="button" class="btn btn-outline-secondary text-white w-100" 
                                     aria-expanded="false" 
-                                    onclick="location.href='index.php?action=paginaP&clase=<?= $clase['idClase']; ?>'">
+                                    onclick="obtenerInforProductoPorClase(<?= $clase['idClase']; ?>)">
                                 <?= $clase['Clase']; ?>
                             </button>
                         </div>
@@ -187,18 +187,7 @@
 
     <!-- Vista de Productos por Categoría -->
     <div class="col-12 col-md-8 col-lg-9">
-        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3 text-center d-flex justify-content-around mt-1">
-            <?php foreach ($productos as $producto): ?>
-                <div class="col">
-                    <div class="card mx-auto" style="width: 14rem;">
-                        <img id="cateGen1" src="photo/<?= $producto['Foto']; ?>" class="img-fluid mx-auto rounded" alt="Producto">
-                        <div class="card-body">
-                            <h5 id="marcProduc1" class="card-title"><?= $producto['Nombre']; ?></h5>
-                            <p id="descriProduc1" class="card-text"><?= $producto['Descripcion']; ?></p>
-                        </div>
-                    </div>
-                </div>
-            <?php endforeach; ?>
+        <div id="productos-container" class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3 text-center d-flex justify-content-around mt-1">
         </div>
     </div>
 </div>
@@ -308,7 +297,7 @@
 </div>
 
 
-
+        <script src="./js/agregaProductosPaginaP.js?v=1.0"></script>
         <script src="./js/bootstrap.bundle.min.js"></script>
         <script src="./js/LoginInicio.js?v=1.0"></script>
 

@@ -169,6 +169,36 @@ class ControladorProducto{
     }
 
 
+    // Consulta para traer informacion del producto por idclase
+    public function ProductosPorClase() {
+
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    
+            // Leer JSON desde la solicitud
+            $inputJSON = file_get_contents("php://input");
+
+            $input = json_decode($inputJSON, true);
+    
+            if (!isset($input['idClase']) || empty($input['idClase'])) {
+                echo json_encode(['error' => 'El idClase del producto es requerido']);
+                exit;
+            }
+    
+            $idClase = $input['idClase'];
+    
+            $infoProducto = $this->modeloProducto->productosPorClase($idClase);
+    
+            if ($infoProducto) {
+                echo json_encode(["success" => true, "inforProducto" => $infoProducto]);
+            } else {
+                echo json_encode(["success" => false, "error" => "Producto No Registrado"]);
+            }
+        } else {
+            echo json_encode(['error' => 'Método no permitido']);
+        }
+    }
+
+
     //Actualizar producto
     public function actualizarProducto() {
 

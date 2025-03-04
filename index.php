@@ -23,7 +23,7 @@ require_once('./controllers/controladorInventario.php');
 require_once('./controllers/controladorModoPago.php');
 require_once('./controllers/controladorGenerarCodigo.php');
 
-$vistaPaginaP = new ControladorPaginaP();
+//$vistaPaginaP = new ControladorPaginaP();
 $vistaPaginaN = new ControladorPaginaN();
 $vistaPaginaS = new ControladorPaginaS();
 $vistaAdmin = new ControladorPaginaAdmin();
@@ -54,9 +54,9 @@ $action = htmlspecialchars($_GET['action'] ?? 'principal', ENT_QUOTES, 'UTF-8');
 switch($action){
 
 //Opciones barra navegacion pagina Principal
-    case'paginaP':
-        $vistaPaginaP->index();
-        break;
+    //case'paginaP':
+        //$vistaPaginaP->index();
+       // break;
 
     case'paginaN':
         $vistaPaginaN->index();
@@ -848,6 +848,14 @@ switch($action){
         break;
 
 
+        //Consulta para mostrar productos segun clase paginaP
+    case'productosPorClase':
+        if($_SERVER["REQUEST_METHOD"] == "POST"){
+            $controladorProducto->ProductosPorClase();
+        }
+        break;
+
+//==========================================================================================================================================
 
 //Entrada de Productos Empleado
 

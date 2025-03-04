@@ -132,6 +132,49 @@ if ($_SESSION['rol'] == 2) {
                         <li><a class="dropdown-item" href="index.php?action=consultaUsuarios">Consultar Empleado</a></li>
                     </ul>
                 </li>
+            
+
+                <!-- Propiedades -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white" href="#" id="propiedadesDropdown" role="button" data-bs-toggle="dropdown">Propiedades</a>
+                    <ul class="dropdown-menu">
+                        <!-- Clase Producto -->
+                        <li class="nav-item dropdown">
+                            <a class="dropdown-item dropdown-toggle" href="#" id="claseProductoDropdown" role="button" data-bs-toggle="dropdown">Clase Producto</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="index.php?action=registroClase">Registrar Clase</a></li>
+                                <li><a class="dropdown-item" href="index.php?action=consultaClase">Consultar Clase</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- Formato Venta -->
+                        <li class="nav-item dropdown">
+                            <a class="dropdown-item dropdown-toggle" href="#" id="formatoVentaDropdown" role="button" data-bs-toggle="dropdown">Formato Venta</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="index.php?action=registroFormatoVenta">Registrar Formato</a></li>
+                                <li><a class="dropdown-item" href="index.php?action=consultaFormatoVenta">Consultar Formato</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- Presentación Producto -->
+                        <li class="nav-item dropdown">
+                            <a class="dropdown-item dropdown-toggle" href="#" id="presentacionProductoDropdown" role="button" data-bs-toggle="dropdown">Presentación Producto</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="index.php?action=registroPresentacion">Registrar Presentación</a></li>
+                                <li><a class="dropdown-item" href="index.php?action=consultaPresentacion">Consultar Presentación</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- Unidad Base -->
+                        <li class="nav-item dropdown">
+                            <a class="dropdown-item dropdown-toggle" href="#" id="unidadBaseDropdown" role="button" data-bs-toggle="dropdown">Unidad Base</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="index.php?action=registroUndBase">Registrar Unidad</a></li>
+                                <li><a class="dropdown-item" href="index.php?action=consultaUndBasen">Consultar Unidad</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
             </ul>
 
             <!-- Botón de Logout -->
