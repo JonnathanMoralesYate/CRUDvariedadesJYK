@@ -23,7 +23,7 @@ class ControladorClases{
             
             $this->modeloClases->registrarClases($nombre);
 
-            //echo json_encode(array('Error'=>'Producto No Encontrado'));
+            echo json_encode(array('Error'=>'Producto No Encontrado'));
             
             echo "
                         <script>
