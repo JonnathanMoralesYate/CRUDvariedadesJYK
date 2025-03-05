@@ -186,7 +186,7 @@
     </div>
 
     <!-- Vista de Productos por Categoría -->
-    <div class="col-12 col-md-8 col-lg-9">
+    <div class="col-12 col-md-8 col-lg-9 mt-3">
         <div id="productos-container" class="row row-cols-1 row-cols-md-2 row-cols-lg-4 gap-3 text-center d-flex justify-content-around mt-1">
         </div>
     </div>

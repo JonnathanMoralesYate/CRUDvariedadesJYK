@@ -36,7 +36,7 @@ class ModeloUsuario{
 
 //Consulta por parametro Id
     public function consultUsuaId($idUsua) {
-        $query = "SELECT * FROM ".$this->table." WHERE idUsuario=?";
+        $query = "SELECT idUsuario, idTipoDocum, NumIdentificacion, Nombres, Apellidos, NumCelular, Email, idRol, Usuario FROM ".$this->table." WHERE idUsuario=?";
         $stmt = $this->conn->prepare($query);
         $stmt->execute([$idUsua]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -45,10 +45,10 @@ class ModeloUsuario{
 
 
 //consulta general con inner join por Id
-    public function consultGenUsuaVistaId($idUsua) {
-        $query = "SELECT idUsuario, tipo_documento.tipoDocum, NumIdentificacion, Nombres, Apellidos, NumCelular, Email, roles.Rol, Usuario, Contraseña FROM ".$this->table." INNER JOIN tipo_documento ON registro_usuarios.idTipoDocum = tipo_documento.idTipoDocum INNER JOIN roles ON registro_usuarios.idRol = roles.idRol WHERE idUsuario=?";
+    public function consultGenUsuaVistaId($numIdentUsuario) {
+        $query = "SELECT idUsuario, tipo_documento.tipoDocum, NumIdentificacion, Nombres, Apellidos, NumCelular, Email, roles.Rol, Usuario, Contraseña FROM ".$this->table." INNER JOIN tipo_documento ON registro_usuarios.idTipoDocum = tipo_documento.idTipoDocum INNER JOIN roles ON registro_usuarios.idRol = roles.idRol WHERE NumIdentificacion=?";
         $stmt = $this->conn->prepare($query);
-        $stmt->execute([$idUsua]);
+        $stmt->execute([$numIdentUsuario]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 

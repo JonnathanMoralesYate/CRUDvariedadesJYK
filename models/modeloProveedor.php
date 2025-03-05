@@ -27,10 +27,10 @@ class ModeloProveedor{
 
 
     //Consulta general proveedor por nit
-    public function consultGenProveedorNit($idProveedor) {
-        $query= "SELECT * FROM ".$this->table." WHERE idProveedor=?";
+    public function consultGenProveedorNit($nitProveedor) {
+        $query= "SELECT * FROM ".$this->table." WHERE NitProveedor=?";
         $stmt= $this->conn->prepare($query);
-        $stmt->execute([$idProveedor]);
+        $stmt->execute([$nitProveedor]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 

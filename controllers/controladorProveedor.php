@@ -65,8 +65,8 @@ class ControladorProveedor{
 
     //Consulta general de proveedor por id
     public function proveedorNit() {
-        $idProveedor = $_GET['idProveedor'] ?? '';
-        return $this->modeloProveedor->consultGenProveedorNit($idProveedor);
+        $nitProveedor = $_GET['nitProveedor'] ?? '';
+        return $this->modeloProveedor->consultGenProveedorNit($nitProveedor);
     }
 
 

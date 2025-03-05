@@ -63,7 +63,7 @@
                 </div>
                 <div class=" mt-2">
                     <label for="contraseña" class="form-label text-white mt-3">Contraseña:</label>
-                    <input type="text" class="form-control" name="contraseña" value="<?= $usuario['Contraseña']; ?>" required>
+                    <input type="text" class="form-control" name="contraseña" value="" required>
                 </div>
                 <div class="text-center mt-3">
                     <button type="submit" class="btn btn-outline-secondary text-white mt-3 text-center">Actualizar</button>

@@ -31,47 +31,42 @@
 <!--Fin de consultar-->
 
 <!--Inicio para mostrar datos para buscar y consultar-->
-<div class="row">
-            <div class="col-1">
-            </div>
-        <div class="col-10">
-    <!--Inicio de tabla-->
-        <div class="container mt-5">
+<div class="container-fluid mt-5">
+    <div class="row">
+        <div class="col-12 col-md-10 offset-md-1">
             <div class="text-center">
                 <?php if (isset($formatoVentas) && count($formatoVentas) > 0): ?>
                 <h4 class="text-white">Resultados de la Busqueda:</h4>
             </div>
     <!-- Tabla responsiva-->
             <div class="table-responsive">
-            <table class="table table-hover table-striped text-white text-center">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Formato Venta</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody class="">
-                <?php foreach ($formatoVentas as $formatoVenta): ?>
-                    <tr>
-                        <td class="text-white align-middle"><?= $formatoVenta['idFormatoVenta']; ?></td>
-                        <td class="text-white align-middle"><?= $formatoVenta['FormatoVenta']; ?></td>
-                        <td>                        
-                        <a href="index.php?action=actualizarFormatoVentaId&idFormatoVenta=<?= $formatoVenta['idFormatoVenta']; ?>" class="btn btn-outline-secondary text-white m-2 w-30" role="button">Actualizar</a> 
-                        <a href="index.php?action=eliminarFormatoVentaId&idFormatoVenta=<?= $formatoVenta['idFormatoVenta']; ?>" class="btn btn-outline-secondary text-white m-2 w-30" role="button">Eliminar</a>
-                        </td>
-                    </tr>
-                <?php endforeach; ?>
-                </tbody>
-            </table>
+                <table class="table table-hover text-white text-center">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Formato Venta</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody class="">
+                        <?php foreach ($formatoVentas as $formatoVenta): ?>
+                            <tr>
+                                <td class="text-white align-middle"><?= $formatoVenta['idFormatoVenta']; ?></td>
+                                <td class="text-white align-middle"><?= $formatoVenta['FormatoVenta']; ?></td>
+                                <td>                        
+                                <a href="index.php?action=actualizarFormatoVentaId&idFormatoVenta=<?= $formatoVenta['idFormatoVenta']; ?>" class="btn btn-outline-secondary text-white m-2 w-30" role="button">Actualizar</a> 
+                                <a href="index.php?action=eliminarFormatoVentaId&idFormatoVenta=<?= $formatoVenta['idFormatoVenta']; ?>" class="btn btn-outline-secondary text-white m-2 w-30" role="button">Eliminar</a>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
             </div>
                 <?php elseif (isset($formatoVentas)): ?>
                     <p class="text-white">No se Encontro Productos con ese Criterio de Busqueda</p>
                 <?php endif; ?>
         </div>
-        <div class="col-1">
-        </div>
-</div>
+    </div>
 </div>
 
 <?php include('./views/layautModAdmin/footerModAdmin.php'); ?>

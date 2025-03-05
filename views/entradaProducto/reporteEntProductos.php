@@ -38,7 +38,7 @@
                 <?php if (isset($entProductos['reporteEntProductos']) && count($entProductos['reporteEntProductos']) > 0): ?>
                     <!-- Tabla responsiva-->
                     <div class="table-responsive mt-5">
-                        <table class="table table-hover text-white">
+                        <table class="table table-hover text-white text-center">
                             <thead>
                                 <tr>
                                     <!-- <th>ID</th> -->

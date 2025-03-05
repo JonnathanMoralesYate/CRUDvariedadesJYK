@@ -36,7 +36,7 @@
             </div>
     <!-- Tabla responsiva-->
             <div class="table-responsive">
-            <table class="table table-hover text-white">
+            <table class="table table-hover text-white text-center">
                 <thead>
                     <tr>
                         <!-- <th>ID</th> -->

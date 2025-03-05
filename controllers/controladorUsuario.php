@@ -68,8 +68,8 @@ class ControladorUsuario{
 
     //Consulta por parametro id usuario
     public function datosUsuaPorId() {
-        $idUsua = $_GET['idUsuario'] ?? '';
-        return $this->modeloUsuario->consultGenUsuaVistaId($idUsua);
+        $numIdentUsuario = $_GET['numIdentUsuario'] ?? '';
+        return $this->modeloUsuario->consultGenUsuaVistaId($numIdentUsuario);
     }
 
 
