@@ -107,7 +107,13 @@ class ControladorProducto{
         $codigoProducto = $_GET['codProduc'] ?? '';
         return $this->modeloProducto->consultGenProductos($codigoProducto);
     }
-    
+
+
+    //Consulta general de productos vista
+    public function listaClasesP() {
+        return $this->modeloProducto->mostrarClasesP();
+    }
+
 
     // Consulta para verificar si el producto esta registrado en BD
     public function productoCodProducto() {

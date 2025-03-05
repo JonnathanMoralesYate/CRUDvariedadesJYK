@@ -91,7 +91,7 @@ class ModeloProducto{
     }
 
 
-    //Consulta producto por codigo de barras
+//Consulta producto por codigo de barras
     public function consultaProducto($codigoProducto) {
         $query= "SELECT idProducto, PrecioVenta FROM ".$this->table." WHERE CodProducto=?";
         $stmt= $this->conn->prepare($query);
@@ -100,12 +100,19 @@ class ModeloProducto{
     }
 
 
-    //Consulta del productos con inner join para agregar a la tabla
+//Consulta del productos con inner join para agregar a la tabla
     public function consultaProductoCodigo($idProducto) {
         $query= "SELECT CodProducto, CONCAT(Nombre,' ',Marca) AS 'Producto', CONCAT(presentacion_producto.Presentacion,' ', ContNeto,' ', unidad_base.UndBase) AS 'Contenido Neto', PrecioVenta FROM ".$this->table." INNER JOIN presentacion_producto ON productos.idPresentacion = presentacion_producto.idPresentacion INNER JOIN unidad_base ON productos.idUndBase = unidad_base.idUndBase WHERE idProducto=?";
         $stmt= $this->conn->prepare($query);
         $stmt->execute([$idProducto]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+//Consulta de Clases que tienen Productos registrados para mostrar las clases en pagina principal
+    public function mostrarClasesP() {
+        $query= "SELECT productos.idClase, clase_producto.Clase FROM ".$this->table." INNER JOIN clase_producto ON productos.idClase = clase_producto.idClase GROUP BY productos.idClase, clase_producto.Clase";
+        $stmt= $this->conn->query($query);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
     
 }

@@ -907,7 +907,7 @@ switch($action){
 
     default:
     
-        $clases = $controladorClases->listaClases();
+        $clases = $controladorProducto->listaClasesP();
         include('./views/paginasWeb/paginaPrincipal.php');
         break;
 }
