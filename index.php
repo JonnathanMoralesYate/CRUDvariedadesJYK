@@ -830,7 +830,7 @@ switch($action){
         break;
 
 
-        //Consulta de Productos con menor Stock
+        //Consulta de Productos con mayor venta gafica
     case'productosMayorVenta':
         $controladorSalProducto->ProductosMasVendidos();
         break;
@@ -853,6 +853,12 @@ switch($action){
         if($_SERVER["REQUEST_METHOD"] == "POST"){
             $controladorProducto->ProductosPorClase();
         }
+        break;
+
+
+    //Consulta de Productos con mayor venta pagina principal
+    case'productosMayorVentaP':
+        $controladorSalProducto->ProductosMayorVenta();
         break;
 
 //==========================================================================================================================================
@@ -902,7 +908,6 @@ switch($action){
     default:
     
         $clases = $controladorClases->listaClases();
-        $productos = [];
         include('./views/paginasWeb/paginaPrincipal.php');
         break;
 }

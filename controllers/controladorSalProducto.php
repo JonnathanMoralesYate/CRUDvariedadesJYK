@@ -418,6 +418,21 @@ class ControladorSalProducto{
     }
 
 
+    //Metodo para traer datos de productos con mayor Venta para pagina principal
+    public function ProductosMayorVenta() {
+
+        header("Content-Type: application/json; charset=UTF-8");
+
+            $mayoresVenta = $this->modeloSalProducto->productosMayorVenta();
+
+            if ($mayoresVenta) {
+                echo json_encode(["success" => true, "mayoresVenta" => $mayoresVenta]);
+            } else {
+                echo json_encode(["success" => false, "error" => "Producto No Encontrado"]);
+            }
+    }
+
+
 }
 
 ?>

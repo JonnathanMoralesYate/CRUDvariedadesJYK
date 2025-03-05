@@ -117,6 +117,13 @@ class ModeloSalProducto{
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    //Consulta para ver los productos mas vendidos en pagina principal
+    public function productosMayorVenta() {
+        $query = "SELECT CONCAT(productos.Nombre, ' ', productos.Marca) AS 'Producto', productos.Descripcion, productos.Foto, SUM(salida_productos.CantSalida) AS totalVendido FROM ".$this->table." INNER JOIN productos ON salida_productos.idProducto = productos.idProducto GROUP BY productos.idProducto, productos.Nombre, productos.Descripcion ORDER BY totalVendido DESC LIMIT 10";
+        $stmt= $this->conn->query($query);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
 }
 
 ?>
