@@ -78,7 +78,7 @@ class ModeloInventario{
 
 //Consulta para mostrar los productos con menor stock
     public function productosMenorStock() {
-        $query = "SELECT CONCAT(productos.Nombre, ' ', productos.Marca) AS 'Producto', CantActual FROM ".$this->table." INNER JOIN productos ON inventario.idProducto = productos.idProducto ORDER BY inventario.CantActual ASC limit 10";
+        $query = "SELECT CONCAT(productos.Nombre, ' ', productos.Marca) AS 'Producto', CantActual FROM ".$this->table." INNER JOIN productos ON inventario.idProducto = productos.idProducto WHERE CantActual > 0 ORDER BY inventario.CantActual ASC limit 10";
         $stmt= $this->conn->query($query);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
