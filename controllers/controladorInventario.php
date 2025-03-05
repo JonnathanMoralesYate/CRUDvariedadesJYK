@@ -106,6 +106,11 @@ class ControladorInventario{
             }
     }
 
+    //Reporte de invenario productos agotados
+    public function ProductoSinStock() {
+        return $this->modeloInventario->productoSinStock();
+    }
+
 
 }
 

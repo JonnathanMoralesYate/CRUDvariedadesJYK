@@ -120,7 +120,7 @@ if ($_SESSION['rol'] == 2) {
                         <li><a class="dropdown-item" href="index.php?action=reporteEntProducto">Entradas Productos</a></li>
                         <li><a class="dropdown-item" href="index.php?action=reporteSalProducto">Salidas Productos</a></li>
                         <li><a class="dropdown-item" href="index.php?action=reporteInventario">Inventario</a></li>
-                        <li><a class="dropdown-item" href="index.php?action=">Stock Agotado</a></li>
+                        <li><a class="dropdown-item" href="index.php?action=reporteSinStock">Stock Agotado</a></li>
                         <li><a class="dropdown-item" href="index.php?action=productosAvencer">Productos a Vencer</a></li>
                     </ul>
                 </li>

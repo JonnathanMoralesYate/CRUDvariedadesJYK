@@ -704,6 +704,20 @@ switch($action){
             break;
 
 
+        //Inventario Bajo de Stock
+    case'reporteSinStock':
+        $inventarios = $controladorInventario->ProductoSinStock();
+        include('./views/inventario/inventarioSinStock.php');
+        break;
+
+        //Genera reporte de inventario Bajo de Stock en PDF
+        case'reporteSinStockPDF':
+            $inventarios = $controladorInventario->ProductoSinStock();
+            include('./views/inventario/reporteSinStockPDF.php');
+            break;
+
+
+
         //Entrada de Productos
     case'reporteEntProducto':
         include('./views/entradaProducto/generarInforEntProductos.php');

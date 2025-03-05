@@ -6,7 +6,7 @@
     </div>
     <div class="col-8">
         <div class="text-center text-white mt-3">
-            <h4>Reporte de Inventario</h4>
+            <h4>Reporte de Productos Agotados en Inventario</h4>
         </div>
     </div>
     <div class="col-2">
@@ -16,7 +16,7 @@
     <div class="col-5">
     </div>
     <div class="col-2 justify-content-center">
-        <a class="btn btn-outline-secondary text-white mt-3 text-center w-100" href="index.php?action=reporteInventarioPDF" target="_blank">Generar PDF</a>
+        <a class="btn btn-outline-secondary text-white mt-3 text-center w-100" href="index.php?action=reporteSinStockPDF" target="_blank">Generar PDF</a>
     </div>
     <div class="col-5">
     </div> 
@@ -68,7 +68,7 @@
             </table>
             </div>
                 <?php elseif (isset($inventarios)): ?>
-                    <p class="text-white">No se Encontro Productos con ese Criterio de Busqueda</p>
+                    <p class="text-white">No se Encontro Productos Agotados</p>
                 <?php endif; ?>
         </div>
         <div class="col-1">

@@ -22,7 +22,7 @@
     <div class="col-5">
     </div>
     <div class="col-2 justify-content-center">
-        <a class="btn btn-outline-secondary text-white mt-3 text-center w-100" href="http://localhost/CRUDvariedadesJYK/index.php?action=reporteSalProductosPDF&fechaInc=<?= htmlspecialchars($salProductos['fechaInc']); ?>&action=reporteSalProductosPDF&fechaFin=<?= htmlspecialchars($salProductos['fechaFin']); ?>" target="_blank">Generar PDF</a>
+        <a class="btn btn-outline-secondary text-white mt-3 text-center w-100" href="index.php?action=reporteSalProductosPDF&fechaInc=<?= htmlspecialchars($salProductos['fechaInc']); ?>&action=reporteSalProductosPDF&fechaFin=<?= htmlspecialchars($salProductos['fechaFin']); ?>" target="_blank">Generar PDF</a>
     </div>
     <div class="col-5">
     </div> 
