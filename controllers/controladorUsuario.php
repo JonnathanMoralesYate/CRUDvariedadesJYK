@@ -126,6 +126,36 @@ class ControladorUsuario{
     }
 
 
+    // Consulta para traer informacion del producto por idclase
+    public function ConsultaUsuario() {
+
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    
+            // Leer JSON desde la solicitud
+            $inputJSON = file_get_contents("php://input");
+
+            $input = json_decode($inputJSON, true);
+    
+            if (!isset($input['documUsu']) || empty($input['documUsu'])) {
+                echo json_encode(['error' => 'El idClase del producto es requerido']);
+                exit;
+            }
+    
+            $numDocumU = $input['documUsu'];
+    
+            $usuario = $this->modeloUsuario->consultaUsuario($numDocumU);
+    
+            if ($usuario) {
+                echo json_encode(["success" => true, "usuario" => $usuario]);
+            } else {
+                echo json_encode(["success" => false, "error" => "Usuario No Registrado"]);
+            }
+        } else {
+            echo json_encode(['error' => 'Método no permitido']);
+        }
+    }
+
+
 }
 
 ?>

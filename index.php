@@ -875,6 +875,14 @@ switch($action){
         $controladorSalProducto->ProductosMayorVenta();
         break;
 
+
+    //Consulta para verificar usuario
+    case'verificarUsuario':
+        if($_SERVER["REQUEST_METHOD"] == "POST"){
+            $controladorUsuario->ConsultaUsuario();
+        }
+        break;
+
 //==========================================================================================================================================
 
 //Entrada de Productos Empleado

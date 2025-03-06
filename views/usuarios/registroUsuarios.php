@@ -21,8 +21,8 @@
                         </select>
                 </div>
                 <div class=" mt-2">
-                    <label for="documUsu" class="form-label text-white mt-3">Numero de Cedula:</label>
-                    <input type="text" class="form-control" name="documUsu" required>
+                    <label for="documUsu" class="form-label text-white mt-3">Numero del Documento:</label>
+                    <input type="text" class="form-control" id="documUsu" name="documUsu" required>
                 </div>
                 <div class="mt-2">
                     <label for="nomUsu" class="form-label text-white mt-3">Nombres:</label>
@@ -65,5 +65,5 @@
         <div class="col-3">
         </div>
         </div>
-
+            <script src="./js//verificarUsuario.js?v=1.0"></script>
 <?php include('./views/layautModAdmin/footerModAdmin.php'); ?>
