@@ -11,7 +11,7 @@
                 </div>
                 <div class=" mt-2">
                     <label for="nitProveedor" class="form-label text-white mt-3">Codigo Empresa:</label>
-                    <input type="text" class="form-control" name="nitProveedor" placeholder="Nit" required>
+                    <input type="text" class="form-control" id="nitProveedor" name="nitProveedor" placeholder="Nit" required>
                 </div>
                 <div class="mt-2">
                     <label for="nomProveedor" class="form-label text-white mt-3">Nombre Empresa:</label>
@@ -42,5 +42,5 @@
         <div class="col-3">
         </div>
         </div>
-
+                <script src="./js/verificarProveedor.js?v=1.0"></script>
 <?php include('./views/layautModAdmin/footerModAdmin.php'); ?>
