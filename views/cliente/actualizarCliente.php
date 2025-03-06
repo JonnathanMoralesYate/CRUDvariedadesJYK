@@ -1,10 +1,12 @@
 <?php include('./views/layautModAdmin/headerModAdmin.php'); ?>
 
-<div class="row">
-            <!--Incio de Formulario Registro de Cliente-->
-            <div class="col-3">
+<!--Incio de Formulario Registro de Cliente-->
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8 col-sm-10">
+            <div class="text-center text-white mt-3">
+                <h4>Actualizar Cliente</h4>
             </div>
-            <div class="col-6">
             <form class=" mt-2" action="index.php?action=actualizarCliente" method="post">
             <?php foreach($clientes as $cliente): ?>
                 <div class=" mt-2">
@@ -46,14 +48,13 @@
                     <label for="puntos" class="form-label text-white mt-3">Puntos Acumulados:</label>
                     <input type="number" class="form-control" name="puntos" value="<?= $cliente['Puntos']; ?>" placeholder="" required>
                 </div>
-                <div class="text-center mt-2">
-                    <button type="submit" class="btn btn-outline-secondary text-white mt-3 text-center">Actualizar</button>
+                <div class="text-center mt-4">
+                    <button type="submit" class="btn btn-outline-light">Actualizar</button>
                 </div>
                 <?php endforeach; ?>
             </form>
         </div>
-        <div class="col-3">
-        </div>
-        </div>
+    </div>
+</div>
 
 <?php include('./views/layautModAdmin/footerModAdmin.php'); ?>

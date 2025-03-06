@@ -1,11 +1,9 @@
 <?php include('./views/layautModAdmin/headerModAdmin.php'); ?>
 
 <!--Incio de Formulario Consultar Entradas Producto-->
-<div class="row">
-    <div class="col-2">
-    </div>
-
-    <div class="col-8">
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10 col-sm-12">
             <div class="text-center text-white mt-3">
                 <h4>Consulta Entrada de Productos</h4>
             </div>
@@ -24,19 +22,15 @@
                     <button class="btn btn-outline-secondary text-white" type="submit" id="button-addon2">Buscar</button>
                 </div>
             </form>
-    </div>
-    <div class="col-2">
+        </div>
     </div>
 </div>
 <!--Fin de consultar-->
 
 <!--Inicio para mostrar datos para buscar y consultar-->
-<div class="row">
-            <div class="col-1">
-            </div>
-        <div class="col-10">
-    <!--Inicio de tabla-->
-        <div class="container mt-5">
+<div class="container-fluid mt-5">
+    <div class="row">
+        <div class="col-12 col-md-10 offset-md-1">
             <div class="text-center">
                 <?php if (isset($entProductos) && count($entProductos) > 0): ?>
                 <h4 class="text-white">Resultados de la Busqueda:</h4>
@@ -87,8 +81,7 @@
                     <p class="text-white">No se Encontro Productos con ese Criterio de Busqueda</p>
                 <?php endif; ?>
         </div>
-        <div class="col-1">
-        </div>
+    </div>
 </div>
 
 <?php include('./views/layautModAdmin/footerModAdmin.php'); ?>

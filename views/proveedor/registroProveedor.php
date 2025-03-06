@@ -1,14 +1,13 @@
 <?php include('./views/layautModAdmin/headerModAdmin.php'); ?>
 
-<div class="row">
-            <!--Incio de Formulario Registro de Proveedor-->
-            <div class="col-3">
-            </div>
-            <div class="col-6">
-            <form class=" mt-2" action="index.php?action=registroProveedor" method="post">
+<!--Incio de Formulario Registro de Proveedor-->
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8 col-sm-10">
             <div class="text-center text-white mt-3">
-                    <h4>Registro Proveedor</h4>
-                </div>
+                <h4>Registro Proveedor</h4>
+            </div>
+            <form class=" mt-2" action="index.php?action=registroProveedor" method="post">
                 <div class=" mt-2">
                     <label for="nitProveedor" class="form-label text-white mt-3">Codigo Empresa:</label>
                     <input type="text" class="form-control" id="nitProveedor" name="nitProveedor" placeholder="Nit" required>
@@ -33,14 +32,12 @@
                     <label for="celVendedor" class="form-label text-white mt-3">No. Celular Vendedor:</label>
                     <input type="text" class="form-control" name="celVendedor" placeholder="" required>
                 </div>
-                <div class="text-center mt-2">
-                    <button type="submit" class="btn btn-outline-secondary text-white mt-3 text-center">Registrar</button>
+                <div class="text-center mt-4">
+                    <button type="submit" class="btn btn-outline-light">Registrar</button>
                 </div>
-                
             </form>
         </div>
-        <div class="col-3">
-        </div>
-        </div>
-                <script src="./js/verificarProveedor.js?v=1.0"></script>
+    </div>
+</div>
+        <script src="./js/verificarProveedor.js?v=1.0"></script>
 <?php include('./views/layautModAdmin/footerModAdmin.php'); ?>

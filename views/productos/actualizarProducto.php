@@ -1,11 +1,10 @@
 <?php include('./views/layautModAdmin/headerModAdmin.php'); ?>
 
-    <div class="row">
-        <!--Incio de Formulario Actualizar de Producto-->
-            <div class="col-3">
-            </div>
-            <div class="col-6">
-                <div class="text-center text-white mt-3">
+<!--Incio de Formulario Actualizar de Producto-->
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8 col-sm-10">
+            <div class="text-center text-white mt-3">
                     <h4>Registro de Producto</h4>
                 </div>
                 <form class=" mt-2" action="index.php?action=actualizarProducto" method="post" enctype="multipart/form-data">
@@ -80,11 +79,7 @@
                 <div class="mt-2">
                 <label for="formatovent" class="form-label text-white mt-3">Formato Venta:</label>
                     <?php $tipoVenta= $producto['idFormatoVenta']; ?>
-<<<<<<< HEAD
-                        <select id="formatovent" name="formatovent" class="form-control" required>
-=======
                         <select id="formatoVent" name="formatovent" class="form-control" required>
->>>>>>> d5fde1f884bfe120f6a7152ab68a03e3a67e2a92
                             <option selected>Seleccione Formato Venta</option>
                             <?php foreach($formatoVents as $formatoVent): ?>
                             <option value="<?= $formatoVent['idFormatoVenta']; ?>" <?= $formatoVent['idFormatoVenta'] == $tipoVenta ? 'selected' : '' ?>>
@@ -106,15 +101,13 @@
                     <label for="fotoProduN" class="form-label text-white mt-3">Cabiar Foto:</label>
                     <input type="file" class="form-control" name="fotoProduc" placeholder="">
                 </div>
-                <div class="text-center mt-2">
-                    <button type="submit" class="btn btn-outline-secondary text-white mt-3 text-center">Actualizar Producto</button>
+                <div class="text-center mt-4">
+                    <button type="submit" class="btn btn-outline-light">Actualizar Producto</button>
                 </div>
                 <?php endforeach; ?>
             </form>
-        
-            </div>
-            <div class="col-3">
-            </div>
+        </div>
     </div>
+</div>
 
 <?php include('./views/layautModAdmin/footerModAdmin.php'); ?>

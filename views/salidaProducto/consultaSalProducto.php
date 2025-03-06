@@ -1,10 +1,9 @@
 <?php include('./views/layautModAdmin/headerModAdmin.php'); ?>
 
 <!--Incio de Formulario Consultar ESalida Producto-->
-<div class="row">
-    <div class="col-2">
-    </div>
-    <div class="col-8">
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10 col-sm-12">
             <div class="text-center text-white mt-3">
                 <h4>Consulta Salida de Productos</h4>
             </div>
@@ -23,8 +22,7 @@
                     <button class="btn btn-outline-secondary text-white" type="submit" id="button-addon2">Buscar</button>
                 </div>
             </form>
-    </div>
-    <div class="col-2">
+        </div>
     </div>
 </div>
 <!--Fin de consultar-->

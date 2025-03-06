@@ -1,15 +1,14 @@
 <?php include('./views/layautModAdmin/headerModAdmin.php'); ?>
 
-<div class="row">
-            <!--Incio de Formulario Registro de Usuario-->
-            <div class="col-3">
+<!--Incio de Formulario Registro de Usuario-->
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8 col-sm-10">
+            <div class="text-center text-white mt-3">
+                <h4>Registro Empleado</h4>
             </div>
-            <div class="col-6">
-                <div class="text-center text-white mt-3">
-                    <h4>Registro Empleado</h4>
-                </div>
             <form class=" mt-2" action="index.php?action=registroUsuario" method="post">
-            <div class=" mt-2">
+                <div class=" mt-2">
                         <label for="tipoDocum" class="form-label text-white mt-3">Tipo Documento:</label>
                         <select id="tipoDocum" name="tipoDocum" class="form-control" required>
                             <option selected>Seleccione Tipo Documento</option>
@@ -56,14 +55,12 @@
                     <label for="contraseña" class="form-label text-white mt-3">Contraseña:</label>
                     <input type="text" class="form-control" name="contraseña" required>
                 </div>
-                <div class="text-center mt-3">
-                    <button type="submit" class="btn btn-outline-secondary text-white mt-3 text-center">Registrar</button>
+                <div class="text-center mt-4">
+                    <button type="submit" class="btn btn-outline-light">Registrar</button>
                 </div>
-                
             </form>
         </div>
-        <div class="col-3">
-        </div>
-        </div>
-            <script src="./js//verificarUsuario.js?v=1.0"></script>
+    </div>
+</div>
+        <script src="./js//verificarUsuario.js?v=1.0"></script>
 <?php include('./views/layautModAdmin/footerModAdmin.php'); ?>

@@ -445,7 +445,7 @@ switch($action){
 
         //Actualizar Proveedor
     case'actualizarProveedorId':
-        $proveedores= $controladorProveedor->proveedorNit();
+        $proveedores= $controladorProveedor->proveedorId();
         include('./views/proveedor/actualizarProveedor.php');
         break;
 
@@ -458,6 +458,7 @@ switch($action){
         $controladorProveedor->EliminarProveedor();
         break;
 
+//====================================================================================================================================
 
         //Registro Proveedor empleado
     case'registroProveedorEmp':
@@ -501,6 +502,7 @@ switch($action){
             $controladorProveedor->ActualizarProductoEmp();
             break;
 
+//================================================================================================================================
 
 //Clientes
 

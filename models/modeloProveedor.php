@@ -34,6 +34,14 @@ class ModeloProveedor{
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    //Eliminar proveedor
+    public function consultGenProveedorId($idProveedor) {
+        $query= "SELECT * FROM ".$this->table." WHERE idProveedor=?";
+        $stmt= $this->conn->prepare($query);
+        $stmt->execute([$idProveedor]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
 
     //Consulta general proveedor por nombre 
     public function consultGenProveedorNombre($nomProve) {
