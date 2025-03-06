@@ -45,7 +45,7 @@ class ModeloProducto{
 
 //Consulta para mostrar productos segun clase en pagina principal
     public function productosPorClase($idClase) {
-        $query= "SELECT Foto, Nombre, Descripcion FROM ".$this->table." WHERE idClase=?";
+        $query= "SELECT Foto, CONCAT(Nombre,' ',Marca) AS 'Producto', Descripcion FROM ".$this->table." WHERE idClase=?";
         $stmt= $this->conn->prepare($query);
         $stmt->execute([$idClase]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);

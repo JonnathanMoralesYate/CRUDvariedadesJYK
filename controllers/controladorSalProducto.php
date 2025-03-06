@@ -115,8 +115,8 @@ class ControladorSalProducto{
 
     //Consulta por Id Inner Join
     public function consultaGenSalProductosVistaId() {
-        $idSalProducto = $_GET['idSalProducto'] ?? '';
-        return $this->modeloSalProducto->consultaGenSalProductosVistaId($idSalProducto);
+        $codProducto = $_GET['codProducto'] ?? '';
+        return $this->modeloSalProducto->consultaGenSalProductosVistaId($codProducto);
     }
 
 

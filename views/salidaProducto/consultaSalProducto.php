@@ -1,17 +1,16 @@
 <?php include('./views/layautModAdmin/headerModAdmin.php'); ?>
 
 <!--Incio de Formulario Consultar ESalida Producto-->
-<div class="row">
-    <div class="col-2">
-    </div>
-    <div class="col-8">
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10 col-sm-12">
             <div class="text-center text-white mt-3">
                 <h4>Consulta Salida de Productos</h4>
             </div>
             <form class=" mt-4" action="index.php?action=consultaSalProductoId" method="get">
                 <div class="input-group mb-3">
                     <input type="hidden" class="form-control" name="action" value="consultaSalProductoId">
-                    <input type="text" class="form-control" placeholder="ID Salida Producto" name="idSalProducto" aria-label="Recipient's usernam" aria-describedby="button-addon2" required>
+                    <input type="text" class="form-control" placeholder="Codigo Producto" name="codProducto" aria-label="Recipient's usernam" aria-describedby="button-addon2" required>
                     <button class="btn btn-outline-secondary text-white" type="submit" id="button-addon2">Buscar</button>
                 </div>
             </form>
@@ -23,8 +22,7 @@
                     <button class="btn btn-outline-secondary text-white" type="submit" id="button-addon2">Buscar</button>
                 </div>
             </form>
-    </div>
-    <div class="col-2">
+        </div>
     </div>
 </div>
 <!--Fin de consultar-->

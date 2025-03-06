@@ -1,42 +1,39 @@
 <?php include('./views/layautModAdmin/headerModAdmin.php'); ?>
 
 <!--Inicio de Formulario Reporte de Entradas Producto-->
-<div class="row">
-    <div class="col-2">
-    </div>
-    <div class="col-8">
-        <div class="text-center text-white mt-3">
-            <h4>Reporte de Entradas de Productos</h4>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10 col-sm-12">
+            <div class="text-center text-white mt-3">
+                <h4>Reporte de Entradas de Productos</h4>
+            </div>
+            <div class="text-center text-white mt-3">
+                <p>Fecha de Inicio: <?= htmlspecialchars($entProductos['fechaInc']); ?></p>
+                <p>Fecha de Fin: <?= htmlspecialchars($entProductos['fechaFin']); ?></p>
+            </div>
         </div>
-        <div class="text-center text-white mt-3">
-            <p>Fecha de Inicio: <?= htmlspecialchars($entProductos['fechaInc']); ?></p>
-            <p>Fecha de Fin: <?= htmlspecialchars($entProductos['fechaFin']); ?></p>
-        </div>
     </div>
-    <div class="col-2">
-    </div>
-</div>
 
-<div class="row">
-    <div class="col-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-4 col-md-6 col-sm-8 col-10">
+            <div class="d-flex justify-content-center">
+                <a class="btn btn-outline-secondary text-white mt-3 w-50 text-center" 
+                href="index.php?action=reporteEntProductosPDF&fechaInc=<?= htmlspecialchars($entProductos['fechaInc']); ?>&fechaFin=<?= htmlspecialchars($entProductos['fechaFin']); ?>" 
+                target="_blank">
+                Generar PDF
+                </a>
+            </div>
+        </div>
     </div>
-    <div class="col-2 justify-content-center">
-        <a class="btn btn-outline-secondary text-white mt-3 text-center w-100" href="index.php?action=reporteEntProductosPDF&fechaInc=<?= htmlspecialchars($entProductos['fechaInc']); ?>&action=reporteEntProductosPDF&fechaFin=<?= htmlspecialchars($entProductos['fechaFin']); ?>" target="_blank">Generar PDF</a>
-    </div>
-    <div class="col-5">
-    </div> 
 </div>
 <!--Fin de consultar-->
 
 <!--Inicio para mostrar datos para buscar y consultar-->
-<div class="row">
-    <div class="col-1"></div>
-    <div class="col-10">
-        <!--Inicio de tabla-->
-        <div class="container mt-5">
-            <div class="text-center">
+<div class="container-fluid mt-1">
+    <div class="row">
+        <div class="col-12 col-md-10 offset-md-1">
                 <?php if (isset($entProductos['reporteEntProductos']) && count($entProductos['reporteEntProductos']) > 0): ?>
-                    <!-- Tabla responsiva-->
+            <!-- Tabla responsiva-->
                     <div class="table-responsive mt-5">
                         <table class="table table-hover text-white text-center">
                             <thead>
@@ -76,9 +73,7 @@
                 <?php else: ?>
                     <p class="text-white">No se encontró productos con ese criterio de búsqueda.</p>
                 <?php endif; ?>
-            </div>
         </div>
-        <div class="col-1"></div>
     </div>
 </div>
 

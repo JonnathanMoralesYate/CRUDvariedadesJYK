@@ -87,7 +87,15 @@ class ModeloUsuario{
     }
 
 
-}
+//Consulta por numero de identificacion
+    public function consultaUsuario($numDocumU) {
+        $query = "SELECT idUsuario FROM ".$this->table." WHERE NumIdentificacion=?";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute([$numDocumU]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 
+
+}
 
 ?>

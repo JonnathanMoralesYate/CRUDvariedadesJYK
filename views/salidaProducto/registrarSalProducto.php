@@ -1,14 +1,13 @@
 <?php include('./views/layautModAdmin/headerModAdmin.php'); ?>
 
-<div class="row">
-            <!--Incio de Formulario Registro de Salida Producto-->
-            <div class="col-3">
-            </div>
-            <div class="col-6">
-            <form class=" mt-2" action="index.php?action=registroSalProductos" method="post">
-                <div class="text-center text-white mt-3">
+<!--Incio de Formulario Registro de Salida Producto-->
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8 col-sm-10">
+            <div class="text-center text-white mt-3">
                     <h4>Registro de Salida Producto</h4>
-                </div>
+            </div>
+            <form class=" mt-2" action="index.php?action=registroSalProductos" method="post">
                 <div class="mt-2">
                     <label for="codProducto" class="form-label text-white mt-3">Código Producto:</label>
                 <div class="contenedor">
@@ -49,14 +48,12 @@
                             <?php endforeach; ?>
                         </select>
                 </div>
-                <div class="text-center mt-2">
-                    <button type="submit" class="btn btn-outline-secondary text-white mt-3 text-center">Registrar Salida</button>
+                <div class="text-center mt-4">
+                    <button type="submit" class="btn btn-outline-light">Registrar Salida</button>
                 </div>
-                
             </form>
         </div>
-        <div class="col-3">
-        </div>
-        </div>
+    </div>
+</div>
         <script src="./js/agregarPrecioProducto.js"></script>
 <?php include('./views/layautModAdmin/footerModAdmin.php'); ?>

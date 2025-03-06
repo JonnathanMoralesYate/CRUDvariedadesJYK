@@ -1,13 +1,11 @@
 <?php include('./views/layautModAdmin/headerModAdmin.php'); ?>
 
 <!--Incio de Formulario Consultar Clientes-->
-<div class="row">
-    <div class="col-2">
-    </div>
-
-    <div class="col-8">
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10 col-sm-12">
             <div class="text-center text-white mt-3">
-                <h4>Consulta Clases</h4>
+                <h4>Consulta Clientes</h4>
             </div>
             <form class=" mt-4" action="index.php?action=consultaClienteCedula" method="get">
                 <div class="input-group mb-3">
@@ -24,8 +22,7 @@
                     <button class="btn btn-outline-secondary text-white" type="submit" id="button-addon2">Buscar</button>
                 </div>
             </form>
-    </div>
-    <div class="col-2">
+        </div>
     </div>
 </div>
 <!--Fin de consultar-->
@@ -36,7 +33,7 @@
         <div class="col-12 col-md-10 offset-md-1">
             <div class="text-center">
                 <?php if (isset($clientes) && count($clientes) > 0): ?>
-                <h4 class="text-white">Resultados de la Busqueda:</h4>
+                <h4 class="text-white">Resultados de la Consulta:</h4>
             </div>
     <!-- Tabla responsiva-->
             <div class="table-responsive">

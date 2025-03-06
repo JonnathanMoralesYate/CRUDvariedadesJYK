@@ -1,31 +1,29 @@
 <?php include('./views/layautModAdmin/headerModAdmin.php'); ?>
 
 <!--Incio de Formulario Consultar Producto-->
-<div class="row">
-    <div class="col-2">
-    </div>
-
-    <div class="col-8">
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10 col-sm-12">
             <div class="text-center text-white mt-3">
                 <h4>Consulta de Productos</h4>
             </div>
-            <form class=" mt-4" action="index.php?action=consultaProductosCodigo" method="get">
+            <!-- Consulta por Código -->
+            <form class="mt-4" action="index.php?action=consultaProductosCodigo" method="get">
                 <div class="input-group mb-3">
-                    <input type="hidden" class="form-control" name="action" value="consultaProductosCodigo">
-                    <input type="text" class="form-control" placeholder="Codigo Producto" name="codProduc" aria-label="Recipient's usernam" aria-describedby="button-addon2" required>
-                    <button class="btn btn-outline-secondary text-white" type="submit" id="button-addon2">Buscar</button>
+                    <input type="hidden" name="action" value="consultaProductosCodigo">
+                    <input type="text" class="form-control" placeholder="Código Producto" name="codProduc" required>
+                    <button class="btn btn-outline-secondary text-white" type="submit">Buscar</button>
                 </div>
             </form>
-
-            <form class=" mt-2" action="index.php?action=consultaProductosNombre" method="get">
+            <!-- Consulta por Nombre -->
+            <form class="mt-2" action="index.php?action=consultaProductosNombre" method="get">
                 <div class="input-group mb-3">
-                    <input type="hidden" class="form-control" name="action" value="consultaProductosNombre">
-                    <input type="text" class="form-control" placeholder="Nombre Producto" name="nombre" aria-label="Recipient's usernam" aria-describedby="button-addon2" required>
-                    <button class="btn btn-outline-secondary text-white" type="submit" id="button-addon2">Buscar</button>
+                    <input type="hidden" name="action" value="consultaProductosNombre">
+                    <input type="text" class="form-control" placeholder="Nombre Producto" name="nombre" required>
+                    <button class="btn btn-outline-secondary text-white" type="submit">Buscar</button>
                 </div>
             </form>
-    </div>
-    <div class="col-2">
+        </div>
     </div>
 </div>
 <!--Fin de consultar-->
