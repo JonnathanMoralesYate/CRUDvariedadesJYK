@@ -1,39 +1,38 @@
 <?php include('./views/layautModAdmin/headerModAdmin.php'); ?>
 
 <!--Incio de Reporte de Inventario de Productos-->
-<div class="row">
-    <div class="col-2">
-    </div>
-    <div class="col-8">
-        <div class="text-center text-white mt-3">
-            <h4>Reporte de Inventario</h4>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10 col-sm-12">
+            <div class="text-center text-white mt-3">
+                <h4>Reporte de Inventario</h4>
+            </div>
         </div>
     </div>
-    <div class="col-2">
+
+    <div class="row justify-content-center">
+        <div class="col-lg-4 col-md-6 col-sm-8 col-10">
+            <div class="d-flex justify-content-center">
+                <a class="btn btn-outline-secondary text-white mt-3 w-50 text-center" 
+                    href="index.php?action=reporteInventarioPDF" 
+                    target="_blank">
+                    Generar PDF
+                </a>
+            </div>
+        </div>
     </div>
-</div>
-<div class="row">
-    <div class="col-5">
-    </div>
-    <div class="col-2 justify-content-center">
-        <a class="btn btn-outline-secondary text-white mt-3 text-center w-100" href="index.php?action=reporteInventarioPDF" target="_blank">Generar PDF</a>
-    </div>
-    <div class="col-5">
-    </div> 
 </div>
 <!--Fin de consultar-->
 
 <!--Inicio para mostrar datos para buscar y consultar-->
-<div class="row">
-            <div class="col-1">
-            </div>
-        <div class="col-10">
-    <!--Inicio de tabla-->
-        <div class="container mt-5">
-            <div class="text-center">
-                <?php if (isset($inventarios) && count($inventarios) > 0): ?>
-                <h4 class="text-white">Inventario Actualizado:</h4>
-            </div>
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10 col-sm-12">
+            <div class="text-center text-white mt-3">
+                <div class="text-center">
+                    <?php if (isset($inventarios) && count($inventarios) > 0): ?>
+                    <h4 class="text-white">Inventario Actualizado:</h4>
+                </div>
     <!-- Tabla responsiva-->
             <div class="table-responsive">
             <table class="table table-hover text-white text-center">
@@ -71,8 +70,7 @@
                     <p class="text-white">No se Encontro Productos con ese Criterio de Busqueda</p>
                 <?php endif; ?>
         </div>
-        <div class="col-1">
-        </div>
+    </div>
 </div>
 
 <?php include('./views/layautModAdmin/footerModAdmin.php'); ?>
