@@ -45,9 +45,9 @@ function mostrarProductos(producto) {
         const productoHTML = `
             <div class="col">
                 <div class="card mx-auto h-100" style="width: 14rem;">
-                    <img src="photo/${productos.Foto}" class="card-img-top rounded" alt="${productos.Nombre}">
+                    <img src="photo/${productos.Foto}" class="card-img-top rounded" alt="${productos.Producto}">
                     <div class="card-body">
-                        <h5 class="card-title">${productos.Nombre}</h5>
+                        <h5 class="card-title">${productos.Producto}</h5>
                         <p class="card-text">${productos.Descripcion}</p>
                     </div>
                 </div>
@@ -77,7 +77,7 @@ function mostrarProductos(producto) {
             //console.log("Respuesta recibida:", textResponse);
 
             const data = await response.json();
-            console.log('Datos recibidos:', data); // Verifica qué datos llegan
+            //console.log('Datos recibidos:', data); // Verifica qué datos llegan
 
             const producto = data.mayoresVenta;
 

@@ -7,7 +7,7 @@
 
     <div class="col-8">
             <div class="text-center text-white mt-3">
-                <h4>Consulta Clases</h4>
+                <h4>Consulta Clientes</h4>
             </div>
             <form class=" mt-4" action="index.php?action=consultaClienteCedula" method="get">
                 <div class="input-group mb-3">
@@ -36,7 +36,7 @@
         <div class="col-12 col-md-10 offset-md-1">
             <div class="text-center">
                 <?php if (isset($clientes) && count($clientes) > 0): ?>
-                <h4 class="text-white">Resultados de la Busqueda:</h4>
+                <h4 class="text-white">Resultados de la Consulta:</h4>
             </div>
     <!-- Tabla responsiva-->
             <div class="table-responsive">

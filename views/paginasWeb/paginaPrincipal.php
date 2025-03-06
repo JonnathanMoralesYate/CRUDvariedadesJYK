@@ -7,7 +7,7 @@
     <title>Minimarket Variedades JYK</title>
     <!-- <link href="fonts/Montserrat,Pacifico/Montserrat/Montserrat-Italic-VariableFont_wght.ttf" rel="stylesheet"> -->
     <link rel="stylesheet" href="./css/bootstrap.min.css?v=1.0">
-    <link rel="stylesheet" href="./css/DesingBody.css?v=1.0">
+    <link rel="stylesheet" href="./css/DesingBody.css">
     <link rel="stylesheet" href="./css/DesingLogin2.css">
 </head>
 
@@ -162,7 +162,7 @@
 <!--Fin Carrusel -->
 
 <!--Inicio de Barra Categorias -->
-<div class="row container-fluid mt-5 text-center">
+<div class="row container-fluid mt-5 text-center d-flex flex-column flex-md-row">
     <!-- Sección de Categorías -->
     <div class="col-12 col-md-4 col-lg-3">
         <div class="text-center text-white">
@@ -171,15 +171,13 @@
         <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-offset="0" class="scrollspy-example" tabindex="0">
             <div class="overflow-auto" style="max-height: 500px;">
                 <?php foreach($clases as $clase): ?>
-                    <div class="mt-1">
-                        <div class="btn-group dropend w-100">
-                            <button type="button" class="btn btn-outline-secondary text-white w-100" 
-                                    aria-expanded="false" 
-                                    onclick="obtenerInforProductoPorClase(<?= $clase['idClase']; ?>)">
-                                <?= $clase['Clase']; ?>
-                            </button>
-                        </div>
+                <div class="mt-1">
+                    <div class="btn-group dropend w-100">
+                        <button type="button" class="btn btn-outline-secondary text-white w-100" aria-expanded="false" onclick="obtenerInforProductoPorClase(<?= $clase['idClase']; ?>)">
+                            <?= $clase['Clase']; ?>
+                        </button>
                     </div>
+                </div>
                 <?php endforeach; ?>
             </div>
         </div>
@@ -297,7 +295,7 @@
 </div>
 
 
-        <script src="./js/agregaProductosPaginaP.js"></script>
+        <script src="./js/agregaProductosPaginaP.js?v=1.0"></script>
         <script src="./js/bootstrap.bundle.min.js"></script>
         <script src="./js/LoginInicio.js?v=1.0"></script>
 

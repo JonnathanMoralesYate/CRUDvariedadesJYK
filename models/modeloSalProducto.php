@@ -59,10 +59,10 @@ class ModeloSalProducto{
 
 
 //Consulta por Id Salida Productos INNER JOIN
-    public function consultaGenSalProductosVistaId($idSalProducto) {
-        $query = "SELECT idSalProducto, FechaSalida, clientes.NumIdentificacion, productos.CodProducto, productos.Nombre, productos.Marca, productos.Descripcion, CONCAT(presentacion_producto.Presentacion,' ', productos.ContNeto,' ', unidad_base.UndBase) AS 'Contenido Neto', salida_productos.PrecioVenta, CantSalida, modo_pago.ModoPago FROM ".$this->table." INNER JOIN productos ON salida_productos.idProducto=productos.idProducto INNER JOIN clientes ON salida_productos.idCliente=clientes.idCliente INNER JOIN presentacion_producto ON productos.idPresentacion=presentacion_producto.idPresentacion INNER JOIN unidad_base ON productos.idUndBase=unidad_base.idUndBase INNER JOIN modo_pago ON salida_productos.idModoPago=modo_pago.idModoPago WHERE idSalProducto=?";
+    public function consultaGenSalProductosVistaId($codProducto) {
+        $query = "SELECT idSalProducto, FechaSalida, clientes.NumIdentificacion, productos.CodProducto, productos.Nombre, productos.Marca, productos.Descripcion, CONCAT(presentacion_producto.Presentacion,' ', productos.ContNeto,' ', unidad_base.UndBase) AS 'Contenido Neto', salida_productos.PrecioVenta, CantSalida, modo_pago.ModoPago FROM ".$this->table." INNER JOIN productos ON salida_productos.idProducto=productos.idProducto INNER JOIN clientes ON salida_productos.idCliente=clientes.idCliente INNER JOIN presentacion_producto ON productos.idPresentacion=presentacion_producto.idPresentacion INNER JOIN unidad_base ON productos.idUndBase=unidad_base.idUndBase INNER JOIN modo_pago ON salida_productos.idModoPago=modo_pago.idModoPago WHERE CodProducto=?";
         $stmt= $this->conn->prepare($query);
-        $stmt->execute([$idSalProducto]);
+        $stmt->execute([$codProducto]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 

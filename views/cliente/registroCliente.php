@@ -22,7 +22,7 @@
                 </div>
                 <div class=" mt-2">
                     <label for="documCliente" class="form-label text-white mt-3">Numero Cedula:</label>
-                    <input type="text" class="form-control" name="documCliente" placeholder="" required>
+                    <input type="text" class="form-control" id="documCliente" name="documCliente" placeholder="" required>
                 </div>
                 <div class="mt-2">
                     <label for="nomCliente" class="form-label text-white mt-3">Nombres:</label>
@@ -34,7 +34,7 @@
                 </div>
                 <div class=" mt-2">
                     <label for="numCel" class="form-label text-white mt-3">No. Celular:</label>
-                    <input type="text" class="form-control" name="numCel" placeholder="">
+                    <input type="text" class="form-control" name="numCel" placeholder="" required>
                 </div>
                 <div class="mt-2">
                     <label for="correoCliente" class="form-label text-white mt-3">Email:</label>
@@ -53,5 +53,5 @@
         <div class="col-3">
         </div>
         </div>
-
+                <script src="./js/verificarCliente.js?v=1.0"></script>
 <?php include('./views/layautModAdmin/footerModAdmin.php'); ?>

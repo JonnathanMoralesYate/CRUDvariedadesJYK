@@ -118,3 +118,26 @@ body{
         flex: 0 0 100%; /* Tarjetas ocupan todo el ancho en móviles */
     }
 }
+
+@media (max-width: 768px) {
+    .row {
+        flex-direction: column !important; /* Fuerza que se apilen */
+    }
+    .col-12 {
+        width: 100% !important; /* Evita que los elementos se solapen */
+    }
+}
+
+@media (max-width: 768px) {
+    .scrollspy-example {
+        max-height: 300px; /* Ajusta según la necesidad */
+        overflow-y: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    #productos-container {
+        margin-top: 20px !important;
+    }
+}
+
