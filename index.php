@@ -1,6 +1,5 @@
 <?php
 
-require_once('./controllers/controladorPaginaP.php');
 require_once('./controllers/controladorPaginaN.php');
 require_once('./controllers/controladorPaginaS.php');
 require_once('./controllers/controladorPaginaAdmin.php');
@@ -23,7 +22,6 @@ require_once('./controllers/controladorInventario.php');
 require_once('./controllers/controladorModoPago.php');
 require_once('./controllers/controladorGenerarCodigo.php');
 
-//$vistaPaginaP = new ControladorPaginaP();
 $vistaPaginaN = new ControladorPaginaN();
 $vistaPaginaS = new ControladorPaginaS();
 $vistaAdmin = new ControladorPaginaAdmin();
@@ -53,11 +51,6 @@ $action = htmlspecialchars($_GET['action'] ?? 'principal', ENT_QUOTES, 'UTF-8');
 
 switch($action){
 
-//Opciones barra navegacion pagina Principal
-    //case'paginaP':
-        //$vistaPaginaP->index();
-       // break;
-
     case'paginaN':
         $vistaPaginaN->index();
         break;
@@ -66,6 +59,7 @@ switch($action){
         $vistaPaginaS->index();
         break;
 
+//============================================================================================================================================
 
 //Redirecciones Modulo Administrativo
     case'vistaAdmin':
@@ -77,7 +71,8 @@ switch($action){
     case'vistaEmple':
         $vistaEmple->index();
         break;
-    
+
+//============================================================================================================================================
 
 //Login inicio de Sesion
     case'login':
@@ -90,6 +85,7 @@ switch($action){
         $controladorLogin->cerraraSesion();
         break;
 
+//============================================================================================================================================
 
 //Modulo Administrativo
 
@@ -141,6 +137,7 @@ switch($action){
         $usuarios= $controladorUsuario->eliminarUsuario();
         break;
 
+//============================================================================================================================================
 
 //Productos
 
@@ -156,6 +153,7 @@ switch($action){
                 include('./views/productos/registroProducto.php');
             }
             break;
+
 
         //Consulta Producto
     case'consultaProductos';
@@ -194,6 +192,7 @@ switch($action){
             $productos = $controladorProducto->eliminarProducto();
             break;
 
+//============================================================================================================================================
 
 //registro de producto empleado
 
@@ -208,6 +207,7 @@ switch($action){
                 include('./views/productos/registroProductoemp.php');
             }
             break;
+
 
         //Consulta Producto empleado
     case'consultaProductosemp';
@@ -225,6 +225,7 @@ switch($action){
         include('./views/productos/consultaProductoemp.php');
         break;
 
+//============================================================================================================================================
 
 //Clases
 
@@ -265,11 +266,13 @@ switch($action){
             $controladorClases->ActualizarClase();
             break;
 
+
         //Eliminar Clase
     case'eliminarClaseId':
         $clases= $controladorClases->eliminarClase();
         break;
 
+//============================================================================================================================================
 
 //Presentacion
 
@@ -316,6 +319,7 @@ switch($action){
         $presentaciones= $controladorPresentacion->EliminarPresentacion();
         break;
 
+//============================================================================================================================================
 
 //Unidad Base
 
@@ -362,6 +366,7 @@ switch($action){
         $controladorUndBase->EliminarUndBase();
         break;
 
+//============================================================================================================================================
 
 //Formato Venta
 
@@ -408,6 +413,7 @@ switch($action){
         $controladorFormatoVenta->EliminarFormatoVenta();
         break;
 
+//============================================================================================================================================
 
 //Proveedor
 
@@ -458,7 +464,7 @@ switch($action){
         $controladorProveedor->EliminarProveedor();
         break;
 
-//====================================================================================================================================
+//============================================================================================================================================
 
         //Registro Proveedor empleado
     case'registroProveedorEmp':
@@ -502,7 +508,7 @@ switch($action){
             $controladorProveedor->ActualizarProductoEmp();
             break;
 
-//================================================================================================================================
+//============================================================================================================================================
 
 //Clientes
 
@@ -545,11 +551,13 @@ switch($action){
             $controladorCliente->ActualizarCliente();
             break;
 
+
         //Eliminar Cliente
     case'eliminarClienteId':
         $controladorCliente->EliminarCliente();
         break;
 
+//============================================================================================================================================
 
 //Registro Clientes empleado
     case'registroClienteemp':
@@ -578,6 +586,7 @@ switch($action){
         include('./views/cliente/consultaClienteemp.php');
         break;
 
+
         //Actualizar Cliente  empleado
     case'actualizarClienteIdEmp':
         $clientes = $controladorCliente->datosClienteIdemp();
@@ -589,6 +598,7 @@ switch($action){
             $controladorCliente->ActualizarClienteemp();
             break;
 
+//============================================================================================================================================
 
 //Entrada de Productos
 
@@ -635,6 +645,7 @@ switch($action){
         $controladorEntProducto->EliminarEntProducto();
         break;
 
+//============================================================================================================================================
 
 //Salida de Productos
 
@@ -690,6 +701,7 @@ switch($action){
         $controladorSalProducto->EliminarSalProducto();
         break;
 
+//============================================================================================================================================
 
 //Reportes
 
@@ -712,12 +724,11 @@ switch($action){
         include('./views/inventario/inventarioSinStock.php');
         break;
 
-        //Genera reporte de inventario Bajo de Stock en PDF
+            //Genera reporte de inventario Bajo de Stock en PDF
         case'reporteSinStockPDF':
             $inventarios = $controladorInventario->ProductoSinStock();
             include('./views/inventario/reporteSinStockPDF.php');
             break;
-
 
 
         //Entrada de Productos
@@ -730,7 +741,7 @@ switch($action){
             include('./views/entradaProducto/reporteEntProductos.php');
             break;
 
-        //Genera reporte de Entrada producto en PDF
+            //Genera reporte de Entrada producto en PDF
         case'reporteEntProductosPDF':
             $entProductos = $controladorEntProducto->ReporteEntProductos();
             include('./views/entradaProducto/reporteEntProductosPDF.php');
@@ -766,7 +777,7 @@ switch($action){
             include('./views/productosAvencer/reporteProductosAvencerPDF.php');
             break;
 
-
+//============================================================================================================================================
 
 //Verificaciones
 
@@ -885,7 +896,7 @@ switch($action){
         }
         break;
 
-//==========================================================================================================================================
+//============================================================================================================================================
 
 //Entrada de Productos Empleado
 

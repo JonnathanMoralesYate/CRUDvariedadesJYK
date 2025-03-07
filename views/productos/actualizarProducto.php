@@ -16,14 +16,14 @@
                     <label for="codProduc" class="form-label text-white mt-3">Codigo Producto:</label>
                     <input type="text" class="form-control" name="codProduc" value="<?= $producto['CodProducto']; ?>" placeholder="Codigo de barras" required>
                 </div>
-                <div class="mt-4">
+                <!-- <div class="mt-4">
                     <div class="text-center">
                             <label class="check-label text-white" for="flexCheckDefault">Generar Codigo</label>
                         <div class="">
                             <input class="checkbox-inline" type="checkbox" value="" id="flexCheckDefault">
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <div class="mt-1">
                 <label for="tiposClase" class="form-label text-white mt-3">Clase:</label>
                     <?php $tipoClase= $producto['idClase']; ?>
@@ -77,9 +77,9 @@
                     <input type="number" class="form-control" name="contNeto" value="<?= $producto['ContNeto']; ?>" placeholder="" required>
                 </div>
                 <div class="mt-2">
-                <label for="formatovent" class="form-label text-white mt-3">Formato Venta:</label>
+                <label for="formatoVent" class="form-label text-white mt-3">Formato Venta:</label>
                     <?php $tipoVenta= $producto['idFormatoVenta']; ?>
-                        <select id="formatoVent" name="formatovent" class="form-control" required>
+                        <select id="formatoVent" name="formatoVent" class="form-control" required>
                             <option selected>Seleccione Formato Venta</option>
                             <?php foreach($formatoVents as $formatoVent): ?>
                             <option value="<?= $formatoVent['idFormatoVenta']; ?>" <?= $formatoVent['idFormatoVenta'] == $tipoVenta ? 'selected' : '' ?>>
