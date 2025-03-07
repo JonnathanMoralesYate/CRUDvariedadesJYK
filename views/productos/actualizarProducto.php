@@ -77,9 +77,9 @@
                     <input type="number" class="form-control" name="contNeto" value="<?= $producto['ContNeto']; ?>" placeholder="" required>
                 </div>
                 <div class="mt-2">
-                <label for="formatovent" class="form-label text-white mt-3">Formato Venta:</label>
+                <label for="formatoVent" class="form-label text-white mt-3">Formato Venta:</label>
                     <?php $tipoVenta= $producto['idFormatoVenta']; ?>
-                        <select id="formatoVent" name="formatovent" class="form-control" required>
+                        <select id="formatoVent" name="formatoVent" class="form-control" required>
                             <option selected>Seleccione Formato Venta</option>
                             <?php foreach($formatoVents as $formatoVent): ?>
                             <option value="<?= $formatoVent['idFormatoVenta']; ?>" <?= $formatoVent['idFormatoVenta'] == $tipoVenta ? 'selected' : '' ?>>

@@ -217,7 +217,7 @@ class ControladorProducto{
             $idPresentacion= $_POST['tiposPresenta'];
             $idUndBase= $_POST['tiposUnd'];
             $contNeto= $_POST['contNeto'];
-            $idFormatoVent= $_POST['formatovent'];
+            $idFormatoVent= $_POST['formatoVent'];
             $precioVenta= $_POST['precioVenta'];
 
             $foto= $_FILES['fotoProduc']['name'] ? $_FILES['fotoProduc']['name'] : null;
@@ -232,7 +232,7 @@ class ControladorProducto{
 
             $idProducto= $_POST['idProducto'];
             
-            $this->modeloProducto->actualizarProducto($codigoProducto, $idClase, $nombre, $marca, $descripcion, $idPresentacion, $idUndBase, $idFormatoVent, $contNeto, $precioVenta, $foto, $idProducto);
+            $this->modeloProducto->actualizarProducto($codigoProducto, $idClase, $nombre, $marca, $descripcion, $idPresentacion, $idUndBase, $contNeto, $idFormatoVent, $precioVenta, $foto, $idProducto);
             
             echo "
                         <script>
