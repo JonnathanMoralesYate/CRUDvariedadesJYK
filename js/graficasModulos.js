@@ -122,7 +122,7 @@ document.addEventListener("DOMContentLoaded", ActualizarGraficaMayorVenta);
 
 //=================================================================================================================================
 
-//Grifica de productos con mayor venta
+//Grifica de que muestra ventas por dia
 
   let myChart1 = null; // Variable global para almacenar la instancia de la gráfica
 
