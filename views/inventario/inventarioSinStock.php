@@ -25,11 +25,10 @@
 <!--Fin de consultar-->
 
 <!--Inicio para mostrar datos para buscar y consultar-->
-<div class="container mt-4">
-    <div class="row justify-content-center">
-        <div class="col-lg-8 col-md-10 col-sm-12">
-            <div class="text-center text-white mt-3">
-                <div class="text-center">
+<div class="container-fluid mt-5">
+    <div class="row">
+        <div class="col-12 col-md-10 offset-md-1">
+            <div class="text-center">
                 <?php if (isset($inventarios) && count($inventarios) > 0): ?>
                 <h4 class="text-white">Productos Agotados</h4>
             </div>

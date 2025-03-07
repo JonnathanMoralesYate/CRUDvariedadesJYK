@@ -16,19 +16,9 @@ class ControladorModoPago{
     }
 
 
-
-
-
-
-
     //Lista de Modo de Pago
     public function listaModoPago() {
         return $this->modeloModoPago->consultaModoPago();
     }
-
-
-
-
-
 
 }

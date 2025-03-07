@@ -26,7 +26,7 @@ ob_start();
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="icon" href="/img/logoPesta.ico" type="image/x-icon">
-    <title>Reporte Inventario PDF JYK</title>
+    <title>Reporte Productos Sin Stock Inventario PDF JYK</title>
 
     <style>
 /* Configurar el tamaño de la página para PDF */

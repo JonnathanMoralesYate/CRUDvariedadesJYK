@@ -3,7 +3,6 @@
 require_once('./models/modeloProveedor.php');
 require_once('./config/conexionBDJYK.php');
 
-
 class ControladorProveedor{
 
     private $db;

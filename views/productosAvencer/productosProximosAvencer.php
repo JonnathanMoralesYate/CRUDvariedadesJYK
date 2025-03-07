@@ -25,11 +25,10 @@
 <!--Fin de consultar-->
 
 <!--Inicio para mostrar datos para buscar y consultar-->
-<div class="container mt-4">
+<div class="container">
     <div class="row justify-content-center">
         <div class="col-lg-8 col-md-10 col-sm-12">
             <div class="text-center text-white mt-3">
-                <div class="text-center">
                 <?php if (isset($productosAvencer) && count($productosAvencer) > 0): ?>
                 <h4 class="text-white">Productos Proximos a Vencer:</h4>
             </div>
