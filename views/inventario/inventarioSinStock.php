@@ -38,8 +38,7 @@
             <table class="table table-hover text-white text-center">
                 <thead>
                     <tr>
-                        <!-- <th>ID</th> -->
-                        <th>Codigo</th>
+                        <th>Codigo Producto</th>
                         <th>Nombre</th>
                         <th>Marca</th>
                         <th>Descripcion</th>
@@ -52,7 +51,6 @@
                 <tbody class="">
                 <?php foreach ($inventarios as $inventario): ?>
                     <tr>
-                        <!-- <td class="text-white align-middle"><?= $inventario['idInventario']; ?></td> -->
                         <td class="text-white align-middle"><?= $inventario['CodProducto']; ?></td>
                         <td class="text-white align-middle"><?= $inventario['Nombre']; ?></td>
                         <td class="text-white align-middle"><?= $inventario['Marca']; ?></td>

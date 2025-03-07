@@ -38,8 +38,7 @@
             <table class="table table-hover text-white text-center">
                 <thead>
                     <tr>
-                        <!-- <th>ID</th> -->
-                        <th>Codigo</th>
+                        <th>Codigo Producto</th>
                         <th>Nombre</th>
                         <th>Marca</th>
                         <th>Descripcion</th>

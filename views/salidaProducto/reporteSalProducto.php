@@ -61,7 +61,7 @@
                         <td class="text-white align-middle"><?= $salProducto['Marca']; ?></td>
                         <td class="text-white align-middle"><?= $salProducto['Descripcion']; ?></td>
                         <td class="text-white align-middle"><?= $salProducto['Contenido Neto']; ?></td>
-                        <td class="text-white align-middle"><?= $salProducto['CantSalida']; ?></td>
+                        <td class="text-white align-middle"><?= '$' . number_format($salProducto['PrecioVenta'], 0, ',', '.'); ?></td>
                         <td class="text-white align-middle"><?= $salProducto['PrecioVenta']; ?></td>
                     </tr>
                 <?php endforeach; ?>

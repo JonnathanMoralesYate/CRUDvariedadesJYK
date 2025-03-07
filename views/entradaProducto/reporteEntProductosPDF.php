@@ -28,66 +28,14 @@ ob_start();
     <title>Reporte Entrada de Productos PDF JYK</title>
 
 <style>
-/* Configurar el tamaño de la página para PDF */
-@page {
-    size: A4 landscape;
-    margin: 20px;
-}
 
-/* Estilos generales */
+    /* Estilos generales */
 body {
     font-family: Arial, sans-serif;
     font-size: 12px;
     margin: 0;
     padding: 20px;
     background: white;
-}
-
-/* Encabezado */
-.header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    background-color: #004080;
-    color: white;
-    padding: 20px;
-    border-radius: 10px;
-}
-
-.logo {
-    width: 100px;
-    height: 100px;
-    margin-right: 20px;
-}
-
-/* Contenedor principal: usa flexbox para dividir en dos columnas */
-.report-container {
-    display: flex;
-    justify-content: center; /* Distribuye los elementos a los extremos */
-    padding: 5px;
-    margin-bottom: 5px;
-}
-
-/* Estilos para ambas secciones */
-.report-info, .report-date {
-    display: grid;
-    justify-content: center; /* Distribuye los elementos a los extremos */
-    align-items: center; /* Alinea verticalmente */
-    padding: 15px;
-    background-color: #f8f8f8; /* Fondo gris claro */
-    border-radius: 5px;
-}
-
-/* Texto dentro de las secciones */
-.report-info h4, .report-info h5, 
-.report-date h4, .report-date p {
-    margin: 5px 0;
-}
-
-.report-info span {
-    font-weight: bold;
-    color: #004080;
 }
 
 /* Tabla optimizada para PDF */
@@ -128,34 +76,149 @@ footer {
     margin-top: 10px;
     /*border-top: 2px solid #004080;*/
 }
+
+.no-data {
+    text-align: center;
+    font-size: 16px;
+    color: red;
+    margin-top: 10px;
+}
+
+.titulo {
+    text-align: center;
+    font-size: 18px;
+    /*color: red;*/
+    margin-top: 5px;
+}
+
+/* Estilos para la imagen */
+.logo {
+    width: 80px; /* Tamaño más controlado */
+    height: auto;
+}
+
+.img {
+    border-radius: 5px;
+}
+
+/* Encabezado estructurado con tabla */
+.header {
+    width: 100%;
+    background-color: #004080;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* Tabla para organizar logo e información */
+.header-table {
+    width: 100%;
+    border-collapse: collapse;
+    border: none; /* Elimina cualquier borde */
+}
+
+.header-table td {
+    padding: 5px;
+    vertical-align: middle;
+    border: none; /* Asegura que no haya bordes en las celdas */
+}
+
+/* Estilos para la información del encabezado */
+.header-content {
+    text-align: center;
+    font-size: 14px;
+}
+
+.header-content h2 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.header-content p {
+    margin: 2px 0;
+    font-size: 16px;
+}
+
+/* Contenedor principal */
+.report-container {
+    width: 100%;
+    background-color: #f2f2f2;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+}
+
+/* Estilos para la tabla dentro del contenedor */
+.report-container-table {
+    width: 100%;
+    font-size: 14px; /* Ajusta el tamaño de la letra según necesidad */
+    border-collapse: collapse;
+    border: none; /* Elimina los bordes de la tabla */
+}
+
+/* Alinear el contenido de las celdas a la izquierda */
+.report-container-table td {
+    padding: 5px;
+    vertical-align: middle;
+    text-align: left; /* Alineación a la izquierda */
+    border: none; /* Asegura que no haya bordes */
+}
+
+/* Aplica negrilla a las etiquetas <strong> */
+strong {
+    font-size: 15px; /* Negrita más grande */
+    font-weight: bold;
+}
+
+/* Aplica color azul a las etiquetas <span> */
+    .report-container-table span {
+    font-size: 15px; /* Texto azul más grande */
+    color: #004080;
+    font-weight: bold;
+}
+
+
 </style>
 </head>
 
 <body>
-
     <!-- Encabezado con Logo -->
     <div class="header">
-        <img src="http://<?php echo $_SERVER['HTTP_HOST'];?>/CRUDvariedadesJYK/photo/logoPrin1.1.jpeg" alt="Logo" class="logo">
-        <h2>MINIMARKET VARIEDADES JYK</h2>
+        <table class="header-table">
+            <tr>
+                <td style="width: 100px;">
+                    <img src="http://<?php echo $_SERVER['HTTP_HOST'];?>/CRUDvariedadesJYK/photo/logoPrin1.1.jpeg" alt="Logo" class="logo">
+                </td>
+                <td class="header-content">
+                    <h2>MINIMARKET VARIEDADES JYK S.A.S</h2>
+                    <p>NIT: 110.370.428-1</p>
+                    <p>Cra. 16 Sur # 96-48, Ibagué - Tolima</p>
+                    <p>Cel: 320 338 4589</p>
+                </td>
+            </tr>
+        </table>
     </div>
 
     <!-- Contenedor principal para los datos generales -->
-<div class="report-container">
-    
-    <!-- Datos Generales del Reporte (Izquierda) -->
-    <div class="report-info">
-        <div><h4>Reporte generado por: <span><?= htmlspecialchars($_SESSION['nombre']); ?> <?= htmlspecialchars($_SESSION['apellido']); ?></span></h4></div>
-        <div><h5>Fecha generación: <span><?php date_default_timezone_set('America/Bogota'); echo date('Y-m-d H:i:s'); ?></span></h5></div>
+    <div class="report-container">
+        <table class="report-container-table">
+            <tr>
+                <td>
+                    <div><p><strong>Generado por:</strong> <span><?= htmlspecialchars($_SESSION['nombre']); ?> <?= htmlspecialchars($_SESSION['apellido']); ?></span></p></div>
+                    <div><p><strong>Fecha de generación:</strong> <span><?php date_default_timezone_set('America/Bogota'); echo date('Y-m-d H:i:s'); ?></span></p></div>
+                </td>
+                <td class="report-container-content">
+                    <div><p><strong>Fecha de Inicio:</strong> <?= htmlspecialchars($entProductos['fechaInc']); ?></p></div>
+                    <div><p><strong>Fecha de Fin:</strong> <?= htmlspecialchars($entProductos['fechaFin']); ?></p></div>
+                </td>
+            </tr>
+        </table>
     </div>
 
-    <!-- Información del Reporte (Derecha) -->
-    <div class="report-date">
-        <div><h4>Reporte de Entradas de Productos</h4></div>
-        <div><p><strong>Fecha de Inicio:</strong> <?= htmlspecialchars($entProductos['fechaInc']); ?></p></div>
-        <div><p><strong>Fecha de Fin:</strong> <?= htmlspecialchars($entProductos['fechaFin']); ?></p></div>
+    <!--Titulo de reporte-->
+    <div class="titulo">
+        <h4><strong>Reporte de Entradas de Productos</strong></h4>
     </div>
-
-</div>
 
     <!-- Tabla de Reporte de Entradas de Productos -->
     <div class="table-container">
@@ -163,15 +226,14 @@ footer {
             <table>
                 <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>Fecha Entrada</th>
-                        <th>Proveedor</th>
                         <th>Código Producto</th>
                         <th>Nombre</th>
                         <th>Marca</th>
                         <th>Descripción</th>
                         <th>Contenido</th>
                         <th>Fecha Vencimiento</th>
+                        <th>Proveedor</th>
+                        <th>Fecha Entrada</th>                        
                         <th>Precio Compra</th>
                         <th>Cantidad Entrada</th>
                     </tr>
@@ -179,16 +241,15 @@ footer {
                 <tbody>
                     <?php foreach ($entProductos['reporteEntProductos'] as $entProducto): ?>
                         <tr>
-                            <td><?= htmlspecialchars($entProducto['idEntProducto']); ?></td>
-                            <td><?= htmlspecialchars($entProducto['FechaEnt']); ?></td>
-                            <td><?= htmlspecialchars($entProducto['NombreProveedor']); ?></td>
                             <td><?= htmlspecialchars($entProducto['CodProducto']); ?></td>
                             <td><?= htmlspecialchars($entProducto['Nombre']); ?></td>
                             <td><?= htmlspecialchars($entProducto['Marca']); ?></td>
                             <td><?= htmlspecialchars($entProducto['Descripcion']); ?></td>
                             <td><?= htmlspecialchars($entProducto['Contenido Neto']); ?></td>
                             <td><?= htmlspecialchars($entProducto['FechaVencimiento']); ?></td>
-                            <td><?= htmlspecialchars($entProducto['PrecioCompra']); ?></td>
+                            <td><?= htmlspecialchars($entProducto['NombreProveedor']); ?></td>
+                            <td><?= htmlspecialchars($entProducto['FechaEnt']); ?></td>
+                            <td><?= '$' . number_format($entProducto['PrecioCompra'], 0, ',', '.'); ?></td>
                             <td><?= htmlspecialchars($entProducto['CantEnt']); ?></td>
                         </tr>
                     <?php endforeach; ?>
@@ -201,7 +262,7 @@ footer {
 
     <!-- Pie de Página -->
     <footer>
-        <p>© 2024 - VariedadesJyk® / Minimarket Variedades S.A.S. NIT. 110.370.428-1</p>
+        <p>© 2024 - VariedadesJyk® / Minimarket Variedades S.A.S.</p>
     </footer>
 
 </body>

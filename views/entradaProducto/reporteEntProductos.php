@@ -63,7 +63,7 @@
                                         <td class="text-white align-middle"><?= $entProducto['Descripcion']; ?></td>
                                         <td class="text-white align-middle"><?= $entProducto['Contenido Neto']; ?></td>
                                         <td class="text-white align-middle"><?= $entProducto['FechaVencimiento']; ?></td>
-                                        <td class="text-white align-middle"><?= $entProducto['PrecioCompra']; ?></td>
+                                        <td class="text-white align-middle"><?= '$' . number_format($entProducto['PrecioCompra'], 0, ',', '.'); ?></td>
                                         <td class="text-white align-middle"><?= $entProducto['CantEnt']; ?></td>
                                     </tr>
                                 <?php endforeach; ?>
