@@ -40,7 +40,6 @@
             <table class="table table-hover text-white text-center">
                 <thead>
                     <tr>
-                        <!-- <th>ID</th> -->
                         <th>Fecha Entrada</th>
                         <th>Proveedor</th>
                         <th>Codigo Producto</th>
@@ -57,7 +56,6 @@
                 <tbody class="">
                 <?php foreach ($entProductos as $entProducto): ?>
                     <tr>
-                        <!-- <td class="text-white align-middle"><?= $entProducto['idEntProducto']; ?></td> -->
                         <td class="text-white align-middle"><?= $entProducto['FechaEnt']; ?></td>
                         <td class="text-white align-middle"><?= $entProducto['NombreProveedor']; ?></td>
                         <td class="text-white align-middle"><?= $entProducto['CodProducto']; ?></td>
@@ -66,7 +64,7 @@
                         <td class="text-white align-middle"><?= $entProducto['Descripcion']; ?></td>
                         <td class="text-white align-middle"><?= $entProducto['Contenido Neto']; ?></td>
                         <td class="text-white align-middle"><?= $entProducto['FechaVencimiento']; ?></td>
-                        <td class="text-white align-middle"><?= $entProducto['PrecioCompra']; ?></td>
+                        <td class="text-white align-middle"><?= '$' . number_format($entProducto['PrecioCompra'], 0, ',', '.'); ?></td>
                         <td class="text-white align-middle"><?= $entProducto['CantEnt']; ?></td>
                         <td>                        
                         <a href="index.php?action=actualizarEntProductosId&idEntProducto=<?= $entProducto['idEntProducto']; ?>" class="btn btn-outline-secondary text-white m-2 w-100" role="button">Actualizar</a> 

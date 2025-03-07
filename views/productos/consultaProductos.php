@@ -41,7 +41,6 @@
                 <table class="table table-hover text-white text-center">
                     <thead>
                         <tr>
-                        <!-- <th>ID</th> -->
                             <th>Codigo</th>
                             <th>Clase</th>
                             <th>Nombre</th>
@@ -49,7 +48,6 @@
                             <th>Descripcion</th>
                             <th>Presentacion</th>
                             <th>Contenido Neto</th>
-                            <!-- <th>Unidad Base</th> -->
                             <th>Formato Venta</th>
                             <th>Precio Venta</th>
                             <th>Foto</th>
@@ -66,10 +64,9 @@
                                 <td class="text-white align-middle"><?= $producto['Marca']; ?></td>
                                 <td class="text-white align-middle"><?= $producto['Descripcion']; ?></td>
                                 <td class="text-white align-middle"><?= $producto['Presentacion']; ?></td>
-                                <!-- <td class="text-white align-middle"><?= $producto['ContNeto']; ?></td> -->
                                 <td class="text-white align-middle"><?= $producto['Contenido']; ?></td>
                                 <td class="text-white align-middle"><?= $producto['FormatoVenta']; ?></td>
-                                <td class="text-white align-middle"><?= $producto['PrecioVenta']; ?></td>
+                                <td class="text-white align-middle"><?= '$' . number_format($producto['PrecioVenta'], 0, ',', '.'); ?></td>
                                 <td><img src="photo/<?= $producto['Foto']; ?>" width="100" alt="foto"></td>
                                 <td>                        
                                 <a href="index.php?action=actualizarProductosCodigo&codProduc=<?= $producto['CodProducto']; ?>" class="btn btn-outline-secondary text-white m-2 w-100" role="button">Actualizar</a> 

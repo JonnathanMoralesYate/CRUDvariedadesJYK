@@ -41,7 +41,6 @@
                 <table class="table table-hover text-white text-center">
                     <thead>
                         <tr>
-                            <!-- <th>ID</th> -->
                             <th>Fecha Salida</th>
                             <th>Cliente</th>
                             <th>Código Producto</th>
@@ -58,7 +57,6 @@
                     <tbody>
                         <?php foreach ($salProductos as $salProducto): ?>
                         <tr>
-                            <!-- <td class="text-white align-middle"><?= $salProducto['idSalProducto']; ?></td> -->
                             <td class="text-white align-middle"><?= $salProducto['FechaSalida']; ?></td>
                             <td class="text-white align-middle"><?= $salProducto['NumIdentificacion']; ?></td>
                             <td class="text-white align-middle"><?= $salProducto['CodProducto']; ?></td>
@@ -66,7 +64,7 @@
                             <td class="text-white align-middle"><?= $salProducto['Marca']; ?></td>
                             <td class="text-white align-middle"><?= $salProducto['Descripcion']; ?></td>
                             <td class="text-white align-middle"><?= $salProducto['Contenido Neto']; ?></td>
-                            <td class="text-white align-middle"><?= $salProducto['PrecioVenta']; ?></td>
+                            <td class="text-white align-middle"><?= '$' . number_format($salProducto['PrecioVenta'], 0, ',', '.'); ?></td>
                             <td class="text-white align-middle"><?= $salProducto['CantSalida']; ?></td>
                             <td class="text-white align-middle"><?= $salProducto['ModoPago']; ?></td>
                             <td>
