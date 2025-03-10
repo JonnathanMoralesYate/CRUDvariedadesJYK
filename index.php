@@ -940,7 +940,7 @@ switch($action){
             //======================================================================
 
        //Registro Salida por Producto
-       case'registroSalProductosEmp':
+    case'registroSalProductosEmp':
         if($_SERVER["REQUEST_METHOD"] == "POST"){
                 $controladorSalProducto->RegistroSalProductoEmp();
             }else{
@@ -950,7 +950,6 @@ switch($action){
             break;
 
 
-    
      //Registro Salida de Productos
         case'registroSalProductosEmpP':
             $formaPagos = $controladorModoPago->listaModoPago();

@@ -14,7 +14,7 @@
                 </div>
                 <div class=" mt-2">
                     <label for="codProducto" class="form-label text-white mt-3">Codigo Producto:</label>
-                    <input type="text" class="form-control" name="codProducto" value="<?= $salProducto['CodProducto']; ?>" placeholder="Codigo de barras" required>
+                    <input type="text" class="form-control" id="codProducto" name="codProducto" value="<?= $salProducto['CodProducto']; ?>" placeholder="Codigo de barras" required>
                 </div>
                 <div class=" mt-2">
                     <label for="precioProducto" class="form-label text-white mt-3">Precio Producto:</label>
@@ -56,5 +56,5 @@
         </div>
     </div>
 </div>
-        <script src="./js/agregarPrecioProducto.js"></script>
+        <script src="./js/agregaPrecioProductoAct.js?v=1.0"></script>
 <?php include('./views/layautModAdmin/footerModAdmin.php'); ?>

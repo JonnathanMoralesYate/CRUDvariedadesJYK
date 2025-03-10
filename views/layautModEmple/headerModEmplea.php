@@ -24,7 +24,7 @@ if ($_SESSION['rol'] == 1) {
 <html lang="es">
 <head>
     <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-acale=1.0"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="icon" href="/img/logoPesta.ico" type="image/x-icon">
     <title>Modulo Empleado JYK</title>
     <link rel="stylesheet" href="./css/bootstrap.min.css?v=1.0">
@@ -34,18 +34,26 @@ if ($_SESSION['rol'] == 1) {
 
 <body>
     <div class="container-fluid">
-        <div class="row p-4 mt-1">
+    <div class="row p-3 mt-1">
             <div class="text-center text-white mt-1">
                 <h2>MINIMARKET VARIEDADES JYK</h2>
             </div>
-            <div class="text-center text-white mt-1">
+            <div class="text-center text-white mt-2">
                 <h3> Modulo Empleado</h3>
             </div>
-            <div class="text-white mt-3">
-            <h6>Bienvenido: <?= $_SESSION['nombre'] ?></h6>
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center text-white mt-3">
+                <div class="text-center text-md-start">
+                    <h6>Bienvenido: <?= $_SESSION['nombre'] ?> <?= $_SESSION['apellido'] ?></h6>
+                </div>
+                <div class="text-center text-md-end">
+                    <?php
+                        date_default_timezone_set('America/Bogota');
+                        $formatter = new IntlDateFormatter('es_ES', IntlDateFormatter::LONG, IntlDateFormatter::NONE);
+                        echo $formatter->format(new DateTime());
+                    ?>
+                </div>
             </div>
         </div>
-        <div class="row mt-2">
 <!--Inicio Barra de Navegacion Empleado-->
             <nav class="navbar navbar-expand-lg bg-body-tertiary">
                 <div class="container-fluid">
@@ -57,7 +65,7 @@ if ($_SESSION['rol'] == 1) {
                         </nav>
                     </button>
                         <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-                                <a class="navbar-brand text-white" href="http://localhost/CRUDvariedadesJYK/index.php?action=vistaEmple">Inicio</a>
+                                <a class="navbar-brand text-white" href="index.php?action=vistaEmple">Inicio</a>
                                 <ul class="nav nav-pills">
 <!--Menu Productos-->
                                     <li class="nav-item dropdown active">
