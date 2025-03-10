@@ -937,6 +937,55 @@ switch($action){
             $controladorEntProducto->ActualizarEntProducto();
             break;
 
+            //======================================================================
+
+       //Registro Salida por Producto
+       case'registroSalProductosEmp':
+        if($_SERVER["REQUEST_METHOD"] == "POST"){
+                $controladorSalProducto->RegistroSalProductoEmp();
+            }else{
+                $formaPagos = $controladorModoPago->listaModoPago();
+                include('./views/salidaProducto/registrarSalProductoEmp.php');
+            }
+            break;
+
+
+    
+     //Registro Salida de Productos
+        case'registroSalProductosEmpP':
+            $formaPagos = $controladorModoPago->listaModoPago();
+            include('./views/salidaProducto/registroSalProductoEmp.php');
+            break;
+
+
+        //Consulta Salida Productos
+    case'consultaSalProductosEmp';
+        $salProductos = $controladorSalProducto->consultaGenSalProductosVistaEmp();
+        include('./views/salidaProducto/consultaSalProductoEmp.php');
+        break;
+
+    case'consultaSalProductoIdEmp';
+        $salProductos = $controladorSalProducto->consultaGenSalProductosVistaIdEmp();
+        include('./views/salidaProducto/consultaSalProductoEmp.php');
+        break;
+
+    case'consultaSalProductoFechaEmp';
+        $salProductos = $controladorSalProducto->consultaGenSalProductosVistaFechaEmp();
+        include('./views/salidaProducto/consultaSalProductoEmp.php');
+        break;
+
+        //Actualizar Salida Productos
+    case'actualizarSalProductosIdEmp':
+        $salProductos = $controladorSalProducto->consultaGenSalProductosIdEmpP();
+        $formaPagos = $controladorModoPago->listaModoPago();
+        include('./views/salidaProducto/actualizarSalProductosEmp.php');
+        break;
+
+        case'actualizarSalProductosEmp':
+            $controladorSalProducto->ActualizarSalProductosEmp();
+            break;
+
+
 
 
 

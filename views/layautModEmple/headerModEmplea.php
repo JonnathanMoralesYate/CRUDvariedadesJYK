@@ -4,7 +4,7 @@ session_start();
 // Verifica si $_SESSION está vacío (no tiene ninguna variable)
 if (empty($_SESSION)) {
     // Redirigir a:
-    header("Location: index.php?action=paginaP");
+    header("Location: index.php?action=pagina");
     exit;
 }
 
@@ -97,12 +97,17 @@ if ($_SESSION['rol'] == 1) {
                                             <ul class="dropdown-menu">
                                                 <li>
                                                     <form action="index.php?action=paginaP" method="GET">
-                                                        <button class="dropdown-item" type="submit" name="action" value="paginaP" class="btn btn-light">Registrar Salida</button>
+                                                        <button class="dropdown-item" type="submit" name="action" value="registroSalProductosEmp" class="btn btn-light">Registrar Salida</button>
                                                     </form>
                                                 </li>
                                                 <li>
                                                     <form action="index.php?action=" method="GET">
-                                                        <button class="dropdown-item" type="submit" name="action" value="" class="btn btn-light">Consultar Salida</button>
+                                                        <button class="dropdown-item" type="submit" name="action" value="registroSalProductosEmpP" class="btn btn-light"> Registrar Salidas</button>
+                                                    </form>
+                                                </li> 
+                                                <li>
+                                                    <form action="index.php?action=" method="GET">
+                                                        <button class="dropdown-item" type="submit" name="action" value="consultaSalProductosEmp" class="btn btn-light">Consultar Salida</button>
                                                     </form>
                                                 </li>                                    
                                             </ul>
