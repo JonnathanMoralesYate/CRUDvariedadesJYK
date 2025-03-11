@@ -1,5 +1,12 @@
 <?php include('./views/layautModAdmin/headerModAdmin.php'); ?>
 
+<div class="row">
+
+<!-- Contenedor para la alerta -->
+<div id="alerta" class="alerta"></div>  
+
+</div>
+
 <div class="container-fluid mt-5">
     <div class="row mt-5">
         <div class="col-12 col-sm-5 mt-1">
@@ -45,6 +52,6 @@
 
 
 </div>
-
-<script src="./js/graficasModulos.js?v=1.0"></script>
+    <script src="./js/verificaProductosAvencer.js?v=1.0"></script>
+    <script src="./js/graficasModulos.js?v=1.0"></script>
 <?php include('./views/layautModAdmin/footerModAdmin.php'); ?>

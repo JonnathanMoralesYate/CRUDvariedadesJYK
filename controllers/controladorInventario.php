@@ -111,6 +111,86 @@ class ControladorInventario{
         return $this->modeloInventario->productoSinStock();
     }
 
+//===================================================================================================================================
+
+//Reporte de Inventario
+public function inventarioActualEmp() {
+    return $this->modeloInventario->inventarioActualizado();
+}
+
+
+//Reporte de Productos Proximos a Vencer
+public function ProductosAvencerEmp() {
+    return $this->modeloInventario->productosAvencer();
+}
+
+
+// Consulta para verificar si el stock disponible del producto en BD
+public function disponibilidadProductoEmp() {
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+        // Leer JSON desde la solicitud
+        $inputJSON = file_get_contents("php://input");
+
+        $input = json_decode($inputJSON, true);
+
+        if (!isset($input['idProducto']) || empty($input['idProducto'])) {
+            echo json_encode(['error' => 'El ID producto es requerido']);
+            exit;
+        }
+
+        $idProducto = $input['idProducto'];
+
+        $stock = $this->modeloInventario->consultaInventario($idProducto);
+
+        if ($stock) {
+            echo json_encode(["success" => true, "stock" => $stock]);
+        } else {
+            echo json_encode(["success" => false, "error" => "Producto No esta en Inventario o no hay stock"]);
+        }
+    } else {
+        echo json_encode(['error' => 'Método no permitido']);
+    }
+}
+
+    //Metodo para traer datos de productos con menor stock
+    public function ProductosMenorStockEmp() {
+
+        header("Content-Type: application/json; charset=UTF-8");
+
+            $menorStock = $this->modeloInventario->productosMenorStock();
+
+            if ($menorStock) {
+                echo json_encode(["success" => true, "menorStock" => $menorStock]);
+            } else {
+                echo json_encode(["success" => false, "error" => "Producto No esta en Inventario o no hay stock"]);
+            }
+    }
+
+    //Reporte de invenario productos agotados
+    public function ProductoSinStockEmp() {
+        return $this->modeloInventario->productoSinStock();
+    }
+
+
+
+    //Metodo para traer datos de productos con menor stock
+    public function ProductosProximosAvencer() {
+
+        header("Content-Type: application/json;");
+
+            $proximosAvencer = $this->modeloInventario->productosProximosAvencer();
+
+            if ($proximosAvencer) {
+                echo json_encode(["success" => true, "proximosAvencer" => $proximosAvencer]);
+            } else {
+                echo json_encode(["success" => false, "error" => "No Hay Productos Proximos a Vencer"]);
+            }
+
+            exit; // Asegura que no se envíen datos adicionales
+    }
+
 
 }
 

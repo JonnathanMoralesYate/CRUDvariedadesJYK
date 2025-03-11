@@ -83,6 +83,13 @@ class ModeloInventario{
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    //Vista reporte Productos Proximos a Vencer de inventario
+    public function productosProximosAvencer() {
+        $query= "SELECT entrada_productos.FechaVencimiento, inventario.CantActual, productos.CodProducto, productos.Nombre, productos.Marca, productos.Descripcion, CONCAT(presentacion_producto.Presentacion,' ', productos.ContNeto,' ', unidad_base.UndBase) AS 'Contenido Neto', proveedores.NombreProveedor, productos.Foto FROM ".$this->table." INNER JOIN productos ON inventario.idProducto=productos.idProducto INNER JOIN entrada_productos ON productos.idProducto=entrada_productos.idProducto INNER JOIN presentacion_producto ON productos.idPresentacion=presentacion_producto.idPresentacion INNER JOIN unidad_base ON productos.idUndBase=unidad_base.idUndBase INNER JOIN proveedores ON entrada_productos.idProveedor=proveedores.idProveedor WHERE entrada_productos.FechaVencimiento BETWEEN CURDATE() + INTERVAL 0 DAY AND CURDATE() + INTERVAL 4 DAY ORDER BY entrada_productos.FechaVencimiento ASC";
+        $stmt= $this->conn->query($query);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
 }
 
 ?>

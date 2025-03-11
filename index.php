@@ -896,6 +896,12 @@ switch($action){
         }
         break;
 
+
+        //Consulta de Productos proximos a Vencer
+    case'productosProximosAvencer':
+        $controladorInventario->ProductosProximosAvencer();
+        break;
+
 //============================================================================================================================================
 
 //Entrada de Productos Empleado
@@ -984,7 +990,81 @@ switch($action){
             $controladorSalProducto->ActualizarSalProductosEmp();
             break;
 
+//============================================================================================================================================
 
+//Reportes
+
+        //Inventario
+        case'reporteInventarioEmp':
+            $inventarios= $controladorInventario->inventarioActualEmp();
+            include('./views/inventario/inventarioActualEmp.php');
+            break;
+    
+                //Genera reporte de inventario en PDF
+            case'reporteInventarioEmpPDF':
+                $inventarios= $controladorInventario->inventarioActualEmp();
+                include('./views/inventario/reporteInvenEmpPDF.php');
+                break;       
+    
+    
+            //Inventario Bajo de Stock
+        case'reporteSinStockEmp':
+            $inventarios = $controladorInventario->ProductoSinStockEmp();
+            include('./views/inventario/reporteSinStockEmp.php');
+            break;
+    
+                //Genera reporte de inventario Bajo de Stock en PDF
+            case'reporteSinStockEmpPDF':
+                $inventarios = $controladorInventario->ProductoSinStockEmp();
+                include('./views/inventario/SinStockEmpPDF.php');
+                break;
+    
+    
+            //Entrada de Productos
+        case'reporteEntProductoEmp':
+            include('./views/entradaProducto/generarInforEntProductoEmp.php');
+            break;
+    
+            case'reporteEntProductoFechaEmp';
+                $entProductos = $controladorEntProducto->ReporteEntProductosEmp();
+                include('./views/entradaProducto/reporteEntProductosEmp.php');
+                break;
+    
+                //Genera reporte de Entrada producto en PDF
+            case'reporteEntProductosEmpPDF':
+                $entProductos = $controladorEntProducto->ReporteEntProductosEmp();
+                include('./views/entradaProducto/reporteEntProductoEmpPDF.php');
+                break;
+    
+    
+            //Salida de Productos
+        case'reporteSalProductoEmp':
+            include('./views/salidaProducto/generarSalProductoEmp.php');
+            break;
+        
+            case'reporteSalProductoFechaEmp';
+                $salProductos = $controladorSalProducto->ReporteSalProductosEmp();
+                include('./views/salidaProducto/reporteSalProducEmp.php');
+                break;
+    
+                //Genera Consulta de reporte de Salida producto en PDF
+            case'reporteSalProductosEmpPDF';
+                $salProductos = $controladorSalProducto->ReporteSalProductos();
+                include('./views/salidaProducto/reporteSalProducEmpPDF.php');
+                break;
+    
+    
+            //Productos Proximos a Vencer
+        case'productosAvencerEmp':
+            $productosAvencer= $controladorInventario->ProductosAvencerEmp();
+            include('./views/productosAvencer/prodProxAVencerEmp.php');
+            break;
+    
+                //Genera reporte de productos a vencer en pdf
+            case'productosAvencerEmpPDF':
+                $productosAvencer= $controladorInventario->ProductosAvencerEmp();
+                include('./views/productosAvencer/reporteProVencerEmpPDF.php');
+                break;
 
 
 
