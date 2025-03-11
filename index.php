@@ -896,6 +896,12 @@ switch($action){
         }
         break;
 
+
+        //Consulta de Productos proximos a Vencer
+    case'productosProximosAvencer':
+        $controladorInventario->ProductosProximosAvencer();
+        break;
+
 //============================================================================================================================================
 
 //Entrada de Productos Empleado

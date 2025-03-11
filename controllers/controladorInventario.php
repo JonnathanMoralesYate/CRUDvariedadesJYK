@@ -174,6 +174,24 @@ public function disponibilidadProductoEmp() {
     }
 
 
+
+    //Metodo para traer datos de productos con menor stock
+    public function ProductosProximosAvencer() {
+
+        header("Content-Type: application/json;");
+
+            $proximosAvencer = $this->modeloInventario->productosProximosAvencer();
+
+            if ($proximosAvencer) {
+                echo json_encode(["success" => true, "proximosAvencer" => $proximosAvencer]);
+            } else {
+                echo json_encode(["success" => false, "error" => "No Hay Productos Proximos a Vencer"]);
+            }
+
+            exit; // Asegura que no se envíen datos adicionales
+    }
+
+
 }
 
 ?>
