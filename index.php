@@ -1044,7 +1044,7 @@ switch($action){
                 //Genera Consulta de reporte de Salida producto en PDF
             case'reporteSalProductosEmpPDF';
                 $salProductos = $controladorSalProducto->ReporteSalProductos();
-                include('./views/salidaProducto/reporteSalProductosPDF.php');
+                include('./views/salidaProducto/reporteSalProducEmpPDF.php');
                 break;
     
     

@@ -5,7 +5,7 @@ session_start();
 // Verifica si $_SESSION está vacío (no tiene ninguna variable)
 if (empty($_SESSION)) {
     // Redirigir a:
-    header("Location: index.php?action=paginaP");
+    header("Location: index.php?action=pagina");
     exit;
 }
 
