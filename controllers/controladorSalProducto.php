@@ -154,21 +154,21 @@ class ControladorSalProducto{
             $clienteId= $this->modeloCliente->consultaCliente($numIdentcliente);
 
             $idProducto= $productoId['idProducto'];
-            $precioProducto= $productoId['Precioventa'];
+            $precioProducto= $_POST['precioProducto'];
             $idCliente= $clienteId['idCliente'];
             $fechaSal= $_POST['fechaSal'];
             $cantSal= $_POST['cantSal'];
             $precioVenta= $_POST['precioVenta'];
-            $idSalProducto= $_POST['idSalProducto'];
             $idModoPago= $_POST['tipoPago'];
+            $idSalProducto= $_POST['idSalProducto'];
 
             $cantidadSal= $this->modeloSalProducto->consultaCantidadSalProductos($idSalProducto);
 
             $cantidadSalAnterior= $cantidadSal['CantSalida'];
 
-            echo "<script>
-                    alert('variable: " . $precioVenta . "');
-                </script>";
+            //echo "<script>
+            //        alert('variable: " . $precioProducto . "');
+            //    </script>";
 
             if($cantidadSalAnterior == $cantSal) {
 
