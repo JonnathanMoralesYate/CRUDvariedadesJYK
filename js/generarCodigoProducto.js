@@ -7,9 +7,11 @@ const checkboxGeneraCodigoB = document.getElementById('codigoGenerado');
 // Agregar un manejador de eventos para el evento 'change'
 checkboxGeneraCodigoB.addEventListener('change', async function() {
 
+    //console.log("estoy ingresando a la funcion del checkbox");
+
     if (checkboxGeneraCodigoB.checked) {
 
-        //console.log('Genera el codigo, está marcado.');
+        console.log('Genera el codigo, está marcado.');
 
         const idConsecutivo= 1;
 
@@ -26,7 +28,7 @@ checkboxGeneraCodigoB.addEventListener('change', async function() {
 
     } else {
 
-        //console.log('El checkbox no está marcado.');
+        console.log('El checkbox no está marcado.');
 
         document.getElementById('codProduc').value = '';
 
