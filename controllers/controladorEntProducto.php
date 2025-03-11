@@ -290,7 +290,7 @@ class ControladorEntProductos{
         }
 
 
-
+//=================================================
 
 
 
@@ -486,6 +486,39 @@ class ControladorEntProductos{
         }
 
     }
+
+    //Generar reporte de entrada de productos
+    public function ReporteEntProductosEmp() {       
+        $fechaInc= $_GET['fechaInc'] ?? '';
+        $fechaFin= $_GET['fechaFin'] ?? '';
+
+        // Depuración: mostrar las fechas antes de la consulta
+        //echo "Fecha inicio: $fechaInc, Fecha fin: $fechaFin";
+
+        $reporteEntProductos= $this->modeloEntProducto->reporteEntProductos($fechaInc, $fechaFin);
+
+        return [
+            'fechaInc' => $fechaInc,
+            'fechaFin' => $fechaFin,
+            'reporteEntProductos' => $reporteEntProductos
+        ];
+
+        }
+
+
+        //Metodo para traer datos de productos con mayor entrada 
+        public function ProductosMayorEntradaEmp() {
+
+            header("Content-Type: application/json; charset=UTF-8");
+
+                $mayorEntrada = $this->modeloEntProducto->productosMayorEntrada();
+
+                    if ($mayorEntrada) {
+                        echo json_encode(["success" => true, "mayorEntrada" => $mayorEntrada]);
+                    } else {
+                        echo json_encode(["success" => false, "error" => "Producto No esta en Inventario o no hay stock"]);
+                    }
+        }
 
 }
 
