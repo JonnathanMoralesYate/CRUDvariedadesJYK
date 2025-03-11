@@ -16,14 +16,14 @@
                     <label for="codProduc" class="form-label text-white mt-3">Codigo Producto:</label>
                     <input type="text" class="form-control" name="codProduc" value="<?= $producto['CodProducto']; ?>" placeholder="Codigo de barras" required>
                 </div>
-                <div class="mt-4">
+                <!-- <div class="mt-4">
                     <div class="text-center">
                             <label class="check-label text-white" for="flexCheckDefault">Generar Codigo</label>
                         <div class="">
                             <input class="checkbox-inline" type="checkbox" value="" id="flexCheckDefault">
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <div class="mt-1">
                 <label for="tiposClase" class="form-label text-white mt-3">Clase:</label>
                     <?php $tipoClase= $producto['idClase']; ?>

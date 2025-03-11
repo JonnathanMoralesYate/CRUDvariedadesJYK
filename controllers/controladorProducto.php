@@ -296,7 +296,7 @@ class ControladorProducto{
 
     }
 
-        //Consulta general de productos vista emppleado
+        //Consulta general de productos vista empleado
         public function listaProductosVistaemp() {
             return $this->modeloProducto->consultGenProductosvista();
         }

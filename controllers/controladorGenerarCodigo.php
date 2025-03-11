@@ -17,7 +17,6 @@ class ControladorGenerarCodigo{
     }
 
 
-
 //metodo para traer el consecutivo para generar codigo de barras
 public function ConsecutivoCodigo() {
 

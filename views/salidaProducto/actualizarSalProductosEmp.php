@@ -1,20 +1,21 @@
-<?php include('./views/layautModAdmin/headerModAdmin.php'); ?>
+<?php include('./views/layautModEmple/headerModEmplea.php');  ?>
 
-<!--Incio de Formulario Registro de Salida Producto-->
-<div class="container-fluid">
-    <div class="row justify-content-center">
-        <div class="col-lg-6 col-md-8 col-sm-10">
-            <div class="text-center text-white mt-3">
+<div class="row">
+            <!--Incio de Formulario Registro de Salida Producto-->
+            <div class="col-3">
+            </div>
+            <div class="col-6">
+            <form class=" mt-2" action="index.php?action=actualizarSalProductosEmp" method="post">
+                <div class="text-center text-white mt-3">
                     <h4>Actualizar Salida Producto</h4>
                 </div>
-                <form class=" mt-2" action="index.php?action=actualizarSalProductos" method="post">
                 <?php foreach ($salProductos as $salProducto): ?>
                     <div class=" mt-2">
                     <input type="hidden" class="form-control" name="idSalProducto" value="<?= $salProducto['idSalProducto']; ?>" placeholder="" required>
                 </div>
                 <div class=" mt-2">
                     <label for="codProducto" class="form-label text-white mt-3">Codigo Producto:</label>
-                    <input type="text" class="form-control" id="codProducto" name="codProducto" value="<?= $salProducto['CodProducto']; ?>" placeholder="Codigo de barras" required>
+                    <input type="text" class="form-control" name="codProducto" value="<?= $salProducto['CodProducto']; ?>" placeholder="Codigo de barras" required>
                 </div>
                 <div class=" mt-2">
                     <label for="precioProducto" class="form-label text-white mt-3">Precio Producto:</label>
@@ -32,6 +33,10 @@
                     <label for="cantSal" class="form-label text-white mt-3">Cantidad de Salida:</label>
                     <input type="number" class="form-control" name="cantSal" value="<?= $salProducto['CantSalida']; ?>" placeholder="" required>
                 </div>
+                <!-- <div class=" mt-2">
+                    <label for="precioVenta" class="form-label text-white mt-3">Precio Venta:</label>
+                    <input type="number" class="form-control" name="precioVenta" value="<?= $salProducto['PrecioVenta']; ?>" placeholder="" required>
+                </div> -->
                 <div class=" mt-2">
                     <label for="precioVenta" class="form-label text-white mt-3">Precio Venta:</label>
                     <input type="text" class="form-control" id="precioVenta" name="precioVenta" value="<?= $salProducto['PrecioVenta']; ?>" placeholder="" required readonly>
@@ -48,13 +53,16 @@
                             <?php endforeach; ?>
                         </select>
                 </div>
-                <div class="text-center mt-4">
-                    <button type="submit" class="btn btn-outline-light">Actualizar Salida</button>
+                <div class="text-center mt-2">
+                    <button type="submit" class="btn btn-outline-secondary text-white mt-3 text-center">Actualizar Salida</button>
                 </div>
                 <?php endforeach; ?>
             </form>
         </div>
-    </div>
-</div>
-        <script src="./js/agregaPrecioProductoAct.js?v=1.0"></script>
-<?php include('./views/layautModAdmin/footerModAdmin.php'); ?>
+        <div class="col-3">
+        </div>
+        </div>
+        <script src="./js/agregarPrecioProducto.js?v=1.0"></script>
+
+
+<?php include('./views/layautModEmple/footerModEmplea.php');  ?>

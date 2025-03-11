@@ -1,4 +1,4 @@
-<?php include('./views/layautModAdmin/headerModAdmin.php'); ?>
+<?php include('./views/layautModEmple/headerModEmplea.php');  ?>
 
 <!--Incio de Formulario Registro de Salida Producto-->
 <div class="container-fluid">
@@ -91,4 +91,5 @@
     </div>
 
     <script src="./js/agregaProductoTabla.js?v=1.0"></script>
-<?php include('./views/layautModAdmin/footerModAdmin.php'); ?> 
+
+<?php include('./views/layautModEmple/footerModEmplea.php');  ?>

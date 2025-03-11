@@ -90,6 +90,7 @@
         </div>
     </div>
 </div>
+    <script src="./js/verificarCodProducto.js?v=1.0"></script>
     <script src="./js/generarCodigoProducto.js?v=1.0"></script>
 <?php include('./views/layautModAdmin/footerModAdmin.php'); ?>
 

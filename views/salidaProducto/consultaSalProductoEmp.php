@@ -1,28 +1,30 @@
-<?php include('./views/layautModAdmin/headerModAdmin.php'); ?>
+<?php include('./views/layautModEmple/headerModEmplea.php');  ?>
 
 <!--Incio de Formulario Consultar ESalida Producto-->
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-lg-8 col-md-10 col-sm-12">
+<div class="row">
+    <div class="col-2">
+    </div>
+    <div class="col-8">
             <div class="text-center text-white mt-3">
                 <h4>Consulta Salida de Productos</h4>
             </div>
-            <form class=" mt-4" action="index.php?action=consultaSalProductoId" method="get">
+            <form class=" mt-4" action="index.php?action=consultaSalProductoIdEmp" method="get">
                 <div class="input-group mb-3">
-                    <input type="hidden" class="form-control" name="action" value="consultaSalProductoId">
-                    <input type="text" class="form-control" placeholder="Codigo Producto" name="codProducto" aria-label="Recipient's usernam" aria-describedby="button-addon2" required>
+                    <input type="hidden" class="form-control" name="action" value="consultaSalProductoIdEmp">
+                    <input type="text" class="form-control" placeholder="ID Salida Producto" name="idSalProducto" aria-label="Recipient's usernam" aria-describedby="button-addon2" required>
                     <button class="btn btn-outline-secondary text-white" type="submit" id="button-addon2">Buscar</button>
                 </div>
             </form>
 
-            <form class=" mt-2" action="index.php?action=consultaSalProductoFecha" method="get">
+            <form class=" mt-2" action="index.php?action=consultaSalProductoFechaEmp" method="get">
                 <div class="input-group mb-3">
-                    <input type="hidden" class="form-control" name="action" value="consultaSalProductoFecha">
+                    <input type="hidden" class="form-control" name="action" value="consultaSalProductoFechaEmp">
                     <input type="date" class="form-control" placeholder="Fecha salida Producto" name="fechaSal" aria-label="Recipient's usernam" aria-describedby="button-addon2" required>
                     <button class="btn btn-outline-secondary text-white" type="submit" id="button-addon2">Buscar</button>
                 </div>
             </form>
-        </div>
+    </div>
+    <div class="col-2">
     </div>
 </div>
 <!--Fin de consultar-->
@@ -41,6 +43,7 @@
                 <table class="table table-hover text-white text-center">
                     <thead>
                         <tr>
+                            <!-- <th>ID</th> -->
                             <th>Fecha Salida</th>
                             <th>Cliente</th>
                             <th>Código Producto</th>
@@ -57,6 +60,7 @@
                     <tbody>
                         <?php foreach ($salProductos as $salProducto): ?>
                         <tr>
+                            <!-- <td class="text-white align-middle"><?= $salProducto['idSalProducto']; ?></td> -->
                             <td class="text-white align-middle"><?= $salProducto['FechaSalida']; ?></td>
                             <td class="text-white align-middle"><?= $salProducto['NumIdentificacion']; ?></td>
                             <td class="text-white align-middle"><?= $salProducto['CodProducto']; ?></td>
@@ -68,9 +72,7 @@
                             <td class="text-white align-middle"><?= $salProducto['CantSalida']; ?></td>
                             <td class="text-white align-middle"><?= $salProducto['ModoPago']; ?></td>
                             <td>
-                                <a href="index.php?action=actualizarSalProductosId&idSalProducto=<?= $salProducto['idSalProducto']; ?>" class="btn btn-outline-secondary text-white m-2 w-100">Actualizar</a>
-                                <a href="index.php?action=eliminarSalProductoId&idSalProducto=<?= $salProducto['idSalProducto']; ?>" class="btn btn-outline-secondary text-white m-2 w-100">Eliminar</a>
-                            </td>
+                                <a href="index.php?action=actualizarSalProductosIdEmp&idSalProducto=<?= $salProducto['idSalProducto']; ?>" class="btn btn-outline-secondary text-white m-2 w-100">Actualizar</a>                            </td>
                         </tr>
                         <?php endforeach; ?>
                     </tbody>
@@ -83,4 +85,6 @@
     </div>
 </div>
 
-<?php include('./views/layautModAdmin/footerModAdmin.php'); ?>
+
+
+<?php include('./views/layautModEmple/footerModEmplea.php');  ?>

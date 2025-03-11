@@ -1,3 +1,5 @@
+document.addEventListener('DOMContentLoaded', function() {
+
 //Funcion obtener los datos del producto al ingresar el codigo de barras
 document
   .getElementById("codProducto")
@@ -67,6 +69,8 @@ document
       document.getElementById("resultado").innerText = "⚠️";
     }
   });
+
+});
 
 //Funcion para verificar disponibilidad del producto en Stock
 async function stockDisponible(productoId) {
