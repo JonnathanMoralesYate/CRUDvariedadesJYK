@@ -31,6 +31,9 @@ if ($_SESSION['rol'] == 1) {
     <link rel="stylesheet" href="./css/bootstrap.min.css?v=1.0">
     <link rel="stylesheet" href="./css/DesingBody.css?v=1.0">
     <link rel="stylesheet" href="./css/DesingExtraModulo.css?v=1.0">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
 </head>
 
 <body>
