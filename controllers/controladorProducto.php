@@ -131,6 +131,8 @@ class ControladorProducto{
             }
     
             $codProducto = $input['codProducto'];
+
+            header("Content-Type: application/json; charset=UTF-8");
     
             $producto = $this->modeloProducto->consultaProducto($codProducto);
     
@@ -161,6 +163,8 @@ class ControladorProducto{
             }
     
             $idProducto = $input['idProducto'];
+
+            header("Content-Type: application/json; charset=UTF-8");
     
             $producto = $this->modeloProducto->consultaProductoCodigo($idProducto);
     
@@ -192,6 +196,8 @@ class ControladorProducto{
     
             $idClase = $input['idClase'];
     
+            header("Content-Type: application/json; charset=UTF-8");
+
             $infoProducto = $this->modeloProducto->productosPorClase($idClase);
     
             if ($infoProducto) {

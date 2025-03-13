@@ -87,6 +87,8 @@ class ControladorCliente{
             }
     
             $numCliente = $input['numIdentCliente'];
+
+            header("Content-Type: application/json; charset=UTF-8");
     
             $cliente = $this->modeloCliente->consultaCliente($numCliente);
     

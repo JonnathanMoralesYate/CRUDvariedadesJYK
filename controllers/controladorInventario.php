@@ -44,6 +44,8 @@ class ControladorInventario{
             }
     
             $idProducto = $input['idProducto'];
+
+            header("Content-Type: application/json; charset=UTF-8");
     
             $stock = $this->modeloInventario->consultaInventario($idProducto);
     

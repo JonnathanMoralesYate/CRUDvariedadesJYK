@@ -34,6 +34,8 @@ public function ConsecutivoCodigo() {
 
         $idConsecutivo = $input['idConsecutivo'];
 
+        header("Content-Type: application/json; charset=UTF-8");
+
         $consecutivoCodigo = $this->modeloGenerarCodigo->consecutivoCodigo($idConsecutivo);
 
         if ($consecutivoCodigo) {

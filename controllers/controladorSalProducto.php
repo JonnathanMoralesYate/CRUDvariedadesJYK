@@ -347,7 +347,8 @@ class ControladorSalProducto{
     public function registrosSalProductos() {
 
         // Configurar cabeceras para aceptar solicitudes JSON
-        header('Content-Type: application/json');
+        header("Content-Type: application/json; charset=UTF-8");
+
 
         // Permite el acceso desde cualquier origen (CORS)
         header('Access-Control-Allow-Origin: *');
