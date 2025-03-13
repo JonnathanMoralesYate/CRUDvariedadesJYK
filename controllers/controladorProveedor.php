@@ -91,6 +91,8 @@ class ControladorProveedor{
             }
     
             $ProveedorNit = $input['nitProveedor'];
+
+            header("Content-Type: application/json; charset=UTF-8");
             
             //para ver variable en consola
             //echo "<script>console.log(" . json_encode($ProveedorNit) . ");</script>";

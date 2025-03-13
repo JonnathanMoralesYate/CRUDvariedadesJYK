@@ -142,6 +142,8 @@ class ControladorUsuario{
             }
     
             $numDocumU = $input['documUsu'];
+
+            header("Content-Type: application/json; charset=UTF-8");
     
             $usuario = $this->modeloUsuario->consultaUsuario($numDocumU);
     
