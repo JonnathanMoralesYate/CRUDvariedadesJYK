@@ -1,10 +1,13 @@
+
 document.addEventListener("DOMContentLoaded", async function () {
   const precioProducto = document.getElementById("precioProducto");
 
   //const codProducto = document.getElementById("codProducto"); Guarda la referencia del input en la variable codProducto. Ahora codProducto es un objeto que representa el <input>.
   const codProducto = document.getElementById("codProducto");
   //codProducto.value obtiene el contenido que tiene el input al momento de la ejecución.
-  //console.log("Valor actual:", codProducto.value);
+  console.log("Valor actual:", codProducto.value);
+  console.log("Valor actual:", precioProducto);
+
 
   try {
     const response = await fetch(
@@ -19,7 +22,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     );
 
     const data = await response.json();
-    //console.log('Datos recibidos:', data);
+    console.log('Datos recibidos:', data);
 
     if (data.success) {
       if (data.producto && data.producto.PrecioVenta) {
