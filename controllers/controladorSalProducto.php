@@ -696,6 +696,19 @@ class ControladorSalProducto{
 
     }
 
+     //Generar reporte de salida productos
+     public function ReporteSalProductosEmp() {
+        $fechaInc= $_GET['fechaInc'] ?? '';
+        $fechaFin= $_GET['fechaFin'] ?? '';
+        $reporteSalProductos = $this->modeloSalProducto->reporteSalProductos($fechaInc, $fechaFin);
+
+        return [
+            'fechaInc' => $fechaInc,
+            'fechaFin' => $fechaFin,
+            'reporteSalProductos' => $reporteSalProductos
+        ];
+    }
+
 
 
 

@@ -1043,7 +1043,7 @@ switch($action){
             break;
         
             case'reporteSalProductoFechaEmp';
-    //         $salProductos = $controladorSalProducto->ReporteSalProductosEmp();
+             $salProductos = $controladorSalProducto->ReporteSalProductosEmp();
                 include('./views/salidaProducto/reporteSalProducEmp.php');
                 break;
     

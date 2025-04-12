@@ -40,5 +40,6 @@
         </div>
         </div>
 
-
+        <script src="./js/verificarProveedor.js?v=1.0"></script>
+        <script src="./js/validarCorreo.js?v=1.0"></script>
 <?php include('./views/layautModEmple/footerModEmplea.php');  ?>
