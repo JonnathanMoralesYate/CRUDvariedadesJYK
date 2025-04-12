@@ -18,7 +18,8 @@
                 </div>
                 <div class="mt-2">
                     <label for="correoProv" class="form-label text-white mt-3">Email Empresa:</label>
-                    <input type="email" class="form-control" name="correoProv" placeholder="" required>
+                    <input type="email" class="form-control" id="correo" name="correoProv" placeholder="" required>
+                    <small id="correoError" class="text-danger" style="display:none;">Correo no válido</small>
                 </div>
                 <div class=" mt-2">
                     <label for="celProveedor" class="form-label text-white mt-3">No. Celular Empresa:</label>
@@ -40,4 +41,5 @@
     </div>
 </div>
         <script src="./js/verificarProveedor.js?v=1.0"></script>
+        <script src="./js/validarCorreo.js?v=1.0"></script>
 <?php include('./views/layautModAdmin/footerModAdmin.php'); ?>
