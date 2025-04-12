@@ -204,7 +204,7 @@ switch($action){
                 $presentaciones = $controladorPresentacion->listaPresentacion();
                 $undBases = $controladorUndBase->listaUndBase();
                 $formatoVents = $controladorFormatoVenta->listaFormatoVenta();
-                include('./views/productos/registroProductoemp.php');
+                include('./views/productos/registroproductoemp.php');
             }
             break;
 
@@ -1043,7 +1043,7 @@ switch($action){
             break;
         
             case'reporteSalProductoFechaEmp';
-                $salProductos = $controladorSalProducto->ReporteSalProductosEmp();
+    //         $salProductos = $controladorSalProducto->ReporteSalProductosEmp();
                 include('./views/salidaProducto/reporteSalProducEmp.php');
                 break;
     

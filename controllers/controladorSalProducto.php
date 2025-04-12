@@ -549,9 +549,13 @@ class ControladorSalProducto{
         public function consultaGenSalProductosIdEmpP() {
             $idSalProducto = $_GET['idSalProducto'] ?? '';
             return $this->modeloSalProducto->consultaSalProductoIdP($idSalProducto);
+        
         }
 
         //Actualizar Salida de Productos
+
+
+         //Actualizar Salida de Productos
     public function ActualizarSalProductosEmp() {
 
         if($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -564,32 +568,32 @@ class ControladorSalProducto{
             $clienteId= $this->modeloCliente->consultaCliente($numIdentcliente);
 
             $idProducto= $productoId['idProducto'];
-            $precioProducto= $productoId['Precioventa'];
+            $precioProducto= $_POST['precioProducto'];
             $idCliente= $clienteId['idCliente'];
             $fechaSal= $_POST['fechaSal'];
             $cantSal= $_POST['cantSal'];
             $precioVenta= $_POST['precioVenta'];
-            $idSalProducto= $_POST['idSalProducto'];
             $idModoPago= $_POST['tipoPago'];
+            $idSalProducto= $_POST['idSalProducto'];
 
             $cantidadSal= $this->modeloSalProducto->consultaCantidadSalProductos($idSalProducto);
 
             $cantidadSalAnterior= $cantidadSal['CantSalida'];
 
-            echo "<script>
-                    alert('variable: " . $precioVenta . "');
-                </script>";
+            //echo "<script>
+            //        alert('variable: " . $precioProducto . "');
+            //    </script>";
 
             if($cantidadSalAnterior == $cantSal) {
 
                 $cantidadActual= $cantSal;
 
-                $this->modeloSalProducto->actualizarSalProducto($idProducto, $idCliente, $fechaSal, $cantidadActual, $precioVenta, $idModoPago, $idSalProducto);
+                $this->modeloSalProducto->actualizarSalProducto($idProducto, $precioProducto, $idCliente, $fechaSal, $cantidadActual, $precioVenta, $idModoPago, $idSalProducto);
 
                 echo "
                 <script>
                     alert('Actualizacion Exitosa!');
-                    window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaSalProductosEmp';
+                    window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaSalProductos';
                 </script>
                 ";
 
@@ -622,7 +626,7 @@ class ControladorSalProducto{
                     }
 
                     //actualiza el registro de salida producto
-                $this->modeloSalProducto->actualizarSalProducto($idProducto, $idCliente, $fechaSal, $cantidadActual, $precioVentaAct, $idModoPago, $idSalProducto);
+                $this->modeloSalProducto->actualizarSalProducto($idProducto, $precioProducto, $idCliente, $fechaSal, $cantidadActual, $precioVenta, $idModoPago, $idSalProducto);
 
                 $estadoInventario = $this->modeloInventario->consultaInventarioId($idProducto);
 
@@ -635,7 +639,7 @@ class ControladorSalProducto{
                 echo "
                 <script>
                     alert('Actualizacion Exitosa!');
-                    window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaSalProductosEmp';
+                    window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaSalProductos';
                 </script>
                 ";
 
@@ -666,7 +670,7 @@ class ControladorSalProducto{
                     }
 
                     //actualiza el registro de salida productos
-                $this->modeloSalProducto->actualizarSalProducto($idProducto, $idCliente, $fechaSal, $cantidadActual, $precioVentaAct, $idModoPago, $idSalProducto);
+                $this->modeloSalProducto->actualizarSalProducto($idProducto, $precioProducto, $idCliente, $fechaSal, $cantidadActual, $precioVenta, $idModoPago, $idSalProducto);
 
                 $estadoInventario = $this->modeloInventario->consultaInventarioId($idProducto);
 
@@ -679,7 +683,7 @@ class ControladorSalProducto{
                 echo "
                 <script>
                     alert('Actualizacion Exitosa!');
-                    window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaSalProductosEmp';
+                    window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaSalProductos';
                 </script>
                 ";
 
@@ -687,21 +691,13 @@ class ControladorSalProducto{
                 exit;
 
             }
+
         }
+
     }
 
-        //Generar reporte de salida productos
-    public function ReporteSalProductosEmp() {
-        $fechaInc= $_GET['fechaInc'] ?? '';
-        $fechaFin= $_GET['fechaFin'] ?? '';
-        $reporteSalProductos = $this->modeloSalProducto->reporteSalProductos($fechaInc, $fechaFin);
 
-        return [
-            'fechaInc' => $fechaInc,
-            'fechaFin' => $fechaFin,
-            'reporteSalProductos' => $reporteSalProductos
-        ];
+
+
     }
-}
-
 ?>
