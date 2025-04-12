@@ -7,7 +7,7 @@
             <div class="text-center text-white mt-3">
                     <h4>Actualizar Salida Producto</h4>
                 </div>
-                <form class=" mt-2" action="index.php?action=actualizarSalProductosEmp" method="post">
+                <form class=" mt-2" action="index.php?action=actualizarSalProductos" method="post">
                 <?php foreach ($salProductos as $salProducto): ?>
                     <div class=" mt-2">
                     <input type="hidden" class="form-control" name="idSalProducto" value="<?= $salProducto['idSalProducto']; ?>" placeholder="" required>

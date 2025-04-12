@@ -5,8 +5,8 @@ document.addEventListener("DOMContentLoaded", async function () {
   //const codProducto = document.getElementById("codProducto"); Guarda la referencia del input en la variable codProducto. Ahora codProducto es un objeto que representa el <input>.
   const codProducto = document.getElementById("codProducto");
   //codProducto.value obtiene el contenido que tiene el input al momento de la ejecución.
-  console.log("Valor actual:", codProducto.value);
-  console.log("Valor actual:", precioProducto);
+  //console.log("Valor actual:", codProducto.value);
+  //console.log("Valor actual:", precioProducto);
 
 
   try {
