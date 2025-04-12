@@ -37,7 +37,8 @@
                 </div>
                 <div class="mt-2">
                     <label for="correoUsu" class="form-label text-white mt-3">Email:</label>
-                    <input type="email" class="form-control" name="correoUsu" required>
+                    <input type="email" id="correo" class="form-control" name="correoUsu" required>
+                    <small id="correoError" class="text-danger" style="display:none;">Correo no válido</small>
                 </div>
                 <div class="mb-3">
                     <label for="seleccionRol" class="form-label text-white mt-3">Rol:</label>
@@ -63,4 +64,5 @@
     </div>
 </div>
         <script src="./js//verificarUsuario.js?v=1.0"></script>
+        <script src="./js/validarCorreo.js?v=1.0"></script>
 <?php include('./views/layautModAdmin/footerModAdmin.php'); ?>
