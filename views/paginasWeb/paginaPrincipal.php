@@ -42,10 +42,7 @@
                             <a class="nav-link text-white m-1 fs-5" href="index.php?action=paginaS">Servicios</a>
                         </li>
                         <li class="nav-item me-3">
-                            <a class="nav-link text-white m-1 fs-5" href="#Ubicacion">Ubicación</a>
-                        </li>
-                        <li class="nav-item me-3">
-                            <a class="nav-link text-white m-1 fs-5" href="#Contacto">Contacto</a>
+                            <a class="nav-link text-white m-1 fs-5" href="#Ubicacion">Ubicación y Contacto</a>
                         </li>
                         <li class="nav-item me-3">
                             <form class="d-flex" role="search">

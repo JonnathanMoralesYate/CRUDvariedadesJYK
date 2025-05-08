@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="./css/bootstrap.min.css?v=1.0">
     <link rel="stylesheet" href="./css/DesingBody.css?v=1.0">
     <link rel="stylesheet" href="./css/DesingLogin2.css?v=1.0">
+    <link rel="stylesheet" href="./css/paginanosotross.css?v=1.0">
 </head>
 
 <body>
@@ -63,124 +64,101 @@
 </div>
 <!--Final Barra Navegacion-->
 
-<!--Inicio -->
-<div class="row">
-    <div class="">
-    <div class="card bg-dark text-white col-auto">
-        <img src="./photo/logoPrinc2.ico" class="d-block w-100" alt="...">
-        <div class="card-img-overlay">
-            <h5 class="card-title">Título de la tarjeta</h5>
-            <p class="card-text">Esta es una tarjeta más amplia con texto de apoyo a continuación como introducción natural a contenido adicional. Este contenido es un poco más largo.</p>
-        </div>
-    </div>
-    </div>
-</div>
-<!--Fin -->
 
-<!--Inicio Historia-->
-    <div class="row mt-4">
-        <div class="col 9 text-white">
-        <div class="text-center">
-            <h2>Historia</h2>
-        </div>
-        <div class="mt-4">
-            <p class="text-start">
-                Hace aproximadamente 11 años, en el barrio Montecarlos 2 en Ibagué, Tolima,
-                se inauguró una tienda que ha llegado a ser un pilar fundamental para la
-                comunidad local. Esta tienda nació del emprendimiento y la necesidad de 
-                cubrir las demandas del sector,inicialmente, el establecimiento comenzó
-                como una panadería, ofreciendo productos frescos y de calidad a los residentes.
-            </p>
-        </div>
-        <div class="mt-2">
-            <p class="text-start">
-                Sin embargo, con el tiempo y la inauguración de dos nuevos barrios frente a la tienda,
-                el negocio evolucionó para convertirse en la tienda principal del sector. Este cambio 
-                permitió a la tienda ampliar su oferta de productos, incluyendo abarrotes, productos 
-                de limpieza, y otros artículos de primera necesidad. 
-            </p>
-        </div>
-        <div class="mt-2">
-            <p class="text-start">
-                La tienda ha sido un punto de encuentro para los vecinos, proporcionando no solo productos
-                esenciales, sino también un lugar donde la comunidad puede reunirse y socializar. 
-                La atención al cliente ha sido siempre una prioridad, con un personal amable y 
-                dispuesto a ayudar en todo momento. 
-            </p>
-        </div>
-        </div>
-        <div class="col 3 ">
-            <div class="img-fluid d-block text-center col-auto p-5">
-                <a class="navbar-brand"><img src="./photo/logopest2.ico" alt="Logo" class="img-fluid text-center rounded-3"></a>
+
+<!-- Sección Nosotros -->
+<section class="about-section">
+    <div class="container position-relative">
+        <!-- Historia -->
+        <div class="row align-items-center mb-5">
+            <div class="col-lg-8 mb-5 mb-lg-0">
+                <div class="timeline-card p-5 position-relative">
+                    <div class="timeline-marker"></div>
+                    <h2 class="about-title text-center">Nuestra Historia</h2>
+                    <div class="about-text">
+                        <p>Hace 11 años, en el corazón de Montecarlos 2 (Ibagué, Tolima), nació un sueño que se convertiría en el alma del barrio. Comenzamos como una humilde panadería artesanal, donde cada producto llevaba el sello de calidad y dedicación que nos caracteriza.</p>
+                        
+                        <div class="highlight-box">
+                            <p>El crecimiento del barrio nos impulsó a transformarnos en el minimarket de referencia, ampliando nuestra oferta para satisfacer todas las necesidades de la comunidad, siempre manteniendo nuestra esencia familiar.</p>
+                        </div>
+                        
+                        <p>Hoy somos más que un comercio: somos el punto de encuentro donde los vecinos compran, conversan y crean lazos. Nuestro compromiso con la atención personalizada sigue siendo nuestro mayor orgullo.</p>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-<!--Final Historia-->
-
-<!--Inicio Mision-->
-    <div class="row mt-4">
-        <div class="col-4">
-            <div class="img-fluid d-block text-center col-auto p-5">
-                <a class="navbar-brand"><img src="./photo/logopest2.ico" alt="Logo" class="img-fluid text-center rounded-3"></a>
+            <div class="col-lg-4">
+                <div class="about-img-container h-100">
+                    <img src="./photo/fotolocalenfrente" alt="Nuestros inicios" class="about-img">
+                </div>
             </div>
         </div>
 
-        <div class="col-8 text-white">
-            <div class="text-center">
-                <h2>Mision</h2>
+        <!-- Misión -->
+        <div class="row align-items-center mb-5 flex-lg-row-reverse">
+            <div class="col-lg-8 mb-5 mb-lg-0">
+                <div class="timeline-card p-5 position-relative">
+                    <div class="timeline-marker"></div>
+                    <h2 class="about-title text-center">Nuestra Misión</h2>
+                    <div class="about-text">
+                        <p>En Variedades JYK nos dedicamos a:</p>
+                        <ul class="mt-3">
+                            <li class="mb-2">Ofrecer productos esenciales de máxima calidad a precios justos</li>
+                            <li class="mb-2">Brindar una experiencia de compra cálida y personalizada</li>
+                            <li class="mb-2">Ser el corazón comercial de Montecarlos 2</li>
+                            <li>Mantener viva la tradición del comercio de barrio con valores familiares</li>
+                        </ul>
+                        
+                        <div class="highlight-box mt-4">
+                            <p>Queremos que cada cliente se sienta como en casa, encontrando no solo lo que necesita, sino también una sonrisa y atención que hacen la diferencia.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="mt-4">
-                <p class="text-start">
-                    Hace aproximadamente 11 años, en el barrio Montecarlos 2 en Ibagué, Tolima,
-                    se inauguró una tienda que ha llegado a ser un pilar fundamental para la
-                    comunidad local. Esta tienda nació del emprendimiento y la necesidad de 
-                    cubrir las demandas del sector,inicialmente, el establecimiento comenzó
-                    como una panadería, ofreciendo productos frescos y de calidad a los residentes.
-                </p>
-            </div>
-            <div class="mt-2">
-                <p class="text-start">
-                    Sin embargo, con el tiempo y la inauguración de dos nuevos barrios frente a la tienda,
-                    el negocio evolucionó para convertirse en la tienda principal del sector. Este cambio 
-                    permitió a la tienda ampliar su oferta de productos, incluyendo abarrotes, productos 
-                    de limpieza, y otros artículos de primera necesidad. 
-                </p>
+            <div class="col-lg-4">
+                <div class="about-img-container h-100">
+                    <img src="./photo/fotolocalinterior" alt="Nuestro local hoy" class="about-img">
+                </div>
             </div>
         </div>
-    </div>
-<!--Fin Mision-->
 
-<!--Inicio Vision-->
-    <div class="row mt-4">
-        <div class="col 9 text-white">
-            <div class="text-center">
-                <h2>Vision</h2>
+        <!-- Visión -->
+        <div class="row align-items-center">
+            <div class="col-lg-8 mb-5 mb-lg-0">
+                <div class="timeline-card p-5 position-relative">
+                    <div class="timeline-marker"></div>
+                    <h2 class="about-title text-center">Visión 2025</h2>
+                    <div class="about-text">
+                        <p>Nos proyectamos como:</p>
+                        
+                        <div class="d-flex align-items-start mb-3">
+                            <div class="me-3" style="font-size: 24px; color: #ffffff;">➤</div>
+                            <div>El establecimiento comercial líder en Montecarlos 2, ampliando nuestra variedad de productos y servicios</div>
+                        </div>
+                        
+                        <div class="d-flex align-items-start mb-3">
+                            <div class="me-3" style="font-size: 24px; color: #ffffff;">➤</div>
+                            <div>Un espacio que integre tecnología manteniendo el trato humano que nos caracteriza</div>
+                        </div>
+                        
+                        <div class="d-flex align-items-start">
+                            <div class="me-3" style="font-size: 24px; color: #ffffff;">➤</div>
+                            <div>El modelo de comercio de barrio que combina tradición e innovación</div>
+                        </div>
+                        
+                        <div class="highlight-box mt-4">
+                            <p>Nuestro compromiso es crecer sin perder la esencia que nos hizo queridos por la comunidad durante más de una década.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-        <div class="mt-4">
-            <p class="text-start">
-                Hace aproximadamente 11 años, en el barrio Montecarlos 2 en Ibagué, Tolima,
-                se inauguró una tienda que ha llegado a ser un pilar fundamental para la
-                comunidad local. Esta tienda nació del emprendimiento y la necesidad de 
-                cubrir las demandas del sector,inicialmente, el establecimiento comenzó
-                como una panadería, ofreciendo productos frescos y de calidad a los residentes.
-            </p>
-        </div>
-        <div class="mt-2">
-            <p class="text-start">
-                Sin embargo, con el tiempo y la inauguración de dos nuevos barrios frente a la tienda,
-                el negocio evolucionó para convertirse en la tienda principal del sector. Este cambio 
-                permitió a la tienda ampliar su oferta de productos, incluyendo abarrotes, productos 
-                de limpieza, y otros artículos de primera necesidad. 
-            </p>
-        </div>
-        </div>
-        <div class="col 3 ">
-            <div class="img-fluid d-block text-center col-auto p-5">
-                <img class="img-fluid text-center rounded-3" src="./photo/logopest2.ico" alt="Logo">
+            <div class="col-lg-4">
+                <div class="about-img-container h-100">
+                    <img src="./photo/fotoslocal1" alt="Nuestro futuro" class="about-img">
+                </div>
             </div>
         </div>
     </div>
-<!--Fin Vision-->
+</section>
 
 <!--Inicio de Footer-->
 <div class="row" id="Ubicacion">
@@ -292,6 +270,90 @@
 </html>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nosotros Minimarket</title>
+    <link rel="stylesheet" href="./css/paginanosotros.css?v=1.0">
+  </head>
+  <body>
+    <header>
+      <h1>Nosotros Minimarket</h1>
+      <p>Abierto de 7 am a 10 PM</p>
+      <p>Lunes a Viernes</p>
+    </header>
+    <nav id="nav">
+      <ul>
+        <li><a href="index.php">Inicio</a></li>
+        <li><a href="#">Visitanos</a></li>
+        <li><a href="#">Login</a></li>
+      </ul>
+    </nav>
+    <div>
+      <section id="Historia">
+        <h2>Historia</h2>
+        <p>
+          Reseña de la Tienda en el Barrio Montecarlos 2, Ibagué, Tolima Hace
+          aproximadamente 11 años, en la dirección Cll 131 #146-cs, 17 del
+          barrio Montecarlos 2 en Ibagué, Tolima, se inauguró una tienda que ha
+          llegado a ser un pilar fundamental para la comunidad local. Esta
+          tienda nació de la necesidad de cubrir las demandas del sector, ya que
+          en ese entonces no había otras tiendas en la zona. Inicialmente, el
+          establecimiento comenzó como una panadería, ofreciendo productos
+          frescos y de calidad a los residentes. Sin embargo, con el tiempo y la
+          inauguración de dos nuevos barrios frente a la tienda, el negocio
+          evolucionó para convertirse en la tienda principal del sector. Este
+          cambio permitió a la tienda ampliar su oferta de productos, incluyendo
+          abarrotes, productos de limpieza, y otros artículos de primera
+          necesidad. La tienda ha sido un punto de encuentro para los vecinos,
+          proporcionando no solo productos esenciales, sino también un lugar
+          donde la comunidad puede reunirse y socializar. La atención al cliente
+          ha sido siempre una prioridad, con un personal amable y dispuesto a
+          ayudar en todo momento. En resumen, esta tienda ha jugado un papel
+          crucial en el desarrollo y bienestar del barrio Montecarlos 2,
+          adaptándose a las necesidades cambiantes de la comunidad y
+          convirtiéndose en un establecimiento indispensable para los residentes
+          locales..
+        </p>
+      </section>
+      <section id="Mision">
+        <h2>Mision</h2>
+        <p>No hay ofertas disponibles en este momento.</p>
+      </section>
+      <section id="Vision">
+        <h2>Vision</h2>
+        <p>Ubicación: [insertar ubicación]</p>
+        <p>Teléfono: [insertar teléfono]</p>
+        <p>Correo electrónico: [insertar correo electrónico]</p>
+      </section>
+      <section id="Contacto">
+        <h2>contactanos</h2>
+        <p>Ubicación: [insertar ubicación]</p>
+        <p>Teléfono: [insertar teléfono]</p>
+        <p>Correo electrónico: [insertar correo electrónico]</p>
+      </section>
+    </div>
+    <footer>
+      <p>&copy; 2024 Nosotros Minimarket</p>
+    </footer>
+  </body>
+</html>-->
 
 
 
