@@ -15,7 +15,7 @@
         <div class="col-lg-4 col-md-6 col-sm-8 col-10">
             <div class="d-flex justify-content-center">
                 <a class="btn btn-outline-secondary text-white mt-3 w-50 text-center"
-                    href="index.php?action=productosAvencerPDF"
+                    href="index.php?action=productosAvencerEmpPDF"
                     target="_blank">
                     Generar PDF
                 </a>
