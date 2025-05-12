@@ -45,10 +45,7 @@
                                     <a class="nav-link text-white m-1 fs-5" href='index.php?action=paginaS' role="button">Servicios</a>
                                     </li>
                                     <li class="nav-item me-5">
-                                        <a class="nav-link text-white m-1 fs-5" href="#Ubicacion">Ubicación</a>
-                                    </li>
-                                    <li class="nav-item me-5">
-                                        <a class="nav-link text-white m-1 fs-5" href="#Contacto">Contacto</a>
+                                        <a class="nav-link text-white m-1 fs-5" href="#Ubicacion">Ubicación y Contacto</a>
                                     </li>
                                 </ul>
                                 <ul class="navbar-nav">
