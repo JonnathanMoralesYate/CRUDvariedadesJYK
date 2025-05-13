@@ -62,7 +62,7 @@
                 </div>
                 <div class=" mt-2">
                     <label for="contraseña" class="form-label text-white mt-3">Contraseña:</label>
-                    <input type="text" class="form-control" name="contraseña" value="" required>
+                    <input type="text" class="form-control" name="contraseña" value="">
                 </div>
                 <div class="text-center mt-4">
                     <button type="submit" class="btn btn-outline-light">Actualizar</button>

@@ -94,7 +94,7 @@ class ControladorUsuario{
             $clave= $_POST['contraseña'];
             $idUsua= $_POST['idUsuario'];
             
-            $claveSegura= password_hash($clave, PASSWORD_BCRYPT);
+            $claveSegura = !empty($clave) ? password_hash($clave, PASSWORD_BCRYPT) : null;
             
             $this->modeloUsuario->actualizarUsua($idTipoDocum, $numDocumento, $nombre, $apellido, $numCelular, $correoE, $rol, $usuario, $claveSegura, $idUsua);
             
