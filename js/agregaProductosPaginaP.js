@@ -1,108 +1,86 @@
-//Funcion traer la informacion del producto segun clase
+// Variables globales para paginación (solo para productos por clase)
+let productosPaginados = [];
+const productosPorPagina = 9; // Ajusta la cantidad de productos por página
+let paginaActual = 1;
 
+//=====================================================================================================================
+
+// Función traer la información del producto según clase (con paginación)
 async function obtenerInforProductoPorClase(idClase) {
-
+    console.log('obtenerInforProductoPorClase llamado con idClase:', idClase);
     try {
         const response = await fetch(
-        "index.php?action=productosPorClase",
-        {
-        method: "POST",
-        headers: {
-        "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ idClase: idClase }), // Enviar datos al servidor como JSON
-        });
+            "index.php?action=productosPorClase",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ idClase: idClase }),
+            }
+        );
 
         const data = await response.json();
-        //console.log('Datos recibidos:', data);
 
-            if (data.success) {
-
-                    const producto = data.inforProducto;
-                    //console.log('productos' , producto);
-
-                    mostrarProductos(producto);
-        } 
-
+        if (data.success) {
+            productosPaginados = data.inforProducto; // Guarda todos los productos
+            console.log('Productos obtenidos para paginar:', productosPaginados);
+            mostrarPagina(1); // Muestra la primera página
+        }
     } catch (error) {
-    console.error('Error al obtener los datos del producto:', error);
+        console.error('Error al obtener los datos del producto:', error);
     }
 }
 
+//=====================================================================================================================
 
-//Funcion para imprimir los productos por clase
-
-function mostrarProductos(producto) {
-    
-    // Seleccionamos el contenedor donde se mostrarán los productos
+// Función para imprimir los productos por clase (productosPagina es un subconjunto para la página actual)
+function mostrarProductos(productosPagina) {
     const contenedor = document.getElementById("productos-container");
-
-    // Limpiamos el contenedor antes de agregar nuevos elementos
     contenedor.innerHTML = "";
 
-    // Generamos el HTML para cada producto
-    producto.forEach(productos => {
+    productosPagina.forEach(producto => {
         const productoHTML = `
             <div class="col">
                 <div class="card mx-auto h-100" style="width: 14rem;">
-                    <img src="photo/${productos.Foto}" class="card-img-top rounded" alt="${productos.Producto}">
+                    <img src="photo/${producto.Foto}" class="card-img-top rounded" alt="${producto.Producto}">
                     <div class="card-body">
-                        <h5 class="card-title">${productos.Producto}</h5>
-                        <p class="card-text">${productos.Descripcion}</p>
+                        <h5 class="card-title">${producto.Producto}</h5>
+                        <p class="card-text">${producto.Descripcion}</p>
                     </div>
                 </div>
             </div>
         `;
-
-        // Agregamos el producto al contenedor
         contenedor.innerHTML += productoHTML;
     });
 }
 
-//========================================================================================================================================
+//=====================================================================================================================
 
-//Funcion traer los Productos Mas Vendidos en pagina principal
-    async function ProductosMayorVenta() {
-
-        //alert('ingresa a la funcion actualizargraficamayoeventa');
-
-        try {
-            const response = await fetch('index.php?action=productosMayorVentaP', {
+// Función traer los Productos Más Vendidos en página principal (NO CAMBIADO)
+async function ProductosMayorVenta() {
+    try {
+        const response = await fetch('index.php?action=productosMayorVentaP', {
             method: "GET",
             headers: { "Content-Type": "application/json" },
         });
 
-            // Verificar el contenido de la respuesta antes de procesarla como JSON
-            //const textResponse = await response.text();
-            //console.log("Respuesta recibida:", textResponse);
+        const data = await response.json();
 
-            const data = await response.json();
-            //console.log('Datos recibidos:', data); // Verifica qué datos llegan
+        const producto = data.mayoresVenta;
 
-            const producto = data.mayoresVenta;
+        mostrarProductosMayorVenta(producto);
 
-            mostrarProductosMayorVenta(producto);
-
-
-
-      //console.log("");
-        } catch (error) {
-            console.error("Error al obtener los datos del producto:", error);
-        }
+    } catch (error) {
+        console.error("Error al obtener los datos del producto:", error);
     }
+}
 
-
- //Funcion para mostrar en pagina principal los productos de mayor venta
-
+// Función para mostrar en página principal los productos de mayor venta (NO CAMBIADO)
 function mostrarProductosMayorVenta(producto) {
-    
-    // Seleccionamos el contenedor donde se mostrarán los productos
     const contenedor = document.getElementById("productos-container");
-
-    // Limpiamos el contenedor antes de agregar nuevos elementos
     contenedor.innerHTML = "";
 
-    // Generamos el HTML para cada producto
     producto.forEach(productos => {
         const productoHTML = `
             <div class="col">
@@ -116,10 +94,90 @@ function mostrarProductosMayorVenta(producto) {
             </div>
         `;
 
-        // Agregamos el producto al contenedor
         contenedor.innerHTML += productoHTML;
     });
 }
 
-// Llamar la función cuando cargue la página
+// Llamar la función cuando cargue la página para mostrar productos más vendidos
 document.addEventListener("DOMContentLoaded", ProductosMayorVenta);
+
+//=====================================================================================================================
+
+// Función para mostrar botones de paginación para productos por clase
+function mostrarPaginacion() {
+    const totalPaginas = Math.ceil(productosPaginados.length / productosPorPagina);
+    const paginacionContenedor = document.getElementById("paginacion-container");
+    paginacionContenedor.innerHTML = "";
+
+    // Crear nav y ul con clases Bootstrap
+    const nav = document.createElement("nav");
+    const ul = document.createElement("ul");
+    ul.className = "pagination justify-content-center flex-wrap mt-5";
+
+    // --- Botón Anterior ---
+    const liAnterior = document.createElement("li");
+    liAnterior.className = "page-item " + (paginaActual <= 1 ? "disabled" : "");
+    const aAnterior = document.createElement("a");
+    aAnterior.className = "page-link";
+    aAnterior.href = "#";
+    aAnterior.textContent = "Anterior";
+    aAnterior.addEventListener("click", (e) => {
+        e.preventDefault();
+        if (paginaActual > 1) mostrarPagina(paginaActual - 1);
+    });
+    liAnterior.appendChild(aAnterior);
+    ul.appendChild(liAnterior);
+
+    // --- Botones numéricos ---
+    // Opcional: limitar cantidad de botones visibles si hay muchas páginas
+    // Aquí mostramos todos desde 1 hasta totalPaginas
+    for (let i = 1; i <= totalPaginas; i++) {
+        const li = document.createElement("li");
+        li.className = "page-item " + (paginaActual === i ? "active" : "");
+        const a = document.createElement("a");
+        a.className = "page-link";
+        a.href = "#";
+        a.textContent = i;
+        a.addEventListener("click", (e) => {
+            e.preventDefault();
+            mostrarPagina(i);
+        });
+        li.appendChild(a);
+        ul.appendChild(li);
+    }
+
+    // --- Botón Siguiente ---
+    const liSiguiente = document.createElement("li");
+    liSiguiente.className = "page-item " + (paginaActual >= totalPaginas ? "disabled" : "");
+    const aSiguiente = document.createElement("a");
+    aSiguiente.className = "page-link";
+    aSiguiente.href = "#";
+    aSiguiente.textContent = "Siguiente";
+    aSiguiente.addEventListener("click", (e) => {
+        e.preventDefault();
+        if (paginaActual < totalPaginas) mostrarPagina(paginaActual + 1);
+    });
+    liSiguiente.appendChild(aSiguiente);
+    ul.appendChild(liSiguiente);
+
+    nav.appendChild(ul);
+    paginacionContenedor.appendChild(nav);
+}
+
+
+//=====================================================================================================================
+
+// Función para mostrar la página de productos por clase indicada
+function mostrarPagina(pagina) {
+
+    console.log('Mostrar página:', pagina);
+    paginaActual = pagina;
+
+    const inicio = (paginaActual - 1) * productosPorPagina;
+    const fin = inicio + productosPorPagina;
+
+    const productosPagina = productosPaginados.slice(inicio, fin);
+
+    mostrarProductos(productosPagina);
+    mostrarPaginacion();
+}

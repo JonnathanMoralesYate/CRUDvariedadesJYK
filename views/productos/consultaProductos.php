@@ -99,7 +99,7 @@
             <?php if ($totalPaginas > 1): ?>
                 <?php if ($totalPaginas > 1): ?>
                     <nav>
-                        <ul class="pagination justify-content-center flex-wrap">
+                        <ul class="pagination justify-content-center flex-wrap mt-5">
                             <!-- Anterior -->
                             <li class="page-item <?= $paginaActual <= 1 ? 'disabled' : '' ?>">
                                 <a class="page-link" href="?action=<?= $action ?>&<?= $param ?>&pagina=<?= $paginaActual - 1 ?>">Anterior</a>
