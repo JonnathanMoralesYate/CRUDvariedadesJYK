@@ -156,20 +156,25 @@ switch($action){
 
 
         //Consulta Producto
-    case'consultaProductos';
-        $productos = $controladorProducto->listaProductosVista();
+    case 'consultaProductos':
+        $tipo = 'codigo'; // Puedes poner cualquier valor predeterminado
+        $filtro = ''; 
+        $productos = $controladorProducto->listaProductosVista($tipo, $filtro);
         include('./views/productos/consultaProductos.php');
         break;
 
-    case'consultaProductosCodigo';
-        $productos = $controladorProducto->productoVistaCodigo();
-        include('./views/productos/consultaProductos.php');
-        break;
 
-    case'consultaProductosNombre';
-        $productos = $controladorProducto->productoVistaNombre();
-        include('./views/productos/consultaProductos.php');
-        break;
+    case 'consultaProductosCodigo':
+    $valor = $_GET['codProduc'] ?? '';
+    $productos = $controladorProducto->listaProductosFiltrado('codigo', $valor);
+    include('./views/productos/consultaProductos.php');
+    break;
+
+    case 'consultaProductosNombre':
+    $valor = $_GET['nombre'] ?? '';
+    $productos = $controladorProducto->listaProductosFiltrado('nombre', $valor);
+    include('./views/productos/consultaProductos.php');
+    break;
 
 
         //Actualizar Producto
@@ -210,10 +215,10 @@ switch($action){
 
 
         //Consulta Producto empleado
-    case'consultaProductosemp';
-        $productos = $controladorProducto->listaProductosVistaemp();
-        include('./views/productos/consultaProductoemp.php');
-        break;
+    // case'consultaProductosemp';
+    //     $productos = $controladorProducto->listaProductosVistaemp();
+    //     include('./views/productos/consultaProductoemp.php');
+    //     break;
 
     case'consultaProductosCodigoemp';
         $productos = $controladorProducto->productoVistaCodigoemp();
