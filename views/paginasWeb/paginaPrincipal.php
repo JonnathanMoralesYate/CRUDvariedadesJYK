@@ -46,8 +46,8 @@
                                     <a class="nav-link text-white m-1 fs-5" href="#Ubicacion">Ubicación y Contacto</a>
                                 </li>
                                 <li class="nav-item me-3">
-                                    <form class="d-flex" role="search">
-                                        <input class="form-control m-2 me-3" type="search" placeholder="Buscar Producto" aria-label="Search">
+                                    <form id="formBuscarProducto" class="d-flex" action="index.php?action=consultaProductoNombre" method="POST" role="search">
+                                        <input id="inputNombreProducto" class="form-control m-2 me-3" type="search" placeholder="Buscar Producto" name="Nombre" aria-label="Search">
                                         <button class="btn btn-outline-secondary text-white m-2" type="submit">Buscar</button>
                                     </form>
                                 </li>

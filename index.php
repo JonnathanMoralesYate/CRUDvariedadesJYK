@@ -907,6 +907,13 @@ switch($action){
         $controladorInventario->ProductosProximosAvencer();
         break;
 
+
+        //Consulta de Producto por nombre
+    case'consultaProductoNombre':
+        if($_SERVER["REQUEST_METHOD"] == "POST"){
+            $controladorProducto->ProductosPorNombre();
+        }
+        break;
 //============================================================================================================================================
 
 //Entrada de Productos Empleado
@@ -1048,7 +1055,7 @@ switch($action){
             break;
         
             case'reporteSalProductoFechaEmp';
-             $salProductos = $controladorSalProducto->ReporteSalProductosEmp();
+                $salProductos = $controladorSalProducto->ReporteSalProductosEmp();
                 include('./views/salidaProducto/reporteSalProducEmp.php');
                 break;
     

@@ -257,6 +257,40 @@ class ControladorProducto
     }
 
 
+    //Consulta producto por nombre pagina principal
+    // Consulta para traer informacion del producto por idclase
+    public function ProductosPorNombre()
+    {
+
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+            // Leer JSON desde la solicitud
+            $inputJSON = file_get_contents("php://input");
+
+            $input = json_decode($inputJSON, true);
+
+            if (!isset($input['Nombre']) || empty($input['Nombre'])) {
+                echo json_encode(['error' => 'El nombre del producto es requerido']);
+                exit;
+            }
+
+            $nombre = $input['Nombre'];
+
+            header("Content-Type: application/json; charset=UTF-8");
+
+            $infoProducto = $this->modeloProducto->productosPorNombre($nombre);
+
+            if ($infoProducto) {
+                echo json_encode(["success" => true, "inforProducto" => $infoProducto]);
+            } else {
+                echo json_encode(["success" => false, "error" => "Producto No Registrado"]);
+            }
+        } else {
+            echo json_encode(['error' => 'Método no permitido']);
+        }
+    }
+
+
     //Actualizar producto
     public function actualizarProducto()
     {

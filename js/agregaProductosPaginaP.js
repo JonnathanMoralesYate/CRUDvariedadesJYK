@@ -7,7 +7,7 @@ let paginaActual = 1;
 
 // Función traer la información del producto según clase (con paginación)
 async function obtenerInforProductoPorClase(idClase) {
-    console.log('obtenerInforProductoPorClase llamado con idClase:', idClase);
+   // console.log('obtenerInforProductoPorClase llamado con idClase:', idClase);
     try {
         const response = await fetch(
             "index.php?action=productosPorClase",
@@ -24,7 +24,7 @@ async function obtenerInforProductoPorClase(idClase) {
 
         if (data.success) {
             productosPaginados = data.inforProducto; // Guarda todos los productos
-            console.log('Productos obtenidos para paginar:', productosPaginados);
+            //console.log('Productos obtenidos para paginar:', productosPaginados);
             mostrarPagina(1); // Muestra la primera página
         }
     } catch (error) {
@@ -170,7 +170,7 @@ function mostrarPaginacion() {
 // Función para mostrar la página de productos por clase indicada
 function mostrarPagina(pagina) {
 
-    console.log('Mostrar página:', pagina);
+    //console.log('Mostrar página:', pagina);
     paginaActual = pagina;
 
     const inicio = (paginaActual - 1) * productosPorPagina;
@@ -181,3 +181,43 @@ function mostrarPagina(pagina) {
     mostrarProductos(productosPagina);
     mostrarPaginacion();
 }
+
+//==========================================================================================================================
+
+async function obtenerInforProductoPorNombre(nombre) {
+
+    try {
+        const response = await fetch(
+            "index.php?action=consultaProductoNombre",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ Nombre: nombre }),
+            }
+        );
+
+        const data = await response.json();
+
+        if (data.success) {
+            productosPaginados = data.inforProducto; // Guarda todos los productos
+            //console.log('Productos obtenidos para paginar:', productosPaginados);
+            mostrarPagina(1); // Muestra la primera página
+        }
+    } catch (error) {
+        console.error('Error al obtener los datos del producto:', error);
+    }
+}
+
+//========================================================================================================================================
+
+document.getElementById('formBuscarProducto').addEventListener('submit', function (e) {
+    e.preventDefault(); // Previene el envío clásico del formulario
+
+    const nombre = document.getElementById('inputNombreProducto').value.trim();
+
+    if (nombre !== "") {
+        obtenerInforProductoPorNombre(nombre);
+    }
+});

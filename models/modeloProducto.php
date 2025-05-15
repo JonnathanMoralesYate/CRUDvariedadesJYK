@@ -119,6 +119,16 @@ class ModeloProducto
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    //Consulta para mostrar productos segun nombre en pagina principal
+    public function productosPorNombre($nombre)
+    {
+        $query = "SELECT Foto, CONCAT(Nombre,' ',Marca) AS 'Producto', Descripcion FROM " . $this->table . " WHERE Nombre LIKE ?";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute(['%' . $nombre . '%']);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+
 
     //Consulta general productos con inner join por codigo producto
     public function consultGenProductosvistaCodigo($codigoProducto)
