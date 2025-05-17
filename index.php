@@ -89,7 +89,7 @@ switch ($action) {
 
     //Modulo Administrativo
 
-    //Usuarios
+    //Empleados
 
     //Registro usuario
     case 'registroUsuario':
@@ -104,17 +104,21 @@ switch ($action) {
 
     //Consulta Usuarios
     case 'consultaUsuarios':
-        $usuarios = $controladorUsuario->listaUsuariosVista();
+        $tipo = '';
+        $filtro = '';
+        $data = $controladorUsuario->listaUsuariosVista($tipo, $filtro);
         include('./views/usuarios/consultaUsuario.php');
         break;
 
-    case 'consultaUsuarioId':
-        $usuarios = $controladorUsuario->datosUsuaPorId();
+    case 'consultaUsuarioDocumento':
+        $valor = $_GET['numIdentUsuario'] ?? '';
+        $data = $controladorUsuario->listaUsuariosFiltrado('codigo', $valor);
         include('./views/usuarios/consultaUsuario.php');
         break;
 
     case 'consultaUsuarioNombre':
-        $usuarios = $controladorUsuario->datosUsuaPorNombre();
+        $valor = $_GET['nombre'] ?? '';
+        $data = $controladorUsuario->listaUsuariosFiltrado('nombre', $valor);
         include('./views/usuarios/consultaUsuario.php');
         break;
 
