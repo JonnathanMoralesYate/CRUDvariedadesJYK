@@ -45,8 +45,45 @@ class ControladorCliente{
 
 
     //Consulta General Vista 
-    public function listaClientes() {
-        return $this->modeloCliente->consultGenClienteVista();
+    public function listaClientesVista($tipo, $valor) 
+    {
+        $limite = 10;
+        $pagina = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
+        $inicio = ($pagina - 1) * $limite;
+
+        $clientes = $this->modeloCliente->consultGenClienteVista($inicio, $limite);
+        $totalClientes = $this->modeloCliente->obtenerTotalClientes();
+        $totalPaginas = ceil($totalClientes / $limite);
+
+        return
+        [
+            'clientes' => $clientes,
+            'pagina' => $pagina,
+            'totalPaginas' => $totalPaginas,
+            'filtro' => $valor,
+            'tipo' => $tipo,
+        ];
+    }
+
+
+    public function listaClientesFiltrado($tipo, $valor)
+    {
+        $limite = 10;
+        $pagina = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
+        $inicio = ($pagina - 1) * $limite;
+
+        $clientes = $this->modeloCliente->consultarFiltrado($tipo, $valor, $inicio, $limite);
+        $total = $this->modeloCliente->totalFiltrado($tipo, $valor);
+        $totalPaginas = ceil($total / $limite);
+
+        return
+        [
+            'clientes' => $clientes,
+            'pagina' => $pagina,
+            'totalPaginas' => $totalPaginas,
+            'filtro' => $valor,
+            'tipo' => $tipo,
+        ];
     }
 
 
@@ -216,9 +253,9 @@ class ControladorCliente{
     }
 
         //Consulta General Vista empleado
-        public function listaClientesemp() {
-            return $this->modeloCliente->consultGenClienteVista();
-        }
+        // public function listaClientesemp() {
+        //     return $this->modeloCliente->consultGenClienteVista();
+        // }
     
     
         //Consulta ID Cliente empleado

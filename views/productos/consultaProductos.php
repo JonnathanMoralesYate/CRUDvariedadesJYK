@@ -1,7 +1,6 @@
 <?php include('./views/layautModAdmin/headerModAdmin.php'); ?>
 
 <!--Inicio de Formulario Consultar Producto-->
-<?php $data = $productos; ?>
 
 <!-- Formulario de búsqueda -->
 <div class="container">
