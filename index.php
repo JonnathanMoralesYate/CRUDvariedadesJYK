@@ -150,7 +150,7 @@ switch ($action) {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $controladorProducto->registroProductos();
         } else {
-            $clases = $controladorClases->listaClases();
+            $clases = $controladorClases->listaClasesP();
             $presentaciones = $controladorPresentacion->listaPresentacion();
             $undBases = $controladorUndBase->listaUndBase();
             $formatoVents = $controladorFormatoVenta->listaFormatoVenta();
@@ -184,7 +184,7 @@ switch ($action) {
     //Actualizar Producto
     case 'actualizarProductosCodigo':
         $productos = $controladorProducto->productoCodigo();
-        $clases = $controladorClases->listaClases();
+        $clases = $controladorClases->listaClasesP();
         $presentaciones = $controladorPresentacion->listaPresentacion();
         $undBases = $controladorUndBase->listaUndBase();
         $formatoVents = $controladorFormatoVenta->listaFormatoVenta();
@@ -209,7 +209,7 @@ switch ($action) {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $controladorProducto->registroProductosemp();
         } else {
-            $clases = $controladorClases->listaClases();
+            $clases = $controladorClases->listaClasesP();
             $presentaciones = $controladorPresentacion->listaPresentacion();
             $undBases = $controladorUndBase->listaUndBase();
             $formatoVents = $controladorFormatoVenta->listaFormatoVenta();
@@ -250,17 +250,21 @@ switch ($action) {
 
     //Consulta Clase
     case 'consultaClase';
-        $clases = $controladorClases->listaClases();
+        $tipo = '';
+        $filtro = '';
+        $data = $controladorClases->listaClases($tipo, $filtro);
         include('./views/propiedades/clases/consultaClase.php');
         break;
 
     case 'consultaClaseId';
-        $clases = $controladorClases->consultClaseId();
+        $valor = $_GET['idClase'] ?? '';
+        $data = $controladorClases->listaClasesFiltrado('codigo', $valor);
         include('./views/propiedades/clases/consultaClase.php');
         break;
 
     case 'consultaClaseNombre';
-        $clases = $controladorClases->consultClaseNombre();
+        $valor = $_GET['nomClase'] ?? '';
+        $data = $controladorClases->listaClasesFiltrado('nomClase', $valor);
         include('./views/propiedades/clases/consultaClase.php');
         break;
 
@@ -297,17 +301,21 @@ switch ($action) {
 
     //Consulta Presentacion
     case 'consultaPresentacion';
-        $presentaciones = $controladorPresentacion->listaPresentacion();
+        $tipo = '';
+        $filtro = '';
+        $data = $controladorPresentacion->listaPresentaciones($tipo, $filtro);
         include('./views/propiedades/presentacion/consultaPresentacion.php');
         break;
 
     case 'consultaPresentacionId';
-        $presentaciones = $controladorPresentacion->ConsultPresentacionId();
+        $valor = $_GET['idPresentacion'] ?? '';
+        $data = $controladorPresentacion->listaPresentacionFiltrado('codigo', $valor);
         include('./views/propiedades/presentacion/consultaPresentacion.php');
         break;
 
     case 'consultaPresentacionNombre';
-        $presentaciones = $controladorPresentacion->ConsultPresentacionNombre();
+        $valor = $_GET['nomPresentacion'] ?? '';
+        $data = $controladorPresentacion->listaPresentacionFiltrado('nomPresentacion', $valor);
         include('./views/propiedades/presentacion/consultaPresentacion.php');
         break;
 

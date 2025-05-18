@@ -133,10 +133,6 @@ class ModeloEntProducto
     }
 
 
-
-
-
-
     //Consulta por Id tabla Entrada Productos INNER JOIN
     public function consultaGenEntProductosVistaId($codProducto)
     {
