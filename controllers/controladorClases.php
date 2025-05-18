@@ -56,11 +56,6 @@ class ControladorClases
         $totalClases = $this->modeloClases->obtenerTotalClases();
         $totalPaginas = ceil($totalClases / $limite);
 
-        // echo "<pre>";
-        // var_dump($clases, $pagina, $totalPaginas, $valor, $tipo, $totalClases);
-        // echo "</pre>";
-        // exit;
-
         return
             [
                 'clases' => $clases,
@@ -91,7 +86,6 @@ class ControladorClases
                 'tipo' => $tipo,
             ];
     }
-
 
 
     //consulta de clase por ID

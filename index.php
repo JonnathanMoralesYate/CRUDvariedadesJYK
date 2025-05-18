@@ -352,17 +352,21 @@ switch ($action) {
 
     //Consulta Unidad Base
     case 'consultaUndBasen';
-        $undBases = $controladorUndBase->listaUndBase();
+        $tipo = '';
+        $filtro = '';
+        $data = $controladorUndBase->listaUndBases($tipo, $filtro);
         include('./views/propiedades/unidadBase/consultaUndBase.php');
         break;
 
     case 'consultaUndBaseId';
-        $undBases = $controladorUndBase->consultUndBaseId();
+        $valor = $_GET['idUndBase'] ?? '';
+        $data = $controladorUndBase->listaUndBaseFiltrado('codigo', $valor);
         include('./views/propiedades/unidadBase/consultaUndBase.php');
         break;
 
     case 'consultaUndBaseNombre';
-        $undBases = $controladorUndBase->consultUndBaseNombre();
+        $valor = $_GET['nomUndBase'] ?? '';
+        $data = $controladorUndBase->listaUndBaseFiltrado('nomUndBase', $valor);
         include('./views/propiedades/unidadBase/consultaUndBase.php');
         break;
 
@@ -399,17 +403,21 @@ switch ($action) {
 
     //Consulta Formato Venta
     case 'consultaFormatoVenta';
-        $formatoVentas = $controladorFormatoVenta->listaFormatoVenta();
+        $tipo = '';
+        $filtro = '';
+        $data = $controladorFormatoVenta->listaFormatoVentas($tipo, $filtro);
         include('./views/propiedades/formatoVenta/consultaFormtVenta.php');
         break;
 
     case 'consultaFormatoVentaId';
-        $formatoVentas = $controladorFormatoVenta->ConsultFormatoVentaId();
+        $valor = $_GET['idFormatoVenta'] ?? '';
+        $data = $controladorFormatoVenta->listaFormatoVentaFiltrado('codigo', $valor);
         include('./views/propiedades/formatoVenta/consultaFormtVenta.php');
         break;
 
     case 'consultaFormatoVentaNombre';
-        $formatoVentas = $controladorFormatoVenta->ConsultFormatoVentaNombre();
+        $valor = $_GET['nomFormatoVenta'] ?? '';
+        $data = $controladorFormatoVenta->listaFormatoVentaFiltrado('nomFormatoVenta', $valor);
         include('./views/propiedades/formatoVenta/consultaFormtVenta.php');
         break;
 
