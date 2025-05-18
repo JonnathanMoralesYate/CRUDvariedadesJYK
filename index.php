@@ -707,17 +707,21 @@ switch ($action) {
 
     //Consulta Salida Productos
     case 'consultaSalProductos';
-        $salProductos = $controladorSalProducto->consultaGenSalProductosVista();
+        $tipo = '';
+        $filtro = '';
+        $data = $controladorSalProducto->listaSalProductosVista($tipo, $filtro);
         include('./views/salidaProducto/consultaSalProducto.php');
         break;
 
-    case 'consultaSalProductoId';
-        $salProductos = $controladorSalProducto->consultaGenSalProductosVistaId();
+    case 'consultaSalProductoCodigo';
+        $valor = $_GET['codProducto'] ?? '';
+        $data = $controladorSalProducto->listaSalProductosFiltrado('codigo', $valor);
         include('./views/salidaProducto/consultaSalProducto.php');
         break;
 
     case 'consultaSalProductoFecha';
-        $salProductos = $controladorSalProducto->consultaGenSalProductosVistaFecha();
+        $valor = $_GET['fechaSal'] ?? '';
+        $data = $controladorSalProducto->listaSalProductosFiltrado('fechaSal', $valor);
         include('./views/salidaProducto/consultaSalProducto.php');
         break;
 
@@ -1008,11 +1012,11 @@ switch ($action) {
         break;
 
 
-    //Consulta Salida Productos
-    case 'consultaSalProductosEmp';
-        $salProductos = $controladorSalProducto->consultaGenSalProductosVistaEmp();
-        include('./views/salidaProducto/consultaSalProductoEmp.php');
-        break;
+    // //Consulta Salida Productos
+    // case 'consultaSalProductosEmp';
+    //     $salProductos = $controladorSalProducto->consultaGenSalProductosVistaEmp();
+    //     include('./views/salidaProducto/consultaSalProductoEmp.php');
+    //     break;
 
     case 'consultaSalProductoIdEmp';
         $salProductos = $controladorSalProducto->consultaGenSalProductosVistaIdEmp();

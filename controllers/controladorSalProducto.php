@@ -107,9 +107,52 @@ class ControladorSalProducto{
     }
 
 
-    //Consulta General Join Vista
-    public function consultaGenSalProductosVista() {
-        return $this->modeloSalProducto->consultaGenSalProductosVista();
+    // //Consulta General Join Vista
+    // public function consultaGenSalProductosVista() {
+    //     return $this->modeloSalProducto->consultaGenSalProductosVista();
+    // }
+
+
+    public function listaSalProductosVista($tipo, $valor)
+    {
+
+        $limite = 10;
+        $pagina = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
+        $inicio = ($pagina - 1) * $limite;
+
+        $salProductos = $this->modeloSalProducto->consultaGenSalProductosVista($inicio, $limite);
+        $totalEntProductos = $this->modeloSalProducto->obtenerTotalSalProductos();
+        $totalPaginas = ceil($totalEntProductos / $limite);
+
+        return
+            [
+                'salProductos' => $salProductos,
+                'pagina' => $pagina,
+                'totalPaginas' => $totalPaginas,
+                'filtro' => $valor,
+                'tipo' => $tipo,
+            ];
+    }
+
+
+    public function listaSalProductosFiltrado($tipo, $valor)
+    {
+        $limite = 10;
+        $pagina = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
+        $inicio = ($pagina - 1) * $limite;
+
+        $salProductos = $this->modeloSalProducto->consultarFiltrado($tipo, $valor, $inicio, $limite);
+        $total = $this->modeloSalProducto->totalFiltrado($tipo, $valor);
+        $totalPaginas = ceil($total / $limite);
+
+        return
+            [
+                'salProductos' => $salProductos,
+                'pagina' => $pagina,
+                'totalPaginas' => $totalPaginas,
+                'filtro' => $valor,
+                'tipo' => $tipo,
+            ];
     }
 
 
@@ -518,10 +561,10 @@ class ControladorSalProducto{
         }
     
     
-        //Consulta General Join Vista
-        public function consultaGenSalProductosVistaEmp() {
-            return $this->modeloSalProducto->consultaGenSalProductosVista();
-        }
+        // //Consulta General Join Vista
+        // public function consultaGenSalProductosVistaEmp() {
+        //     return $this->modeloSalProducto->consultaGenSalProductosVista();
+        // }
     
     
         //Consulta por Id Inner Join
