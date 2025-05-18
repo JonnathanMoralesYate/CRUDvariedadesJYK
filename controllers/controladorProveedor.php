@@ -3,32 +3,35 @@
 require_once('./models/modeloProveedor.php');
 require_once('./config/conexionBDJYK.php');
 
-class ControladorProveedor{
+class ControladorProveedor
+{
 
     private $db;
     private $modeloProveedor;
 
-    public function __construct() {
+    public function __construct()
+    {
 
-        $database= new DataBase();
-        $this->db= $database->getConnectionJYK();
-        $this->modeloProveedor= new ModeloProveedor($this->db);
+        $database = new DataBase();
+        $this->db = $database->getConnectionJYK();
+        $this->modeloProveedor = new ModeloProveedor($this->db);
     }
 
 
     //Registro de producto
-    public function RegistroProveedor() {
+    public function RegistroProveedor()
+    {
 
-        if($_SERVER["REQUEST_METHOD"] == "POST") {
-            $nitProve= $_POST['nitProveedor'];
-            $nomProve= $_POST['nomProveedor'];
-            $correoProve= $_POST['correoProv'];
-            $celProve= $_POST['celProveedor'];
-            $nomVende= $_POST['nomVendedor'];
-            $celVende= $_POST['celVendedor'];
-            
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $nitProve = $_POST['nitProveedor'];
+            $nomProve = $_POST['nomProveedor'];
+            $correoProve = $_POST['correoProv'];
+            $celProve = $_POST['celProveedor'];
+            $nomVende = $_POST['nomVendedor'];
+            $celVende = $_POST['celVendedor'];
+
             $this->modeloProveedor->registroProveedor($nitProve, $nomProve, $correoProve, $celProve, $nomVende, $celVende);
-            
+
             echo "
                         <script>
                             alert('Registro del Proveedor Exitoso!');
@@ -39,66 +42,112 @@ class ControladorProveedor{
             //header("Location: index.php?action=registroProveedor");
             exit;
         }
-
     }
 
 
     //Consulta general de proveedor
-    public function listaProveedores() {
-        return $this->modeloProveedor->consultGenProveedores();
+    // public function listaProveedores() {
+    //     return $this->modeloProveedor->consultGenProveedores();
+    // }
+
+    public function listaProveedores($tipo, $valor)
+    {
+
+        $limite = 10;
+        $pagina = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
+        $inicio = ($pagina - 1) * $limite;
+
+        $proveedores = $this->modeloProveedor->consultGenProveedores($inicio, $limite);
+        $totalProveedores = $this->modeloProveedor->obtenerTotalProveedores();
+        $totalPaginas = ceil($totalProveedores / $limite);
+    
+        return
+            [
+                'proveedores' => $proveedores,
+                'pagina' => $pagina,
+                'totalPaginas' => $totalPaginas,
+                'filtro' => $valor,
+                'tipo' => $tipo,
+            ];
+    }
+
+
+    public function listaProveedoresFiltrado($tipo, $valor)
+    {
+        $limite = 10;
+        $pagina = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
+        $inicio = ($pagina - 1) * $limite;
+
+        $proveedores = $this->modeloProveedor->consultarFiltrado($tipo, $valor, $inicio, $limite);
+        $total = $this->modeloProveedor->totalFiltrado($tipo, $valor);
+        $totalPaginas = ceil($total / $limite);
+        
+        return
+            [
+                'proveedores' => $proveedores,
+                'pagina' => $pagina,
+                'totalPaginas' => $totalPaginas,
+                'filtro' => $valor,
+                'tipo' => $tipo,
+            ];
     }
 
 
     //Consulta general por nombre de proveedores 
-    public function nombreProveedor() {
+    public function nombreProveedor()
+    {
         $nomProve = $_GET['nomProveedor'] ?? '';
         return $this->modeloProveedor->consultGenProveedorNombre($nomProve);
     }
 
 
     //Consulta general por nombre de vendedor 
-    public function nombreVendedor() {
+    public function nombreVendedor()
+    {
         $nomVende = $_GET['nomVendedor'] ?? '';
         return $this->modeloProveedor->consultGenProveedorNombreVende($nomVende);
     }
 
     //Consulta general de proveedor por id
-    public function proveedorNit() {
+    public function proveedorNit()
+    {
         $nitProveedor = $_GET['nitProveedor'] ?? '';
         return $this->modeloProveedor->consultGenProveedorNit($nitProveedor);
     }
 
     //Consulta general de proveedor por id
-    public function proveedorId() {
+    public function proveedorId()
+    {
         $idProveedor = $_GET['idProveedor'] ?? '';
         return $this->modeloProveedor->consultGenProveedorId($idProveedor);
     }
 
 
     // Consulta para verificar Proveedor si esta registrado en BD
-    public function nitProveedor() {
+    public function nitProveedor()
+    {
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    
+
             // Leer JSON desde la solicitud
             $inputJSON = file_get_contents("php://input");
 
             $input = json_decode($inputJSON, true);
-    
+
             if (!isset($input['nitProveedor']) || empty($input['nitProveedor'])) {
                 echo json_encode(['error' => 'El código del producto es requerido']);
                 exit;
             }
-    
+
             $ProveedorNit = $input['nitProveedor'];
 
             header("Content-Type: application/json; charset=UTF-8");
-            
+
             //para ver variable en consola
             //echo "<script>console.log(" . json_encode($ProveedorNit) . ");</script>";
-    
+
             $proveedor = $this->modeloProveedor->consultaProveedor($ProveedorNit);
-    
+
             if ($proveedor) {
                 echo json_encode(["success" => true, "proveedor" => $proveedor]);
             } else {
@@ -111,19 +160,20 @@ class ControladorProveedor{
 
 
     //Actualizar proveedor
-    public function ActualizarProducto() {
+    public function ActualizarProducto()
+    {
 
-        if($_SERVER["REQUEST_METHOD"] == "POST") {
-            $nitProve= $_POST['nitProveedor'];
-            $nomProve= $_POST['nomProveedor'];
-            $correoProve= $_POST['correoProv'];
-            $celProve= $_POST['celProveedor'];
-            $nomVende= $_POST['nomVendedor'];
-            $celVende= $_POST['celVendedor'];
-            $idProveedor= $_POST['idProveedor'];
-            
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $nitProve = $_POST['nitProveedor'];
+            $nomProve = $_POST['nomProveedor'];
+            $correoProve = $_POST['correoProv'];
+            $celProve = $_POST['celProveedor'];
+            $nomVende = $_POST['nomVendedor'];
+            $celVende = $_POST['celVendedor'];
+            $idProveedor = $_POST['idProveedor'];
+
             $this->modeloProveedor->actualizarProveedor($nitProve, $nomProve, $correoProve, $celProve, $nomVende, $celVende, $idProveedor);
-            
+
             echo "
                         <script>
                             alert('Actualizacion del Proveedor Exitoso!');
@@ -134,12 +184,12 @@ class ControladorProveedor{
             //header("Location: index.php?action=consultaProveedor");
             exit;
         }
-
     }
 
     //Eliminar proveedor
-    public function EliminarProveedor() {
-        $idProveedor= $_GET['idProveedor'] ?? '';
+    public function EliminarProveedor()
+    {
+        $idProveedor = $_GET['idProveedor'] ?? '';
         $this->modeloProveedor->eliminarProveedor($idProveedor);
 
         echo "
@@ -149,23 +199,24 @@ class ControladorProveedor{
             </script>
             ";
 
-            //header("Location: index.php?action=consultaProveedor");
-            exit;
+        //header("Location: index.php?action=consultaProveedor");
+        exit;
     }
 
- //Registro de producto empleado
-    public function RegistroProveedorEmp() {
+    //Registro de producto empleado
+    public function RegistroProveedorEmp()
+    {
 
-        if($_SERVER["REQUEST_METHOD"] == "POST") {
-            $nitProve= $_POST['nitProveedor'];
-            $nomProve= $_POST['nomProveedor'];
-            $correoProve= $_POST['correoProv'];
-            $celProve= $_POST['celProveedor'];
-            $nomVende= $_POST['nomVendedor'];
-            $celVende= $_POST['celVendedor'];
-            
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $nitProve = $_POST['nitProveedor'];
+            $nomProve = $_POST['nomProveedor'];
+            $correoProve = $_POST['correoProv'];
+            $celProve = $_POST['celProveedor'];
+            $nomVende = $_POST['nomVendedor'];
+            $celVende = $_POST['celVendedor'];
+
             $this->modeloProveedor->registroProveedor($nitProve, $nomProve, $correoProve, $celProve, $nomVende, $celVende);
-            
+
             echo "
                         <script>
                             alert('Registro del Proveedor Exitoso!');
@@ -176,50 +227,53 @@ class ControladorProveedor{
             //header("Location: index.php?action=vistaAdmin");
             exit;
         }
-
     }
 
 
-    //Consulta general de proveedor
-    public function listaProveedoresEmp() {
-        return $this->modeloProveedor->consultGenProveedores();
-    }
+    // //Consulta general de proveedor
+    // public function listaProveedoresEmp() {
+    //     return $this->modeloProveedor->consultGenProveedores();
+    // }
 
 
     //Consulta general por nombre de proveedores 
-    public function nombreProveedorEmp() {
+    public function nombreProveedorEmp()
+    {
         $nomProve = $_GET['nomProveedor'] ?? '';
         return $this->modeloProveedor->consultGenProveedorNombre($nomProve);
     }
 
 
     //Consulta general por nombre de vendedor 
-    public function nombreVendedorEmp() {
+    public function nombreVendedorEmp()
+    {
         $nomVende = $_GET['nomVendedor'] ?? '';
         return $this->modeloProveedor->consultGenProveedorNombreVende($nomVende);
     }
 
     //Consulta general de proveedor por id
-    public function proveedorNitEmp() {
+    public function proveedorNitEmp()
+    {
         $idProveedor = $_GET['idProveedor'] ?? '';
         return $this->modeloProveedor->consultGenProveedorNit($idProveedor);
     }
 
 
     //Actualizar proveedor
-    public function ActualizarProductoEmp() {
+    public function ActualizarProductoEmp()
+    {
 
-        if($_SERVER["REQUEST_METHOD"] == "POST") {
-            $nitProve= $_POST['nitProveedor'];
-            $nomProve= $_POST['nomProveedor'];
-            $correoProve= $_POST['correoProv'];
-            $celProve= $_POST['celProveedor'];
-            $nomVende= $_POST['nomVendedor'];
-            $celVende= $_POST['celVendedor'];
-            $idProveedor= $_POST['idProveedor'];
-            
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $nitProve = $_POST['nitProveedor'];
+            $nomProve = $_POST['nomProveedor'];
+            $correoProve = $_POST['correoProv'];
+            $celProve = $_POST['celProveedor'];
+            $nomVende = $_POST['nomVendedor'];
+            $celVende = $_POST['celVendedor'];
+            $idProveedor = $_POST['idProveedor'];
+
             $this->modeloProveedor->actualizarProveedor($nitProve, $nomProve, $correoProve, $celProve, $nomVende, $celVende, $idProveedor);
-            
+
             echo "
                         <script>
                             alert('Actualizacion del Proveedor Exitoso!');
@@ -230,10 +284,5 @@ class ControladorProveedor{
             //header("Location: index.php?action=vistaAdmin");
             exit;
         }
-
     }
-
 }
-
-
-?>

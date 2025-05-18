@@ -438,22 +438,27 @@ switch ($action) {
 
     //Consulta Proveedor
     case 'consultaProveedor';
-        $proveedores = $controladorProveedor->listaProveedores();
+        $tipo = '';
+        $filtro = '';
+        $data = $controladorProveedor->listaProveedores($tipo, $filtro);
         include('./views/proveedor/consultaProveedor.php');
         break;
 
-    case 'consultaProveedorId';
-        $proveedores = $controladorProveedor->proveedorNit();
+    case 'consultaProveedorNit';
+        $valor = $_GET['nitProveedor'] ?? '';
+        $data = $controladorProveedor->listaProveedoresFiltrado('codigo', $valor);
         include('./views/proveedor/consultaProveedor.php');
         break;
 
     case 'consultaProveedorNombre';
-        $proveedores = $controladorProveedor->nombreProveedor();
+        $valor = $_GET['nomProveedor'] ?? '';
+        $data = $controladorProveedor->listaProveedoresFiltrado('nombreP', $valor);
         include('./views/proveedor/consultaProveedor.php');
         break;
 
     case 'consultaVendedorNombre';
-        $proveedores = $controladorProveedor->nombreVendedor();
+        $valor = $_GET['nomVendedor'] ?? '';
+        $data = $controladorProveedor->listaProveedoresFiltrado('nombreV', $valor);
         include('./views/proveedor/consultaProveedor.php');
         break;
 
@@ -486,10 +491,10 @@ switch ($action) {
 
 
     //Consulta Proveedor empleado
-    case 'consultaProveedorEmp';
-        $proveedores = $controladorProveedor->listaProveedoresEmp();
-        include('./views/proveedor/consultaProveedorEmp.php');
-        break;
+    // case 'consultaProveedorEmp';
+    //     $proveedores = $controladorProveedor->listaProveedoresEmp();
+    //     include('./views/proveedor/consultaProveedorEmp.php');
+    //     break;
 
     case 'consultaProveedorIdEmp';
         $proveedores = $controladorProveedor->proveedorNitEmp();
@@ -640,7 +645,7 @@ switch ($action) {
         break;
 
     case 'consultaEntProductoFecha';
-    $valor = $_GET['fechaEnt'] ?? '';
+        $valor = $_GET['fechaEnt'] ?? '';
         $data = $controladorEntProducto->listaEntProductosFiltrado('fechaEnt', $valor);
         include('./views/entradaProducto/consultaEntProductos.php');
         break;

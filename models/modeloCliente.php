@@ -55,7 +55,7 @@ class ModeloCliente
 
     public function obtenerTotalClientes()
     {
-        $stmt = $this->conn->query("SELECT COUNT(*) FROM ". $this->table."");
+        $stmt = $this->conn->query("SELECT COUNT(*) FROM ". $this->table. "");
         return (int)$stmt->fetchColumn();
     }
 
