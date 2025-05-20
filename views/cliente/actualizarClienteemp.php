@@ -5,7 +5,7 @@
             <div class="col-3">
             </div>
             <div class="col-6">
-            <form class=" mt-2" action="index.php?action=actualizarClienteemp" method="post">
+            <form class=" mt-2" action="index.php?action=actualizarCliente" method="post">
             <?php foreach($clientes as $cliente): ?>
                 <div class=" mt-2">
                     <input type="hidden" class="form-control" name="idCliente" value="<?= $cliente['idCliente']; ?>" placeholder="" required>

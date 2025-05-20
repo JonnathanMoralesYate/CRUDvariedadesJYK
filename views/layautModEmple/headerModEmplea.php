@@ -105,8 +105,8 @@ if ($_SESSION['rol'] == 1) {
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-white" href="#" id="clientesDropdown" role="button" data-bs-toggle="dropdown">Clientes</a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="index.php?action=registroClienteemp">Registrar Cliente</a></li>
-                                <li><a class="dropdown-item" href="index.php?action=consultaClienteemp">Consultar Cliente</a></li>
+                                <li><a class="dropdown-item" href="index.php?action=registroClienteEmp">Registrar Cliente</a></li>
+                                <li><a class="dropdown-item" href="index.php?action=consultaClienteEmp">Consultar Cliente</a></li>
                             </ul>
                         </li>
 

@@ -5,7 +5,7 @@
             <div class="col-3">
             </div>
             <div class="col-6">
-            <form class=" mt-2" action="index.php?action=registroClienteemp" method="post">
+            <form class=" mt-2" action="index.php?action=registroCliente" method="post">
             <div class=" mt-2">
                     <label for="tipoDocum" class="form-label text-white mt-3">Tipo Documento:</label>
                         <select id="tipoDocum" name="tipoDocum" class="form-control" required>
@@ -39,7 +39,7 @@
                 </div>
                 <div class="mt-2">
                     <label for="puntos" class="form-label text-white mt-3">Puntos Acumulados:</label>
-                    <input type="number" class="form-control" name="puntos" placeholder="" required>
+                    <input type="number" class="form-control" name="puntos" placeholder="" value="0" required readonly>
                 </div>
                 <div class="text-center mt-2">
                     <button type="submit" class="btn btn-outline-secondary text-white mt-3 text-center">Registrar</button>

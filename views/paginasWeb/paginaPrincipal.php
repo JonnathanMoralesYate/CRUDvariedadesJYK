@@ -18,7 +18,7 @@
         <div class="row p-3">
             <div class="col-2 mt-2">
                 <nav class="img-fluid d-block text-center" id="inicio">
-                    <a class="navbar-brand">
+                    <a class="navbar-brand" href='index.php?action=Principal'>
                         <img src="./photo/logoPrin1.1.jpeg" alt="Logo" width="90" height="80" class="rounded-3">
                     </a>
                 </nav>
@@ -168,7 +168,7 @@
             </div>
             <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-offset="0" class="scrollspy-example" tabindex="0">
                 <div class="overflow-auto" style="max-height: 500px;">
-                    <!-- <?php foreach ($clases as $clase): ?>
+                    <?php foreach ($clases as $clase): ?>
                         <div class="mt-1">
                             <div class="btn-group dropend w-100">
                                 <button type="button" class="btn btn-outline-secondary text-white w-100" aria-expanded="false" onclick="obtenerInforProductoPorClase(<?= $clase['idClase']; ?>)">
@@ -176,7 +176,7 @@
                                 </button>
                             </div>
                         </div>
-                    <?php endforeach; ?> -->
+                    <?php endforeach; ?>
                 </div>
             </div>
         </div>

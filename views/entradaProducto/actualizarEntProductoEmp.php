@@ -5,7 +5,7 @@
             <div class="col-3">
             </div>
             <div class="col-6">
-            <form class=" mt-2" action="index.php?action=actualizarEntProductosEmp" method="post">
+            <form class=" mt-2" action="index.php?action=actualizarEntProductos" method="post">
                 <div class="text-center text-white mt-3">
                     <h4>Actualizar Entrada de Productos</h4>
                 </div>

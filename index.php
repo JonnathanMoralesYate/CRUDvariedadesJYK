@@ -500,7 +500,7 @@ switch ($action) {
         break;
 
     case 'actualizarProveedor':
-        $controladorProveedor->ActualizarProducto();
+        $controladorProveedor->ActualizarProveedor();
         break;
 
     //Eliminar Proveedor
@@ -513,43 +513,48 @@ switch ($action) {
     //Registro Proveedor empleado
     case 'registroProveedorEmp':
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $controladorProveedor->RegistroProveedorEmp();
+            $controladorProveedor->RegistroProveedor();
         } else {
-            include('./views/proveedor/reguistroProveedorEmp.php');
+            include('./views/proveedor/registroProveedorEmp.php');
         }
         break;
 
 
     //Consulta Proveedor empleado
-    // case 'consultaProveedorEmp';
-    //     $proveedores = $controladorProveedor->listaProveedoresEmp();
-    //     include('./views/proveedor/consultaProveedorEmp.php');
-    //     break;
+    case 'consultaProveedorEmp';
+        $tipo = '';
+        $filtro = '';
+        $data = $controladorProveedor->listaProveedores($tipo, $filtro);
+        include('./views/proveedor/consultaProveedorEmp.php');
+        break;
 
-    case 'consultaProveedorIdEmp';
-        $proveedores = $controladorProveedor->proveedorNitEmp();
+    case 'consultaProveedorNitEmp';
+        $valor = $_GET['nitProveedor'] ?? '';
+        $data = $controladorProveedor->listaProveedoresFiltrado('codigo', $valor);
         include('./views/proveedor/consultaProveedorEmp.php');
         break;
 
     case 'consultaProveedorNombreEmp';
-        $proveedores = $controladorProveedor->nombreProveedorEmp();
+        $valor = $_GET['nomProveedor'] ?? '';
+        $data = $controladorProveedor->listaProveedoresFiltrado('nombreP', $valor);
         include('./views/proveedor/consultaProveedorEmp.php');
         break;
 
     case 'consultaVendedorNombreEmp';
-        $proveedores = $controladorProveedor->nombreVendedorEmp();
+        $valor = $_GET['nomVendedor'] ?? '';
+        $data = $controladorProveedor->listaProveedoresFiltrado('nombreV', $valor);
         include('./views/proveedor/consultaProveedorEmp.php');
         break;
 
 
     //Actualizar Proveedor empleado
     case 'actualizarProveedorIdEmp':
-        $proveedores = $controladorProveedor->proveedorNitEmp();
+        $proveedores = $controladorProveedor->proveedorId();
         include('./views/proveedor/actualizarProveedorEmp.php');
         break;
 
     case 'actualizarProveedorEmp':
-        $controladorProveedor->ActualizarProductoEmp();
+        $controladorProveedor->ActualizarProveedor();
         break;
 
     //============================================================================================================================================
@@ -608,42 +613,46 @@ switch ($action) {
     //============================================================================================================================================
 
     //Registro Clientes empleado
-    case 'registroClienteemp':
+    case 'registroClienteEmp':
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $controladorCliente->registroClienteemp();
+            $controladorCliente->registroCliente();
         } else {
             $tipoDocum = $controladorTipoDocum->listaTiposDocum();
-            include('./views/cliente/registroClienteemp.php');
+            include('./views/cliente/registroClienteEmp.php');
         }
         break;
 
 
     //Consulta Clientes empleado
-    // case 'consultaClienteemp';
-    //     $clientes = $controladorCliente->listaClientesemp();
-    //     include('./views/cliente/consultaClienteemp.php');
-    //     break;
-
-    case 'consultaClienteCedulaemp';
-        $clientes = $controladorCliente->datosClienteCedulaemp();
+    case 'consultaClienteEmp';
+        $tipo = '';
+        $filtro = '';
+        $data = $controladorCliente->listaClientesVista($tipo, $filtro);
         include('./views/cliente/consultaClienteemp.php');
         break;
 
-    case 'consultaClienteNombreemp';
-        $clientes = $controladorCliente->datosClienteNombreemp();
-        include('./views/cliente/consultaClienteemp.php');
+    case 'consultaClienteCedulaEmp';
+        $valor = $_GET['documCliente'] ?? '';
+        $data = $controladorCliente->listaClientesFiltrado('codigo', $valor);
+        include('./views/cliente/consultaClienteEmp.php');
+        break;
+
+    case 'consultaClienteNombreEmp';
+        $valor = $_GET['nomCliente'] ?? '';
+        $data = $controladorCliente->listaClientesFiltrado('nomCliente', $valor);
+        include('./views/cliente/consultaClienteEmp.php');
         break;
 
 
     //Actualizar Cliente  empleado
     case 'actualizarClienteIdEmp':
-        $clientes = $controladorCliente->datosClienteIdemp();
+        $clientes = $controladorCliente->datosClienteId();
         $tipoDocum = $controladorTipoDocum->listaTiposDocum();
-        include('./views/cliente/actualizarClienteemp.php');
+        include('./views/cliente/actualizarClienteEmp.php');
         break;
 
-    case 'actualizarClienteemp':
-        $controladorCliente->ActualizarClienteemp();
+    case 'actualizarClienteEmp':
+        $controladorCliente->ActualizarCliente();
         break;
 
     //============================================================================================================================================
@@ -697,7 +706,52 @@ switch ($action) {
         $controladorEntProducto->EliminarEntProducto();
         break;
 
-    //============================================================================================================================================
+//============================================================================================================================================
+
+    //Entrada de Productos Empleado
+
+    //Registro Entrada Productos
+    case 'registroEntProductosEmp':
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $controladorEntProducto->RegistroEntProducto();
+        } else {
+            include('./views/entradaProducto/registrarEntProductosEmp.php');
+        }
+        break;
+
+
+    //Consulta Entrada Productos
+    case 'consultaEntProductosEmp';
+        $tipo = '';
+        $filtro = '';
+        $data = $controladorEntProducto->listaEntProductosVista($tipo, $filtro);
+        include('./views/entradaProducto/consultaEntProductosEmp.php');
+        break;
+
+    case 'consultaEntProductoCodigoEmp';
+        $valor = $_GET['codProducto'] ?? '';
+        $data = $controladorEntProducto->listaEntProductosFiltrado('codigo', $valor);
+        include('./views/entradaProducto/consultaEntProductosEmp.php');
+        break;
+
+    case 'consultaEntProductoFechaEmp';
+        $valor = $_GET['fechaEnt'] ?? '';
+        $data = $controladorEntProducto->listaEntProductosFiltrado('fechaEnt', $valor);
+        include('./views/entradaProducto/consultaEntProductosEmp.php');
+        break;
+
+
+    //Actualizar Entrada Productos empleado
+    case 'actualizarEntProductosIdEmp':
+        $entProductos = $controladorEntProducto->consultaGenEntProductosId();
+        include('./views/entradaProducto/actualizarEntProductoEmp.php');
+        break;
+
+    case 'actualizarEntProductosEmp':
+        $controladorEntProducto->ActualizarEntProducto();
+        break;
+
+//==========================================================================================================================================================
 
     //Salida de Productos
 
@@ -755,6 +809,55 @@ switch ($action) {
     //Eliminar Salida Producto
     case 'eliminarSalProductoId':
         $controladorSalProducto->EliminarSalProducto();
+        break;
+
+//============================================================================================================================================
+
+    //Salida de Productos Empleados
+
+    //Registro Salida por Producto
+    case 'registroSalProductosEmp':
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $controladorSalProducto->RegistroSalProductoEmp();
+        } else {
+            $formaPagos = $controladorModoPago->listaModoPago();
+            include('./views/salidaProducto/registrarSalProductoEmp.php');
+        }
+        break;
+
+
+    //Registro Salida de Productos
+    case 'registroSalProductosEmpP':
+        $formaPagos = $controladorModoPago->listaModoPago();
+        include('./views/salidaProducto/registroSalProductoEmp.php');
+        break;
+
+
+    // //Consulta Salida Productos
+    // case 'consultaSalProductosEmp';
+    //     $salProductos = $controladorSalProducto->consultaGenSalProductosVistaEmp();
+    //     include('./views/salidaProducto/consultaSalProductoEmp.php');
+    //     break;
+
+    case 'consultaSalProductoIdEmp';
+        $salProductos = $controladorSalProducto->consultaGenSalProductosVistaIdEmp();
+        include('./views/salidaProducto/consultaSalProductoEmp.php');
+        break;
+
+    case 'consultaSalProductoFechaEmp';
+        $salProductos = $controladorSalProducto->consultaGenSalProductosVistaFechaEmp();
+        include('./views/salidaProducto/consultaSalProductoEmp.php');
+        break;
+
+    //Actualizar Salida Productos
+    case 'actualizarSalProductosIdEmp':
+        $salProductos = $controladorSalProducto->consultaGenSalProductosIdEmpP();
+        $formaPagos = $controladorModoPago->listaModoPago();
+        include('./views/salidaProducto/actualizarSalProductosEmp.php');
+        break;
+
+    case 'actualizarSalProductosEmp':
+        $controladorSalProducto->ActualizarSalProductosEmp();
         break;
 
     //============================================================================================================================================
@@ -833,7 +936,7 @@ switch ($action) {
         include('./views/productosAvencer/reporteProductosAvencerPDF.php');
         break;
 
-    //============================================================================================================================================
+//============================================================================================================================================
 
     //Verificaciones
 
@@ -965,95 +1068,8 @@ switch ($action) {
             $controladorProducto->ProductosPorNombre();
         }
         break;
-    //============================================================================================================================================
 
-    //Entrada de Productos Empleado
-
-    //Registro Entrada Productos
-    case 'registroEntProductosEmp':
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $controladorEntProducto->RegistroEntProductoEmp();
-        } else {
-            include('./views/entradaProducto/registrarEntProductosEmp.php');
-        }
-        break;
-
-
-    //Consulta Entrada Productos
-    // case 'consultaEntProductosEmp';
-    //     $entProductos = $controladorEntProducto->consultaGenEntProductosVistaEmp();
-    //     include('./views/entradaProducto/consultaEntProductosEmp.php');
-    //     break;
-
-    case 'consultaEntProductoIdEmp';
-        $entProductos = $controladorEntProducto->consultaGenEntProductosVistaIdEmp();
-        include('./views/entradaProducto/consultaEntProductosEmp.php');
-        break;
-
-    case 'consultaEntProductoFechaEmp';
-        $entProductos = $controladorEntProducto->consultaGenEntProductosVistaFechaEmp();
-        include('./views/entradaProducto/consultaEntProductosEmp.php');
-        break;
-
-
-    //Actualizar Entrada Productos empleado
-    case 'actualizarEntProductosIdEmp':
-        $entProductos = $controladorEntProducto->consultaGenEntProductosIdEmp();
-        include('./views/entradaProducto/actualizarEntProductoEmp.php');
-        break;
-
-    case 'actualizarEntProductosEmp':
-        $controladorEntProducto->ActualizarEntProducto();
-        break;
-
-    //======================================================================
-
-    //Registro Salida por Producto
-    case 'registroSalProductosEmp':
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $controladorSalProducto->RegistroSalProductoEmp();
-        } else {
-            $formaPagos = $controladorModoPago->listaModoPago();
-            include('./views/salidaProducto/registrarSalProductoEmp.php');
-        }
-        break;
-
-
-    //Registro Salida de Productos
-    case 'registroSalProductosEmpP':
-        $formaPagos = $controladorModoPago->listaModoPago();
-        include('./views/salidaProducto/registroSalProductoEmp.php');
-        break;
-
-
-    // //Consulta Salida Productos
-    // case 'consultaSalProductosEmp';
-    //     $salProductos = $controladorSalProducto->consultaGenSalProductosVistaEmp();
-    //     include('./views/salidaProducto/consultaSalProductoEmp.php');
-    //     break;
-
-    case 'consultaSalProductoIdEmp';
-        $salProductos = $controladorSalProducto->consultaGenSalProductosVistaIdEmp();
-        include('./views/salidaProducto/consultaSalProductoEmp.php');
-        break;
-
-    case 'consultaSalProductoFechaEmp';
-        $salProductos = $controladorSalProducto->consultaGenSalProductosVistaFechaEmp();
-        include('./views/salidaProducto/consultaSalProductoEmp.php');
-        break;
-
-    //Actualizar Salida Productos
-    case 'actualizarSalProductosIdEmp':
-        $salProductos = $controladorSalProducto->consultaGenSalProductosIdEmpP();
-        $formaPagos = $controladorModoPago->listaModoPago();
-        include('./views/salidaProducto/actualizarSalProductosEmp.php');
-        break;
-
-    case 'actualizarSalProductosEmp':
-        $controladorSalProducto->ActualizarSalProductosEmp();
-        break;
-
-    //============================================================================================================================================
+//============================================================================================================================================
 
     //Reportes
 
@@ -1132,9 +1148,6 @@ switch ($action) {
 
 
     default:
-
-        //$clases = $controladorProducto->listaClasesP();
-        //include('./views/paginasWeb/paginaPrincipal.php');
         $action = 'Principal';
         break;
 }

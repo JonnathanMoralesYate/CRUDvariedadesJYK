@@ -32,15 +32,26 @@ class ControladorProveedor
 
             $this->modeloProveedor->registroProveedor($nitProve, $nomProve, $correoProve, $celProve, $nomVende, $celVende);
 
-            echo "
+            session_start();
+
+                if ($_SESSION['rol'] == 1) {
+
+                    echo "
                         <script>
                             alert('Registro del Proveedor Exitoso!');
                             window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=registroProveedor';
                         </script>
                         ";
-
-            //header("Location: index.php?action=registroProveedor");
-            exit;
+                        exit;
+                } elseif ($_SESSION['rol'] == 2) {
+                    echo "
+                        <script>
+                            alert('Registro del Proveedor Exitoso!');
+                            window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=registroProveedorEmp';
+                        </script>
+                        ";
+                    exit;
+                }
         }
     }
 
@@ -93,27 +104,27 @@ class ControladorProveedor
     }
 
 
-    //Consulta general por nombre de proveedores 
-    public function nombreProveedor()
-    {
-        $nomProve = $_GET['nomProveedor'] ?? '';
-        return $this->modeloProveedor->consultGenProveedorNombre($nomProve);
-    }
+    // //Consulta general por nombre de proveedores 
+    // public function nombreProveedor()
+    // {
+    //     $nomProve = $_GET['nomProveedor'] ?? '';
+    //     return $this->modeloProveedor->consultGenProveedorNombre($nomProve);
+    // }
 
 
-    //Consulta general por nombre de vendedor 
-    public function nombreVendedor()
-    {
-        $nomVende = $_GET['nomVendedor'] ?? '';
-        return $this->modeloProveedor->consultGenProveedorNombreVende($nomVende);
-    }
+    // //Consulta general por nombre de vendedor 
+    // public function nombreVendedor()
+    // {
+    //     $nomVende = $_GET['nomVendedor'] ?? '';
+    //     return $this->modeloProveedor->consultGenProveedorNombreVende($nomVende);
+    // }
 
-    //Consulta general de proveedor por id
-    public function proveedorNit()
-    {
-        $nitProveedor = $_GET['nitProveedor'] ?? '';
-        return $this->modeloProveedor->consultGenProveedorNit($nitProveedor);
-    }
+    // //Consulta general de proveedor por id
+    // public function proveedorNit()
+    // {
+    //     $nitProveedor = $_GET['nitProveedor'] ?? '';
+    //     return $this->modeloProveedor->consultGenProveedorNit($nitProveedor);
+    // }
 
     //Consulta general de proveedor por id
     public function proveedorId()
@@ -160,7 +171,7 @@ class ControladorProveedor
 
 
     //Actualizar proveedor
-    public function ActualizarProducto()
+    public function ActualizarProveedor()
     {
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -174,15 +185,26 @@ class ControladorProveedor
 
             $this->modeloProveedor->actualizarProveedor($nitProve, $nomProve, $correoProve, $celProve, $nomVende, $celVende, $idProveedor);
 
-            echo "
+            session_start();
+
+                if ($_SESSION['rol'] == 1) {
+
+                    echo "
                         <script>
                             alert('Actualizacion del Proveedor Exitoso!');
                             window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaProveedor';
                         </script>
                         ";
-
-            //header("Location: index.php?action=consultaProveedor");
-            exit;
+                        exit;
+                } elseif ($_SESSION['rol'] == 2) {
+                    echo "
+                        <script>
+                            alert('Actualizacion del Proveedor Exitoso!');
+                            window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaProveedorEmp';
+                        </script>
+                        ";
+                    exit;
+                }
         }
     }
 
@@ -198,36 +220,34 @@ class ControladorProveedor
                 window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaProveedor';
             </script>
             ";
-
-        //header("Location: index.php?action=consultaProveedor");
         exit;
     }
 
     //Registro de producto empleado
-    public function RegistroProveedorEmp()
-    {
+    // public function RegistroProveedorEmp()
+    // {
 
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $nitProve = $_POST['nitProveedor'];
-            $nomProve = $_POST['nomProveedor'];
-            $correoProve = $_POST['correoProv'];
-            $celProve = $_POST['celProveedor'];
-            $nomVende = $_POST['nomVendedor'];
-            $celVende = $_POST['celVendedor'];
+    //     if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    //         $nitProve = $_POST['nitProveedor'];
+    //         $nomProve = $_POST['nomProveedor'];
+    //         $correoProve = $_POST['correoProv'];
+    //         $celProve = $_POST['celProveedor'];
+    //         $nomVende = $_POST['nomVendedor'];
+    //         $celVende = $_POST['celVendedor'];
 
-            $this->modeloProveedor->registroProveedor($nitProve, $nomProve, $correoProve, $celProve, $nomVende, $celVende);
+    //         $this->modeloProveedor->registroProveedor($nitProve, $nomProve, $correoProve, $celProve, $nomVende, $celVende);
 
-            echo "
-                        <script>
-                            alert('Registro del Proveedor Exitoso!');
-                            window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=registroProveedoremp';
-                        </script>
-                        ";
+    //         echo "
+    //                     <script>
+    //                         alert('Registro del Proveedor Exitoso!');
+    //                         window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=registroProveedoremp';
+    //                     </script>
+    //                     ";
 
-            //header("Location: index.php?action=vistaAdmin");
-            exit;
-        }
-    }
+    //         //header("Location: index.php?action=vistaAdmin");
+    //         exit;
+    //     }
+    // }
 
 
     // //Consulta general de proveedor
@@ -237,52 +257,52 @@ class ControladorProveedor
 
 
     //Consulta general por nombre de proveedores 
-    public function nombreProveedorEmp()
-    {
-        $nomProve = $_GET['nomProveedor'] ?? '';
-        return $this->modeloProveedor->consultGenProveedorNombre($nomProve);
-    }
+    // public function nombreProveedorEmp()
+    // {
+    //     $nomProve = $_GET['nomProveedor'] ?? '';
+    //     return $this->modeloProveedor->consultGenProveedorNombre($nomProve);
+    // }
 
 
-    //Consulta general por nombre de vendedor 
-    public function nombreVendedorEmp()
-    {
-        $nomVende = $_GET['nomVendedor'] ?? '';
-        return $this->modeloProveedor->consultGenProveedorNombreVende($nomVende);
-    }
+    // //Consulta general por nombre de vendedor 
+    // public function nombreVendedorEmp()
+    // {
+    //     $nomVende = $_GET['nomVendedor'] ?? '';
+    //     return $this->modeloProveedor->consultGenProveedorNombreVende($nomVende);
+    // }
 
-    //Consulta general de proveedor por id
-    public function proveedorNitEmp()
-    {
-        $idProveedor = $_GET['idProveedor'] ?? '';
-        return $this->modeloProveedor->consultGenProveedorNit($idProveedor);
-    }
+    // //Consulta general de proveedor por id
+    // public function proveedorNitEmp()
+    // {
+    //     $idProveedor = $_GET['idProveedor'] ?? '';
+    //     return $this->modeloProveedor->consultGenProveedorNit($idProveedor);
+    // }
 
 
     //Actualizar proveedor
-    public function ActualizarProductoEmp()
-    {
+    // public function ActualizarProductoEmp()
+    // {
 
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $nitProve = $_POST['nitProveedor'];
-            $nomProve = $_POST['nomProveedor'];
-            $correoProve = $_POST['correoProv'];
-            $celProve = $_POST['celProveedor'];
-            $nomVende = $_POST['nomVendedor'];
-            $celVende = $_POST['celVendedor'];
-            $idProveedor = $_POST['idProveedor'];
+    //     if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    //         $nitProve = $_POST['nitProveedor'];
+    //         $nomProve = $_POST['nomProveedor'];
+    //         $correoProve = $_POST['correoProv'];
+    //         $celProve = $_POST['celProveedor'];
+    //         $nomVende = $_POST['nomVendedor'];
+    //         $celVende = $_POST['celVendedor'];
+    //         $idProveedor = $_POST['idProveedor'];
 
-            $this->modeloProveedor->actualizarProveedor($nitProve, $nomProve, $correoProve, $celProve, $nomVende, $celVende, $idProveedor);
+    //         $this->modeloProveedor->actualizarProveedor($nitProve, $nomProve, $correoProve, $celProve, $nomVende, $celVende, $idProveedor);
 
-            echo "
-                        <script>
-                            alert('Actualizacion del Proveedor Exitoso!');
-                            window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaProveedorEmp';
-                        </script>
-                        ";
+    //         echo "
+    //                     <script>
+    //                         alert('Actualizacion del Proveedor Exitoso!');
+    //                         window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaProveedorEmp';
+    //                     </script>
+    //                     ";
 
-            //header("Location: index.php?action=vistaAdmin");
-            exit;
-        }
-    }
+    //         //header("Location: index.php?action=vistaAdmin");
+    //         exit;
+    //     }
+    // }
 }

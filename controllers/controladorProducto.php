@@ -102,8 +102,6 @@ class ControladorProducto
                         </script>
                         ";
                     exit;
-                } else {
-                    header("Location: index.php?action=principal");
                 }
             }
         }
@@ -159,20 +157,20 @@ class ControladorProducto
     }
 
 
-    //Consulta general de productos por codigo de barras vista
-    public function productoVistaCodigo()
-    {
-        $codigoProducto = $_GET['codProduc'] ?? '';
-        return $this->modeloProducto->consultGenProductosvistaCodigo($codigoProducto);
-    }
+    // //Consulta general de productos por codigo de barras vista
+    // public function productoVistaCodigo()
+    // {
+    //     $codigoProducto = $_GET['codProduc'] ?? '';
+    //     return $this->modeloProducto->consultGenProductosvistaCodigo($codigoProducto);
+    // }
 
 
-    //Consulta general de productos por nombre vista
-    public function productoVistaNombre()
-    {
-        $nombre = $_GET['nombre'] ?? '';
-        return $this->modeloProducto->consultGenProductosvistaNombre($nombre);
-    }
+    // //Consulta general de productos por nombre vista
+    // public function productoVistaNombre()
+    // {
+    //     $nombre = $_GET['nombre'] ?? '';
+    //     return $this->modeloProducto->consultGenProductosvistaNombre($nombre);
+    // }
 
 
     //Consulta general de productos por codigo de barras 
