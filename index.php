@@ -45,18 +45,28 @@ $controladorInventario = new ControladorInventario();
 $controladorModoPago = new ControladorModoPago();
 $controladorGenerarCodigo = new ControladorGenerarCodigo();
 
-$action = htmlspecialchars($_GET['action'] ?? 'principal', ENT_QUOTES, 'UTF-8');
+$action = htmlspecialchars($_GET['action'] ?? 'Principal', ENT_QUOTES, 'UTF-8');
 
 //echo "<script>console.log('Hola desde PHP en la consola!');</script>";
 
+if (!in_array($action, ['Principal', 'Nosotros', 'Servicios', 'login', 'cerrarSesion'])) {
+    session_start();
+}
+
+
 switch ($action) {
 
-    case 'paginaN':
-        $vistaPaginaN->index();
+    case 'Nosotros':
+        include('./views/paginasWeb/paginaNosotros.php');
         break;
 
-    case 'paginaS':
-        $vistaPaginaS->index();
+    case 'Servicios':
+        include('./views/paginasWeb/paginaServicios.php');
+        break;
+
+    case 'Principal':
+        $clases = $controladorProducto->listaClasesP();
+        include('./views/paginasWeb/paginaPrincipal.php');
         break;
 
     //============================================================================================================================================
@@ -82,7 +92,7 @@ switch ($action) {
         break;
 
     case 'cerrarSesion':
-        $controladorLogin->cerraraSesion();
+        $controladorLogin->cerrarSesion();
         break;
 
     //============================================================================================================================================
@@ -205,33 +215,37 @@ switch ($action) {
 
     //registro de producto empleado
 
-    case 'registroProductoemp':
+    case 'registroProductosEmp':
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $controladorProducto->registroProductosemp();
+            $controladorProducto->registroProductos();
         } else {
             $clases = $controladorClases->listaClasesP();
             $presentaciones = $controladorPresentacion->listaPresentacion();
             $undBases = $controladorUndBase->listaUndBase();
             $formatoVents = $controladorFormatoVenta->listaFormatoVenta();
-            include('./views/productos/registroproductoemp.php');
+            include('./views/productos/registroproductosEmp.php');
         }
         break;
 
 
     //Consulta Producto empleado
-    // case'consultaProductosemp';
-    //     $productos = $controladorProducto->listaProductosVistaemp();
-    //     include('./views/productos/consultaProductoemp.php');
-    //     break;
-
-    case 'consultaProductosCodigoemp';
-        $productos = $controladorProducto->productoVistaCodigoemp();
-        include('./views/productos/consultaProductoemp.php');
+    case 'consultaProductosEmp';
+        $tipo = 'codigo';
+        $filtro = '';
+        $data = $controladorProducto->listaProductosVista($tipo, $filtro);
+        include('./views/productos/consultaProductoEmp.php');
         break;
 
-    case 'consultaProductosNombreemp';
-        $productos = $controladorProducto->productoVistaNombreemp();
-        include('./views/productos/consultaProductoemp.php');
+    case 'consultaProductosCodigoEmp';
+        $valor = $_GET['codProduc'] ?? '';
+        $data = $controladorProducto->listaProductosFiltrado('codigo', $valor);
+        include('./views/productos/consultaProductoEmp.php');
+        break;
+
+    case 'consultaProductosNombreEmp';
+        $valor = $_GET['nombre'] ?? '';
+        $data = $controladorProducto->listaProductosFiltrado('nombre', $valor);
+        include('./views/productos/consultaProductoEmp.php');
         break;
 
     //============================================================================================================================================
@@ -1119,7 +1133,8 @@ switch ($action) {
 
     default:
 
-        $clases = $controladorProducto->listaClasesP();
-        include('./views/paginasWeb/paginaPrincipal.php');
+        //$clases = $controladorProducto->listaClasesP();
+        //include('./views/paginasWeb/paginaPrincipal.php');
+        $action = 'Principal';
         break;
 }

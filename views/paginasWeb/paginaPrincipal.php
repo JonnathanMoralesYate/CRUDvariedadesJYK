@@ -37,10 +37,10 @@
                         <div class="collapse navbar-collapse mt-2" id="navbarTogglerDemo01">
                             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                                 <li class="nav-item me-3">
-                                    <a class="nav-link text-white m-1 fs-5" href="index.php?action=paginaN">Nosotros</a>
+                                    <a class="nav-link text-white m-1 fs-5" href="index.php?action=Nosotros">Nosotros</a>
                                 </li>
                                 <li class="nav-item me-3">
-                                    <a class="nav-link text-white m-1 fs-5" href="index.php?action=paginaS">Servicios</a>
+                                    <a class="nav-link text-white m-1 fs-5" href="index.php?action=Servicios">Servicios</a>
                                 </li>
                                 <li class="nav-item me-3">
                                     <a class="nav-link text-white m-1 fs-5" href="#Ubicacion">Ubicación y Contacto</a>
@@ -168,7 +168,7 @@
             </div>
             <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-offset="0" class="scrollspy-example" tabindex="0">
                 <div class="overflow-auto" style="max-height: 500px;">
-                    <?php foreach ($clases as $clase): ?>
+                    <!-- <?php foreach ($clases as $clase): ?>
                         <div class="mt-1">
                             <div class="btn-group dropend w-100">
                                 <button type="button" class="btn btn-outline-secondary text-white w-100" aria-expanded="false" onclick="obtenerInforProductoPorClase(<?= $clase['idClase']; ?>)">
@@ -176,7 +176,7 @@
                                 </button>
                             </div>
                         </div>
-                    <?php endforeach; ?>
+                    <?php endforeach; ?> -->
                 </div>
             </div>
         </div>
