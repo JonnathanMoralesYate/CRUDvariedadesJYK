@@ -6,7 +6,8 @@ require_once('./models/modeloEntProducto.php');
 require_once('./models/modeloInventario.php');
 require_once('./config/conexionBDJYK.php');
 
-class ControladorSalProducto{
+class ControladorSalProducto
+{
 
     private $db;
     private $modeloSalProducto;
@@ -14,95 +15,150 @@ class ControladorSalProducto{
     private $modeloCliente;
     private $modeloInventario;
 
-    public function __construct() {
+    public function __construct()
+    {
 
-        $database= new DataBase();
-        $this->db= $database->getConnectionJYK();
-        $this->modeloSalProducto= new ModeloSalProducto($this->db);
-        $this->modeloProducto= new ModeloProducto($this->db);
-        $this->modeloCliente= new ModeloCliente($this->db);
-        $this->modeloInventario= new ModeloInventario($this->db);
-
+        $database = new DataBase();
+        $this->db = $database->getConnectionJYK();
+        $this->modeloSalProducto = new ModeloSalProducto($this->db);
+        $this->modeloProducto = new ModeloProducto($this->db);
+        $this->modeloCliente = new ModeloCliente($this->db);
+        $this->modeloInventario = new ModeloInventario($this->db);
     }
 
 
     //registro de Salida Producto
-    public function RegistroSalProducto() {
+    public function RegistroSalProducto()
+    {
 
-        if($_SERVER["REQUEST_METHOD"] == "POST") {
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-            $codProducto= $_POST['codProducto'];
-            $numIdentcliente= $_POST['numIdentCliente'];
+            $codProducto = $_POST['codProducto'];
+            $numIdentcliente = $_POST['numIdentCliente'];
 
-            $productoId= $this->modeloProducto->consultaProducto($codProducto);
+            $productoId = $this->modeloProducto->consultaProducto($codProducto);
 
-            $clienteId= $this->modeloCliente->consultaCliente($numIdentcliente);
+            $clienteId = $this->modeloCliente->consultaCliente($numIdentcliente);
 
-            $idProducto= $productoId['idProducto'];
-            $idCliente= $clienteId['idCliente'];
-            $fechaSal= $_POST['fechaSal'];
-            $cantSal= $_POST['cantSal'];
+            $idProducto = $productoId['idProducto'];
+            $idCliente = $clienteId['idCliente'];
+            $fechaSal = $_POST['fechaSal'];
+            $cantSal = $_POST['cantSal'];
             $precioVentaString = $_POST['precioVenta'];    // Recibimos el valor como string
             $precioVentaSinPunto = str_replace('.', '', $precioVentaString);    // Intentamos eliminar el punto
             $precioVenta = (int) $precioVentaSinPunto;  // Convertir a entero
 
-            $idModoPago= $_POST['tipoPago'];
+            $idModoPago = $_POST['tipoPago'];
 
-            if($clienteId == false){
-                header("Location: index.php?action=registroCliente");
-                exit;
-            }elseif($productoId == false) {
-                header("Location: index.php?action=registroProducto");
-                exit;          
-            }else{
+            if ($clienteId == false) {
+                    //session_start();
 
-                    //metodo para cuando se registre una Salida de producto, en el inventario se reste el producto del stock
-                    $estadoInventario = $this->modeloInventario->consultaInventarioId($idProducto);
-
-                        if($estadoInventario !== false) {
-                                //el producto ya existe
-                                    $cantidadAct= $estadoInventario['CantActual'] - $cantSal;
-                                    $this->modeloInventario->actualizarStock($cantidadAct, $idProducto);
-
-                                //metodo para la acumulacion de puntos del cliente
-                                    $puntosCliente= $this->modeloCliente->consultaPuntos($idCliente);
-
-                                        if($puntosCliente) {
-
-                                                $puntosBd= $puntosCliente['Puntos'];
-
-                                                $puntosGanados= ($precioVenta*0.005);
-
-                                                $puntosAct= $puntosBd + $puntosGanados;
-
-
-                                                $this->modeloCliente->actualizaPuntos($puntosAct, $idCliente);
-                                            }
-
-                                //registrar salida producto
-                                    $this->modeloSalProducto->registroSalProducto($idProducto, $idCliente, $fechaSal, $cantSal, $precioVenta, $idModoPago);
-
-                                echo "
-                                    <script>
-                                        alert('Registro Exitoso!');
-                                        window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=registroSalProductos';
-                                    </script>
-                                    ";
-                                    exit;
-
-                        }else{
-                            //el Producto no existe
-                            //$this->modeloInventario->registroInventario($idProducto, $cantidadEnt);
+                        if ($_SESSION['rol'] == 1) {
                             echo "
-                            <script>
-                                alert('Registre La Entrada del Producto!');
-                                window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=registroEntProductos';
-                            </script>
-                            ";
-                            //header("Location: index.php?action=registroEntProductos");
+                                <script>
+                                    alert('Registro Salida del Producto Exitoso!');
+                                    window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=registroCliente';
+                                </script>
+                                ";
+                            exit;
+                        } elseif ($_SESSION['rol'] == 2) {
+                            echo "
+                                <script>
+                                    alert('Registro Salida del Producto Exitoso!');
+                                    window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=registroClienteEmp';
+                                </script>
+                                ";
                             exit;
                         }
+            } elseif ($productoId == false) {
+                    //session_start();
+
+                        if ($_SESSION['rol'] == 1) {
+                            echo "
+                                <script>
+                                    alert('Registro Salida del Producto Exitoso!');
+                                    window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=registroProducto';
+                                </script>
+                                ";
+                            exit;
+                        } elseif ($_SESSION['rol'] == 2) {
+                            echo "
+                                <script>
+                                    alert('Registro Salida del Producto Exitoso!');
+                                    window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=registroProductoEmp';
+                                </script>
+                                ";
+                            exit;
+                        }
+            } else {
+
+                //metodo para cuando se registre una Salida de producto, en el inventario se reste el producto del stock
+                $estadoInventario = $this->modeloInventario->consultaInventarioId($idProducto);
+
+                if ($estadoInventario !== false) {
+                        //el producto ya existe
+                        $cantidadAct = $estadoInventario['CantActual'] - $cantSal;
+                        $this->modeloInventario->actualizarStock($cantidadAct, $idProducto);
+
+                        //metodo para la acumulacion de puntos del cliente
+                        $puntosCliente = $this->modeloCliente->consultaPuntos($idCliente);
+
+                    if ($puntosCliente) {
+
+                        $puntosBd = $puntosCliente['Puntos'];
+
+                        $puntosGanados = ($precioVenta * 0.005);
+
+                        $puntosAct = $puntosBd + $puntosGanados;
+
+
+                        $this->modeloCliente->actualizaPuntos($puntosAct, $idCliente);
+                    }
+
+                    //registrar salida producto
+                    $this->modeloSalProducto->registroSalProducto($idProducto, $idCliente, $fechaSal, $cantSal, $precioVenta, $idModoPago);
+
+                    //session_start();
+
+                    if ($_SESSION['rol'] == 1) {
+                            echo "
+                                <script>
+                                    alert('Registro Salida del Producto Exitoso!');
+                                    window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=registroSalProductos';
+                                </script>
+                                ";
+                            exit;
+                    } elseif ($_SESSION['rol'] == 2) {
+                            echo "
+                                <script>
+                                    alert('Registro Salida del Producto Exitoso!');
+                                    window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=registroSalProductosEmp';
+                                </script>
+                                ";
+                            exit;
+                    }
+                } else {
+                    //session_start();
+
+                    if ($_SESSION['rol'] == 1) {
+                            echo "
+                                <script>
+                                    alert('Registro Salida del Producto Exitoso!');
+                                    window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=registroEntProductos';
+                                </script>
+                                ";
+                            exit;
+                    } elseif ($_SESSION['rol'] == 2) {
+                            echo "
+                                <script>
+                                    alert('Registro Salida del Producto Exitoso!');
+                                    window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=registroEntProductosEmp';
+                                </script>
+                                ";
+                            exit;
+                    }
                 }
+            }
         }
     }
 
@@ -156,208 +212,235 @@ class ControladorSalProducto{
     }
 
 
-    //Consulta por Id Inner Join
-    public function consultaGenSalProductosVistaId() {
-        $codProducto = $_GET['codProducto'] ?? '';
-        return $this->modeloSalProducto->consultaGenSalProductosVistaId($codProducto);
-    }
+    // //Consulta por Id Inner Join
+    // public function consultaGenSalProductosVistaId()
+    // {
+    //     $codProducto = $_GET['codProducto'] ?? '';
+    //     return $this->modeloSalProducto->consultaGenSalProductosVistaId($codProducto);
+    // }
 
 
-    //Consulta por Fecha Inner Join
-    public function consultaGenSalProductosVistaFecha() {
-        $fecha = $_GET['fechaSal'] ?? '';
-        return $this->modeloSalProducto->consultaGenSalProductosVistaFecha($fecha);
-    }
+    // //Consulta por Fecha Inner Join
+    // public function consultaGenSalProductosVistaFecha()
+    // {
+    //     $fecha = $_GET['fechaSal'] ?? '';
+    //     return $this->modeloSalProducto->consultaGenSalProductosVistaFecha($fecha);
+    // }
 
 
     //Consulta general por Id
-    public function consultaGenSalProductosId() {
+    public function consultaGenSalProductosId()
+    {
         $idSalProducto = $_GET['idSalProducto'] ?? '';
         return $this->modeloSalProducto->consultaSalProductoId($idSalProducto);
     }
 
 
     //Consulta general por Id para actualizar
-    public function consultaGenSalProductosIdP() {
-        $idSalProducto = $_GET['idSalProducto'] ?? '';
-        return $this->modeloSalProducto->consultaSalProductoIdP($idSalProducto);
-    }
+    // public function consultaGenSalProductosIdP()
+    // {
+    //     $idSalProducto = $_GET['idSalProducto'] ?? '';
+    //     return $this->modeloSalProducto->consultaSalProductoIdP($idSalProducto);
+    // }
 
 
     //Actualizar Salida de Productos
-    public function ActualizarSalProductos() {
+    public function ActualizarSalProductos()
+    {
 
-        if($_SERVER["REQUEST_METHOD"] == "POST") {
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-            $codProducto= $_POST['codProducto'];
-            $numIdentcliente= $_POST['numIdentCliente'];
+            $codProducto = $_POST['codProducto'];
+            $numIdentcliente = $_POST['numIdentCliente'];
 
-            $productoId= $this->modeloProducto->consultaProducto($codProducto);
+            $productoId = $this->modeloProducto->consultaProducto($codProducto);
 
-            $clienteId= $this->modeloCliente->consultaCliente($numIdentcliente);
+            $clienteId = $this->modeloCliente->consultaCliente($numIdentcliente);
 
-            $idProducto= $productoId['idProducto'];
-            $precioProducto= $_POST['precioProducto'];
-            $idCliente= $clienteId['idCliente'];
-            $fechaSal= $_POST['fechaSal'];
-            $cantSal= $_POST['cantSal'];
-            $precioVenta= $_POST['precioVenta'];
-            $idModoPago= $_POST['tipoPago'];
-            $idSalProducto= $_POST['idSalProducto'];
+            $idProducto = $productoId['idProducto'];
+            $precioProducto = $_POST['precioProducto'];
+            $idCliente = $clienteId['idCliente'];
+            $fechaSal = $_POST['fechaSal'];
+            $cantSal = $_POST['cantSal'];
+            $precioVenta = $_POST['precioVenta'];
+            $idModoPago = $_POST['tipoPago'];
+            $idSalProducto = $_POST['idSalProducto'];
 
-            $cantidadSal= $this->modeloSalProducto->consultaCantidadSalProductos($idSalProducto);
+            $cantidadSal = $this->modeloSalProducto->consultaCantidadSalProductos($idSalProducto);
 
-            $cantidadSalAnterior= $cantidadSal['CantSalida'];
+            $cantidadSalAnterior = $cantidadSal['CantSalida'];
 
-            //echo "<script>
-            //        alert('variable: " . $precioProducto . "');
-            //    </script>";
+            if ($cantidadSalAnterior == $cantSal) {
 
-            if($cantidadSalAnterior == $cantSal) {
-
-                $cantidadActual= $cantSal;
+                $cantidadActual = $cantSal;
 
                 $this->modeloSalProducto->actualizarSalProducto($idProducto, $idCliente, $fechaSal, $cantidadActual, $precioVenta, $idModoPago, $idSalProducto);
 
-                echo "
-                <script>
-                    alert('Actualizacion Exitosa!');
-                    window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaSalProductos';
-                </script>
-                ";
+                //session_start();
 
-                //header("Location: index.php?action=consultaSalProductos");
-                exit;
+                    if ($_SESSION['rol'] == 1) {
+                            echo "
+                                <script>
+                                    alert('Registro Salida del Producto Exitoso!');
+                                    window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaSalProductos';
+                                </script>
+                                ";
+                            exit;
+                    } elseif ($_SESSION['rol'] == 2) {
+                            echo "
+                                <script>
+                                    alert('Registro Salida del Producto Exitoso!');
+                                    window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaSalProductosEmp';
+                                </script>
+                                ";
+                            exit;
+                    }
+            } elseif ($cantidadSalAnterior > $cantSal) {
 
-            }elseif($cantidadSalAnterior > $cantSal) {
-
-                $cantidadActual= $cantSal;
+                $cantidadActual = $cantSal;
 
                 //actualizar el precio de la venta
-                $precioVentaAct= $precioProducto * $cantidadActual ;
+                $precioVentaAct = $precioProducto * $cantidadActual;
 
                 //actualizar puntos del cliente
-                $precioDifer= $precioVenta - $precioVentaAct;
+                $precioDifer = $precioVenta - $precioVentaAct;
 
                 //metodo para la acumulacion de puntos del cliente
-                $puntosCliente= $this->modeloCliente->consultaPuntos($idCliente);
+                $puntosCliente = $this->modeloCliente->consultaPuntos($idCliente);
 
-                if($puntosCliente) {
+                if ($puntosCliente) {
 
-                        $puntosBd= $puntosCliente['Puntos'];
+                    $puntosBd = $puntosCliente['Puntos'];
 
-                        $puntosGanados= ($precioDifer*0.005);
+                    $puntosGanados = ($precioDifer * 0.005);
 
-                        $puntosAct= $puntosBd - $puntosGanados;
+                    $puntosAct = $puntosBd - $puntosGanados;
 
 
-                        $this->modeloCliente->actualizaPuntos($puntosAct, $idCliente);
-                    }
+                    $this->modeloCliente->actualizaPuntos($puntosAct, $idCliente);
+                }
 
-                    //actualiza el registro de salida producto
+                //actualiza el registro de salida producto
                 $this->modeloSalProducto->actualizarSalProducto($idProducto, $idCliente, $fechaSal, $cantidadActual, $precioVentaAct, $idModoPago, $idSalProducto);
 
                 $estadoInventario = $this->modeloInventario->consultaInventarioId($idProducto);
 
                 //Modifica la cantidad Entrada
-                $cantidad= $cantidadSalAnterior - $cantSal;
+                $cantidad = $cantidadSalAnterior - $cantSal;
 
-                $cantidadAct= $estadoInventario['CantActual'] + $cantidad;
+                $cantidadAct = $estadoInventario['CantActual'] + $cantidad;
                 $this->modeloInventario->actualizarStock($cantidadAct, $idProducto);
 
-                echo "
-                <script>
-                    alert('Actualizacion Exitosa!');
-                    window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaSalProductos';
-                </script>
-                ";
+                //session_start();
 
-                //header("Location: index.php?action=consultaSalProductos");
-                exit;
+                    if ($_SESSION['rol'] == 1) {
+                            echo "
+                                <script>
+                                    alert('Registro Salida del Producto Exitoso!');
+                                    window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaSalProductos';
+                                </script>
+                                ";
+                            exit;
+                    } elseif ($_SESSION['rol'] == 2) {
+                            echo "
+                                <script>
+                                    alert('Registro Salida del Producto Exitoso!');
+                                    window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaSalProductosEmp';
+                                </script>
+                                ";
+                            exit;
+                    }
+            } else {
 
-            }else {
+                $cantidadActual = $cantSal;
 
-                $cantidadActual= $cantSal;
-
-                $precioVentaAct= $precioProducto * $cantidadActual ;
+                $precioVentaAct = $precioProducto * $cantidadActual;
 
                 //actualizar puntos del cliente
-                $precioDifer= $precioVentaAct - $precioVenta;
+                $precioDifer = $precioVentaAct - $precioVenta;
 
                 //metodo para la acumulacion de puntos del cliente
-                $puntosCliente= $this->modeloCliente->consultaPuntos($idCliente);
+                $puntosCliente = $this->modeloCliente->consultaPuntos($idCliente);
 
-                if($puntosCliente) {
+                if ($puntosCliente) {
 
-                        $puntosBd= $puntosCliente['Puntos'];
+                    $puntosBd = $puntosCliente['Puntos'];
 
-                        $puntosGanados= ($precioDifer*0.005);
+                    $puntosGanados = ($precioDifer * 0.005);
 
-                        $puntosAct= $puntosBd + $puntosGanados;
+                    $puntosAct = $puntosBd + $puntosGanados;
 
-                        $this->modeloCliente->actualizaPuntos($puntosAct, $idCliente);
-                    }
+                    $this->modeloCliente->actualizaPuntos($puntosAct, $idCliente);
+                }
 
-                    //actualiza el registro de salida productos
+                //actualiza el registro de salida productos
                 $this->modeloSalProducto->actualizarSalProducto($idProducto, $idCliente, $fechaSal, $cantidadActual, $precioVentaAct, $idModoPago, $idSalProducto);
 
                 $estadoInventario = $this->modeloInventario->consultaInventarioId($idProducto);
 
                 //Modifica la cantidad Entrada
-                $cantidad= $cantSal - $cantidadSalAnterior;
+                $cantidad = $cantSal - $cantidadSalAnterior;
 
-                $cantidadAct= $estadoInventario['CantActual'] - $cantidad;
+                $cantidadAct = $estadoInventario['CantActual'] - $cantidad;
                 $this->modeloInventario->actualizarStock($cantidadAct, $idProducto);
 
-                echo "
-                <script>
-                    alert('Actualizacion Exitosa!');
-                    window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaSalProductos';
-                </script>
-                ";
+                //session_start();
 
-                //header("Location: index.php?action=consultaSalProductos");
-                exit;
-
+                    if ($_SESSION['rol'] == 1) {
+                            echo "
+                                <script>
+                                    alert('Registro Salida del Producto Exitoso!');
+                                    window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaSalProductos';
+                                </script>
+                                ";
+                            exit;
+                    } elseif ($_SESSION['rol'] == 2) {
+                            echo "
+                                <script>
+                                    alert('Registro Salida del Producto Exitoso!');
+                                    window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaSalProductosEmp';
+                                </script>
+                                ";
+                            exit;
+                    }
             }
-
         }
-
     }
 
 
     //Eliminar Salida Producto
-    public function EliminarSalProducto() {
+    public function EliminarSalProducto()
+    {
 
         $idSalProducto = $_GET['idSalProducto'] ?? '';
 
-                //Consulta antes de eliminar salida producto
-            $cantSal= $this->modeloSalProducto->consultaCantidadSalProductos($idSalProducto);
+        //Consulta antes de eliminar salida producto
+        $cantSal = $this->modeloSalProducto->consultaCantidadSalProductos($idSalProducto);
 
-            $idProducto= $cantSal['idProducto'];
-            $cantidad= $cantSal['CantSalida'];
-            $idCliente= $cantSal['idCliente'];
-            $valorVenta= $cantSal['PrecioVenta'];
+        $idProducto = $cantSal['idProducto'];
+        $cantidad = $cantSal['CantSalida'];
+        $idCliente = $cantSal['idCliente'];
+        $valorVenta = $cantSal['PrecioVenta'];
 
-            $estadoInventario = $this->modeloInventario->consultaInventarioId($idProducto);
+        $estadoInventario = $this->modeloInventario->consultaInventarioId($idProducto);
 
-                //suma la cantidad Salida en inventario
-            $cantidadAct= $estadoInventario['CantActual'] + $cantidad;
-            $this->modeloInventario->actualizarStock($cantidadAct, $idProducto);
+        //suma la cantidad Salida en inventario
+        $cantidadAct = $estadoInventario['CantActual'] + $cantidad;
+        $this->modeloInventario->actualizarStock($cantidadAct, $idProducto);
 
-                //Descuento de puntos del cliente
-            $puntosCliente= $this->modeloCliente->consultaPuntos($idCliente);
+        //Descuento de puntos del cliente
+        $puntosCliente = $this->modeloCliente->consultaPuntos($idCliente);
 
-                if($puntosCliente) {
+        if ($puntosCliente) {
 
-                        $puntosBd= $puntosCliente['Puntos'];
+            $puntosBd = $puntosCliente['Puntos'];
 
-                        $puntosMenos= ($valorVenta*0.005);
+            $puntosMenos = ($valorVenta * 0.005);
 
-                        $puntosAct= $puntosBd - $puntosMenos;
+            $puntosAct = $puntosBd - $puntosMenos;
 
-                        $this->modeloCliente->actualizaPuntos($puntosAct, $idCliente);
-                    }
+            $this->modeloCliente->actualizaPuntos($puntosAct, $idCliente);
+        }
 
         $this->modeloSalProducto->eliminarSalProductos($idSalProducto);
 
@@ -374,9 +457,10 @@ class ControladorSalProducto{
 
 
     //Generar reporte de salida productos
-    public function ReporteSalProductos() {
-        $fechaInc= $_GET['fechaInc'] ?? '';
-        $fechaFin= $_GET['fechaFin'] ?? '';
+    public function ReporteSalProductos()
+    {
+        $fechaInc = $_GET['fechaInc'] ?? '';
+        $fechaFin = $_GET['fechaFin'] ?? '';
         $reporteSalProductos = $this->modeloSalProducto->reporteSalProductos($fechaInc, $fechaFin);
 
         return [
@@ -387,7 +471,8 @@ class ControladorSalProducto{
     }
 
     //Registro de salidas de productos por salida de varios producto
-    public function registrosSalProductos() {
+    public function registrosSalProductos()
+    {
 
         // Configurar cabeceras para aceptar solicitudes JSON
         header("Content-Type: application/json; charset=UTF-8");
@@ -400,349 +485,351 @@ class ControladorSalProducto{
         $data = json_decode(file_get_contents('php://input'), true);
 
         // Verifica si los datos se han recibido correctamente
-        if (!isset($data['idProducto']) || !isset($data['idCliente']) || !isset($data['fechaSal'])
-            || !isset($data['cantidad']) || !isset($data['precio']) || !isset($data['formaPago'])) {
+        if (
+            !isset($data['idProducto']) || !isset($data['idCliente']) || !isset($data['fechaSal'])
+            || !isset($data['cantidad']) || !isset($data['precio']) || !isset($data['formaPago'])
+        ) {
 
 
-                // Preparar y ejecutar la inserción de cada fila
-                foreach ($data as $fila) {
+            // Preparar y ejecutar la inserción de cada fila
+            foreach ($data as $fila) {
 
-                    $codProducto = $fila['idProducto'];
-                    $numIdentCliente = $fila['idCliente'];
-                    $fechaSal = $fila['fechaSal'];
-                    $cantSal = $fila['cantidad'];
-                    $precioVenta = $fila['precio'];
-                    $idModoPago = $fila['formaPago'];
+                $codProducto = $fila['idProducto'];
+                $numIdentCliente = $fila['idCliente'];
+                $fechaSal = $fila['fechaSal'];
+                $cantSal = $fila['cantidad'];
+                $precioVenta = $fila['precio'];
+                $idModoPago = $fila['formaPago'];
 
-                    $this->modeloSalProducto->registroSalProducto($codProducto, $numIdentCliente, $fechaSal, $cantSal, $precioVenta, $idModoPago);
+                $this->modeloSalProducto->registroSalProducto($codProducto, $numIdentCliente, $fechaSal, $cantSal, $precioVenta, $idModoPago);
+            }
 
-                }
-
-                //Respuesta al cliente Proceso exitoso
-                echo json_encode(['success' => true, 'message' => 'Registro de salida productos correctamente']);
-
-        }else{
+            //Respuesta al cliente Proceso exitoso
+            echo json_encode(['success' => true, 'message' => 'Registro de salida productos correctamente']);
+        } else {
             //mejorar respuesta cuando no envien todos lod datos requeridos
             echo "Faltan datos necesarios";
             exit;
         }
-
     }
 
 
     //Metodo para traer datos de productos con mayor Venta
-    public function ProductosMasVendidos() {
+    public function ProductosMasVendidos()
+    {
 
         //echo "<script>alert('Controlador salida producto');</script>";
 
         header("Content-Type: application/json; charset=UTF-8");
 
-            $mayorVenta = $this->modeloSalProducto->productosMasVendidos();
+        $mayorVenta = $this->modeloSalProducto->productosMasVendidos();
 
-            if ($mayorVenta) {
-                echo json_encode(["success" => true, "mayorVenta" => $mayorVenta]);
-            } else {
-                echo json_encode(["success" => false, "error" => "Producto No esta en Inventario o no hay stock"]);
-            }
+        if ($mayorVenta) {
+            echo json_encode(["success" => true, "mayorVenta" => $mayorVenta]);
+        } else {
+            echo json_encode(["success" => false, "error" => "Producto No esta en Inventario o no hay stock"]);
+        }
     }
 
 
     //Metodo para traer datos de ventas por dias
-    public function VentasPorDias() {
+    public function VentasPorDias()
+    {
 
         header("Content-Type: application/json; charset=UTF-8");
 
-            $ventaPorDia = $this->modeloSalProducto->ventasPorDias();
+        $ventaPorDia = $this->modeloSalProducto->ventasPorDias();
 
-            if ($ventaPorDia) {
-                echo json_encode(["success" => true, "ventaPorDia" => $ventaPorDia]);
-            } else {
-                echo json_encode(["success" => false, "error" => "Producto No esta en Inventario o no hay stock"]);
-            }
+        if ($ventaPorDia) {
+            echo json_encode(["success" => true, "ventaPorDia" => $ventaPorDia]);
+        } else {
+            echo json_encode(["success" => false, "error" => "Producto No esta en Inventario o no hay stock"]);
+        }
     }
 
 
     //Metodo para traer datos de productos con mayor Venta para pagina principal
-    public function ProductosMayorVenta() {
+    public function ProductosMayorVenta()
+    {
 
         header("Content-Type: application/json; charset=UTF-8");
 
-            $mayoresVenta = $this->modeloSalProducto->productosMayorVenta();
+        $mayoresVenta = $this->modeloSalProducto->productosMayorVenta();
 
-            if ($mayoresVenta) {
-                echo json_encode(["success" => true, "mayoresVenta" => $mayoresVenta]);
-            } else {
-                echo json_encode(["success" => false, "error" => "Producto No Encontrado"]);
-            }
+        if ($mayoresVenta) {
+            echo json_encode(["success" => true, "mayoresVenta" => $mayoresVenta]);
+        } else {
+            echo json_encode(["success" => false, "error" => "Producto No Encontrado"]);
+        }
     }
 
 
-//==========================================================================================================================================
-// EMPLEADO
+    //==========================================================================================================================================
+    // EMPLEADO
 
-        //registro de Salida Producto
-        public function RegistroSalProductoEmp() {
+    //registro de Salida Producto
+    // public function RegistroSalProductoEmp()
+    // {
 
-            if($_SERVER["REQUEST_METHOD"] == "POST") {
-    
-                $codProducto= $_POST['codProducto'];
-                $numIdentcliente= $_POST['numIdentCliente'];
-    
-                $productoId= $this->modeloProducto->consultaProducto($codProducto);
-    
-                $clienteId= $this->modeloCliente->consultaCliente($numIdentcliente);
-    
-                $idProducto= $productoId['idProducto'];
-                $idCliente= $clienteId['idCliente'];
-                $fechaSal= $_POST['fechaSal'];
-                $cantSal= $_POST['cantSal'];
-                $precioVentaString = $_POST['precioVenta'];    // Recibimos el valor como string
-                $precioVentaSinPunto = str_replace('.', '', $precioVentaString);    // Intentamos eliminar el punto
-                $precioVenta = (int) $precioVentaSinPunto;  // Convertir a entero
-    
-                $idModoPago= $_POST['tipoPago'];
-    
-                if($clienteId == false){
-                    header("Location: index.php?action=registroClienteemp");
-                    exit;
-                }elseif($productoId == false) {
-                    header("Location: index.php?action=registroProductoemp");
-                    exit;          
-                }else{
-    
-                        //metodo para cuando se registre una Salida de producto, en el inventario se reste el producto del stock
-                        $estadoInventario = $this->modeloInventario->consultaInventarioId($idProducto);
-    
-                            if($estadoInventario !== false) {
-                                    //el producto ya existe
-                                        $cantidadAct= $estadoInventario['CantActual'] - $cantSal;
-                                        $this->modeloInventario->actualizarStock($cantidadAct, $idProducto);
-    
-                                    //metodo para la acumulacion de puntos del cliente
-                                        $puntosCliente= $this->modeloCliente->consultaPuntos($idCliente);
-    
-                                            if($puntosCliente) {
-    
-                                                    $puntosBd= $puntosCliente['Puntos'];
-    
-                                                    $puntosGanados= ($precioVenta*0.005);
-    
-                                                    $puntosAct= $puntosBd + $puntosGanados;
-    
-    
-                                                    $this->modeloCliente->actualizaPuntos($puntosAct, $idCliente);
-                                                }
-    
-                                    //registrar salida producto
-                                        $this->modeloSalProducto->registroSalProducto($idProducto, $idCliente, $fechaSal, $cantSal, $precioVenta, $idModoPago);
-    
-                                    echo "
-                                        <script>
-                                            alert('Registro Exitoso!');
-                                            window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=registroSalProductos';
-                                        </script>
-                                        ";
-                                        exit;
-    
-                            }else{
-                                //el Producto no existe
-                                //$this->modeloInventario->registroInventario($idProducto, $cantidadEnt);
-                                echo "
-                                <script>
-                                    alert('Registre La Entrada del Producto!');
-                                    window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=registroEntProductos';
-                                </script>
-                                ";
-                                //header("Location: index.php?action=registroEntProductos");
-                                exit;
-                            }
-                    }
-            }
-        }
-    
-    
-        // //Consulta General Join Vista
-        // public function consultaGenSalProductosVistaEmp() {
-        //     return $this->modeloSalProducto->consultaGenSalProductosVista();
-        // }
-    
-    
-        //Consulta por Id Inner Join
-        public function consultaGenSalProductosVistaIdEmp() {
-            $idSalProducto = $_GET['idSalProducto'] ?? '';
-            return $this->modeloSalProducto->consultaGenSalProductosVistaId($idSalProducto);
-        }
-    
-    
-        //Consulta por Fecha Inner Join
-        public function consultaGenSalProductosVistaFechaEmp() {
-            $fecha = $_GET['fechaSal'] ?? '';
-            return $this->modeloSalProducto->consultaGenSalProductosVistaFecha($fecha);
-        }
-    
-    
-        //Consulta general por Id
-        public function consultaGenSalProductosIdEmp() {
-            $idSalProducto = $_GET['idSalProducto'] ?? '';
-            return $this->modeloSalProducto->consultaSalProductoId($idSalProducto);
-        }
-    
-    
-        //Consulta general por Id para actualizar
-        public function consultaGenSalProductosIdEmpP() {
-            $idSalProducto = $_GET['idSalProducto'] ?? '';
-            return $this->modeloSalProducto->consultaSalProductoIdP($idSalProducto);
-        
-        }
+    //     if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-        //Actualizar Salida de Productos
+    //         $codProducto = $_POST['codProducto'];
+    //         $numIdentcliente = $_POST['numIdentCliente'];
+
+    //         $productoId = $this->modeloProducto->consultaProducto($codProducto);
+
+    //         $clienteId = $this->modeloCliente->consultaCliente($numIdentcliente);
+
+    //         $idProducto = $productoId['idProducto'];
+    //         $idCliente = $clienteId['idCliente'];
+    //         $fechaSal = $_POST['fechaSal'];
+    //         $cantSal = $_POST['cantSal'];
+    //         $precioVentaString = $_POST['precioVenta'];    // Recibimos el valor como string
+    //         $precioVentaSinPunto = str_replace('.', '', $precioVentaString);    // Intentamos eliminar el punto
+    //         $precioVenta = (int) $precioVentaSinPunto;  // Convertir a entero
+
+    //         $idModoPago = $_POST['tipoPago'];
+
+    //         if ($clienteId == false) {
+    //             header("Location: index.php?action=registroClienteemp");
+    //             exit;
+    //         } elseif ($productoId == false) {
+    //             header("Location: index.php?action=registroProductoemp");
+    //             exit;
+    //         } else {
+
+    //             //metodo para cuando se registre una Salida de producto, en el inventario se reste el producto del stock
+    //             $estadoInventario = $this->modeloInventario->consultaInventarioId($idProducto);
+
+    //             if ($estadoInventario !== false) {
+    //                 //el producto ya existe
+    //                 $cantidadAct = $estadoInventario['CantActual'] - $cantSal;
+    //                 $this->modeloInventario->actualizarStock($cantidadAct, $idProducto);
+
+    //                 //metodo para la acumulacion de puntos del cliente
+    //                 $puntosCliente = $this->modeloCliente->consultaPuntos($idCliente);
+
+    //                 if ($puntosCliente) {
+
+    //                     $puntosBd = $puntosCliente['Puntos'];
+
+    //                     $puntosGanados = ($precioVenta * 0.005);
+
+    //                     $puntosAct = $puntosBd + $puntosGanados;
 
 
-         //Actualizar Salida de Productos
-    public function ActualizarSalProductosEmp() {
+    //                     $this->modeloCliente->actualizaPuntos($puntosAct, $idCliente);
+    //                 }
 
-        if($_SERVER["REQUEST_METHOD"] == "POST") {
+    //                 //registrar salida producto
+    //                 $this->modeloSalProducto->registroSalProducto($idProducto, $idCliente, $fechaSal, $cantSal, $precioVenta, $idModoPago);
 
-            $codProducto= $_POST['codProducto'];
-            $numIdentcliente= $_POST['numIdentCliente'];
-
-            $productoId= $this->modeloProducto->consultaProducto($codProducto);
-
-            $clienteId= $this->modeloCliente->consultaCliente($numIdentcliente);
-
-            $idProducto= $productoId['idProducto'];
-            $precioProducto= $_POST['precioProducto'];
-            $idCliente= $clienteId['idCliente'];
-            $fechaSal= $_POST['fechaSal'];
-            $cantSal= $_POST['cantSal'];
-            $precioVenta= $_POST['precioVenta'];
-            $idModoPago= $_POST['tipoPago'];
-            $idSalProducto= $_POST['idSalProducto'];
-
-            $cantidadSal= $this->modeloSalProducto->consultaCantidadSalProductos($idSalProducto);
-
-            $cantidadSalAnterior= $cantidadSal['CantSalida'];
-
-            //echo "<script>
-            //        alert('variable: " . $precioProducto . "');
-            //    </script>";
-
-            if($cantidadSalAnterior == $cantSal) {
-
-                $cantidadActual= $cantSal;
-
-                $this->modeloSalProducto->actualizarSalProducto($idProducto, $precioProducto, $idCliente, $fechaSal, $cantidadActual, $precioVenta, $idModoPago, $idSalProducto);
-
-                echo "
-                <script>
-                    alert('Actualizacion Exitosa!');
-                    window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaSalProductos';
-                </script>
-                ";
-
-                //header("Location: index.php?action=consultaSalProductos");
-                exit;
-
-            }elseif($cantidadSalAnterior > $cantSal) {
-
-                $cantidadActual= $cantSal;
-
-                //actualizar el precio de la venta
-                $precioVentaAct= $precioProducto * $cantidadActual ;
-
-                //actualizar puntos del cliente
-                $precioDifer= $precioVenta - $precioVentaAct;
-
-                //metodo para la acumulacion de puntos del cliente
-                $puntosCliente= $this->modeloCliente->consultaPuntos($idCliente);
-
-                if($puntosCliente) {
-
-                        $puntosBd= $puntosCliente['Puntos'];
-
-                        $puntosGanados= ($precioDifer*0.005);
-
-                        $puntosAct= $puntosBd - $puntosGanados;
+    //                 echo "
+    //                                     <script>
+    //                                         alert('Registro Exitoso!');
+    //                                         window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=registroSalProductos';
+    //                                     </script>
+    //                                     ";
+    //                 exit;
+    //             } else {
+    //                 //el Producto no existe
+    //                 //$this->modeloInventario->registroInventario($idProducto, $cantidadEnt);
+    //                 echo "
+    //                             <script>
+    //                                 alert('Registre La Entrada del Producto!');
+    //                                 window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=registroEntProductos';
+    //                             </script>
+    //                             ";
+    //                 //header("Location: index.php?action=registroEntProductos");
+    //                 exit;
+    //             }
+    //         }
+    //     }
+    // }
 
 
-                        $this->modeloCliente->actualizaPuntos($puntosAct, $idCliente);
-                    }
+    // //Consulta General Join Vista
+    // public function consultaGenSalProductosVistaEmp() {
+    //     return $this->modeloSalProducto->consultaGenSalProductosVista();
+    // }
 
-                    //actualiza el registro de salida producto
-                $this->modeloSalProducto->actualizarSalProducto($idProducto, $precioProducto, $idCliente, $fechaSal, $cantidadActual, $precioVenta, $idModoPago, $idSalProducto);
 
-                $estadoInventario = $this->modeloInventario->consultaInventarioId($idProducto);
+    //Consulta por Id Inner Join
+    // public function consultaGenSalProductosVistaIdEmp()
+    // {
+    //     $idSalProducto = $_GET['idSalProducto'] ?? '';
+    //     return $this->modeloSalProducto->consultaGenSalProductosVistaId($idSalProducto);
+    // }
 
-                //Modifica la cantidad Entrada
-                $cantidad= $cantidadSalAnterior - $cantSal;
 
-                $cantidadAct= $estadoInventario['CantActual'] + $cantidad;
-                $this->modeloInventario->actualizarStock($cantidadAct, $idProducto);
+    // //Consulta por Fecha Inner Join
+    // public function consultaGenSalProductosVistaFechaEmp()
+    // {
+    //     $fecha = $_GET['fechaSal'] ?? '';
+    //     return $this->modeloSalProducto->consultaGenSalProductosVistaFecha($fecha);
+    // }
 
-                echo "
-                <script>
-                    alert('Actualizacion Exitosa!');
-                    window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaSalProductos';
-                </script>
-                ";
 
-                //header("Location: index.php?action=consultaSalProductos");
-                exit;
+    // //Consulta general por Id
+    // public function consultaGenSalProductosIdEmp()
+    // {
+    //     $idSalProducto = $_GET['idSalProducto'] ?? '';
+    //     return $this->modeloSalProducto->consultaSalProductoId($idSalProducto);
+    // }
 
-            }else {
 
-                $cantidadActual= $cantSal;
+    // //Consulta general por Id para actualizar
+    // public function consultaGenSalProductosIdEmpP()
+    // {
+    //     $idSalProducto = $_GET['idSalProducto'] ?? '';
+    //     return $this->modeloSalProducto->consultaSalProductoIdP($idSalProducto);
+    // }
 
-                $precioVentaAct= $precioProducto * $cantidadActual ;
+    //Actualizar Salida de Productos
 
-                //actualizar puntos del cliente
-                $precioDifer= $precioVentaAct - $precioVenta;
 
-                //metodo para la acumulacion de puntos del cliente
-                $puntosCliente= $this->modeloCliente->consultaPuntos($idCliente);
+    //Actualizar Salida de Productos
+    // public function ActualizarSalProductosEmp()
+    // {
 
-                if($puntosCliente) {
+    //     if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-                        $puntosBd= $puntosCliente['Puntos'];
+    //         $codProducto = $_POST['codProducto'];
+    //         $numIdentcliente = $_POST['numIdentCliente'];
 
-                        $puntosGanados= ($precioDifer*0.005);
+    //         $productoId = $this->modeloProducto->consultaProducto($codProducto);
 
-                        $puntosAct= $puntosBd + $puntosGanados;
+    //         $clienteId = $this->modeloCliente->consultaCliente($numIdentcliente);
 
-                        $this->modeloCliente->actualizaPuntos($puntosAct, $idCliente);
-                    }
+    //         $idProducto = $productoId['idProducto'];
+    //         $precioProducto = $_POST['precioProducto'];
+    //         $idCliente = $clienteId['idCliente'];
+    //         $fechaSal = $_POST['fechaSal'];
+    //         $cantSal = $_POST['cantSal'];
+    //         $precioVenta = $_POST['precioVenta'];
+    //         $idModoPago = $_POST['tipoPago'];
+    //         $idSalProducto = $_POST['idSalProducto'];
 
-                    //actualiza el registro de salida productos
-                $this->modeloSalProducto->actualizarSalProducto($idProducto, $precioProducto, $idCliente, $fechaSal, $cantidadActual, $precioVenta, $idModoPago, $idSalProducto);
+    //         $cantidadSal = $this->modeloSalProducto->consultaCantidadSalProductos($idSalProducto);
 
-                $estadoInventario = $this->modeloInventario->consultaInventarioId($idProducto);
+    //         $cantidadSalAnterior = $cantidadSal['CantSalida'];
 
-                //Modifica la cantidad Entrada
-                $cantidad= $cantSal - $cantidadSalAnterior;
+    //         //echo "<script>
+    //         //        alert('variable: " . $precioProducto . "');
+    //         //    </script>";
 
-                $cantidadAct= $estadoInventario['CantActual'] - $cantidad;
-                $this->modeloInventario->actualizarStock($cantidadAct, $idProducto);
+    //         if ($cantidadSalAnterior == $cantSal) {
 
-                echo "
-                <script>
-                    alert('Actualizacion Exitosa!');
-                    window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaSalProductos';
-                </script>
-                ";
+    //             $cantidadActual = $cantSal;
 
-                //header("Location: index.php?action=consultaSalProductos");
-                exit;
+    //             $this->modeloSalProducto->actualizarSalProducto($idProducto, $precioProducto, $idCliente, $fechaSal, $cantidadActual, $precioVenta, $idModoPago, $idSalProducto);
 
-            }
+    //             echo "
+    //             <script>
+    //                 alert('Actualizacion Exitosa!');
+    //                 window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaSalProductos';
+    //             </script>
+    //             ";
 
-        }
+    //             //header("Location: index.php?action=consultaSalProductos");
+    //             exit;
+    //         } elseif ($cantidadSalAnterior > $cantSal) {
 
-    }
+    //             $cantidadActual = $cantSal;
 
-     //Generar reporte de salida productos
-     public function ReporteSalProductosEmp() {
-        $fechaInc= $_GET['fechaInc'] ?? '';
-        $fechaFin= $_GET['fechaFin'] ?? '';
+    //             //actualizar el precio de la venta
+    //             $precioVentaAct = $precioProducto * $cantidadActual;
+
+    //             //actualizar puntos del cliente
+    //             $precioDifer = $precioVenta - $precioVentaAct;
+
+    //             //metodo para la acumulacion de puntos del cliente
+    //             $puntosCliente = $this->modeloCliente->consultaPuntos($idCliente);
+
+    //             if ($puntosCliente) {
+
+    //                 $puntosBd = $puntosCliente['Puntos'];
+
+    //                 $puntosGanados = ($precioDifer * 0.005);
+
+    //                 $puntosAct = $puntosBd - $puntosGanados;
+
+
+    //                 $this->modeloCliente->actualizaPuntos($puntosAct, $idCliente);
+    //             }
+
+    //             //actualiza el registro de salida producto
+    //             $this->modeloSalProducto->actualizarSalProducto($idProducto, $precioProducto, $idCliente, $fechaSal, $cantidadActual, $precioVenta, $idModoPago, $idSalProducto);
+
+    //             $estadoInventario = $this->modeloInventario->consultaInventarioId($idProducto);
+
+    //             //Modifica la cantidad Entrada
+    //             $cantidad = $cantidadSalAnterior - $cantSal;
+
+    //             $cantidadAct = $estadoInventario['CantActual'] + $cantidad;
+    //             $this->modeloInventario->actualizarStock($cantidadAct, $idProducto);
+
+    //             echo "
+    //             <script>
+    //                 alert('Actualizacion Exitosa!');
+    //                 window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaSalProductos';
+    //             </script>
+    //             ";
+
+    //             //header("Location: index.php?action=consultaSalProductos");
+    //             exit;
+    //         } else {
+
+    //             $cantidadActual = $cantSal;
+
+    //             $precioVentaAct = $precioProducto * $cantidadActual;
+
+    //             //actualizar puntos del cliente
+    //             $precioDifer = $precioVentaAct - $precioVenta;
+
+    //             //metodo para la acumulacion de puntos del cliente
+    //             $puntosCliente = $this->modeloCliente->consultaPuntos($idCliente);
+
+    //             if ($puntosCliente) {
+
+    //                 $puntosBd = $puntosCliente['Puntos'];
+
+    //                 $puntosGanados = ($precioDifer * 0.005);
+
+    //                 $puntosAct = $puntosBd + $puntosGanados;
+
+    //                 $this->modeloCliente->actualizaPuntos($puntosAct, $idCliente);
+    //             }
+
+    //             //actualiza el registro de salida productos
+    //             $this->modeloSalProducto->actualizarSalProducto($idProducto, $precioProducto, $idCliente, $fechaSal, $cantidadActual, $precioVenta, $idModoPago, $idSalProducto);
+
+    //             $estadoInventario = $this->modeloInventario->consultaInventarioId($idProducto);
+
+    //             //Modifica la cantidad Entrada
+    //             $cantidad = $cantSal - $cantidadSalAnterior;
+
+    //             $cantidadAct = $estadoInventario['CantActual'] - $cantidad;
+    //             $this->modeloInventario->actualizarStock($cantidadAct, $idProducto);
+
+    //             echo "
+    //             <script>
+    //                 alert('Actualizacion Exitosa!');
+    //                 window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaSalProductos';
+    //             </script>
+    //             ";
+
+    //             //header("Location: index.php?action=consultaSalProductos");
+    //             exit;
+    //         }
+    //     }
+    // }
+
+    //Generar reporte de salida productos
+    public function ReporteSalProductosEmp()
+    {
+        $fechaInc = $_GET['fechaInc'] ?? '';
+        $fechaFin = $_GET['fechaFin'] ?? '';
         $reporteSalProductos = $this->modeloSalProducto->reporteSalProductos($fechaInc, $fechaFin);
 
         return [
@@ -751,9 +838,4 @@ class ControladorSalProducto{
             'reporteSalProductos' => $reporteSalProductos
         ];
     }
-
-
-
-
-    }
-?>
+}

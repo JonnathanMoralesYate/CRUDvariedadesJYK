@@ -1,7 +1,5 @@
 <?php
 
-require_once('./controllers/controladorPaginaN.php');
-require_once('./controllers/controladorPaginaS.php');
 require_once('./controllers/controladorPaginaAdmin.php');
 require_once('./controllers/controladorPaginaEmple.php');
 
@@ -22,8 +20,6 @@ require_once('./controllers/controladorInventario.php');
 require_once('./controllers/controladorModoPago.php');
 require_once('./controllers/controladorGenerarCodigo.php');
 
-$vistaPaginaN = new ControladorPaginaN();
-$vistaPaginaS = new ControladorPaginaS();
 $vistaAdmin = new ControladorPaginaAdmin();
 $vistaEmple = new ControladorPaginaEmple();
 
@@ -706,7 +702,7 @@ switch ($action) {
         $controladorEntProducto->EliminarEntProducto();
         break;
 
-//============================================================================================================================================
+    //============================================================================================================================================
 
     //Entrada de Productos Empleado
 
@@ -751,7 +747,7 @@ switch ($action) {
         $controladorEntProducto->ActualizarEntProducto();
         break;
 
-//==========================================================================================================================================================
+    //==========================================================================================================================================================
 
     //Salida de Productos
 
@@ -796,7 +792,7 @@ switch ($action) {
 
     //Actualizar Salida Productos
     case 'actualizarSalProductosId':
-        $salProductos = $controladorSalProducto->consultaGenSalProductosIdP();
+        $salProductos = $controladorSalProducto->consultaGenSalProductosId();
         $formaPagos = $controladorModoPago->listaModoPago();
         include('./views/salidaProducto/actualizarSalProducto.php');
         break;
@@ -811,14 +807,14 @@ switch ($action) {
         $controladorSalProducto->EliminarSalProducto();
         break;
 
-//============================================================================================================================================
+    //============================================================================================================================================
 
     //Salida de Productos Empleados
 
     //Registro Salida por Producto
     case 'registroSalProductosEmp':
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $controladorSalProducto->RegistroSalProductoEmp();
+            $controladorSalProducto->RegistroSalProducto();
         } else {
             $formaPagos = $controladorModoPago->listaModoPago();
             include('./views/salidaProducto/registrarSalProductoEmp.php');
@@ -834,30 +830,34 @@ switch ($action) {
 
 
     // //Consulta Salida Productos
-    // case 'consultaSalProductosEmp';
-    //     $salProductos = $controladorSalProducto->consultaGenSalProductosVistaEmp();
-    //     include('./views/salidaProducto/consultaSalProductoEmp.php');
-    //     break;
+    case 'consultaSalProductosEmp';
+        $tipo = '';
+        $filtro = '';
+        $data = $controladorSalProducto->listaSalProductosVista($tipo, $filtro);
+        include('./views/salidaProducto/consultaSalProductoEmp.php');
+        break;
 
-    case 'consultaSalProductoIdEmp';
-        $salProductos = $controladorSalProducto->consultaGenSalProductosVistaIdEmp();
+    case 'consultaSalProductoCodigoEmp';
+        $valor = $_GET['codProducto'] ?? '';
+        $data = $controladorSalProducto->listaSalProductosFiltrado('codigo', $valor);
         include('./views/salidaProducto/consultaSalProductoEmp.php');
         break;
 
     case 'consultaSalProductoFechaEmp';
-        $salProductos = $controladorSalProducto->consultaGenSalProductosVistaFechaEmp();
+        $valor = $_GET['fechaSal'] ?? '';
+        $data = $controladorSalProducto->listaSalProductosFiltrado('fechaSal', $valor);
         include('./views/salidaProducto/consultaSalProductoEmp.php');
         break;
 
     //Actualizar Salida Productos
     case 'actualizarSalProductosIdEmp':
-        $salProductos = $controladorSalProducto->consultaGenSalProductosIdEmpP();
+        $salProductos = $controladorSalProducto->consultaGenSalProductosId();
         $formaPagos = $controladorModoPago->listaModoPago();
         include('./views/salidaProducto/actualizarSalProductosEmp.php');
         break;
 
     case 'actualizarSalProductosEmp':
-        $controladorSalProducto->ActualizarSalProductosEmp();
+        $controladorSalProducto->ActualizarSalProductos();
         break;
 
     //============================================================================================================================================
@@ -936,7 +936,7 @@ switch ($action) {
         include('./views/productosAvencer/reporteProductosAvencerPDF.php');
         break;
 
-//============================================================================================================================================
+    //============================================================================================================================================
 
     //Verificaciones
 
@@ -1069,7 +1069,7 @@ switch ($action) {
         }
         break;
 
-//============================================================================================================================================
+    //============================================================================================================================================
 
     //Reportes
 

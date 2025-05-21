@@ -32,7 +32,7 @@ class ControladorProveedor
 
             $this->modeloProveedor->registroProveedor($nitProve, $nomProve, $correoProve, $celProve, $nomVende, $celVende);
 
-            session_start();
+            //session_start();
 
                 if ($_SESSION['rol'] == 1) {
 
@@ -185,7 +185,7 @@ class ControladorProveedor
 
             $this->modeloProveedor->actualizarProveedor($nitProve, $nomProve, $correoProve, $celProve, $nomVende, $celVende, $idProveedor);
 
-            session_start();
+            //session_start();
 
                 if ($_SESSION['rol'] == 1) {
 

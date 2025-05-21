@@ -57,7 +57,7 @@ class ControladorProducto
 
                 $this->modeloGenerarCodigo->actualizarCodigoGenerado($codigoProducto);
 
-                session_start();
+                //session_start();
 
                 if ($_SESSION['rol'] == 1) {
 
@@ -83,7 +83,7 @@ class ControladorProducto
 
                 $this->modeloProducto->registroProducto($codigoProducto, $idClase, $nombre, $marca, $descripcion, $idPresentacion, $idUndBase, $contNeto, $idFormatoVent, $precioVenta, $foto);
 
-                session_start();
+                //session_start();
 
                 if ($_SESSION['rol'] == 1) {
 
@@ -352,7 +352,7 @@ class ControladorProducto
             $this->modeloProducto->actualizarProducto($codigoProducto, $idClase, $nombre, $marca, $descripcion, $idPresentacion, $idUndBase, $contNeto, $idFormatoVent, $precioVenta, $foto, $idProducto);
 
 
-            session_start();
+            //session_start();
 
             if ($_SESSION['rol'] == 1) {
 

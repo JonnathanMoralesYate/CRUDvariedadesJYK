@@ -33,7 +33,7 @@ class ControladorCliente
 
             $this->modeloCliente->registroCliente($idTipoDocumC, $numDocumentoC, $nombreC, $apellidoC, $numCelularC, $correoC, $puntos);
 
-            session_start();
+            //session_start();
 
             if ($_SESSION['rol'] == 1) {
 
@@ -100,7 +100,7 @@ class ControladorCliente
     }
 
 
-    //Consulta ID Cliente
+    // //Consulta ID Cliente
     public function datosClienteId()
     {
         $idCliente = $_GET['idCliente'] ?? '';
@@ -108,20 +108,20 @@ class ControladorCliente
     }
 
 
-    //Consulta Cedula Cliente
-    public function datosClienteCedula()
-    {
-        $numCedulaCliente = $_GET['documCliente'] ?? '';
-        return $this->modeloCliente->consultGenClienteCedula($numCedulaCliente);
-    }
+    // //Consulta Cedula Cliente
+    // public function datosClienteCedula()
+    // {
+    //     $numCedulaCliente = $_GET['documCliente'] ?? '';
+    //     return $this->modeloCliente->consultGenClienteCedula($numCedulaCliente);
+    // }
 
 
-    //Consulta Nombre Cliente
-    public function datosClienteNombre()
-    {
-        $nombreC = $_GET['nomCliente'] ?? '';
-        return $this->modeloCliente->consultGenClienteNombre($nombreC);
-    }
+    // //Consulta Nombre Cliente
+    // public function datosClienteNombre()
+    // {
+    //     $nombreC = $_GET['nomCliente'] ?? '';
+    //     return $this->modeloCliente->consultGenClienteNombre($nombreC);
+    // }
 
 
     // Consulta para verificar si el Cliente esta registrado en BD
@@ -210,7 +210,7 @@ class ControladorCliente
 
             $this->modeloCliente->ActualizarCliente($idTipoDocumC, $numDocumentoC, $nombreC, $apellidoC, $numCelularC, $correoC, $puntos, $idCliente);
 
-            session_start();
+            //session_start();
 
             if ($_SESSION['rol'] == 1) {
 
