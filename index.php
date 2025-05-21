@@ -866,11 +866,19 @@ switch ($action) {
 
     //Inventario
     case 'reporteInventario':
-        $inventarios = $controladorInventario->inventarioActual();
+        $tipo = '';
+        $filtro = '';
+        $data = $controladorInventario->listaInventarioActualizado($tipo, $filtro);
         include('./views/inventario/inventarioActual.php');
         break;
 
-    //Genera reporte de inventario en PDF
+    case 'consultaProductosNombreInventario':
+        $valor = $_GET['nombre'] ?? '';
+        $data = $controladorInventario->listaProductosFiltrado('nombre', $valor);
+        include('./views/inventario/inventarioActual.php');
+        break;
+
+    // //Genera reporte de inventario en PDF
     case 'reporteInventarioPDF':
         $inventarios = $controladorInventario->inventarioActual();
         include('./views/inventario/reporteInventarioPDF.php');
@@ -879,7 +887,15 @@ switch ($action) {
 
     //Inventario Bajo de Stock
     case 'reporteSinStock':
-        $inventarios = $controladorInventario->ProductoSinStock();
+        $tipo = '';
+        $filtro = '';
+        $data = $controladorInventario->listaInventarioSinStock($tipo, $filtro);
+        include('./views/inventario/inventarioSinStock.php');
+        break;
+
+    case 'consultaProductosNombreSinStock':
+        $valor = $_GET['nombre'] ?? '';
+        $data = $controladorInventario->listaProductosFiltradoSinStock('nombre', $valor);
         include('./views/inventario/inventarioSinStock.php');
         break;
 
@@ -1074,16 +1090,16 @@ switch ($action) {
     //Reportes
 
     //Inventario
-    case 'reporteInventarioEmp':
-        $inventarios = $controladorInventario->inventarioActualEmp();
-        include('./views/inventario/inventarioActualEmp.php');
-        break;
+    // case 'reporteInventarioEmp':
+    //     $inventarios = $controladorInventario->inventarioActualEmp();
+    //     include('./views/inventario/inventarioActualEmp.php');
+    //     break;
 
-    //Genera reporte de inventario en PDF
-    case 'reporteInventarioEmpPDF':
-        $inventarios = $controladorInventario->inventarioActualEmp();
-        include('./views/inventario/reporteInvenEmpPDF.php');
-        break;
+    // //Genera reporte de inventario en PDF
+    // case 'reporteInventarioEmpPDF':
+    //     $inventarios = $controladorInventario->inventarioActualEmp();
+    //     include('./views/inventario/reporteInvenEmpPDF.php');
+    //     break;
 
 
     //Inventario Bajo de Stock
