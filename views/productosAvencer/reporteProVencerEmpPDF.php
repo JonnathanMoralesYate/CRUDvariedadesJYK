@@ -10,11 +10,11 @@ if (empty($_SESSION)) {
 }
 
 // Verificar si el usuario tiene el rol de administrador
-if ($_SESSION['rol'] == 1) {
-     // Redirigir a:
-    header("Location: index.php?action=vistaAdmin");
-    exit;
-}
+// if ($_SESSION['rol'] == 1) {
+//      // Redirigir a:
+//     header("Location: index.php?action=vistaAdmin");
+//     exit;
+// }
 
 ob_start();
 

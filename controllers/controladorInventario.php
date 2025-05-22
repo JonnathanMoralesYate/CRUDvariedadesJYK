@@ -35,10 +35,10 @@ class ControladorInventario
         $totalProductos = $this->modeloInventario->obtenerTotalProductos();
         $totalPaginas = ceil($totalProductos / $limite);
 
-        //  echo "<pre>";
-        //  var_dump($inventario, $pagina, $totalPaginas, $valor, $tipo);
-        //  echo"</pre>";
-        //  exit;
+        //   echo "<pre>";
+        //   var_dump($inventario, $pagina, $totalPaginas, $valor, $tipo, $totalProductos);
+        //    echo"</pre>";
+        //    exit;
 
         return [
             'inventario' => $inventario,
@@ -232,7 +232,7 @@ class ControladorInventario
         $pagina = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
         $inicio = ($pagina - 1) * $limite;
 
-        $productoSinStock = $this->modeloInventario->consultarFiltradoSinStock($valor, $inicio, $limite);
+        $productoSinStock = $this->modeloInventario->consultarFiltradoSinStock($tipo, $valor, $inicio, $limite);
         $total = $this->modeloInventario->totalFiltradoSinStock($tipo, $valor);
         $totalPaginas = ceil($total / $limite);
 

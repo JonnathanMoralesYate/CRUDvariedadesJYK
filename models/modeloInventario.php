@@ -86,7 +86,7 @@ class ModeloInventario
     }
 
 
-    public function consultarFiltrado($valor, $inicio, $limite)
+    public function consultarFiltrado($tipo, $valor, $inicio, $limite)
     {
 
         $query = "SELECT idInventario, productos.CodProducto, productos.Nombre, productos.Marca, productos.Descripcion, 
@@ -96,7 +96,7 @@ class ModeloInventario
                 INNER JOIN presentacion_producto ON productos.idPresentacion=presentacion_producto.idPresentacion 
                 INNER JOIN unidad_base ON productos.idUndBase=unidad_base.idUndBase 
                 INNER JOIN formato_venta ON productos.idFormatoVenta=formato_venta.idFormatoVenta 
-                WHERE productos.Nombre LIKE :valor AND CantActual > 0 
+                WHERE productos.{$tipo} LIKE :valor AND CantActual > 0 
                 ORDER BY CantActual ASC
                 LIMIT :inicio, :limite";
 
@@ -113,7 +113,7 @@ class ModeloInventario
         $query = "SELECT COUNT(*) 
                 FROM " . $this->table . " 
                 INNER JOIN productos ON inventario.idProducto = productos.idProducto 
-                WHERE productos.Nombre LIKE :valor AND CantActual > 0";
+                WHERE productos.{$tipo} LIKE :valor AND CantActual > 0";
 
         $stmt = $this->conn->prepare($query);
         $stmt->bindValue(':valor', "%$valor%", PDO::PARAM_STR);
@@ -241,7 +241,7 @@ class ModeloInventario
     }
 
 
-    public function consultarFiltradoSinStock($valor, $inicio, $limite)
+    public function consultarFiltradoSinStock($tipo, $valor, $inicio, $limite)
     {
         $query = "SELECT idInventario, productos.CodProducto, productos.Nombre, productos.Marca, productos.Descripcion, 
                 CONCAT(presentacion_producto.Presentacion,' ', productos.ContNeto,' ', unidad_base.UndBase) AS 'Contenido Neto', 
@@ -251,7 +251,7 @@ class ModeloInventario
                 INNER JOIN unidad_base ON productos.idUndBase=unidad_base.idUndBase 
                 INNER JOIN formato_venta ON productos.idFormatoVenta=formato_venta.idFormatoVenta 
                 WHERE productos.Nombre LIKE :valor AND CantActual = 0 
-                ORDER BY productos.Nombre ASC
+                ORDER BY productos.{$tipo} ASC
                 LIMIT :inicio, :limite";
 
         $stmt = $this->conn->prepare($query);
@@ -267,7 +267,7 @@ class ModeloInventario
         $query = "SELECT COUNT(*) 
                 FROM " . $this->table . " 
                 INNER JOIN productos ON inventario.idProducto = productos.idProducto 
-                WHERE productos.Nombre LIKE :valor AND CantActual = 0";
+                WHERE productos.{$tipo} LIKE :valor AND CantActual = 0";
 
         $stmt = $this->conn->prepare($query);
         $stmt->bindValue(':valor', "%$valor%", PDO::PARAM_STR);

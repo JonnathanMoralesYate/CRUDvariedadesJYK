@@ -872,14 +872,14 @@ switch ($action) {
         include('./views/inventario/inventarioActual.php');
         break;
 
-        //Filtra por nombre del Producto
+    //Filtra por nombre del Producto
     case 'consultaProductosNombreInventario':
         $valor = $_GET['nombre'] ?? '';
         $data = $controladorInventario->listaProductosFiltrado('nombre', $valor);
         include('./views/inventario/inventarioActual.php');
         break;
 
-        //Genera reporte de inventario en PDF
+    //Genera reporte de inventario en PDF
     case 'reporteInventarioPDF':
         $inventarios = $controladorInventario->inventarioActual();
         include('./views/inventario/reporteInventarioPDF.php');
@@ -894,57 +894,57 @@ switch ($action) {
         include('./views/inventario/inventarioSinStock.php');
         break;
 
-        //Filtra por nombre del Producto
+    //Filtra por nombre del Producto
     case 'consultaProductosNombreSinStock':
         $valor = $_GET['nombre'] ?? '';
         $data = $controladorInventario->listaProductosFiltradoSinStock('nombre', $valor);
         include('./views/inventario/inventarioSinStock.php');
         break;
 
-        //Genera reporte de inventario Bajo de Stock en PDF
+    //Genera reporte de inventario Bajo de Stock en PDF
     case 'reporteSinStockPDF':
         $inventarios = $controladorInventario->ProductoSinStock();
         include('./views/inventario/reporteSinStockPDF.php');
         break;
 
 
-        //Entrada de Productos
+    //Entrada de Productos
     case 'reporteEntProducto':
         include('./views/entradaProducto/generarInforEntProductos.php');
         break;
 
-        //Filtro por fecha de inicio y fin
+    //Filtro por fecha de inicio y fin
     case 'reporteEntProductoFecha';
         $entProductos = $controladorEntProducto->ReporteEntProductos();
         include('./views/entradaProducto/reporteEntProductos.php');
         break;
 
-        //Genera reporte de Entrada producto en PDF
+    //Genera reporte de Entrada producto en PDF
     case 'reporteEntProductosPDF':
         $entProductos = $controladorEntProducto->ReporteEntProductos();
         include('./views/entradaProducto/reporteEntProductosPDF.php');
         break;
 
 
-        //Salida de Productos
+    //Salida de Productos
     case 'reporteSalProducto':
         include('./views/salidaProducto/generarInfSalProducto.php');
         break;
 
-         //Filtro por fecha de inicio y fin
+    //Filtro por fecha de inicio y fin
     case 'reporteSalProductoFecha';
         $salProductos = $controladorSalProducto->ReporteSalProductos();
         include('./views/salidaProducto/reporteSalProducto.php');
         break;
 
-        //Genera Consulta de reporte de Salida producto en PDF
+    //Genera Consulta de reporte de Salida producto en PDF
     case 'reporteSalProductosPDF';
         $salProductos = $controladorSalProducto->ReporteSalProductos();
         include('./views/salidaProducto/reporteSalProductosPDF.php');
         break;
 
 
-        //Productos Proximos a Vencer
+    //Productos Proximos a Vencer
     case 'productosAvencer':
         $tipo = '';
         $filtro = '';
@@ -952,14 +952,14 @@ switch ($action) {
         include('./views/productosAvencer/productosProximosAvencer.php');
         break;
 
-        //Filtra por nombre del Producto
+    //Filtra por nombre del Producto
     case 'productosAvencerNombre':
         $valor = $_GET['nombre'] ?? '';
         $data = $controladorInventario->listaProductosAvencerFiltrado('nombre', $valor);
         include('./views/productosAvencer/productosProximosAvencer.php');
         break;
 
-        //Genera reporte de productos a vencer en pdf
+    //Genera reporte de productos a vencer en pdf
     case 'productosAvencerPDF':
         $productosAvencer = $controladorInventario->ProductosAvencer();
         include('./views/productosAvencer/reporteProductosAvencerPDF.php');
@@ -1103,12 +1103,23 @@ switch ($action) {
     //Reportes
 
     //Inventario
-    // case 'reporteInventarioEmp':
-    //     $inventarios = $controladorInventario->inventarioActualEmp();
-    //     include('./views/inventario/inventarioActualEmp.php');
-    //     break;
+    case 'reporteInventarioEmp':
+        $tipo = '';
+        $filtro = '';
+        $data = $controladorInventario->listaInventarioActualizado($tipo, $filtro);
+        // var_dump($data);
+        // exit;
+        include('./views/inventario/inventarioActualEmp.php');
+        break;
 
-    // //Genera reporte de inventario en PDF
+    //Filtra por nombre del Producto
+    case 'consultaProductosNombreInventarioEmp':
+        $valor = $_GET['nombre'] ?? '';
+        $data = $controladorInventario->listaProductosFiltrado('nombre', $valor);
+        include('./views/inventario/inventarioActualEmp.php');
+        break;
+
+    //Genera reporte de inventario en PDF
     // case 'reporteInventarioEmpPDF':
     //     $inventarios = $controladorInventario->inventarioActualEmp();
     //     include('./views/inventario/reporteInvenEmpPDF.php');
@@ -1117,15 +1128,24 @@ switch ($action) {
 
     //Inventario Bajo de Stock
     case 'reporteSinStockEmp':
-        $inventarios = $controladorInventario->ProductoSinStockEmp();
+        $tipo = '';
+        $filtro = '';
+        $data = $controladorInventario->listaInventarioSinStock($tipo, $filtro);
         include('./views/inventario/reporteSinStockEmp.php');
         break;
 
-    //Genera reporte de inventario Bajo de Stock en PDF
-    case 'reporteSinStockEmpPDF':
-        $inventarios = $controladorInventario->ProductoSinStockEmp();
-        include('./views/inventario/SinStockEmpPDF.php');
+
+    case 'consultaProductosNombreSinStockEmp':
+        $valor = $_GET['nombre'] ?? '';
+        $data = $controladorInventario->listaProductosFiltradoSinStock('nombre', $valor);
+        include('./views/inventario/reporteSinStockEmp.php');
         break;
+
+    // //Genera reporte de inventario Bajo de Stock en PDF
+    // case 'reporteSinStockEmpPDF':
+    //     $inventarios = $controladorInventario->ProductoSinStockEmp();
+    //     include('./views/inventario/SinStockEmpPDF.php');
+    //     break;
 
 
     //Entrada de Productos
@@ -1164,15 +1184,23 @@ switch ($action) {
 
     //Productos Proximos a Vencer
     case 'productosAvencerEmp':
-        $productosAvencer = $controladorInventario->ProductosAvencerEmp();
+        $tipo = '';
+        $filtro = '';
+        $data = $controladorInventario->listaProductosAvencer($tipo, $filtro);
         include('./views/productosAvencer/prodProxAVencerEmp.php');
         break;
 
-    //Genera reporte de productos a vencer en pdf
-    case 'productosAvencerEmpPDF':
-        $productosAvencer = $controladorInventario->ProductosAvencerEmp();
-        include('./views/productosAvencer/reporteProVencerEmpPDF.php');
+    case 'productosAvencerNombreEmp':
+        $valor = $_GET['nombre'] ?? '';
+        $data = $controladorInventario->listaProductosAvencerFiltrado('nombre', $valor);
+        include('./views/productosAvencer/prodProxAVencerEmp.php');
         break;
+
+    // //Genera reporte de productos a vencer en pdf
+    // case 'productosAvencerEmpPDF':
+    //     $productosAvencer = $controladorInventario->ProductosAvencerEmp();
+    //     include('./views/productosAvencer/reporteProVencerEmpPDF.php');
+    //     break;
 
 
 
