@@ -77,6 +77,47 @@ class ControladorInventario
     }
 
 
+    public function listaProductosAvencer($tipo, $valor)
+    {
+        $limite = 10;
+        $pagina = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
+        $inicio = ($pagina - 1) * $limite;
+
+        $productosAvencer = $this->modeloInventario->listaProductosAvencer($inicio, $limite);
+        $totalProductos = $this->modeloInventario->obtenerTotalProductosProximosAvencer();
+        $totalPaginas = ceil($totalProductos / $limite);
+
+        return [
+            'productosAvencer' => $productosAvencer,
+            'pagina' => $pagina,
+            'totalPaginas' => $totalPaginas,
+            'filtro' => $valor,
+            'tipo' => $tipo
+        ];
+    }
+
+
+    public function listaProductosAvencerFiltrado($tipo, $valor)
+    {
+        $limite = 10;
+        $pagina = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
+        $inicio = ($pagina - 1) * $limite;
+
+        $productosAvencer = $this->modeloInventario->consultarFiltradoPrductosAvencer($tipo, $valor, $inicio, $limite);
+        $totalProductos = $this->modeloInventario->totalFiltradoPrductosAvencer($tipo, $valor);
+        $totalPaginas = ceil($totalProductos / $limite);
+
+        return [
+            'productosAvencer' => $productosAvencer,
+            'pagina' => $pagina,
+            'totalPaginas' => $totalPaginas,
+            'filtro' => $valor,
+            'tipo' => $tipo
+        ];
+        
+    }
+
+
     // Consulta para verificar si el stock disponible del producto en BD
     public function disponibilidadProducto()
     {

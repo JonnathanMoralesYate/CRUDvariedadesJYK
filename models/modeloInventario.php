@@ -123,15 +123,84 @@ class ModeloInventario
     }
 
 
-
-
-
     //Vista reporte Productos Proximos a Vencer de inventario
     public function productosAvencer()
     {
         $query = "SELECT idInventario, entrada_productos.FechaVencimiento, CantActual, productos.CodProducto, productos.Nombre, productos.Marca, productos.Descripcion, CONCAT(presentacion_producto.Presentacion,' ', productos.ContNeto,' ', unidad_base.UndBase) AS 'Contenido Neto', proveedores.NombreProveedor, productos.Foto FROM " . $this->table . " INNER JOIN productos ON inventario.idProducto=productos.idProducto INNER JOIN entrada_productos ON productos.idProducto=entrada_productos.idProducto INNER JOIN presentacion_producto ON productos.idPresentacion=presentacion_producto.idPresentacion INNER JOIN unidad_base ON productos.idUndBase=unidad_base.idUndBase INNER JOIN proveedores ON entrada_productos.idProveedor=proveedores.idProveedor WHERE entrada_productos.FechaVencimiento >= CURRENT_DATE AND CantActual>0 ORDER BY entrada_productos.FechaVencimiento ASC";
         $stmt = $this->conn->query($query);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+
+    public function listaProductosAvencer($inicio, $limite)
+    {
+        $query = "SELECT idInventario, entrada_productos.FechaVencimiento, CantActual, productos.CodProducto, productos.Nombre, productos.Marca, productos.Descripcion, 
+                    CONCAT(presentacion_producto.Presentacion,' ', productos.ContNeto,' ', unidad_base.UndBase) AS 'Contenido Neto', proveedores.NombreProveedor, 
+                    productos.Foto FROM " . $this->table . " 
+                    INNER JOIN productos ON inventario.idProducto=productos.idProducto 
+                    INNER JOIN entrada_productos ON productos.idProducto=entrada_productos.idProducto 
+                    INNER JOIN presentacion_producto ON productos.idPresentacion=presentacion_producto.idPresentacion 
+                    INNER JOIN unidad_base ON productos.idUndBase=unidad_base.idUndBase 
+                    INNER JOIN proveedores ON entrada_productos.idProveedor=proveedores.idProveedor 
+                    WHERE entrada_productos.FechaVencimiento >= CURRENT_DATE AND CantActual>0 
+                    ORDER BY entrada_productos.FechaVencimiento ASC
+                    LIMIT :inicio, :limite";
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindValue(':inicio', (int)$inicio, PDO::PARAM_INT);
+        $stmt->bindValue(':limite', (int)$limite, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+
+    public function obtenerTotalProductosProximosAvencer()
+    {
+        $stmt = $this->conn->query("SELECT COUNT(*) FROM " . $this->table . " 
+        INNER JOIN entrada_productos ON inventario.idProducto = entrada_productos.idProducto
+        WHERE entrada_productos.FechaVencimiento >= CURRENT_DATE AND CantActual>0");
+        return (int)$stmt->fetchColumn();
+    }
+
+
+    public function consultarFiltradoPrductosAvencer($tipo, $valor, $inicio, $limite)
+    {
+        $query = "SELECT idInventario, entrada_productos.FechaVencimiento, CantActual, productos.CodProducto, productos.Nombre, productos.Marca, productos.Descripcion, 
+                    CONCAT(presentacion_producto.Presentacion,' ', productos.ContNeto,' ', unidad_base.UndBase) AS 'Contenido Neto', proveedores.NombreProveedor, 
+                    productos.Foto FROM " . $this->table . " 
+                    INNER JOIN productos ON inventario.idProducto=productos.idProducto 
+                    INNER JOIN entrada_productos ON productos.idProducto=entrada_productos.idProducto 
+                    INNER JOIN presentacion_producto ON productos.idPresentacion=presentacion_producto.idPresentacion 
+                    INNER JOIN unidad_base ON productos.idUndBase=unidad_base.idUndBase 
+                    INNER JOIN proveedores ON entrada_productos.idProveedor=proveedores.idProveedor 
+                    WHERE entrada_productos.FechaVencimiento >= CURRENT_DATE AND CantActual>0 
+                    AND productos.{$tipo} LIKE :valor
+                    ORDER BY entrada_productos.FechaVencimiento ASC
+                    LIMIT :inicio, :limite";
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindValue(':valor', "%$valor%", PDO::PARAM_STR);
+        $stmt->bindValue(':inicio', (int)$inicio, PDO::PARAM_INT);
+        $stmt->bindValue(':limite', (int)$limite, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+
+    public function totalFiltradoPrductosAvencer($tipo, $valor)
+    {
+        $query = "SELECT COUNT(*) 
+                FROM " . $this->table . " 
+                INNER JOIN entrada_productos ON inventario.idProducto = entrada_productos.idProducto
+                INNER JOIN productos ON inventario.idProducto=productos.idProducto 
+                WHERE entrada_productos.FechaVencimiento >= CURRENT_DATE AND CantActual>0
+                AND productos.{$tipo} LIKE :valor ";
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindValue(':valor', "%$valor%", PDO::PARAM_STR);
+        $stmt->execute();
+
+        return (int)$stmt->fetchColumn();
     }
 
 

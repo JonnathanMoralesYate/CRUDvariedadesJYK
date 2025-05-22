@@ -27,7 +27,7 @@
     <div class="row justify-content-center">
         <div class="col-lg-8 col-md-10 col-sm-12">
             <div class="text-center text-white mt-5">
-                <h4>Filtrode Producto Nombre</h4>
+                <h4>Filtro de Producto Nombre</h4>
             </div>
             <!-- Buscar por Nombre -->
             <form class="mt-3" action="index.php?action=consultaProductosNombreInventario" method="get">
