@@ -936,12 +936,20 @@ switch ($action) {
 
     //Salida de Productos
     case 'reporteSalProducto':
-        include('./views/salidaProducto/generarInfSalProducto.php');
+        include('./views/salidaProducto/generarInforSalProductos.php');
         break;
 
     //Filtro por fecha de inicio y fin
     case 'reporteSalProductoFecha';
-        $salProductos = $controladorSalProducto->ReporteSalProductos();
+        $tipo = '';
+        $filtro = '';
+        $data = $controladorSalProducto->listaSalProductos($tipo, $filtro);
+        include('./views/salidaProducto/reporteSalProducto.php');
+        break;
+
+    case 'consultaSalProductosNombre';
+        $valor = $_GET['nombre'] ?? '';
+        $data = $controladorSalProducto->listaSalProductosFiltradoNombre('nombre', $valor);
         include('./views/salidaProducto/reporteSalProducto.php');
         break;
 

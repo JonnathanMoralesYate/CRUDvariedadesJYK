@@ -259,12 +259,6 @@ class ModeloEntProducto
     }
 
 
-
-
-
-
-
-
     //consulta para ver los Productos con mayor entrada
     public function productosMayorEntrada()
     {

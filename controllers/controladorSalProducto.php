@@ -51,57 +51,57 @@ class ControladorSalProducto
             $idModoPago = $_POST['tipoPago'];
 
             if ($clienteId == false) {
-                    //session_start();
+                //session_start();
 
-                        if ($_SESSION['rol'] == 1) {
-                            echo "
+                if ($_SESSION['rol'] == 1) {
+                    echo "
                                 <script>
                                     alert('Registro Salida del Producto Exitoso!');
                                     window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=registroCliente';
                                 </script>
                                 ";
-                            exit;
-                        } elseif ($_SESSION['rol'] == 2) {
-                            echo "
+                    exit;
+                } elseif ($_SESSION['rol'] == 2) {
+                    echo "
                                 <script>
                                     alert('Registro Salida del Producto Exitoso!');
                                     window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=registroClienteEmp';
                                 </script>
                                 ";
-                            exit;
-                        }
+                    exit;
+                }
             } elseif ($productoId == false) {
-                    //session_start();
+                //session_start();
 
-                        if ($_SESSION['rol'] == 1) {
-                            echo "
+                if ($_SESSION['rol'] == 1) {
+                    echo "
                                 <script>
                                     alert('Registro Salida del Producto Exitoso!');
                                     window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=registroProducto';
                                 </script>
                                 ";
-                            exit;
-                        } elseif ($_SESSION['rol'] == 2) {
-                            echo "
+                    exit;
+                } elseif ($_SESSION['rol'] == 2) {
+                    echo "
                                 <script>
                                     alert('Registro Salida del Producto Exitoso!');
                                     window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=registroProductoEmp';
                                 </script>
                                 ";
-                            exit;
-                        }
+                    exit;
+                }
             } else {
 
                 //metodo para cuando se registre una Salida de producto, en el inventario se reste el producto del stock
                 $estadoInventario = $this->modeloInventario->consultaInventarioId($idProducto);
 
                 if ($estadoInventario !== false) {
-                        //el producto ya existe
-                        $cantidadAct = $estadoInventario['CantActual'] - $cantSal;
-                        $this->modeloInventario->actualizarStock($cantidadAct, $idProducto);
+                    //el producto ya existe
+                    $cantidadAct = $estadoInventario['CantActual'] - $cantSal;
+                    $this->modeloInventario->actualizarStock($cantidadAct, $idProducto);
 
-                        //metodo para la acumulacion de puntos del cliente
-                        $puntosCliente = $this->modeloCliente->consultaPuntos($idCliente);
+                    //metodo para la acumulacion de puntos del cliente
+                    $puntosCliente = $this->modeloCliente->consultaPuntos($idCliente);
 
                     if ($puntosCliente) {
 
@@ -121,41 +121,41 @@ class ControladorSalProducto
                     //session_start();
 
                     if ($_SESSION['rol'] == 1) {
-                            echo "
+                        echo "
                                 <script>
                                     alert('Registro Salida del Producto Exitoso!');
                                     window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=registroSalProductos';
                                 </script>
                                 ";
-                            exit;
+                        exit;
                     } elseif ($_SESSION['rol'] == 2) {
-                            echo "
+                        echo "
                                 <script>
                                     alert('Registro Salida del Producto Exitoso!');
                                     window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=registroSalProductosEmp';
                                 </script>
                                 ";
-                            exit;
+                        exit;
                     }
                 } else {
                     //session_start();
 
                     if ($_SESSION['rol'] == 1) {
-                            echo "
+                        echo "
                                 <script>
                                     alert('Registro Salida del Producto Exitoso!');
                                     window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=registroEntProductos';
                                 </script>
                                 ";
-                            exit;
+                        exit;
                     } elseif ($_SESSION['rol'] == 2) {
-                            echo "
+                        echo "
                                 <script>
                                     alert('Registro Salida del Producto Exitoso!');
                                     window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=registroEntProductosEmp';
                                 </script>
                                 ";
-                            exit;
+                        exit;
                     }
                 }
             }
@@ -278,23 +278,23 @@ class ControladorSalProducto
 
                 //session_start();
 
-                    if ($_SESSION['rol'] == 1) {
-                            echo "
+                if ($_SESSION['rol'] == 1) {
+                    echo "
                                 <script>
                                     alert('Registro Salida del Producto Exitoso!');
                                     window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaSalProductos';
                                 </script>
                                 ";
-                            exit;
-                    } elseif ($_SESSION['rol'] == 2) {
-                            echo "
+                    exit;
+                } elseif ($_SESSION['rol'] == 2) {
+                    echo "
                                 <script>
                                     alert('Registro Salida del Producto Exitoso!');
                                     window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaSalProductosEmp';
                                 </script>
                                 ";
-                            exit;
-                    }
+                    exit;
+                }
             } elseif ($cantidadSalAnterior > $cantSal) {
 
                 $cantidadActual = $cantSal;
@@ -333,23 +333,23 @@ class ControladorSalProducto
 
                 //session_start();
 
-                    if ($_SESSION['rol'] == 1) {
-                            echo "
+                if ($_SESSION['rol'] == 1) {
+                    echo "
                                 <script>
                                     alert('Registro Salida del Producto Exitoso!');
                                     window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaSalProductos';
                                 </script>
                                 ";
-                            exit;
-                    } elseif ($_SESSION['rol'] == 2) {
-                            echo "
+                    exit;
+                } elseif ($_SESSION['rol'] == 2) {
+                    echo "
                                 <script>
                                     alert('Registro Salida del Producto Exitoso!');
                                     window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaSalProductosEmp';
                                 </script>
                                 ";
-                            exit;
-                    }
+                    exit;
+                }
             } else {
 
                 $cantidadActual = $cantSal;
@@ -386,23 +386,23 @@ class ControladorSalProducto
 
                 //session_start();
 
-                    if ($_SESSION['rol'] == 1) {
-                            echo "
+                if ($_SESSION['rol'] == 1) {
+                    echo "
                                 <script>
                                     alert('Registro Salida del Producto Exitoso!');
                                     window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaSalProductos';
                                 </script>
                                 ";
-                            exit;
-                    } elseif ($_SESSION['rol'] == 2) {
-                            echo "
+                    exit;
+                } elseif ($_SESSION['rol'] == 2) {
+                    echo "
                                 <script>
                                     alert('Registro Salida del Producto Exitoso!');
                                     window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaSalProductosEmp';
                                 </script>
                                 ";
-                            exit;
-                    }
+                    exit;
+                }
             }
         }
     }
@@ -469,6 +469,57 @@ class ControladorSalProducto
             'reporteSalProductos' => $reporteSalProductos
         ];
     }
+
+
+    public function listaSalProductos($valor, $tipo)
+    {
+        $fechaInc = $_GET['fechaInc'] ?? '';
+        $fechaFin = $_GET['fechaFin'] ?? '';
+
+        $limite = 10;
+        $pagina = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
+        $inicio = ($pagina - 1) * $limite;
+
+        $reporteSalProductos = $this->modeloSalProducto->listaSalProductos($inicio, $limite, $fechaInc, $fechaFin);
+        $total = $this->modeloSalProducto->totalSalProductosPorFechas($fechaInc, $fechaFin);
+        $totalPaginas = ceil($total / $limite);
+
+        return [
+            'fechaInc' => $fechaInc,
+            'fechaFin' => $fechaFin,
+            'reporteSalProductos' => $reporteSalProductos,
+            'pagina' => $pagina,
+            'totalPaginas' => $totalPaginas,
+            'filtro' => $valor,
+            'tipo' => $tipo,
+        ];
+    }
+
+
+    public function listaSalProductosFiltradoNombre($tipo, $valor)
+    {
+        $fechaInc = $_GET['fechaInc'] ?? '';
+        $fechaFin = $_GET['fechaFin'] ?? '';
+
+        $limite = 10;
+        $pagina = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
+        $inicio = ($pagina - 1) * $limite;
+
+        $reporteSalProductos = $this->modeloSalProducto->consultarFiltradoSalProductos($tipo, $valor, $inicio, $limite, $fechaInc, $fechaFin);
+        $total = $this->modeloSalProducto->totalFiltradoSalProductos($tipo, $valor, $fechaInc, $fechaFin);
+        $totalPaginas = ceil($total / $limite);
+
+        return [
+            'fechaInc' => $fechaInc,
+            'fechaFin' => $fechaFin,
+            'reporteSalProductos' => $reporteSalProductos,
+            'pagina' => $pagina,
+            'totalPaginas' => $totalPaginas,
+            'filtro' => $valor,
+            'tipo' => $tipo,
+        ];
+    }
+
 
     //Registro de salidas de productos por salida de varios producto
     public function registrosSalProductos()

@@ -178,13 +178,92 @@ class ModeloSalProducto
     }
 
 
-    //Consulta para generar informe de salida de productos
+    //Consulta para generar pdf del informe de salida de productos
     public function reporteSalProductos($fechaInc, $fechaFin)
     {
         $query = "SELECT idSalProducto, FechaSalida, clientes.NumIdentificacion, productos.CodProducto, productos.Nombre, productos.Marca, productos.Descripcion, CONCAT(presentacion_producto.Presentacion,' ', productos.ContNeto,' ', unidad_base.UndBase) AS 'Contenido Neto', CantSalida, salida_productos.PrecioVenta FROM " . $this->table . " INNER JOIN productos ON salida_productos.idProducto=productos.idProducto INNER JOIN clientes ON salida_productos.idCliente=clientes.idCliente INNER JOIN presentacion_producto ON productos.idPresentacion=presentacion_producto.idPresentacion INNER JOIN unidad_base ON productos.idUndBase=unidad_base.idUndBase WHERE DATE(FechaSalida) BETWEEN ? AND ? ORDER BY FechaSalida DESC";
         $stmt = $this->conn->prepare($query);
         $stmt->execute([$fechaInc, $fechaFin]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+
+    public function listaSalProductos($inicio, $limite, $fechaInc, $fechaFin)
+    {
+        $query = "SELECT idSalProducto, FechaSalida, clientes.NumIdentificacion, productos.CodProducto, productos.Nombre, productos.Marca, productos.Descripcion,
+                CONCAT(presentacion_producto.Presentacion,' ', productos.ContNeto,' ', unidad_base.UndBase) AS 'Contenido Neto', CantSalida, 
+                salida_productos.PrecioVenta FROM " . $this->table . " 
+                INNER JOIN productos ON salida_productos.idProducto=productos.idProducto 
+                INNER JOIN clientes ON salida_productos.idCliente=clientes.idCliente 
+                INNER JOIN presentacion_producto ON productos.idPresentacion=presentacion_producto.idPresentacion 
+                INNER JOIN unidad_base ON productos.idUndBase=unidad_base.idUndBase
+                WHERE DATE(FechaSalida) BETWEEN :fechaInc AND :fechaFin
+                ORDER BY FechaSalida DESC
+                LIMIT :inicio, :limite";
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindValue(':fechaInc', $fechaInc);
+        $stmt->bindValue(':fechaFin', $fechaFin);
+        $stmt->bindValue(':inicio', (int)$inicio, PDO::PARAM_INT);
+        $stmt->bindValue(':limite', (int)$limite, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+
+    public function totalSalProductosPorFechas($fechaInc, $fechaFin)
+    {
+        $query = "SELECT COUNT(*) FROM " . $this->table . "
+                    WHERE DATE(FechaSalida) BETWEEN :fechaInc AND :fechaFin";
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindValue(':fechaInc', $fechaInc);
+        $stmt->bindValue(':fechaFin', $fechaFin);
+        $stmt->execute();
+        return (int)$stmt->fetchColumn();
+    }
+
+
+    public function consultarFiltradoSalProductos($tipo, $valor, $inicio, $limite, $fechaInc, $fechaFin)
+    {
+        $query = "SELECT idSalProducto, FechaSalida, clientes.NumIdentificacion, productos.CodProducto, productos.Nombre, productos.Marca, productos.Descripcion,
+                CONCAT(presentacion_producto.Presentacion,' ', productos.ContNeto,' ', unidad_base.UndBase) AS 'Contenido Neto', CantSalida, 
+                salida_productos.PrecioVenta FROM " . $this->table . " 
+                INNER JOIN productos ON salida_productos.idProducto=productos.idProducto 
+                INNER JOIN clientes ON salida_productos.idCliente=clientes.idCliente 
+                INNER JOIN presentacion_producto ON productos.idPresentacion=presentacion_producto.idPresentacion 
+                INNER JOIN unidad_base ON productos.idUndBase=unidad_base.idUndBase
+                WHERE DATE(FechaSalida) BETWEEN :fechaInc AND :fechaFin
+                AND  productos.{$tipo} LIKE :valor 
+                ORDER BY FechaSalida DESC
+                LIMIT :inicio, :limite";
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindValue(':fechaInc', $fechaInc);
+        $stmt->bindValue(':fechaFin', $fechaFin);
+        $stmt->bindValue(':valor', "%$valor%", PDO::PARAM_STR);
+        $stmt->bindValue(':inicio', (int)$inicio, PDO::PARAM_INT);
+        $stmt->bindValue(':limite', (int)$limite, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+
+    public function totalFiltradoSalProductos($tipo, $valor, $fechaInc, $fechaFin)
+    {
+        $query = "SELECT COUNT(*) FROM " . $this->table . "
+                    INNER JOIN productos ON salida_productos.idProducto=productos.idProducto 
+                    INNER JOIN clientes ON salida_productos.idCliente=clientes.idCliente 
+                    WHERE DATE(FechaSalida) BETWEEN :fechaInc AND :fechaFin
+                    AND  productos.{$tipo} LIKE :valor";
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindValue(':fechaInc', $fechaInc);
+        $stmt->bindValue(':fechaFin', $fechaFin);
+        $stmt->bindValue(':valor', "%$valor%", PDO::PARAM_STR);
+        $stmt->execute();
+
+        return (int)$stmt->fetchColumn();
     }
 
 
