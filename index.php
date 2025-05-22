@@ -1170,15 +1170,23 @@ switch ($action) {
         break;
 
     case 'reporteEntProductoFechaEmp';
-        $entProductos = $controladorEntProducto->ReporteEntProductosEmp();
+        $tipo = '';
+        $filtro = '';
+        $data = $controladorEntProducto->listaEntProductos($tipo, $filtro);
+        include('./views/entradaProducto/reporteEntProductosEmp.php');
+        break;
+
+        case 'consultaEntProductosNombreEmp':
+        $valor = $_GET['nombre'] ?? '';
+        $data = $controladorEntProducto->listaEntProductosFiltradoNombre('nombre', $valor);
         include('./views/entradaProducto/reporteEntProductosEmp.php');
         break;
 
     //Genera reporte de Entrada producto en PDF
-    case 'reporteEntProductosEmpPDF':
-        $entProductos = $controladorEntProducto->ReporteEntProductosEmp();
-        include('./views/entradaProducto/reporteEntProductoEmpPDF.php');
-        break;
+    // case 'reporteEntProductosEmpPDF':
+    //     $entProductos = $controladorEntProducto->ReporteEntProductosEmp();
+    //     include('./views/entradaProducto/reporteEntProductoEmpPDF.php');
+    //     break;
 
 
     //Salida de Productos
@@ -1187,15 +1195,23 @@ switch ($action) {
         break;
 
     case 'reporteSalProductoFechaEmp';
-        $salProductos = $controladorSalProducto->ReporteSalProductosEmp();
-        include('./views/salidaProducto/reporteSalProducEmp.php');
+        $tipo = '';
+        $filtro = '';
+        $data = $controladorSalProducto->listaSalProductos($tipo, $filtro);
+        include('./views/salidaProducto/reporteSalProductoEmp.php');
+        break;
+
+    case 'consultaSalProductosNombreEmp';
+        $valor = $_GET['nombre'] ?? '';
+        $data = $controladorSalProducto->listaSalProductosFiltradoNombre('nombre', $valor);
+        include('./views/salidaProducto/reporteSalProductoEmp.php');
         break;
 
     //Genera Consulta de reporte de Salida producto en PDF
-    case 'reporteSalProductosEmpPDF';
-        $salProductos = $controladorSalProducto->ReporteSalProductos();
-        include('./views/salidaProducto/reporteSalProducEmpPDF.php');
-        break;
+    // case 'reporteSalProductosEmpPDF';
+    //     $salProductos = $controladorSalProducto->ReporteSalProductos();
+    //     include('./views/salidaProducto/reporteSalProducEmpPDF.php');
+    //     break;
 
 
     //Productos Proximos a Vencer

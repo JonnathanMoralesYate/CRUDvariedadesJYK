@@ -20,7 +20,7 @@
                 <input type="date" class="form-control" placeholder="Fecha final" name="fechaFin" aria-label="Recipient's usernam" aria-describedby="button-addon2" required>
                 </div>
                 <div class="text-center mt-4">
-                    <button type="submit" class="btn btn-outline-light" id="button-addon2">Generar Reporte</button>
+                    <button type="submit" class="btn btn-outline-secondary text-white" id="button-addon2">Generar Reporte</button>
                 </div>
             </form>
         </div>

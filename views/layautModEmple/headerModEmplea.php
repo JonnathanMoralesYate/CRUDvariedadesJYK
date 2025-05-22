@@ -137,7 +137,7 @@ if ($_SESSION['rol'] == 1) {
                     <!-- Botón de Logout -->
                     <form action="index.php?action=cerrarSesion" method="POST">
                         <input type="hidden" name="action" value="cerrarSesion">
-                        <button type="submit" class="btn btn-outline-light">Log Out</button>
+                        <button type="submit" class="btn btn-outline-secondary text-white">Log Out</button>
                     </form>
                 </div>
             </div>
