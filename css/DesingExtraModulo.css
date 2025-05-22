@@ -1,6 +1,7 @@
 /* Posiciona los submenús correctamente */
 .dropdown-menu .dropdown-menu {
-    left: 100%; /* Alinea el submenú al lado derecho */
+    left: 100%;
+    /* Alinea el submenú al lado derecho */
     top: 0;
     margin-left: 0.1rem;
 }
@@ -11,11 +12,14 @@
 }
 
 /* Eliminar el fondo azul al hacer clic */
-.dropdown-item:focus, 
+.dropdown-item:focus,
 .dropdown-item:active {
-    background-color: transparent !important; /* Quita el color de fondo */
-    color: inherit !important; /* Mantiene el color del texto original */
-    outline: none !important; /* Quita el borde de enfoque */
+    background-color: transparent !important;
+    /* Quita el color de fondo */
+    color: inherit !important;
+    /* Mantiene el color del texto original */
+    outline: none !important;
+    /* Quita el borde de enfoque */
 }
 
 /* Opcional: Eliminar cualquier cambio de color en hover */
@@ -27,45 +31,59 @@
 /* Quitar el hover azul en select */
 select.form-select:focus {
     box-shadow: none;
-    border-color: #ced4da; /* Color predeterminado del borde */
+    border-color: #ced4da;
+    /* Color predeterminado del borde */
 }
 
 .contenedor {
     display: flex;
     align-items: center;
-    gap: 10px; /* Espacio entre el input y el resultado */
-    justify-content: center; /* Centra los elementos horizontalmente */
+    gap: 10px;
+    /* Espacio entre el input y el resultado */
+    justify-content: center;
+    /* Centra los elementos horizontalmente */
 }
 
 #resultado {
     margin: 0;
-    white-space: nowrap; /* Evita que el texto se divida en varias líneas */
-    color: white; /* Ajusta el color del texto según el diseño */
-    text-align: center; /* Centra el texto dentro del elemento */
-    font-size: 1.2rem; /* Ajusta el tamaño del icono/texto */
+    white-space: nowrap;
+    /* Evita que el texto se divida en varias líneas */
+    color: white;
+    /* Ajusta el color del texto según el diseño */
+    text-align: center;
+    /* Centra el texto dentro del elemento */
+    font-size: 1.2rem;
+    /* Ajusta el tamaño del icono/texto */
 }
 
 #resultado1 {
     margin: 0;
-    white-space: nowrap; /* Evita que el texto se divida en varias líneas */
-    color: white; /* Ajusta el color del texto según el diseño */
-    text-align: center; /* Centra el texto dentro del elemento */
-    font-size: 1.2rem; /* Ajusta el tamaño del icono/texto */
+    white-space: nowrap;
+    /* Evita que el texto se divida en varias líneas */
+    color: white;
+    /* Ajusta el color del texto según el diseño */
+    text-align: center;
+    /* Centra el texto dentro del elemento */
+    font-size: 1.2rem;
+    /* Ajusta el tamaño del icono/texto */
 }
 
 
-#myChart, #myChart1, #myChart2, #myChart3  {
+#myChart,
+#myChart1,
+#myChart2,
+#myChart3 {
     width: 100% !important;
     height: 100% !important;
     max-width: 100%;
     max-height: 100%;
 }
 
-  /* Contenedor de la paginación */
-    .pagination-container {
-        display: flex;
-        justify-content: center;
-        width: 100%;
-        margin-top: 30px; /* Mayor separación entre el scroll y la paginación */
-        margin-bottom: 30px; /* Mayor espacio debajo */
-    }
+/* Contenedor de la paginación */
+#paginacion-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}

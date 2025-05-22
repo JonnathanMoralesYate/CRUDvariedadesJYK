@@ -171,18 +171,98 @@ class ModeloEntProducto
     }
 
 
-    //Consulta para generar informe de entrada de productos
+    //Consulta para generar pdf del informe de entrada de productos 
     public function reporteEntProductos($fechaInc, $fechaFin)
     {
-        //ver Valores antes de la consulta
-        //echo "Fecha inicio: $fechaInc, Fecha fin: $fechaFin";
         $query = "SELECT idEntProducto, FechaEnt, proveedores.NombreProveedor, productos.CodProducto, productos.Nombre, productos.Marca, productos.Descripcion, CONCAT(presentacion_producto.Presentacion,' ', productos.ContNeto,' ', unidad_base.UndBase) AS 'Contenido Neto', FechaVencimiento, PrecioCompra, CantEnt FROM " . $this->table . " INNER JOIN productos ON entrada_productos.idProducto=productos.idProducto INNER JOIN proveedores ON entrada_productos.idProveedor=proveedores.idProveedor INNER JOIN presentacion_producto ON productos.idPresentacion=presentacion_producto.idPresentacion INNER JOIN unidad_base ON productos.idUndBase=unidad_base.idUndBase WHERE DATE(FechaEnt) BETWEEN ? AND ? ORDER BY FechaEnt DESC";
         $stmt = $this->conn->prepare($query);
-        // Depuración: ver los valores que se pasan al ejecutar la consulta
-        //var_dump([$fechaInc, $fechaFin]); // Ver los parámetros antes de ejecutar
         $stmt->execute([$fechaInc, $fechaFin]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+
+    public function listaEntProductos($inicio, $limite, $fechaInc, $fechaFin)
+    {
+        $query = "SELECT idEntProducto, FechaEnt, proveedores.NombreProveedor, productos.CodProducto, productos.Nombre, productos.Marca, 
+        productos.Descripcion, CONCAT(presentacion_producto.Presentacion,' ', productos.ContNeto,' ', unidad_base.UndBase) AS 'Contenido Neto',
+        FechaVencimiento, PrecioCompra, CantEnt FROM " . $this->table . " 
+        INNER JOIN productos ON entrada_productos.idProducto=productos.idProducto 
+        INNER JOIN proveedores ON entrada_productos.idProveedor=proveedores.idProveedor 
+        INNER JOIN presentacion_producto ON productos.idPresentacion=presentacion_producto.idPresentacion 
+        INNER JOIN unidad_base ON productos.idUndBase=unidad_base.idUndBase 
+        WHERE DATE(FechaEnt) BETWEEN :fechaInc AND :fechaFin 
+        ORDER BY FechaEnt DESC
+        LIMIT :inicio, :limite";
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindValue(':fechaInc', $fechaInc);
+        $stmt->bindValue(':fechaFin', $fechaFin);
+        $stmt->bindValue(':inicio', (int)$inicio, PDO::PARAM_INT);
+        $stmt->bindValue(':limite', (int)$limite, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function totalEntProductosPorFechas($fechaInc, $fechaFin)
+    {
+        $query = "SELECT COUNT(*) FROM " . $this->table . "
+                    WHERE DATE(FechaEnt) BETWEEN :fechaInc AND :fechaFin";
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindValue(':fechaInc', $fechaInc);
+        $stmt->bindValue(':fechaFin', $fechaFin);
+        $stmt->execute();
+        return (int)$stmt->fetchColumn();
+    }
+
+
+    public function consultarFiltradoEntProductos($tipo, $valor, $inicio, $limite, $fechaInc, $fechaFin)
+    {
+        $query = "SELECT idEntProducto, FechaEnt, proveedores.NombreProveedor, productos.CodProducto, productos.Nombre, productos.Marca, 
+        productos.Descripcion, CONCAT(presentacion_producto.Presentacion,' ', productos.ContNeto,' ', unidad_base.UndBase) AS 'Contenido Neto',
+        FechaVencimiento, PrecioCompra, CantEnt FROM " . $this->table . " 
+        INNER JOIN productos ON entrada_productos.idProducto=productos.idProducto 
+        INNER JOIN proveedores ON entrada_productos.idProveedor=proveedores.idProveedor 
+        INNER JOIN presentacion_producto ON productos.idPresentacion=presentacion_producto.idPresentacion 
+        INNER JOIN unidad_base ON productos.idUndBase=unidad_base.idUndBase 
+        WHERE DATE(FechaEnt) BETWEEN :fechaInc AND :fechaFin 
+        AND  productos.{$tipo} LIKE :valor 
+        ORDER BY FechaEnt DESC
+        LIMIT :inicio, :limite";
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindValue(':fechaInc', $fechaInc);
+        $stmt->bindValue(':fechaFin', $fechaFin);
+        $stmt->bindValue(':valor', "%$valor%", PDO::PARAM_STR);
+        $stmt->bindValue(':inicio', (int)$inicio, PDO::PARAM_INT);
+        $stmt->bindValue(':limite', (int)$limite, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+
+    public function totalFiltradoEntProductos($tipo, $valor, $fechaInc, $fechaFin)
+    {
+        $query = "SELECT COUNT(*) FROM " . $this->table . "
+                    INNER JOIN productos ON entrada_productos.idProducto=productos.idProducto 
+                    INNER JOIN proveedores ON entrada_productos.idProveedor=proveedores.idProveedor 
+                    WHERE DATE(FechaEnt) BETWEEN :fechaInc AND :fechaFin
+                    AND productos.{$tipo} LIKE :valor";
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindValue(':fechaInc', $fechaInc);
+        $stmt->bindValue(':fechaFin', $fechaFin);
+        $stmt->bindValue(':valor', "%$valor%", PDO::PARAM_STR);
+        $stmt->execute();
+
+        return (int)$stmt->fetchColumn();
+    }
+
+
+
+
+
+
 
 
     //consulta para ver los Productos con mayor entrada

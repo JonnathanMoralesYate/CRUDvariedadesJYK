@@ -914,8 +914,16 @@ switch ($action) {
         break;
 
     //Filtro por fecha de inicio y fin
-    case 'reporteEntProductoFecha';
-        $entProductos = $controladorEntProducto->ReporteEntProductos();
+    case 'reporteEntProductoFecha':
+        $tipo = '';
+        $filtro = '';
+        $data = $controladorEntProducto->listaEntProductos($tipo, $filtro);
+        include('./views/entradaProducto/reporteEntProductos.php');
+        break;
+
+    case 'consultaEntProductosNombre':
+        $valor = $_GET['nombre'] ?? '';
+        $data = $controladorEntProducto->listaEntProductosFiltradoNombre('nombre', $valor);
         include('./views/entradaProducto/reporteEntProductos.php');
         break;
 

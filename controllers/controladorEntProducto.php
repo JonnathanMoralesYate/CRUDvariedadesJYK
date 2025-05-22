@@ -390,6 +390,61 @@ class ControladorEntProductos
     }
 
 
+    public function listaEntProductos($valor, $tipo)
+    {
+        $fechaInc = $_GET['fechaInc'] ?? '';
+        $fechaFin = $_GET['fechaFin'] ?? '';
+
+        $limite = 10;
+        $pagina = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
+        $inicio = ($pagina - 1) * $limite;
+
+        $reporteEntProductos = $this->modeloEntProducto->listaEntProductos($inicio, $limite, $fechaInc, $fechaFin);
+        $total = $this->modeloEntProducto->totalEntProductosPorFechas($fechaInc, $fechaFin);
+        $totalPaginas = ceil($total / $limite);
+
+        // echo "<pre>";
+        // var_dump($fechaInc, $fechaFin, $reporteEntProductos, $totalPaginas, $valor, $tipo, $total);
+        // echo "</pre>";
+        // exit;
+
+        return [
+            'fechaInc' => $fechaInc,
+            'fechaFin' => $fechaFin,
+            'reporteEntProductos' => $reporteEntProductos,
+            'pagina' => $pagina,
+            'totalPaginas' => $totalPaginas,
+            'filtro' => $valor,
+            'tipo' => $tipo,
+        ];
+    }
+
+
+    public function listaEntProductosFiltradoNombre($tipo, $valor)
+    {
+        $fechaInc = $_GET['fechaInc'] ?? '';
+        $fechaFin = $_GET['fechaFin'] ?? '';
+
+        $limite = 10;
+        $pagina = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
+        $inicio = ($pagina - 1) * $limite;
+
+        $reporteEntProductos = $this->modeloEntProducto->consultarFiltradoEntProductos($tipo, $valor, $inicio, $limite, $fechaInc, $fechaFin);
+        $total = $this->modeloEntProducto->totalFiltradoEntProductos($tipo, $valor, $fechaInc, $fechaFin);
+        $totalPaginas = ceil($total / $limite);
+
+        return [
+            'fechaInc' => $fechaInc,
+            'fechaFin' => $fechaFin,
+            'reporteEntProductos' => $reporteEntProductos,
+            'pagina' => $pagina,
+            'totalPaginas' => $totalPaginas,
+            'filtro' => $valor,
+            'tipo' => $tipo,
+        ];
+    }
+
+
     //Metodo para traer datos de productos con mayor entrada 
     public function ProductosMayorEntrada()
     {
