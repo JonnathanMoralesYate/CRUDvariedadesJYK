@@ -5,7 +5,6 @@ let paginaActual = 1;
 
 // Obtener productos por clase
 async function obtenerInforProductoPorClase(idClase) {
-    //console.log('obtenerInforProductoPorClase llamada con idClase:', idClase);
 
     try {
         const response = await fetch("index.php?action=productosPorClase", {
@@ -14,17 +13,13 @@ async function obtenerInforProductoPorClase(idClase) {
             body: JSON.stringify({ idClase: idClase }),
         });
 
-        //console.log('Respuesta recibida del fetch');
-
         const data = await response.json();
-        //console.log('Datos parseados:', data);
 
         if (data.success) {
-            //console.log('data.success es true, productos recibidos:', data.inforProducto.length);
             productosPaginados = data.inforProducto;
             mostrarPagina(1);
         } else {
-            //console.warn('data.success es falso:', data);
+
         }
     } catch (error) {
         console.error("Error al obtener los datos del producto:", error);
@@ -55,7 +50,7 @@ function mostrarProductos(productosPagina) {
 
 // Mostrar paginación con máximo de 10 botones
 function mostrarPaginacion() {
-    //console.log("mostrarPaginacion llamada");
+    
     const totalPaginas = Math.ceil(productosPaginados.length / productosPorPagina);
     const paginacionContenedor = document.getElementById("paginacion-container");
     paginacionContenedor.innerHTML = "";
@@ -126,7 +121,6 @@ function mostrarPaginacion() {
 
 // Mostrar página específica
 function mostrarPagina(pagina) {
-    //console.log('mostrarPagina llamada con pagina:', pagina);
     paginaActual = pagina;
     const inicio = (paginaActual - 1) * productosPorPagina;
     const fin = inicio + productosPorPagina;

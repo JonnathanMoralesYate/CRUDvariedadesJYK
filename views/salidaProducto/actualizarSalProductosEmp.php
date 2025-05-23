@@ -33,10 +33,6 @@
                     <label for="cantSal" class="form-label text-white mt-3">Cantidad de Salida:</label>
                     <input type="number" class="form-control" name="cantSal" value="<?= $salProducto['CantSalida']; ?>" placeholder="" required>
                 </div>
-                <!-- <div class=" mt-2">
-                    <label for="precioVenta" class="form-label text-white mt-3">Precio Venta:</label>
-                    <input type="number" class="form-control" name="precioVenta" value="<?= $salProducto['PrecioVenta']; ?>" placeholder="" required>
-                </div> -->
                 <div class=" mt-2">
                     <label for="precioVenta" class="form-label text-white mt-3">Precio Venta:</label>
                     <input type="text" class="form-control" id="precioVenta" name="precioVenta" value="<?= $salProducto['PrecioVenta']; ?>" placeholder="" required readonly>

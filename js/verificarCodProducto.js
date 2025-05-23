@@ -23,14 +23,13 @@ document.getElementById('codProduc').addEventListener('blur', async function () 
 
                 // Conviértelo a un objeto JSON
                 const data = await response.json();
-                //console.log("datos recibidos: ", data);
 
                     if (data.success) {
                             alert("El Codigo de Barras ya esta Registrado");
                             //limpia el campo del Codigo del producto
                             document.getElementById("codProduc").value = '';
                         } else {
-                           //alert("El Producto no esta Registrado");
+                            
                         }
         } catch (error) {
             console.error('Error al verificar Codigo del Producto:', error);

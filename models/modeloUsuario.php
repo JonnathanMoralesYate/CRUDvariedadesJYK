@@ -30,15 +30,7 @@ class ModeloUsuario
     }
 
 
-    //consulta general con inner join
-    // public function consultGenUsuaVista()
-    // {
-    //     $query = "SELECT idUsuario, tipo_documento.tipoDocum, NumIdentificacion, Nombres, Apellidos, NumCelular, Email, roles.Rol, Usuario, Contraseña FROM " . $this->table . " INNER JOIN tipo_documento ON registro_usuarios.idTipoDocum = tipo_documento.idTipoDocum INNER JOIN roles ON registro_usuarios.idRol = roles.idRol";
-    //     $stmt = $this->conn->query($query);
-    //     return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    // }
-
-
+    //Lista de usuarios vista consulta
     public function consultGenUsuaVista($inicio, $limite)
     {
         $query = "SELECT idUsuario, tipo_documento.tipoDocum, NumIdentificacion, Nombres, Apellidos, 
@@ -56,6 +48,7 @@ class ModeloUsuario
     }
 
 
+    //Contar total de registros para paginación
     public function obtenerTotalUsuarios()
     {
         $stmt = $this->conn->query("SELECT COUNT(*) FROM " . $this->table . " ");
@@ -63,6 +56,7 @@ class ModeloUsuario
     }
 
 
+    //Consulta filtrada por numero documento o nombre
     public function consultarFiltrado($tipo, $valor, $inicio, $limite)
     {
         $campo = $tipo == 'codigo' ? 'NumIdentificacion' : 'Nombres';
@@ -84,6 +78,7 @@ class ModeloUsuario
     }
 
 
+    //Contar total de registros filtrados para paginación
     public function totalFiltrado($tipo, $valor)
     {
         $campo = $tipo == 'codigo' ? 'NumIdentificacion' : 'Nombres';
@@ -113,15 +108,6 @@ class ModeloUsuario
         $stmt->execute([$numIdentUsuario]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-
-
-    //Consulta por parametro Nombre
-    //public function consultUsuaNombre($nombre) {
-    //$query = "SELECT * FROM ".$this->table." WHERE Nombres=?";
-    //$stmt = $this->conn->prepare($query);
-    //$stmt->execute(['%'.$nombre.'%']);
-    //return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    //}
 
 
     //consulta general con inner join por Nombre
@@ -164,7 +150,6 @@ class ModeloUsuario
         $stmt = $this->conn->prepare($query);
         $stmt->execute($params);
     }
-
 
 
     //Eliminar usuario

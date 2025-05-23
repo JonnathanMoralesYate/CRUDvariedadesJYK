@@ -4,20 +4,13 @@ let myChart = null; // Variable global para almacenar la instancia de la gráfic
 
 async function ActualizarGraficaMayorVenta() {
 
-  //alert('ingresa a la funcion actualizargraficamayoeventa');
-
     try {
       const response = await fetch('index.php?action=productosMayorVenta', {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     });
 
-    // Verificar el contenido de la respuesta antes de procesarla como JSON
-    //const textResponse = await response.text();
-    //console.log("Respuesta recibida:", textResponse);
-
     const data = await response.json();
-    //console.log('Datos recibidos:', data); // Verifica qué datos llegan
 
     // Validar que la respuesta contiene los datos esperados
     if (!data || !data.mayorVenta || !Array.isArray(data.mayorVenta) || data.mayorVenta.length === 0) {
@@ -29,9 +22,6 @@ async function ActualizarGraficaMayorVenta() {
     const mayorVenta = data.mayorVenta;
     const nombres = mayorVenta.map(item => item.Producto);
     const cantidades = mayorVenta.map(item => parseFloat(item.totalVendido));
-
-    //console.log("Nombres:", nombres);
-    //console.log("Cantidades:", cantidades);
 
     // Obtener el contexto del canvas
     const canvas = document.getElementById('myChart');
@@ -110,8 +100,6 @@ async function ActualizarGraficaMayorVenta() {
           }
       }
       });
-
-    //console.log("Gráfica actualizada correctamente.");
   } catch (error) {
     console.error("Error al obtener los datos del producto:", error);
   }
@@ -128,20 +116,13 @@ document.addEventListener("DOMContentLoaded", ActualizarGraficaMayorVenta);
 
   async function ActualizarGraficaVentaPorDia() {
 
-  //alert('ingresa a la funcion actualizargraficaventapordia');
-
     try {
       const response = await fetch('index.php?action=ventasPorDias', {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     });
 
-    // Verificar el contenido de la respuesta antes de procesarla como JSON
-    //const textResponse = await response.text();
-    //console.log("Respuesta recibida:", textResponse);
-
     const data = await response.json();
-    //console.log('Datos recibidos:', data); // Verifica qué datos llegan
 
     // Validar que la respuesta contiene los datos esperados
     if (!data || !data.ventaPorDia || !Array.isArray(data.ventaPorDia) || data.ventaPorDia.length === 0) {
@@ -153,9 +134,6 @@ document.addEventListener("DOMContentLoaded", ActualizarGraficaMayorVenta);
     const ventaPorDia = data.ventaPorDia;
     const nombres = ventaPorDia.map(item => item.Fecha);
     const cantidades = ventaPorDia.map(item => parseFloat(item.TotalVendido));
-
-    //console.log("Nombres:", nombres);
-    //console.log("Cantidades:", cantidades);
 
     // Obtener el contexto del canvas
     const canvas = document.getElementById('myChart1');
@@ -221,8 +199,6 @@ document.addEventListener("DOMContentLoaded", ActualizarGraficaMayorVenta);
             }
         }
       });
-
-       //console.log("Gráfica actualizada correctamente.");
     } catch (error) {
       console.error("Error al obtener los datos del producto:", error);
     } 
@@ -238,20 +214,13 @@ let myChart2 = null; // Variable global para almacenar la instancia de la gráfi
 
   async function ActualizarGraficaMayorEntradaProducto() {
 
-  //alert('ingresa a la funcion actualizargraficaventapordia');
-
     try {
       const response = await fetch('index.php?action=mayorEntProductos', {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     });
 
-    // Verificar el contenido de la respuesta antes de procesarla como JSON
-    //const textResponse = await response.text();
-    //console.log("Respuesta recibida:", textResponse);
-
     const data = await response.json();
-    //console.log('Datos recibidos:', data); // Verifica qué datos llegan
 
     // Validar que la respuesta contiene los datos esperados
     if (!data || !data.mayorEntrada || !Array.isArray(data.mayorEntrada) || data.mayorEntrada.length === 0) {
@@ -263,9 +232,6 @@ let myChart2 = null; // Variable global para almacenar la instancia de la gráfi
     const mayorEntrada = data.mayorEntrada;
     const nombres = mayorEntrada.map(item => item.Producto);
     const cantidades = mayorEntrada.map(item => parseFloat(item.TotalEntradas));
-
-    //console.log("Nombres:", nombres);
-    //console.log("Cantidades:", cantidades);
 
     // Obtener el contexto del canvas
     const canvas = document.getElementById('myChart2');
@@ -332,9 +298,6 @@ new Chart(ctx2, {
     }
   }
 });
-
-
-  //console.log("Gráfica actualizada correctamente.");
 } catch (error) {
   console.error("Error al obtener los datos:", error);
 } 
@@ -358,7 +321,6 @@ async function ActualizarGraficaMenorStock() {
     });
 
     const data = await response.json();
-    //console.log('Datos recibidos:', data); // Verifica qué datos llegan
 
     // Validar que la respuesta contiene los datos esperados
     if (!data || !data.menorStock || !Array.isArray(data.menorStock) || data.menorStock.length === 0) {
@@ -370,9 +332,6 @@ async function ActualizarGraficaMenorStock() {
     const menorStock = data.menorStock;
     const nombres = menorStock.map(item => item.Producto);
     const cantidades = menorStock.map(item => parseFloat(item.CantActual));
-
-    //console.log("Nombres:", nombres);
-    //console.log("Cantidades:", cantidades);
 
     // Obtener el contexto del canvas
     const canvas = document.getElementById('myChart3');
@@ -432,8 +391,6 @@ async function ActualizarGraficaMenorStock() {
             }
         }
     });
-
-    //console.log("Gráfica actualizada correctamente.");
   } catch (error) {
     console.error("Error al obtener los datos del producto:", error);
   }

@@ -19,14 +19,13 @@ document.getElementById('documCliente').addEventListener('blur', async function 
         });
 
         const data = await response.json();
-        //console.log('Datos recibidos:', data);
 
         if (data.success) {
             alert("El Cliente ya esta Registrado");
             //limpia el campo de numero documento del cliente
             document.getElementById("documCliente").value = '';
         } else {
-            //alert("El Cliente no esta Registrado");
+            
         }
     } catch (error) {
         console.error("Error al obtener la información del Cliente:", error);

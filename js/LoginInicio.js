@@ -1,6 +1,3 @@
-//indica que el código dentro de esta función solo se ejecutará cuando todo el documento HTML haya sido cargado por completo.
-//Es útil para asegurarse de que los elementos del DOM (como botones y formularios) estén disponibles antes de intentar acceder a ellos.
-
 document.addEventListener("DOMContentLoaded", function () {
   //Función pare el botón Login: Muestra el formulario de inicio:
 

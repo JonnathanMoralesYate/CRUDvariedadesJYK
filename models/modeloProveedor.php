@@ -21,13 +21,7 @@ class ModeloProveedor
     }
 
 
-    //Consulta general proveedor
-    // public function consultGenProveedores() {
-    //     $query= "SELECT * FROM ".$this->table;
-    //     $stmt= $this->conn->query($query);
-    //     return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    // }
-
+    //Listado de proveedores vista consulta
     public function consultGenProveedores($inicio, $limite)
     {
         $query = "SELECT * FROM " . $this->table . " ORDER BY NombreProveedor ASC LIMIT :inicio, :limite";
@@ -40,6 +34,7 @@ class ModeloProveedor
     }
 
 
+    //Consulta total de proveedores paginacion
     public function obtenerTotalProveedores()
     {
         $stmt = $this->conn->query("SELECT COUNT(*) FROM " . $this->table . "");
@@ -47,6 +42,7 @@ class ModeloProveedor
     }
 
 
+    //Consulta filtrada por nit nombre proveedor y vendedor vista consulta
     public function consultarFiltrado($tipo, $valor, $inicio, $limite)
     {
         $campo = match ($tipo) {
@@ -69,6 +65,7 @@ class ModeloProveedor
     }
 
 
+    //Consulta total de filtrada por nit nombre proveedor y vendedor paginacion
     public function totalFiltrado($tipo, $valor)
     {
         $campo = match ($tipo) {
@@ -84,7 +81,6 @@ class ModeloProveedor
     }
 
 
-
     //Consulta general proveedor por nit
     public function consultGenProveedorNit($nitProveedor)
     {
@@ -93,6 +89,7 @@ class ModeloProveedor
         $stmt->execute([$nitProveedor]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
 
     //Eliminar proveedor
     public function consultGenProveedorId($idProveedor)
@@ -131,6 +128,7 @@ class ModeloProveedor
         $stmt = $this->conn->prepare($query);
         $stmt->execute([$nitProve, $nomProve, $correoProve, $celProve, $nomVende, $celVende, $idProveedor]);
     }
+
 
     //Eliminar proveedor
     public function eliminarProveedor($idProveedor)

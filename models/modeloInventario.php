@@ -59,6 +59,7 @@ class ModeloInventario
     }
 
 
+    //Listado de Stock actual inventario
     public function inventarioActualizado($inicio, $limite)
     {
         $query = "SELECT idInventario, productos.CodProducto, productos.Nombre, productos.Marca, productos.Descripcion, 
@@ -79,6 +80,7 @@ class ModeloInventario
     }
 
 
+    //Consulta total de stock para paginacion
     public function obtenerTotalProductos()
     {
         $stmt = $this->conn->query("SELECT COUNT(*) FROM " . $this->table . "  WHERE CantActual > 0");
@@ -86,6 +88,7 @@ class ModeloInventario
     }
 
 
+    //Consulta filtrado por nombre producto vista reporte
     public function consultarFiltrado($tipo, $valor, $inicio, $limite)
     {
 
@@ -108,6 +111,8 @@ class ModeloInventario
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+
+    //Consulta total por nombre producto paginacion
     public function totalFiltrado($tipo, $valor)
     {
         $query = "SELECT COUNT(*) 
@@ -132,6 +137,7 @@ class ModeloInventario
     }
 
 
+    //Lista de productos proximos a vencer vista reporte
     public function listaProductosAvencer($inicio, $limite)
     {
         $query = "SELECT idInventario, entrada_productos.FechaVencimiento, CantActual, productos.CodProducto, productos.Nombre, productos.Marca, productos.Descripcion, 
@@ -154,6 +160,7 @@ class ModeloInventario
     }
 
 
+    //Consulta total productos proximos a vencer vista reporte paginacion
     public function obtenerTotalProductosProximosAvencer()
     {
         $stmt = $this->conn->query("SELECT COUNT(*) FROM " . $this->table . " 
@@ -163,6 +170,7 @@ class ModeloInventario
     }
 
 
+    //Consulta filtrado por nombre producto vista reporte
     public function consultarFiltradoPrductosAvencer($tipo, $valor, $inicio, $limite)
     {
         $query = "SELECT idInventario, entrada_productos.FechaVencimiento, CantActual, productos.CodProducto, productos.Nombre, productos.Marca, productos.Descripcion, 
@@ -187,6 +195,7 @@ class ModeloInventario
     }
 
 
+    //Consulta total por nombre producto vista reporte paginacion
     public function totalFiltradoPrductosAvencer($tipo, $valor)
     {
         $query = "SELECT COUNT(*) 
@@ -213,6 +222,7 @@ class ModeloInventario
     }
 
 
+    //Listado de productos sin stock vista reporte
     public function productosSinStock($inicio, $limite)
     {
         $query = "SELECT idInventario, productos.CodProducto, productos.Nombre, productos.Marca, productos.Descripcion,
@@ -234,6 +244,7 @@ class ModeloInventario
     }
 
 
+    //Consulta total productos sin stock paginacion
     public function obtenerTotalProductoSinStock()
     {
         $stmt = $this->conn->query("SELECT COUNT(*) FROM " . $this->table . "  WHERE CantActual = 0");
@@ -241,6 +252,7 @@ class ModeloInventario
     }
 
 
+    //Consulta filtrada por nombre producto vista reporte
     public function consultarFiltradoSinStock($tipo, $valor, $inicio, $limite)
     {
         $query = "SELECT idInventario, productos.CodProducto, productos.Nombre, productos.Marca, productos.Descripcion, 
@@ -262,6 +274,8 @@ class ModeloInventario
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+
+    //Consulta total por nombre producto paginacion
     public function totalFiltradoSinStock($tipo, $valor)
     {
         $query = "SELECT COUNT(*) 

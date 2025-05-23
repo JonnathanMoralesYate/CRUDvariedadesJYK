@@ -1,10 +1,10 @@
 <?php
 
-class ControladorPaginaAdmin{
+class ControladorPaginaAdmin
+{
 
-    public function index() {
-        include ('./views/modulos/moduloAdministrativo.php');
+    public function index()
+    {
+        include('./views/modulos/moduloAdministrativo.php');
     }
 }
-
-?>

@@ -9,12 +9,9 @@ checkboxGeneraCodigoB.addEventListener('change', async function() {
 
     if (checkboxGeneraCodigoB.checked) {
 
-        //console.log('Genera el codigo, está marcado.');
-
         const idConsecutivo= 1;
 
         const consecutivo = await consultarConsecutivoCodigo(idConsecutivo);
-        //alert("consecutivoBD: "+ consecutivo)
 
         //Convertimos el resultado en numero
         const consecutivoN  = parseFloat(consecutivo);
@@ -23,13 +20,8 @@ checkboxGeneraCodigoB.addEventListener('change', async function() {
 
         codigoBarras.value = consecutivoNuevo;
 
-
     } else {
-
-        //console.log('El checkbox no está marcado.');
-
         document.getElementById('codProduc').value = '';
-
     }
 });
 
@@ -47,9 +39,6 @@ async function consultarConsecutivoCodigo(idConsecutivo) {
             });
 
             const data = await response.json();
-
-            // Imprimir la respuesta en la consola
-            //console.log('Respuesta del servidor:', data);
 
             if (data.success) {
 

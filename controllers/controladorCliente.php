@@ -22,7 +22,8 @@ class ControladorCliente
     public function registroCliente()
     {
 
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        if ($_SERVER["REQUEST_METHOD"] == "POST") 
+        {
             $idTipoDocumC = $_POST['tipoDocum'];
             $numDocumentoC = $_POST['documCliente'];
             $nombreC = $_POST['nomCliente'];
@@ -32,8 +33,6 @@ class ControladorCliente
             $puntos = $_POST['puntos'];
 
             $this->modeloCliente->registroCliente($idTipoDocumC, $numDocumentoC, $nombreC, $apellidoC, $numCelularC, $correoC, $puntos);
-
-            //session_start();
 
             if ($_SESSION['rol'] == 1) {
 
@@ -79,6 +78,7 @@ class ControladorCliente
     }
 
 
+    //Filtra Consulta por numero documento y nombre
     public function listaClientesFiltrado($tipo, $valor)
     {
         $limite = 10;
@@ -100,7 +100,7 @@ class ControladorCliente
     }
 
 
-    // //Consulta ID Cliente
+    //Consulta ID Cliente
     public function datosClienteId()
     {
         $idCliente = $_GET['idCliente'] ?? '';
@@ -108,29 +108,12 @@ class ControladorCliente
     }
 
 
-    // //Consulta Cedula Cliente
-    // public function datosClienteCedula()
-    // {
-    //     $numCedulaCliente = $_GET['documCliente'] ?? '';
-    //     return $this->modeloCliente->consultGenClienteCedula($numCedulaCliente);
-    // }
-
-
-    // //Consulta Nombre Cliente
-    // public function datosClienteNombre()
-    // {
-    //     $nombreC = $_GET['nomCliente'] ?? '';
-    //     return $this->modeloCliente->consultGenClienteNombre($nombreC);
-    // }
-
-
     // Consulta para verificar si el Cliente esta registrado en BD
     public function verificacionCliente()
     {
 
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-            // Leer JSON desde la solicitud
+        if ($_SERVER["REQUEST_METHOD"] == "POST") 
+        {
             $inputJSON = file_get_contents("php://input");
 
             $input = json_decode($inputJSON, true);
@@ -160,17 +143,12 @@ class ControladorCliente
     //Metodo para actualizar los puntos del cliente del formulario de salida de productos pór varios productos
     public function PuntosActualizados()
     {
-
-        // Configurar cabeceras para aceptar solicitudes JSON
         header('Content-Type: application/json');
 
-        // Permite el acceso desde cualquier origen (CORS)
         header('Access-Control-Allow-Origin: *');
 
-        // Obtener los datos JSON enviados
         $data = json_decode(file_get_contents('php://input'), true);
 
-        // Verifica si los datos se han recibido correctamente
         if (!isset($data['idCliente']) || !isset($data['precio'])) {
 
 
@@ -184,11 +162,11 @@ class ControladorCliente
                 $this->modeloCliente->puntosActualizados($puntosAcumulados, $idCliente);
             }
 
-            //respuesta al cliente Proceso de actualizacion
+            //respuesta exitosa
             echo json_encode(['success' => true, 'message' => 'Puntos actualizados del Cliente']);
         } else {
 
-            //mejorar respuesta cuando no envien todos lod datos requeridos
+            //respuesta de error
             echo json_encode(['success' => false, 'error' => 'Datos No Recibidos']);
         }
     }
@@ -210,10 +188,7 @@ class ControladorCliente
 
             $this->modeloCliente->ActualizarCliente($idTipoDocumC, $numDocumentoC, $nombreC, $apellidoC, $numCelularC, $correoC, $puntos, $idCliente);
 
-            //session_start();
-
             if ($_SESSION['rol'] == 1) {
-
                 echo "
                     <script>
                         alert('Actualizacion del Cliente Exitoso!');
@@ -248,89 +223,4 @@ class ControladorCliente
             ";
         exit;
     }
-
-    //registro de Clientes empleado
-    // public function registroClienteemp()
-    // {
-
-    //     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    //         $idTipoDocumC = $_POST['tipoDocum'];
-    //         $numDocumentoC = $_POST['documCliente'];
-    //         $nombreC = $_POST['nomCliente'];
-    //         $apellidoC = $_POST['apellCliente'];
-    //         $numCelularC = $_POST['numCel'];
-    //         $correoC = $_POST['correoCliente'];
-    //         $puntos = $_POST['puntos'];
-
-    //         $this->modeloCliente->registroCliente($idTipoDocumC, $numDocumentoC, $nombreC, $apellidoC, $numCelularC, $correoC, $puntos);
-
-    //         echo "
-    //                     <script>
-    //                         alert('Registro Exitoso!');
-    //                         window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=registroClienteemp';
-    //                     </script>
-    //                     ";
-
-    //         //header("Location: index.php?action=registroClienteemp");
-    //         exit;
-    //     }
-    // }
-
-    //Consulta General Vista empleado
-    // public function listaClientesemp() {
-    //     return $this->modeloCliente->consultGenClienteVista();
-    // }
-
-
-    //Consulta ID Cliente empleado
-    // public function datosClienteIdemp()
-    // {
-    //     $idCliente = $_GET['idCliente'] ?? '';
-    //     return $this->modeloCliente->consultGenClienteId($idCliente);
-    // }
-
-
-    // //Consulta Cedula Cliente empleado
-    // public function datosClienteCedulaemp()
-    // {
-    //     $numCedulaCliente = $_GET['documCliente'] ?? '';
-    //     return $this->modeloCliente->consultGenClienteCedula($numCedulaCliente);
-    // }
-
-
-    // //Consulta Cedula Cliente empleado
-    // public function datosClienteNombreemp()
-    // {
-    //     $nombreC = $_GET['nomCliente'] ?? '';
-    //     return $this->modeloCliente->consultGenClienteNombre($nombreC);
-    // }
-
-
-    //Actualizar de Clientes EMPLEADO
-    // public function ActualizarClienteemp()
-    // {
-
-    //     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    //         $idTipoDocumC = $_POST['tipoDocum'];
-    //         $numDocumentoC = $_POST['documCliente'];
-    //         $nombreC = $_POST['nomCliente'];
-    //         $apellidoC = $_POST['apellCliente'];
-    //         $numCelularC = $_POST['numCel'];
-    //         $correoC = $_POST['correoCliente'];
-    //         $puntos = $_POST['puntos'];
-    //         $idCliente = $_POST['idCliente'];
-
-    //         $this->modeloCliente->ActualizarCliente($idTipoDocumC, $numDocumentoC, $nombreC, $apellidoC, $numCelularC, $correoC, $puntos, $idCliente);
-
-    //         echo "
-    //                         <script>
-    //                             alert('Actualizacion Exitoso!');
-    //                             window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=vistaAdmin';
-    //                         </script>
-    //                         ";
-
-    //         //header("Location: index.php?action=vistaAdmin");
-    //         exit;
-    //     }
-    // }
 }

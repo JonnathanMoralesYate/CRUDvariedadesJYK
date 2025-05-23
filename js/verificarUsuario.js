@@ -3,8 +3,6 @@ document.getElementById('documUsu').addEventListener('blur', async function() {
 
     const identUsua = document.getElementById("documUsu").value.trim();
 
-    //alert("nit: " + nit);
-
             // Evita consulta si el campo del input está vacío
         if (identUsua === "") {
             return;
@@ -20,14 +18,13 @@ document.getElementById('documUsu').addEventListener('blur', async function() {
             });
 
             const data = await response.json();
-            //console.log('Datos recibidos:', data);
     
             if (data.success) {
                 alert("El Empleado ya esta Registrado");
                 //limpia el campo del numero documento del usuario
                 document.getElementById("documUsu").value = '';
             } else {
-                 //alert("El Cliente no esta Registrado");
+                    
             }
         } catch (error) {
             console.error('Error al obtener la información del Usuario:', error);            

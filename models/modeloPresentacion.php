@@ -29,6 +29,7 @@ class ModeloPresentacion
     }
 
 
+    //Listado de presentacion producto vista consulta
     public function listaPresentacion($inicio, $limite)
     {
         $query = "SELECT * FROM " . $this->table . " LIMIT :inicio, :limite";
@@ -41,6 +42,7 @@ class ModeloPresentacion
     }
 
 
+    //Consulta total presentacion producto paginacion
     public function obtenerTotalPresentacion()
     {
         $stmt = $this->conn->query("SELECT COUNT(*) FROM " . $this->table . "");
@@ -48,6 +50,7 @@ class ModeloPresentacion
     }
 
 
+    //Consulta filtrada por id y nombre presentacion producto vista consulta
     public function consultarFiltrado($tipo, $valor, $inicio, $limite)
     {
         $campo = $tipo == 'codigo' ? 'idPresentacion' : 'Presentacion';
@@ -63,6 +66,7 @@ class ModeloPresentacion
     }
 
 
+    //consulta total filtrada por id y nombre presentacion paginacion
     public function totalFiltrado($tipo, $valor)
     {
         $campo = $tipo == 'codigo' ? 'idPresentacion' : 'Presentacion';
@@ -72,15 +76,6 @@ class ModeloPresentacion
         $stmt->execute();
         return (int)$stmt->fetchColumn();
     }
-
-
-
-
-
-
-
-
-
 
 
     //Consulta presentacion por ID

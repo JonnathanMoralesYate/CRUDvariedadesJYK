@@ -12,18 +12,12 @@ document.getElementById('codProductoS').addEventListener('input', async function
 
     // Llamamos a la función para obtener el id del producto, el resultado es un string
     const idProducto = await obtenerIdProducto(codigoBarras);
-    //alert(idProducto);
 
     //Funcion que verifica si el producto tiene existencias en inventario para la venta, , el resultado es un string
     const cantidadActual = await  existenciaInventario(idProducto);
-    //alert(cantidadActual);
 
     //Convertimos el resultado en numero
     const CantActual = parseFloat(cantidadActual);
-
-    // Imprimir el tipo y el valor real de 'numero'
-    //console.log("Valor de 'numero':", CantActual);
-    //console.log("Tipo de 'numero':", typeof CantActual);
 
         //Al convertirlo no es un numero  el valor "NaN"
         if (isNaN(CantActual)) {
@@ -59,15 +53,14 @@ document.getElementById('codProductoS').addEventListener('input', async function
                 headers: {
                 "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ idProducto: idProducto }), // Enviar datos al servidor como JSON
+                body: JSON.stringify({ idProducto: idProducto }), 
                 });
 
                 const data = await response.json();
-                //console.log('Datos recibidos:', data);
 
                     if (data.success) {
                         const producto = data.producto;
-                        agregarProductoATabla(producto, CantActual);  // Función para agregar el producto a la tabla
+                        agregarProductoATabla(producto, CantActual);  
                     }
 
             } catch (error) {
@@ -232,7 +225,6 @@ document.getElementById('registrarSalida').addEventListener('click', async funct
 
     // Llamamos a la función para obtener el id del cliente
     const clienteId = await obtenerIdCliente(cliente);  
-    //alert("idCliente." + clienteId);
 
     //Convertimos el resultado en numero
     const idCliente = parseFloat(clienteId);
@@ -263,7 +255,6 @@ document.getElementById('registrarSalida').addEventListener('click', async funct
             
             // Llamamos a la función para obtener el id del producto
             const idProducto = await obtenerIdProducto(codProducto);  
-            //alert("idProducto." + idProducto);
 
             // Accedemos al valor del input dentro de la celda de "Cantidad"
             const cantidadInput = celdas[5].querySelector('input');  // Asumimos que el input está dentro de la celda 5
@@ -303,12 +294,7 @@ document.getElementById('registrarSalida').addEventListener('click', async funct
         return;
     }
 
-    // Mostrar los datos en la consola
-    //console.log('Datos a enviar:', datosSalida);
-
     registroSalProductos(datosSalida);
-
-    
 });
 
 
@@ -326,13 +312,10 @@ document.getElementById('registrarSalida').addEventListener('click', async funct
 
                 .then(response => response.text())  // Cambié a 'text()' para obtener la respuesta en formato texto
                 .then(text => {
-                //console.log('Respuesta del servidor:', text);  // Imprime la respuesta que entrega el servidor
 
             try {
 
                 const data = JSON.parse(text);  // Intenta convertir a JSON
-                //console.log('Datos enviados registrar salida productos correctamente:', data);
-                //alert('Los datos se han registrado correctamente.');
 
                 //Funcion para actualizar inventario con respecto de salidas del producto
                 actualizarInventario(datosSalida);
@@ -369,13 +352,10 @@ document.getElementById('registrarSalida').addEventListener('click', async funct
 
                 .then(response => response.text())  // Cambié a 'text()' para obtener la respuesta en formato texto
                 .then(text => {
-                //console.log('Respuesta del servidor en actualizar Inventario:', text);  // Imprime la respuesta
 
             try {
 
                 const data = JSON.parse(text);  // Intenta convertir a JSON
-                //console.log('Datos enviados actualizar inventario correctamente:', data);
-                //alert('Se ha Actualizado el inventario correctamente.');
 
                 //Funcion para actualizar puntos con respecto de salidas del producto
                 actualizarPuntosCliente(datosSalida);
@@ -406,13 +386,10 @@ document.getElementById('registrarSalida').addEventListener('click', async funct
 
                 .then(response => response.text())  // Cambié a 'text()' para obtener la respuesta en formato texto
                 .then(text => {
-                //console.log('Respuesta del servidor:', text);  // Imprime la respuesta
 
             try {
 
                 const data = JSON.parse(text);  // Intenta convertir a JSON
-                //console.log('Datos enviados actualizar punto clientes correctamente:', data);
-                //alert('Se ha Actualizado puntos del cliente correctamente.');
 
                 //mensaje proceso terminado y borrar datos de tabla o actualizar pagina ??
                 alert('Se ha Registardo con exito los Productos');
@@ -502,7 +479,6 @@ document.getElementById('registrarSalida').addEventListener('click', async funct
                     return null;
                 }
             } else {
-                //alert(' Cliente no registrado.');
                 return null;
             }
         } catch (error) {
@@ -537,8 +513,6 @@ document.getElementById('registrarSalida').addEventListener('click', async funct
         });
 
         const data = await response.json();
-
-        //console.log('Datos recibidos:', data);
 
         if (data.success) {
         document.getElementById("resultado1").innerText = "✅";
@@ -592,7 +566,6 @@ document.getElementById('registrarSalida').addEventListener('click', async funct
             });
         
                 const data = await response.json();
-                //console.log('Datos recibidos:', data);
     
                 // Verificamos que data y data.cantidadActual y data.cantidadActual.CantActual estén definidos
                 if (data && data.success && data.stock && data.stock.CantActual) {

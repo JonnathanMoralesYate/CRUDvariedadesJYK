@@ -28,6 +28,8 @@ class ModeloClases
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+
+    //Consulta de lista de clases vista consulta
     public function consultGenClases($inicio, $limite)
     {
         $query = "SELECT * FROM " . $this->table . " LIMIT :inicio, :limite";
@@ -39,6 +41,8 @@ class ModeloClases
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+
+    //Consulta total de clases para paginacion
     public function obtenerTotalClases()
     {
         $stmt = $this->conn->query("SELECT COUNT(*) FROM " . $this->table . "");
@@ -46,6 +50,7 @@ class ModeloClases
     }
 
 
+    //Consulta por filtrado de id y nombre de clase
     public function consultarFiltrado($tipo, $valor, $inicio, $limite)
     {
         $campo = $tipo == 'codigo' ? 'idClase' : 'Clase';
@@ -61,6 +66,7 @@ class ModeloClases
     }
 
 
+    //Consulta total de id y nombre de clase 
     public function totalFiltrado($tipo, $valor)
     {
         $campo = $tipo == 'codigo' ? 'idClase' : 'Clase';
@@ -70,7 +76,6 @@ class ModeloClases
         $stmt->execute();
         return (int)$stmt->fetchColumn();
     }
-
 
 
     //Consulta clase por ID

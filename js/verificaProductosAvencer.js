@@ -8,7 +8,6 @@ async function ProductosproximosAvencer() {
         });
 
             const data = await response.json();
-            //console.log("datos recibidos: ", data)
 
                 // Verificamos que la respuesta tenga la clave correcta y datos
                 if (data.success && Array.isArray(data.proximosAvencer) && data.proximosAvencer.length > 0) {
@@ -18,7 +17,7 @@ async function ProductosproximosAvencer() {
                         });
                     alert(mensaje);
                 } else {
-                    //console.log("No hay productos próximos a vencer.");
+                    
                 }
 
     } catch (error) {

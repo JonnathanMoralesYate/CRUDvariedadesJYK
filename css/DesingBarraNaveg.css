@@ -9,7 +9,7 @@
 }
 
 #navbarTogglerDemo01 a:hover {
-    background-color:#014576; /*color igual */
+    background-color:#014576;
     color: white;
 }
 #navbarTogglerDemo01 a.active:hover {
@@ -22,6 +22,6 @@
     text-decoration: double;
 }
 #login_inic a:hover  {
-    background-color: #014576;/*color de resalto*/
-    color: white; /*color de letra del button*/
+    background-color: #014576;
+    color: white;
 }

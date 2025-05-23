@@ -1,10 +1,10 @@
 <?php
 
-class ControladorPaginaEmple{
+class ControladorPaginaEmple
+{
 
-    public function index() {
-        include ('./views/modulos/moduloEmpleado.php');
+    public function index()
+    {
+        include('./views/modulos/moduloEmpleado.php');
     }
 }
-
-?>

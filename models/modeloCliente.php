@@ -30,13 +30,7 @@ class ModeloCliente
     }
 
 
-    //consulta general con inner join 
-    // public function consultGenClienteVista() {
-    //     $query = "SELECT idCliente, tipo_documento.tipoDocum, NumIdentificacion, Nombres, Apellidos, NumCelular, Email, Puntos FROM ".$this->table." INNER JOIN tipo_documento ON clientes.idTipoDocum = tipo_documento.idTipoDocum";
-    //     $stmt = $this->conn->query($query);
-    //     return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    // }
-
+    //Lista de cliente vista consulta
     public function consultGenClienteVista($inicio, $limite)
     {
         $query = "SELECT idCliente, tipo_documento.tipoDocum, NumIdentificacion, 
@@ -53,6 +47,7 @@ class ModeloCliente
     }
 
 
+    //Consulta total de clientes para paginacion
     public function obtenerTotalClientes()
     {
         $stmt = $this->conn->query("SELECT COUNT(*) FROM ". $this->table. "");
@@ -60,6 +55,7 @@ class ModeloCliente
     }
 
 
+    //Consulta por filtrado numero documento y nombre cliente
     public function consultarFiltrado($tipo, $valor, $inicio, $limite)
     {
         $campo = $tipo == 'codigo' ? 'NumIdentificacion' : 'Nombres';
@@ -80,7 +76,8 @@ class ModeloCliente
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    
+
+    //Consulta total de numero documento y nombre cliente
     public function totalFiltrado($tipo, $valor)
     {
         $campo = $tipo == 'codigo' ? 'NumIdentificacion' : 'Nombres';
@@ -157,6 +154,7 @@ class ModeloCliente
         $stmt = $this->conn->prepare($query);
         $stmt->execute([$puntosAct, $idCliente]);
     }
+
 
     //Actualizar los puntos del cliente del formulario de salida de productos pór varios productos
     public function puntosActualizados($puntosAcumulados, $idCliente)

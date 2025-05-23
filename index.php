@@ -23,7 +23,6 @@ require_once('./controllers/controladorGenerarCodigo.php');
 $vistaAdmin = new ControladorPaginaAdmin();
 $vistaEmple = new ControladorPaginaEmple();
 
-
 $controladorLogin = new ControladorLogin();
 $controladorUsuario = new ControladorUsuario();
 $controladorTipoDocum = new ControladorTipoDocum();
@@ -42,8 +41,6 @@ $controladorModoPago = new ControladorModoPago();
 $controladorGenerarCodigo = new ControladorGenerarCodigo();
 
 $action = htmlspecialchars($_GET['action'] ?? 'Principal', ENT_QUOTES, 'UTF-8');
-
-//echo "<script>console.log('Hola desde PHP en la consola!');</script>";
 
 if (!in_array($action, ['Principal', 'Nosotros', 'Servicios', 'login', 'cerrarSesion'])) {
     session_start();
@@ -65,7 +62,7 @@ switch ($action) {
         include('./views/paginasWeb/paginaPrincipal.php');
         break;
 
-    //============================================================================================================================================
+//============================================================================================================================================
 
     //Redirecciones Modulo Administrativo
     case 'vistaAdmin':
@@ -78,7 +75,7 @@ switch ($action) {
         $vistaEmple->index();
         break;
 
-    //============================================================================================================================================
+//============================================================================================================================================
 
     //Login inicio de Sesion
     case 'login':
@@ -91,11 +88,11 @@ switch ($action) {
         $controladorLogin->cerrarSesion();
         break;
 
-    //============================================================================================================================================
+//============================================================================================================================================
 
-    //Modulo Administrativo
+//Modulo Administrativo
 
-    //Empleados
+//Empleados
 
     //Registro usuario
     case 'registroUsuario':
@@ -147,9 +144,11 @@ switch ($action) {
         $usuarios = $controladorUsuario->eliminarUsuario();
         break;
 
-    //============================================================================================================================================
+//============================================================================================================================================
 
-    //Productos
+//Modulo Administrativo
+
+//Productos
 
     //Registro Producto
     case 'registroProductos':
@@ -172,7 +171,6 @@ switch ($action) {
         $data = $controladorProducto->listaProductosVista($tipo, $filtro);
         include('./views/productos/consultaProductos.php');
         break;
-
 
     case 'consultaProductosCodigo':
         $valor = $_GET['codProduc'] ?? '';
@@ -207,10 +205,13 @@ switch ($action) {
         $productos = $controladorProducto->eliminarProducto();
         break;
 
-    //============================================================================================================================================
+//============================================================================================================================================
+
+//Modulo Empleado
+
+//Productos
 
     //registro de producto empleado
-
     case 'registroProductosEmp':
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $controladorProducto->registroProductos();
@@ -259,9 +260,11 @@ switch ($action) {
         $controladorProducto->actualizarProducto();
         break;
 
-    //============================================================================================================================================
+//============================================================================================================================================
 
-    //Clases
+//Modulo Administrativo
+
+//Clases
 
     //Registro Clase
     case 'registroClase':
@@ -310,9 +313,11 @@ switch ($action) {
         $clases = $controladorClases->eliminarClase();
         break;
 
-    //============================================================================================================================================
+//============================================================================================================================================
+    
+//Modulo Administrativo
 
-    //Presentacion
+//Presentacion
 
     //Registro presentacion
     case 'registroPresentacion':
@@ -361,9 +366,11 @@ switch ($action) {
         $presentaciones = $controladorPresentacion->EliminarPresentacion();
         break;
 
-    //============================================================================================================================================
+//============================================================================================================================================
 
-    //Unidad Base
+//Modulo Administrativo
+
+//Unidad Base
 
     //Registro Unidad Base
     case 'registroUndBase':
@@ -412,9 +419,11 @@ switch ($action) {
         $controladorUndBase->EliminarUndBase();
         break;
 
-    //============================================================================================================================================
+//============================================================================================================================================
 
-    //Formato Venta
+//Modulo Administrativo
+
+//Formato Venta
 
     //Registro Formato Venta
     case 'registroFormatoVenta':
@@ -463,9 +472,11 @@ switch ($action) {
         $controladorFormatoVenta->EliminarFormatoVenta();
         break;
 
-    //============================================================================================================================================
+//============================================================================================================================================
 
-    //Proveedor
+//Modulo Administrativo
+
+//Proveedor
 
     //Registro Proveedor
     case 'registroProveedor':
@@ -514,12 +525,17 @@ switch ($action) {
         $controladorProveedor->ActualizarProveedor();
         break;
 
+
     //Eliminar Proveedor
     case 'eliminarProveedorId':
         $controladorProveedor->EliminarProveedor();
         break;
 
-    //============================================================================================================================================
+//============================================================================================================================================
+
+//Modulo Empleado
+
+//Proveedor
 
     //Registro Proveedor empleado
     case 'registroProveedorEmp':
@@ -568,9 +584,11 @@ switch ($action) {
         $controladorProveedor->ActualizarProveedor();
         break;
 
-    //============================================================================================================================================
+//============================================================================================================================================
 
-    //Clientes
+//Modulo Administrativo
+
+//Clientes
 
     //Registro Clientes
     case 'registroCliente':
@@ -621,7 +639,11 @@ switch ($action) {
         $controladorCliente->EliminarCliente();
         break;
 
-    //============================================================================================================================================
+//============================================================================================================================================
+
+//Modulo Empleado
+
+//Cliente
 
     //Registro Clientes empleado
     case 'registroClienteEmp':
@@ -666,9 +688,11 @@ switch ($action) {
         $controladorCliente->ActualizarCliente();
         break;
 
-    //============================================================================================================================================
+//============================================================================================================================================
 
-    //Entrada de Productos
+//Modulo Administrativo
+
+//Entrada de Productos
 
     //Registro Entrada Productos
     case 'registroEntProductos':
@@ -717,9 +741,11 @@ switch ($action) {
         $controladorEntProducto->EliminarEntProducto();
         break;
 
-    //============================================================================================================================================
+//============================================================================================================================================
 
-    //Entrada de Productos Empleado
+//Modulo Empleado
+
+//Entrada de Productos
 
     //Registro Entrada Productos
     case 'registroEntProductosEmp':
@@ -762,9 +788,11 @@ switch ($action) {
         $controladorEntProducto->ActualizarEntProducto();
         break;
 
-    //==========================================================================================================================================================
+//==========================================================================================================================================================
 
-    //Salida de Productos
+//Modulo Administrativo
+
+//Salida de Productos
 
     //Registro Salida Productos
     case 'registroSalProductos':
@@ -822,9 +850,11 @@ switch ($action) {
         $controladorSalProducto->EliminarSalProducto();
         break;
 
-    //============================================================================================================================================
+//============================================================================================================================================
 
-    //Salida de Productos Empleados
+//Modulo Empleado
+
+//Salida de Productos
 
     //Registro Salida por Producto
     case 'registroSalProductosEmp':
@@ -844,7 +874,7 @@ switch ($action) {
         break;
 
 
-    // //Consulta Salida Productos
+    //Consulta Salida Productos
     case 'consultaSalProductosEmp';
         $tipo = '';
         $filtro = '';
@@ -864,6 +894,7 @@ switch ($action) {
         include('./views/salidaProducto/consultaSalProductoEmp.php');
         break;
 
+
     //Actualizar Salida Productos
     case 'actualizarSalProductosIdEmp':
         $salProductos = $controladorSalProducto->consultaGenSalProductosId();
@@ -875,9 +906,11 @@ switch ($action) {
         $controladorSalProducto->ActualizarSalProductos();
         break;
 
-    //============================================================================================================================================
+//============================================================================================================================================
 
-    //Reportes
+//Modulo Administrativo
+
+//Reportes
 
     //Inventario
     case 'reporteInventario':
@@ -996,9 +1029,9 @@ switch ($action) {
         include('./views/productosAvencer/reporteProductosAvencerPDF.php');
         break;
 
-    //============================================================================================================================================
+//============================================================================================================================================
 
-    //Verificaciones
+//Verificaciones
 
     //Verificacion codigo de barra del productos
     case 'verificacionCodigoProductos':
@@ -1129,9 +1162,11 @@ switch ($action) {
         }
         break;
 
-    //============================================================================================================================================
+//============================================================================================================================================
 
-    //Reportes
+//Modulo Empleado
+
+//Reportes
 
     //Inventario
     case 'reporteInventarioEmp':
@@ -1150,12 +1185,6 @@ switch ($action) {
         include('./views/inventario/inventarioActualEmp.php');
         break;
 
-    //Genera reporte de inventario en PDF
-    // case 'reporteInventarioEmpPDF':
-    //     $inventarios = $controladorInventario->inventarioActualEmp();
-    //     include('./views/inventario/reporteInvenEmpPDF.php');
-    //     break;
-
 
     //Inventario Bajo de Stock
     case 'reporteSinStockEmp':
@@ -1165,18 +1194,12 @@ switch ($action) {
         include('./views/inventario/reporteSinStockEmp.php');
         break;
 
-
+    //Filtra por nombre del Producto
     case 'consultaProductosNombreSinStockEmp':
         $valor = $_GET['nombre'] ?? '';
         $data = $controladorInventario->listaProductosFiltradoSinStock('nombre', $valor);
         include('./views/inventario/reporteSinStockEmp.php');
         break;
-
-    // //Genera reporte de inventario Bajo de Stock en PDF
-    // case 'reporteSinStockEmpPDF':
-    //     $inventarios = $controladorInventario->ProductoSinStockEmp();
-    //     include('./views/inventario/SinStockEmpPDF.php');
-    //     break;
 
 
     //Entrada de Productos
@@ -1197,12 +1220,6 @@ switch ($action) {
         include('./views/entradaProducto/reporteEntProductosEmp.php');
         break;
 
-    //Genera reporte de Entrada producto en PDF
-    // case 'reporteEntProductosEmpPDF':
-    //     $entProductos = $controladorEntProducto->ReporteEntProductosEmp();
-    //     include('./views/entradaProducto/reporteEntProductoEmpPDF.php');
-    //     break;
-
 
     //Salida de Productos
     case 'reporteSalProductoEmp':
@@ -1222,12 +1239,6 @@ switch ($action) {
         include('./views/salidaProducto/reporteSalProductoEmp.php');
         break;
 
-    //Genera Consulta de reporte de Salida producto en PDF
-    // case 'reporteSalProductosEmpPDF';
-    //     $salProductos = $controladorSalProducto->ReporteSalProductos();
-    //     include('./views/salidaProducto/reporteSalProducEmpPDF.php');
-    //     break;
-
 
     //Productos Proximos a Vencer
     case 'productosAvencerEmp':
@@ -1242,13 +1253,6 @@ switch ($action) {
         $data = $controladorInventario->listaProductosAvencerFiltrado('nombre', $valor);
         include('./views/productosAvencer/prodProxAVencerEmp.php');
         break;
-
-    // //Genera reporte de productos a vencer en pdf
-    // case 'productosAvencerEmpPDF':
-    //     $productosAvencer = $controladorInventario->ProductosAvencerEmp();
-    //     include('./views/productosAvencer/reporteProVencerEmpPDF.php');
-    //     break;
-
 
 
     default:

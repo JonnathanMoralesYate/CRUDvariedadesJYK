@@ -30,13 +30,7 @@ class ModeloProducto
     }
 
 
-    //Consulta general productos con inner join
-    // public function consultGenProductosvista() {
-    //     $query= "SELECT idProducto, CodProducto, clase_producto.Clase, Nombre, Marca, Descripcion, presentacion_producto.Presentacion, CONCAT(ContNeto,' ', unidad_base.UndBase) AS Contenido, formato_venta.FormatoVenta, PrecioVenta, Foto FROM ".$this->table." INNER JOIN clase_producto ON productos.idClase = clase_producto.idClase INNER JOIN presentacion_producto ON productos.idPresentacion = presentacion_producto.idPresentacion INNER JOIN unidad_base ON productos.idUndBase = unidad_base.idUndBase INNER JOIN formato_venta ON productos.idFormatoVenta=formato_venta.idFormatoVenta ORDER BY Nombre ASC";
-    //     $stmt= $this->conn->query($query);
-    //     return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    // }
-
+    //Lista de productos vista consulta
     public function consultGenProductosvista($inicio, $limite)
     {
         $query = "SELECT idProducto, CodProducto, clase_producto.Clase, Nombre, Marca, Descripcion, 
@@ -56,12 +50,16 @@ class ModeloProducto
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+
+    //Consulta total productos paginacion
     public function obtenerTotalProductos()
     {
         $stmt = $this->conn->query("SELECT COUNT(*) FROM ".$this->table."");
         return (int)$stmt->fetchColumn();
     }
 
+
+    //Consulta filtrada por codigo y nombre del producto
     public function consultarFiltrado($tipo, $valor, $inicio, $limite)
     {
         $campo = $tipo == 'codigo' ? 'CodProducto' : 'Nombre';
@@ -85,6 +83,8 @@ class ModeloProducto
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+
+    //Consulta total por codigo y nombre paginacion
     public function totalFiltrado($tipo, $valor)
     {
         $campo = $tipo == 'codigo' ? 'CodProducto' : 'Nombre';
@@ -94,8 +94,6 @@ class ModeloProducto
         $stmt->execute();
         return (int)$stmt->fetchColumn();
     }
-
-
 
 
     //Consulta general productos de clase
@@ -117,6 +115,7 @@ class ModeloProducto
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+
     //Consulta para mostrar productos segun nombre en pagina principal
     public function productosPorNombre($nombre)
     {
@@ -125,7 +124,6 @@ class ModeloProducto
         $stmt->execute(['%' . $nombre . '%']);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-
 
 
     //Consulta general productos con inner join por codigo producto
@@ -141,6 +139,7 @@ class ModeloProducto
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+
     //Consulta general productos con inner join por nombre producto
     public function consultGenProductosvistaNombre($nombre)
     {
@@ -154,6 +153,7 @@ class ModeloProducto
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+
     //Actualizar producto
     public function actualizarProducto($codigoProducto, $idClase, $nombre, $marca, $descripcion, $idPresentacion, $idUndBase, $contNeto, $idFormatoVent, $precioVenta, $foto, $idProducto)
     {
@@ -161,6 +161,7 @@ class ModeloProducto
         $stmt = $this->conn->prepare($query);
         $stmt->execute([$codigoProducto, $idClase, $nombre, $marca, $descripcion, $idPresentacion, $idUndBase, $contNeto, $idFormatoVent, $precioVenta, $foto, $idProducto]);
     }
+
 
     //Eliminar producto
     public function eliminarProducto($codigoProducto)
@@ -189,6 +190,7 @@ class ModeloProducto
         $stmt->execute([$idProducto]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
+
 
     //Consulta de Clases que tienen Productos registrados para mostrar las clases en pagina principal
     public function mostrarClasesP()

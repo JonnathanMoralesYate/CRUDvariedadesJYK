@@ -23,12 +23,8 @@ document
       document.getElementById("fechaSal").value = "";
       //limpia el campo de Precio Venta Producto
       document.getElementById("precioProducto").value = "";
-      // Evita consultas si el campo está vacío
       return;
     }
-
-    //imprime el valor de codproducto
-    //console.log('valor codProducto: ', + codigoBarras)
 
     try {
       const response = await fetch(
@@ -43,7 +39,6 @@ document
       );
 
       const data = await response.json();
-      //console.log('Datos recibidos:', data);
 
       if (data.success) {
 
@@ -85,15 +80,12 @@ async function stockDisponible(productoId) {
 
     const data = await response.json();
 
-    //console.log('Datos recibidos:', data);
-
     if (data.success) {
       document.getElementById("resultado").innerText = "✅";
       cantidadDisponible = parseFloat(data.stock.CantActual);
-      //alert("Producto Con Stock Disponible" + cantidadDisponible);
+      
     } else {
       document.getElementById("resultado").innerText = "❌";
-      //alert("Producto Sin Stock Disponible");
     }
   } catch (error) {
     console.error("Error al obtener Stock Disponible del producto:", error);
@@ -126,8 +118,6 @@ document
       });
 
       const data = await response.json();
-
-      //console.log('Datos recibidos:', data);
 
       if (data.success) {
         document.getElementById("resultado1").innerText = "✅";
@@ -177,9 +167,6 @@ function ventaTotal() {
   //Obtiene el valor del precio producto
   const precioInput = document.getElementById("precioProducto").value;
 
-  //replace(/\./g, '') → Elimina los puntos que puedan ser separadores de miles.
-  //replace(',', '.') → Convierte la coma decimal en un punto (.) para que Number() lo interprete correctamente.
-
   const precioProducto = precioInput.replace(/\./g, "").replace(",", ".");
 
   const precioNumero = Number(precioProducto);
@@ -187,7 +174,6 @@ function ventaTotal() {
   //verifica los valores que sean numericos para poder realizar opreciones
   if (!isNaN(precioNumero) && !isNaN(cantSalInput) && cantSalInput > 0) {
     const precioVenta = precioNumero * cantSalInput;
-    //parseInt(document.getElementById('precioVentaRaw').value = precioVenta);
     precioVentaInput.value = Math.floor(precioVenta).toLocaleString();
   } else {
     precioVentaInput.value = "";

@@ -40,14 +40,7 @@ class ModeloEntProducto
     }
 
 
-    //Consulta general tabla Entrada Productos INNER JOIN
-    // public function consultaGenEntProductosVista() {
-    //     $query = "SELECT idEntProducto, FechaEnt, proveedores.NombreProveedor, productos.CodProducto, productos.Nombre, productos.Marca, productos.Descripcion, CONCAT(presentacion_producto.Presentacion,' ', productos.ContNeto,' ', unidad_base.UndBase) AS 'Contenido Neto', FechaVencimiento, PrecioCompra, CantEnt FROM ".$this->table." INNER JOIN productos ON entrada_productos.idProducto=productos.idProducto INNER JOIN proveedores ON entrada_productos.idProveedor=proveedores.idProveedor INNER JOIN presentacion_producto ON productos.idPresentacion=presentacion_producto.idPresentacion INNER JOIN unidad_base ON productos.idUndBase=unidad_base.idUndBase ORDER BY FechaEnt DESC";
-    //     $stmt= $this->conn->query($query);
-    //     return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    // }
-
-
+    //Listado de entrada productos vista consulta
     public function consultaGenEntProductosVista($inicio, $limite)
     {
         $query = "SELECT idEntProducto, FechaEnt, proveedores.NombreProveedor, productos.CodProducto, productos.Nombre, 
@@ -68,6 +61,7 @@ class ModeloEntProducto
     }
 
 
+    //Total entrada de productos para paginacion
     public function obtenerTotalEntProductos()
     {
         $stmt = $this->conn->query("SELECT COUNT(*) FROM " . $this->table . "");
@@ -75,6 +69,7 @@ class ModeloEntProducto
     }
 
 
+    //Consulta filtrada por codigo o nombre del producto
     public function consultarFiltrado($tipo, $valor, $inicio, $limite)
     {
         if ($tipo === 'codigo') {
@@ -105,6 +100,7 @@ class ModeloEntProducto
     }
 
 
+    //Consulta total por codigo o nombre del producto
     public function totalFiltrado($tipo, $valor)
     {
         $condicion = '';
@@ -181,6 +177,7 @@ class ModeloEntProducto
     }
 
 
+    //listado de entrada de productos vista informe
     public function listaEntProductos($inicio, $limite, $fechaInc, $fechaFin)
     {
         $query = "SELECT idEntProducto, FechaEnt, proveedores.NombreProveedor, productos.CodProducto, productos.Nombre, productos.Marca, 
@@ -203,6 +200,8 @@ class ModeloEntProducto
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+
+    //Total entrada de productos para paginacion vista informe
     public function totalEntProductosPorFechas($fechaInc, $fechaFin)
     {
         $query = "SELECT COUNT(*) FROM " . $this->table . "
@@ -216,6 +215,7 @@ class ModeloEntProducto
     }
 
 
+    //consulta por filtro nombre vista informe
     public function consultarFiltradoEntProductos($tipo, $valor, $inicio, $limite, $fechaInc, $fechaFin)
     {
         $query = "SELECT idEntProducto, FechaEnt, proveedores.NombreProveedor, productos.CodProducto, productos.Nombre, productos.Marca, 
@@ -241,6 +241,7 @@ class ModeloEntProducto
     }
 
 
+    //Consulta total por nombre vista informe
     public function totalFiltradoEntProductos($tipo, $valor, $fechaInc, $fechaFin)
     {
         $query = "SELECT COUNT(*) FROM " . $this->table . "

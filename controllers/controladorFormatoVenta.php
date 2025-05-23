@@ -22,19 +22,18 @@ class ControladorFormatoVenta
     public function RegistroFormatoVenta()
     {
 
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        if ($_SERVER["REQUEST_METHOD"] == "POST") 
+        {
             $nombre = $_POST['nomFormatoVenta'];
 
             $this->modeloFormatoVenta->registrarFormatoVenta($nombre);
 
             echo "
-                        <script>
-                            alert('Registro Exitoso!');
-                            window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=registroFormatoVenta';
-                        </script>
-                        ";
-
-            //header("Location: index.php?action=registroFormatoVenta");
+                <script>
+                    alert('Registro Exitoso!');
+                    window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=registroFormatoVenta';
+                </script>
+                ";
             exit;
         }
     }
@@ -46,7 +45,7 @@ class ControladorFormatoVenta
         return $this->modeloFormatoVenta->consultGenFormatoVenta();
     }
 
-
+    //Lista de formato venta para la vista consulta
     public function listaFormatoVentas($tipo, $valor)
     {
         $limite = 10;
@@ -68,6 +67,7 @@ class ControladorFormatoVenta
     }
 
 
+    //Consulta de formato venta filtrado poor id y nombre
     public function listaFormatoVentaFiltrado($tipo, $valor)
     {
         $limite = 10;
@@ -108,8 +108,8 @@ class ControladorFormatoVenta
     //Actualizar Formato Venta
     public function ActualizarFormatoVenta()
     {
-
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        if ($_SERVER["REQUEST_METHOD"] == "POST") 
+        {
             $nombre = $_POST['nomFormatoVenta'];
             $idFormatoVenta = $_POST['idFormatoVenta'];
 
@@ -121,7 +121,6 @@ class ControladorFormatoVenta
                         window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaFormatoVenta';
                     </script>
                     ";
-            //header("Location: index.php?action=consultaFormatoVenta");
             exit;
         }
     }
@@ -139,7 +138,6 @@ class ControladorFormatoVenta
                 window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaFormatoVenta';
             </script>
             ";
-        //header("Location: index.php?action=consultaFormatoVenta");
         exit;
     }
 }

@@ -1,10 +1,8 @@
 document.addEventListener("DOMContentLoaded", async function () {
+  
   const precioProducto = document.getElementById("precioProducto");
-
-  //const codProducto = document.getElementById("codProducto"); Guarda la referencia del input en la variable codProducto. Ahora codProducto es un objeto que representa el <input>.
   const codProducto = document.getElementById("codProducto");
-  //codProducto.value obtiene el contenido que tiene el input al momento de la ejecución.
-  //console.log("Valor actual:", codProducto.value);
+ 
 
   try {
     const response = await fetch(
@@ -14,25 +12,22 @@ document.addEventListener("DOMContentLoaded", async function () {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ codProducto: codProducto.value }), // Enviar datos al servidor como JSON
+        body: JSON.stringify({ codProducto: codProducto.value }), 
       }
     );
 
     const data = await response.json();
-    //console.log('Datos recibidos:', data);
 
     if (data.success) {
       if (data.producto && data.producto.PrecioVenta) {
-        //console.log("Valor precio producto: ", data.producto.PrecioVenta);
-        //Precio del Producto encontrado, lo mostramos en los campo del formulario
+
         precioProducto.value = parseInt(data.producto.PrecioVenta);
 
-        //console.log("Valor precio producto: ", precioProducto.value);
       } else {
         alert("Datos del Producto no Disponibles.");
       }
     } else {
-      //document.getElementById("precioProducto").value = "";
+      
     }
   } catch (error) {
     console.error("Error al obtener la información del producto:", error);
@@ -50,9 +45,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const cantSalida = parseFloat(cantSalidaInput.value.replace(",", ".")) || 0;
     const precioProducto =
       parseFloat(precioProductoInput.value.replace(",", ".")) || 0;
-
-    //console.log("Cantidad de Salida:", cantSalida);
-    //console.log("Precio Producto:", precioProducto);
 
     // Calcular el precio de venta
     const precioVentaOpe = cantSalida * precioProducto;

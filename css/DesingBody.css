@@ -2,12 +2,6 @@ body{
     background-color:  #0a1527  ; 
 }
 
-/*.scrollable-categories {
-    max-height: 600px; /* Ajusta la altura según lo necesites 
-    overflow-y: auto;  /* Esto habilita el scroll vertical 
-}*/
-
-
 /* Categorías */
 .scrollspy-example {
     padding: 10px;
@@ -56,8 +50,6 @@ body{
     }
 }
 
-
-
 /* Ajustes generales */
 .carousel-item {
     padding: 20px;
@@ -97,7 +89,7 @@ body{
 
 /* Reduce el espacio entre tarjetas */
 .card {
-    margin: 5px; /* Menos espacio entre tarjetas */
+    margin: 5px; 
     border-radius: 8px;
     transition: transform 0.2s;
 }
@@ -109,28 +101,28 @@ body{
 /* Ajuste responsivo */
 @media (max-width: 768px) {
     .row-cols-md-2 .col {
-        flex: 0 0 48%; /* Hace que las tarjetas estén más pegadas en tabletas */
+        flex: 0 0 48%; 
     }
 }
 
 @media (max-width: 480px) {
     .row-cols-1 .col {
-        flex: 0 0 100%; /* Tarjetas ocupan todo el ancho en móviles */
+        flex: 0 0 100%; 
     }
 }
 
 @media (max-width: 768px) {
     .row {
-        flex-direction: column !important; /* Fuerza que se apilen */
+        flex-direction: column !important; 
     }
     .col-12 {
-        width: 100% !important; /* Evita que los elementos se solapen */
+        width: 100% !important; 
     }
 }
 
 @media (max-width: 768px) {
     .scrollspy-example {
-        max-height: 300px; /* Ajusta según la necesidad */
+        max-height: 300px; 
         overflow-y: auto;
     }
 }

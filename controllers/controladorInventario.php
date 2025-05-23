@@ -24,7 +24,7 @@ class ControladorInventario
         return $this->modeloInventario->inventarioActualizadoPDF();
     }
 
-
+    //lista de stock actual vista inventario
     public function listaInventarioActualizado($tipo, $valor)
     {
         $limite = 10;
@@ -34,11 +34,6 @@ class ControladorInventario
         $inventario = $this->modeloInventario->inventarioActualizado($inicio, $limite);
         $totalProductos = $this->modeloInventario->obtenerTotalProductos();
         $totalPaginas = ceil($totalProductos / $limite);
-
-        //   echo "<pre>";
-        //   var_dump($inventario, $pagina, $totalPaginas, $valor, $tipo, $totalProductos);
-        //    echo"</pre>";
-        //    exit;
 
         return [
             'inventario' => $inventario,
@@ -50,6 +45,7 @@ class ControladorInventario
     }
 
 
+    //consulta filtro por nombre de stock actual 
     public function listaProductosFiltrado($tipo, $valor)
     {
         $limite = 10;
@@ -70,13 +66,13 @@ class ControladorInventario
     }
 
 
-    //Reporte de Productos Proximos a Vencer
+    //lista de Productos Proximos a Vencer para reporte pdf
     public function ProductosAvencer()
     {
         return $this->modeloInventario->productosAvencer();
     }
 
-
+    //lista de productos proximos a vencer en vista 
     public function listaProductosAvencer($tipo, $valor)
     {
         $limite = 10;
@@ -97,6 +93,7 @@ class ControladorInventario
     }
 
 
+    //consulta de productos proximos a vencer filtra por nombre
     public function listaProductosAvencerFiltrado($tipo, $valor)
     {
         $limite = 10;
@@ -124,7 +121,6 @@ class ControladorInventario
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-            // Leer JSON desde la solicitud
             $inputJSON = file_get_contents("php://input");
 
             $input = json_decode($inputJSON, true);
@@ -154,17 +150,12 @@ class ControladorInventario
     //Metodo para actualizar inventario del formulario de salida de productos pór varios productos
     public function actualizarInventario()
     {
-
-        // Configurar cabeceras para aceptar solicitudes JSON
         header('Content-Type: application/json');
 
-        // Permite el acceso desde cualquier origen (CORS)
         header('Access-Control-Allow-Origin: *');
 
-        // Obtener los datos JSON enviados
         $data = json_decode(file_get_contents('php://input'), true);
 
-        // Verifica si los datos se han recibido correctamente
         if (!isset($data['idProducto']) || !isset($data['cantidad'])) {
 
             // Preparar y ejecutar la inserción de cada fila
@@ -175,10 +166,10 @@ class ControladorInventario
 
                 $this->modeloInventario->stockActualizado($cantSal, $idProducto);
             }
-            //respuesta al cliente Proceso de actualizacion
+            //respuesta exitosa
             echo json_encode(['success' => true, 'message' => 'Datos actualizados en inventario correctamente']);
         } else {
-            //mejorar respuesta cuando no envien todos los datos requeridos
+            //repuesta error
             echo json_encode(['success' => false, 'error' => 'Datos No recibidos']);
         }
     }
@@ -187,7 +178,6 @@ class ControladorInventario
     //Metodo para traer datos de productos con menor stock
     public function ProductosMenorStock()
     {
-
         header("Content-Type: application/json; charset=UTF-8");
 
         $menorStock = $this->modeloInventario->productosMenorStock();
@@ -199,6 +189,7 @@ class ControladorInventario
         }
     }
 
+
     //Reporte de invenario productos agotados
     public function ProductoSinStock()
     {
@@ -206,6 +197,7 @@ class ControladorInventario
     }
 
 
+    //Lista de productos din stock vista de reporte
     public function listaInventarioSinStock($tipo, $valor)
     {
         $limite = 10;
@@ -225,7 +217,7 @@ class ControladorInventario
         ];
     }
 
-
+    //Consulta de producto sin stock vista filtrada por nombre
     public function listaProductosFiltradoSinStock($tipo, $valor)
     {
         $limite = 10;
@@ -245,13 +237,6 @@ class ControladorInventario
         ];
     }
 
-    //===================================================================================================================================
-
-    // //Reporte de Inventario
-    // public function inventarioActualEmp() {
-    //     return $this->modeloInventario->inventarioActualizado();
-    // }
-
 
     //Reporte de Productos Proximos a Vencer
     public function ProductosAvencerEmp()
@@ -266,7 +251,6 @@ class ControladorInventario
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-            // Leer JSON desde la solicitud
             $inputJSON = file_get_contents("php://input");
 
             $input = json_decode($inputJSON, true);
@@ -288,12 +272,12 @@ class ControladorInventario
         } else {
             echo json_encode(['error' => 'Método no permitido']);
         }
+        exit;
     }
 
     //Metodo para traer datos de productos con menor stock
     public function ProductosMenorStockEmp()
     {
-
         header("Content-Type: application/json; charset=UTF-8");
 
         $menorStock = $this->modeloInventario->productosMenorStock();
@@ -303,6 +287,7 @@ class ControladorInventario
         } else {
             echo json_encode(["success" => false, "error" => "Producto No esta en Inventario o no hay stock"]);
         }
+        exit;
     }
 
     //Reporte de invenario productos agotados
@@ -312,11 +297,9 @@ class ControladorInventario
     }
 
 
-
     //Metodo para traer datos de productos con menor stock
     public function ProductosProximosAvencer()
     {
-
         header("Content-Type: application/json;");
 
         $proximosAvencer = $this->modeloInventario->productosProximosAvencer();
@@ -326,7 +309,6 @@ class ControladorInventario
         } else {
             echo json_encode(["success" => false, "error" => "No Hay Productos Proximos a Vencer"]);
         }
-
-        exit; // Asegura que no se envíen datos adicionales
+        exit;
     }
 }

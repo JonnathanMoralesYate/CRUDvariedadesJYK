@@ -51,7 +51,7 @@ class ModeloSalProducto
     }
 
 
-    //Consulta general tabla Salida Productos INNER JOIN
+    //Lista de salida de productos vista consulta
     public function consultaGenSalProductosVista($inicio, $limite)
     {
         $query = "SELECT idSalProducto, FechaSalida, clientes.NumIdentificacion, productos.CodProducto, productos.Nombre, productos.Marca, productos.Descripcion, 
@@ -73,6 +73,7 @@ class ModeloSalProducto
     }
 
 
+    //Consulta para contar el total de salida de productos para paginacion
     public function obtenerTotalSalProductos()
     {
         $stmt = $this->conn->query("SELECT COUNT(*) FROM " . $this->table . "");
@@ -80,6 +81,7 @@ class ModeloSalProducto
     }
 
 
+    //Consulta total de salida de productos por codigo y nombre 
     public function consultarFiltrado($tipo, $valor, $inicio, $limite)
     {
         if ($tipo === 'codigo') {
@@ -111,6 +113,7 @@ class ModeloSalProducto
     }
 
 
+    //Consulta total de salida de productos por codigo y nombre paginacion
     public function totalFiltrado($tipo, $valor)
     {
         $condicion = '';
@@ -188,6 +191,7 @@ class ModeloSalProducto
     }
 
 
+    //Lista de salida de productos vista reporte por fechas
     public function listaSalProductos($inicio, $limite, $fechaInc, $fechaFin)
     {
         $query = "SELECT idSalProducto, FechaSalida, clientes.NumIdentificacion, productos.CodProducto, productos.Nombre, productos.Marca, productos.Descripcion,
@@ -211,6 +215,7 @@ class ModeloSalProducto
     }
 
 
+    //Consulta para contar el total de salida de productos por fechas para paginacion
     public function totalSalProductosPorFechas($fechaInc, $fechaFin)
     {
         $query = "SELECT COUNT(*) FROM " . $this->table . "
@@ -224,6 +229,7 @@ class ModeloSalProducto
     }
 
 
+    //Consulta filtrada salida de productos por fechas y nombre vista reporte
     public function consultarFiltradoSalProductos($tipo, $valor, $inicio, $limite, $fechaInc, $fechaFin)
     {
         $query = "SELECT idSalProducto, FechaSalida, clientes.NumIdentificacion, productos.CodProducto, productos.Nombre, productos.Marca, productos.Descripcion,
@@ -249,6 +255,7 @@ class ModeloSalProducto
     }
 
 
+    //Consulta total de salida de productos por nombre paginacion
     public function totalFiltradoSalProductos($tipo, $valor, $fechaInc, $fechaFin)
     {
         $query = "SELECT COUNT(*) FROM " . $this->table . "
@@ -284,6 +291,7 @@ class ModeloSalProducto
         $stmt = $this->conn->query($query);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
 
     //Consulta para ver los productos mas vendidos en pagina principal
     public function productosMayorVenta()

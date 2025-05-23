@@ -20,14 +20,13 @@ document.getElementById('nitProveedor').addEventListener('blur', async function(
             });
 
             const data = await response.json();
-            //console.log('Datos recibidos:', data);
     
             if (data.success) {
                 alert("El Proveedor ya esta Registrado");
                 //limpia el campo del Nit del proveedor
                 document.getElementById("nitProveedor").value = '';
             } else {
-                 //alert("El Cliente no esta Registrado");
+                    
             }
         } catch (error) {
             console.error('Error al obtener la información del proveedor:', error);            

@@ -11,7 +11,6 @@ class ControladorUsuario
 
     public function __construct()
     {
-
         $database = new DataBase();
         $this->db = $database->getConnectionJYK();
         $this->modeloUsuario = new ModeloUsuario($this->db);
@@ -21,7 +20,6 @@ class ControladorUsuario
     //registro de usuarios
     public function registroUsua()
     {
-
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $idTipoDocum = $_POST['tipoDocum'];
             $numDocumento = $_POST['documUsu'];
@@ -37,15 +35,13 @@ class ControladorUsuario
 
             $this->modeloUsuario->registroUsuario($idTipoDocum, $numDocumento, $nombre, $apellido, $numCelular, $correoE, $rol, $usuario, $claveSegura);
 
-            echo "
-                        <script>
-                            alert('Registro Exitoso!');
-                            window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=registroUsuario';
-                        </script>
-                        ";
-
-            //header("Location: index.php?action=registroUsuario");
-            exit;
+                echo "
+                    <script>
+                        alert('Registro Exitoso!');
+                        window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=registroUsuario';
+                    </script>
+                    ";
+                exit;
         }
     }
 
@@ -64,7 +60,7 @@ class ControladorUsuario
     }
 
 
-    //Consulta general de usuarios vista
+    //Lista de usuarios vista consulta
     public function listaUsuariosVista($tipo, $valor)
     {
         $limite = 10;
@@ -86,6 +82,7 @@ class ControladorUsuario
     }
 
 
+    //Consulta de usuario filtrada por numero decumento y nombre
     public function listaUsuariosFiltrado($tipo, $valor)
     {
         $limite = 10;
@@ -143,13 +140,12 @@ class ControladorUsuario
 
             $this->modeloUsuario->actualizarUsua($idTipoDocum, $numDocumento, $nombre, $apellido, $numCelular, $correoE, $rol, $usuario, $claveSegura, $idUsua);
 
-            echo "
-            <script>
-                alert('Actualizacion Exitosa!');
-                window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaUsuarios';
-            </script>
-            ";
-            //header("Location: index.php?action=consultaUsuarios");
+                echo "
+                    <script>
+                        alert('Actualizacion Exitosa!');
+                        window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaUsuarios';
+                    </script>
+                ";
             exit;
         }
     }
@@ -167,7 +163,6 @@ class ControladorUsuario
                 window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaUsuarios';
             </script>
             ";
-        //header("Location: index.php?action=consultaUsuarios");
         exit;
     }
 
@@ -175,10 +170,8 @@ class ControladorUsuario
     // Consulta para traer informacion del producto por idclase
     public function ConsultaUsuario()
     {
-
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-            // Leer JSON desde la solicitud
             $inputJSON = file_get_contents("php://input");
 
             $input = json_decode($inputJSON, true);
@@ -202,5 +195,6 @@ class ControladorUsuario
         } else {
             echo json_encode(['error' => 'Método no permitido']);
         }
+        exit;
     }
 }

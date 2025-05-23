@@ -11,7 +11,6 @@ class ControladorProveedor
 
     public function __construct()
     {
-
         $database = new DataBase();
         $this->db = $database->getConnectionJYK();
         $this->modeloProveedor = new ModeloProveedor($this->db);
@@ -21,7 +20,6 @@ class ControladorProveedor
     //Registro de producto
     public function RegistroProveedor()
     {
-
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $nitProve = $_POST['nitProveedor'];
             $nomProve = $_POST['nomProveedor'];
@@ -32,38 +30,30 @@ class ControladorProveedor
 
             $this->modeloProveedor->registroProveedor($nitProve, $nomProve, $correoProve, $celProve, $nomVende, $celVende);
 
-            //session_start();
-
-                if ($_SESSION['rol'] == 1) {
-
-                    echo "
+            if ($_SESSION['rol'] == 1) {
+                echo "
                         <script>
                             alert('Registro del Proveedor Exitoso!');
                             window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=registroProveedor';
                         </script>
                         ";
-                        exit;
-                } elseif ($_SESSION['rol'] == 2) {
-                    echo "
+                exit;
+            } elseif ($_SESSION['rol'] == 2) {
+                echo "
                         <script>
                             alert('Registro del Proveedor Exitoso!');
                             window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=registroProveedorEmp';
                         </script>
                         ";
-                    exit;
-                }
+                exit;
+            }
         }
     }
 
 
-    //Consulta general de proveedor
-    // public function listaProveedores() {
-    //     return $this->modeloProveedor->consultGenProveedores();
-    // }
-
+    //lista de proveedores vista consulta 
     public function listaProveedores($tipo, $valor)
     {
-
         $limite = 10;
         $pagina = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
         $inicio = ($pagina - 1) * $limite;
@@ -71,7 +61,7 @@ class ControladorProveedor
         $proveedores = $this->modeloProveedor->consultGenProveedores($inicio, $limite);
         $totalProveedores = $this->modeloProveedor->obtenerTotalProveedores();
         $totalPaginas = ceil($totalProveedores / $limite);
-    
+
         return
             [
                 'proveedores' => $proveedores,
@@ -83,6 +73,7 @@ class ControladorProveedor
     }
 
 
+    //consulta filtrada por nit, nombre proveedor y vendedor vista consulta
     public function listaProveedoresFiltrado($tipo, $valor)
     {
         $limite = 10;
@@ -92,7 +83,7 @@ class ControladorProveedor
         $proveedores = $this->modeloProveedor->consultarFiltrado($tipo, $valor, $inicio, $limite);
         $total = $this->modeloProveedor->totalFiltrado($tipo, $valor);
         $totalPaginas = ceil($total / $limite);
-        
+
         return
             [
                 'proveedores' => $proveedores,
@@ -103,28 +94,6 @@ class ControladorProveedor
             ];
     }
 
-
-    // //Consulta general por nombre de proveedores 
-    // public function nombreProveedor()
-    // {
-    //     $nomProve = $_GET['nomProveedor'] ?? '';
-    //     return $this->modeloProveedor->consultGenProveedorNombre($nomProve);
-    // }
-
-
-    // //Consulta general por nombre de vendedor 
-    // public function nombreVendedor()
-    // {
-    //     $nomVende = $_GET['nomVendedor'] ?? '';
-    //     return $this->modeloProveedor->consultGenProveedorNombreVende($nomVende);
-    // }
-
-    // //Consulta general de proveedor por id
-    // public function proveedorNit()
-    // {
-    //     $nitProveedor = $_GET['nitProveedor'] ?? '';
-    //     return $this->modeloProveedor->consultGenProveedorNit($nitProveedor);
-    // }
 
     //Consulta general de proveedor por id
     public function proveedorId()
@@ -137,10 +106,8 @@ class ControladorProveedor
     // Consulta para verificar Proveedor si esta registrado en BD
     public function nitProveedor()
     {
-
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-            // Leer JSON desde la solicitud
             $inputJSON = file_get_contents("php://input");
 
             $input = json_decode($inputJSON, true);
@@ -154,9 +121,6 @@ class ControladorProveedor
 
             header("Content-Type: application/json; charset=UTF-8");
 
-            //para ver variable en consola
-            //echo "<script>console.log(" . json_encode($ProveedorNit) . ");</script>";
-
             $proveedor = $this->modeloProveedor->consultaProveedor($ProveedorNit);
 
             if ($proveedor) {
@@ -167,13 +131,13 @@ class ControladorProveedor
         } else {
             echo json_encode(['error' => 'Método no permitido']);
         }
+        exit;
     }
 
 
     //Actualizar proveedor
     public function ActualizarProveedor()
     {
-
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $nitProve = $_POST['nitProveedor'];
             $nomProve = $_POST['nomProveedor'];
@@ -185,28 +149,26 @@ class ControladorProveedor
 
             $this->modeloProveedor->actualizarProveedor($nitProve, $nomProve, $correoProve, $celProve, $nomVende, $celVende, $idProveedor);
 
-            //session_start();
-
-                if ($_SESSION['rol'] == 1) {
-
-                    echo "
+            if ($_SESSION['rol'] == 1) {
+                echo "
                         <script>
                             alert('Actualizacion del Proveedor Exitoso!');
                             window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaProveedor';
                         </script>
                         ";
-                        exit;
-                } elseif ($_SESSION['rol'] == 2) {
-                    echo "
+                exit;
+            } elseif ($_SESSION['rol'] == 2) {
+                echo "
                         <script>
                             alert('Actualizacion del Proveedor Exitoso!');
                             window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaProveedorEmp';
                         </script>
                         ";
-                    exit;
-                }
+                exit;
+            }
         }
     }
+
 
     //Eliminar proveedor
     public function EliminarProveedor()
@@ -222,87 +184,4 @@ class ControladorProveedor
             ";
         exit;
     }
-
-    //Registro de producto empleado
-    // public function RegistroProveedorEmp()
-    // {
-
-    //     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    //         $nitProve = $_POST['nitProveedor'];
-    //         $nomProve = $_POST['nomProveedor'];
-    //         $correoProve = $_POST['correoProv'];
-    //         $celProve = $_POST['celProveedor'];
-    //         $nomVende = $_POST['nomVendedor'];
-    //         $celVende = $_POST['celVendedor'];
-
-    //         $this->modeloProveedor->registroProveedor($nitProve, $nomProve, $correoProve, $celProve, $nomVende, $celVende);
-
-    //         echo "
-    //                     <script>
-    //                         alert('Registro del Proveedor Exitoso!');
-    //                         window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=registroProveedoremp';
-    //                     </script>
-    //                     ";
-
-    //         //header("Location: index.php?action=vistaAdmin");
-    //         exit;
-    //     }
-    // }
-
-
-    // //Consulta general de proveedor
-    // public function listaProveedoresEmp() {
-    //     return $this->modeloProveedor->consultGenProveedores();
-    // }
-
-
-    //Consulta general por nombre de proveedores 
-    // public function nombreProveedorEmp()
-    // {
-    //     $nomProve = $_GET['nomProveedor'] ?? '';
-    //     return $this->modeloProveedor->consultGenProveedorNombre($nomProve);
-    // }
-
-
-    // //Consulta general por nombre de vendedor 
-    // public function nombreVendedorEmp()
-    // {
-    //     $nomVende = $_GET['nomVendedor'] ?? '';
-    //     return $this->modeloProveedor->consultGenProveedorNombreVende($nomVende);
-    // }
-
-    // //Consulta general de proveedor por id
-    // public function proveedorNitEmp()
-    // {
-    //     $idProveedor = $_GET['idProveedor'] ?? '';
-    //     return $this->modeloProveedor->consultGenProveedorNit($idProveedor);
-    // }
-
-
-    //Actualizar proveedor
-    // public function ActualizarProductoEmp()
-    // {
-
-    //     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    //         $nitProve = $_POST['nitProveedor'];
-    //         $nomProve = $_POST['nomProveedor'];
-    //         $correoProve = $_POST['correoProv'];
-    //         $celProve = $_POST['celProveedor'];
-    //         $nomVende = $_POST['nomVendedor'];
-    //         $celVende = $_POST['celVendedor'];
-    //         $idProveedor = $_POST['idProveedor'];
-
-    //         $this->modeloProveedor->actualizarProveedor($nitProve, $nomProve, $correoProve, $celProve, $nomVende, $celVende, $idProveedor);
-
-    //         echo "
-    //                     <script>
-    //                         alert('Actualizacion del Proveedor Exitoso!');
-    //                         window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaProveedorEmp';
-    //                     </script>
-    //                     ";
-
-    //         //header("Location: index.php?action=vistaAdmin");
-    //         exit;
-    //     }
-    // }
 }

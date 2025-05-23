@@ -85,7 +85,6 @@ footer {
 }
 /* Estilos para dispositivos móviles */
 @media only screen and (max-width: 480px) {
-    /* Ocultar el menú de navegación y mostrar un botón de menú */
     nav {
       display: none;
     }

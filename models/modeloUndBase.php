@@ -29,6 +29,7 @@ class ModeloUndBase
     }
 
 
+    //Lista de Unidad Base vista consulta
     public function listaUndBase($inicio, $limite)
     {
         $query = "SELECT * FROM " . $this->table . " LIMIT :inicio, :limite";
@@ -40,6 +41,7 @@ class ModeloUndBase
     }
 
 
+    //Contar total de registros unidad base para paginación
     public function obtenerTotalUndBase()
     {
         $stmt = $this->conn->query("SELECT COUNT(*) FROM " . $this->table . "");
@@ -47,6 +49,7 @@ class ModeloUndBase
     }
 
 
+    //Consulta filtrada unidad base por nombre
     public function consultarFiltrado($tipo, $valor, $inicio, $limite)
     {
         $campo = $tipo == 'codigo' ? 'idUndBase' : 'UndBase';
@@ -62,6 +65,7 @@ class ModeloUndBase
     }
 
 
+    //Contar total de registros unidad base filtrados para paginación
     public function totalFiltrado($tipo, $valor)
     {
         $campo = $tipo == 'codigo' ? 'idUndBase' : 'UndBase';

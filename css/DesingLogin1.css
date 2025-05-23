@@ -1,12 +1,3 @@
-/* #login_inic {
-    height:2vw;
-    width: 8vw;
-    color:white;
-    text-align: center;
-    text-justify: distribute;
-    margin-right: 2%;
-} */
-
 /*Estilos para el formulario de registro*/
 .login_form{
     display: none;

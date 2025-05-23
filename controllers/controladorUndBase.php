@@ -11,7 +11,6 @@ class ControladorUndBase
 
     public function __construct()
     {
-
         $database = new DataBase();
         $this->db = $database->getConnectionJYK();
         $this->modeloUndBase = new ModeloUndBase($this->db);
@@ -21,32 +20,30 @@ class ControladorUndBase
     //registro de clase
     public function RegistroUndBase()
     {
-
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $nombre = $_POST['nomUndBase'];
 
             $this->modeloUndBase->registrarUndBase($nombre);
 
-            echo "
-                        <script>
-                            alert('Registro Exitoso!');
-                            window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=registroUndBase';
-                        </script>
-                        ";
-
-            //header("Location: index.php?action=vistaAdmin");
-            exit;
+                echo "
+                    <script>
+                        alert('Registro Exitoso!');
+                        window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=registroUndBase';
+                    </script>
+                    ";
+                exit;
         }
     }
 
 
-    //Lista de 
+    //Lista unidad base select
     public function listaUndBase()
     {
         return $this->modeloUndBase->consultGenUndBase();
     }
 
 
+    //Listado de unidad base vista consulta
     public function listaUndBases($tipo, $valor)
     {
         $limite = 10;
@@ -68,6 +65,7 @@ class ControladorUndBase
     }
 
 
+    //Consulta filtro unidad base por id y nombre consulta
     public function listaUndBaseFiltrado($tipo, $valor)
     {
         $limite = 10;
@@ -108,20 +106,19 @@ class ControladorUndBase
     //Actualizar Unidad Base
     public function ActualizarUndBase()
     {
-
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $nombre = $_POST['nomUndBase'];
             $idUndBase = $_POST['idUndBase'];
 
             $this->modeloUndBase->actualizarUndBase($nombre, $idUndBase);
-            echo "
-                        <script>
-                            alert('Actualizacion Exitosa!');
-                            window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaUndBasen';
-                        </script>
-                        ";
-            //header("Location: index.php?action=consultaUndBasen");
-            exit;
+
+                echo "
+                    <script>
+                        alert('Actualizacion Exitosa!');
+                        window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaUndBasen';
+                    </script>
+                    ";
+                exit;
         }
     }
 
@@ -138,7 +135,6 @@ class ControladorUndBase
                 window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaUndBasen';
             </script>
             ";
-        //header("Location: index.php?action=consultaUndBasen");
         exit;
     }
 }

@@ -11,7 +11,6 @@ class ControladorPresentacion
 
     public function __construct()
     {
-
         $database = new DataBase();
         $this->db = $database->getConnectionJYK();
         $this->modeloPresentacion = new ModeloPresentacion($this->db);
@@ -21,20 +20,17 @@ class ControladorPresentacion
     //registro de presentacion
     public function RegistroPresentacion()
     {
-
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $nombre = $_POST['nomPresentacion'];
 
             $this->modeloPresentacion->registrarPresentacion($nombre);
 
             echo "
-                        <script>
-                            alert('Registro Exitoso!');
-                            window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=registroPresentacion';
-                        </script>
-                        ";
-
-            //header("Location: index.php?action=registroPresentacion");
+                <script>
+                    alert('Registro Exitoso!');
+                    window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=registroPresentacion';
+                </script>
+                ";
             exit;
         }
     }
@@ -46,6 +42,8 @@ class ControladorPresentacion
         return $this->modeloPresentacion->consultGenPresentacion();
     }
 
+
+    //lista de presentacion producto vista consulta
     public function listaPresentaciones($tipo, $valor)
     {
         $limite = 10;
@@ -67,6 +65,7 @@ class ControladorPresentacion
     }
 
 
+    //consulta de presentacion por nombre filtro
     public function listaPresentacionFiltrado($tipo, $valor)
     {
         $limite = 10;
@@ -107,7 +106,6 @@ class ControladorPresentacion
     //Actualizar presentacion
     public function ActualizarPresentacion()
     {
-
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $nombre = $_POST['nomPresentacion'];
             $idPresentacion = $_POST['idPresentacion'];
@@ -115,12 +113,11 @@ class ControladorPresentacion
             $this->modeloPresentacion->actualizarPresentacion($nombre, $idPresentacion);
 
             echo "
-                    <script>
-                        alert('Actualizacion Exitosa!');
-                        window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaPresentacion';
-                    </script>
-                    ";
-            //header("Location: index.php?action=consultaPresentacion");
+                <script>
+                    alert('Actualizacion Exitosa!');
+                    window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaPresentacion';
+                </script>
+                ";
             exit;
         }
     }
@@ -138,7 +135,6 @@ class ControladorPresentacion
                 window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaPresentacion';
             </script>
             ";
-        //header("Location: index.php?action=consultaPresentacion");
         exit;
     }
 }

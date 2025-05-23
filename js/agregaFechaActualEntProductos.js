@@ -12,7 +12,6 @@ document.getElementById('codProducto').addEventListener('blur', async function()
         document.getElementById("resultado").textContent = "";
         //limpia el campo de fecha de entrada
         document.getElementById("fechaEnt").value = "";
-        // Evita consultas si el campo está vacío
         return; 
     }
 
@@ -22,12 +21,10 @@ document.getElementById('codProducto').addEventListener('blur', async function()
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ codProducto: codigoBarras })  // Enviar datos al servidor como JSON
+            body: JSON.stringify({ codProducto: codigoBarras })  
         });
 
         const data = await response.json();
-
-        //console.log('Datos recibidos:', data);
 
         if (data.success) {
             document.getElementById("resultado").innerText = "✅";
@@ -44,27 +41,16 @@ document.getElementById('codProducto').addEventListener('blur', async function()
 });
 
 
-//Aquí data.producto es un array, por lo que data.producto.idProducto no existe.
-//En su lugar, deberías acceder al primer elemento del array:
-//if (data.success) {
-    //if (data.producto.length > 0 && data.producto[0].idProducto) {
-//   data.producto es un array, por lo que hay que acceder a su primer elemento con data.producto[0].
-//   Se verifica que el array tenga al menos un elemento con data.producto.length > 0.
-//   Se accede a data.producto[0].idProducto en lugar de data.producto.idProducto.
-
-
 //Funcion al ingresar el nit del Proveedor verifica si esta registrado 
 document.getElementById('nitProveedor').addEventListener('blur', async function() {
 
     const nit = document.getElementById("nitProveedor").value.trim();
 
-    //alert("nit: " + nit);
-
             // Evita consulta si el campo del input está vacío
         if (nit === "") {
             //remueve el contenido de la eqtiqueta <p id"resultado"></p>
             document.getElementById("resultado1").textContent = "";
-            return; // Evita consultas si el campo está vacío
+            return;
         }
 
         try {
@@ -73,12 +59,10 @@ document.getElementById('nitProveedor').addEventListener('blur', async function(
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ nitProveedor: nit })  // Enviar datos al servidor como JSON
+                body: JSON.stringify({ nitProveedor: nit }) 
             });
 
             const data = await response.json();
-    
-            //console.log('Datos recibidos:', data);
     
             if (data.success) {
                 document.getElementById("resultado1").innerText = "✅";
@@ -90,7 +74,6 @@ document.getElementById('nitProveedor').addEventListener('blur', async function(
             document.getElementById("resultado1").innerText = "⚠️";
             
         }
-
 });
 
 

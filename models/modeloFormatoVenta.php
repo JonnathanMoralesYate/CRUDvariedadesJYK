@@ -30,6 +30,7 @@ class ModeloFormatoVenta
     }
 
 
+    //Lista de formato venta vista consulta
     public function listaFormatoVenta($inicio, $limite) 
     {
         $query = "SELECT * FROM " . $this->table . " LIMIT :inicio, :limite";
@@ -41,6 +42,8 @@ class ModeloFormatoVenta
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+
+    //consulta total formato venta para paginacion
     public function obtenerTotalFormatoVenta()
     {
         $stmt = $this->conn->query("SELECT COUNT(*) FROM " . $this->table . "");
@@ -48,6 +51,7 @@ class ModeloFormatoVenta
     }
 
 
+    //Consulta filtrada por id y nombre formato venta vista consulta
     public function consultarFiltrado($tipo, $valor, $inicio, $limite)
     {
         $campo = $tipo == 'codigo' ? 'idFormatoVenta' : 'FormatoVenta';
@@ -63,6 +67,7 @@ class ModeloFormatoVenta
     }
 
 
+    //Consulta total por id y nombre formato venta vista consulta
     public function totalFiltrado($tipo, $valor)
     {
         $campo = $tipo == 'codigo' ? 'idFormatoVenta' : 'FormatoVenta';

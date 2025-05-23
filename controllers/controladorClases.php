@@ -17,6 +17,7 @@ class ControladorClases
         $this->modeloClases = new ModeloClases($this->db);
     }
 
+
     //registro de clase
     public function registroClase()
     {
@@ -26,26 +27,25 @@ class ControladorClases
 
             $this->modeloClases->registrarClases($nombre);
 
-            //echo json_encode(array('Error'=>'Producto No Encontrado'));
-
             echo "
                         <script>
                             alert('Registro Exitoso!');
                             window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=registroClase';
                         </script>
                         ";
-            //header("Location: index.php?action=registroClase");
             exit;
         }
     }
 
+
+    //Lista de Clases para el select
     public function listaClasesP()
     {
         return $this->modeloClases->listaClasesP();
     }
 
 
-    //Lista de Clases
+    //Lista de Clases para la vista consulta
     public function listaClases($tipo, $valor)
     {
         $limite = 10;
@@ -67,6 +67,7 @@ class ControladorClases
     }
 
 
+    //Lista de Clases para la vista consulta con filtro
     public function listaClasesFiltrado($tipo, $valor)
     {
         $limite = 10;
@@ -109,6 +110,7 @@ class ControladorClases
     {
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
             $nombre = $_POST['nomClase'];
             $idClase = $_POST['idClase'];
 
@@ -120,7 +122,6 @@ class ControladorClases
                             window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaClase';
                         </script>
                         ";
-            //header("Location: index.php?action=consultaClase");
             exit;
         }
     }
@@ -138,7 +139,6 @@ class ControladorClases
                 window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaClase';
             </script>
             ";
-        //header("Location: index.php?action=consultaClase");
         exit;
     }
 }

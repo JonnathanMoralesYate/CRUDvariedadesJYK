@@ -3,7 +3,6 @@
 let myChart = null; // Variable global para almacenar la instancia de la gráfica
 
 async function ActualizarGraficaMayorVenta() {
-  //alert('ingresa a la funcion actualizargraficamayoeventa');
 
   try {
     const response = await fetch("index.php?action=productosMayorVenta", {
@@ -11,12 +10,7 @@ async function ActualizarGraficaMayorVenta() {
       headers: { "Content-Type": "application/json" },
     });
 
-    // Verificar el contenido de la respuesta antes de procesarla como JSON
-    //const textResponse = await response.text();
-    //console.log("Respuesta recibida:", textResponse);
-
     const data = await response.json();
-    //console.log('Datos recibidos:', data); // Verifica qué datos llegan
 
     // Validar que la respuesta contiene los datos esperados
     if (
@@ -33,9 +27,6 @@ async function ActualizarGraficaMayorVenta() {
     const mayorVenta = data.mayorVenta;
     const nombres = mayorVenta.map((item) => item.Producto);
     const cantidades = mayorVenta.map((item) => parseFloat(item.totalVendido));
-
-    //console.log("Nombres:", nombres);
-    //console.log("Cantidades:", cantidades);
 
     // Obtener el contexto del canvas
     const canvas = document.getElementById("myChart");
@@ -99,7 +90,6 @@ async function ActualizarGraficaMayorVenta() {
       },
     });
 
-    //console.log("Gráfica actualizada correctamente.");
   } catch (error) {
     console.error("Error al obtener los datos del producto:", error);
   }
@@ -122,7 +112,6 @@ async function ActualizarGraficaMenorStock() {
     });
 
     const data = await response.json();
-    //console.log("Datos recibidos:", data); // Verifica qué datos llegan
 
     // Validar que la respuesta contiene los datos esperados
     if (
@@ -139,9 +128,6 @@ async function ActualizarGraficaMenorStock() {
     const menorStock = data.menorStock;
     const nombres = menorStock.map((item) => item.Producto);
     const cantidades = menorStock.map((item) => parseFloat(item.CantActual));
-
-    //console.log("Nombres:", nombres);
-    //console.log("Cantidades:", cantidades);
 
     // Obtener el contexto del canvas
     const canvas = document.getElementById("myChart3");
@@ -225,7 +211,6 @@ async function ActualizarGraficaMenorStock() {
       },
     });
 
-    //console.log("Gráfica actualizada correctamente.");
   } catch (error) {
     console.error("Error al obtener los datos del producto:", error);
   }
