@@ -68,7 +68,7 @@
                                 <td><?= '$' . number_format($producto['PrecioVenta'], 0, ',', '.'); ?></td>
                                 <td><img src="photo/<?= $producto['Foto']; ?>" width="100"></td>
                                 <td>
-                                    <a href="index.php?action=actualizarProductosCodigo&codProduc=<?= $producto['CodProducto']; ?>" class="btn btn-outline-secondary text-white m-2 w-100">Actualizar</a>
+                                    <a href="index.php?action=actualizarProductosCodigoEmp&codProduc=<?= $producto['CodProducto']; ?>" class="btn btn-outline-secondary text-white m-2 w-100">Actualizar</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

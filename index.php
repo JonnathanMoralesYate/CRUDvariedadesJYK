@@ -244,6 +244,21 @@ switch ($action) {
         include('./views/productos/consultaProductoEmp.php');
         break;
 
+
+        //Actualizar Producto
+    case 'actualizarProductosCodigoEmp':
+        $productos = $controladorProducto->productoCodigo();
+        $clases = $controladorClases->listaClasesP();
+        $presentaciones = $controladorPresentacion->listaPresentacion();
+        $undBases = $controladorUndBase->listaUndBase();
+        $formatoVents = $controladorFormatoVenta->listaFormatoVenta();
+        include('./views/productos/actualizarProductoEmp.php');
+        break;
+
+    case 'actualizarProducto':
+        $controladorProducto->actualizarProducto();
+        break;
+
     //============================================================================================================================================
 
     //Clases

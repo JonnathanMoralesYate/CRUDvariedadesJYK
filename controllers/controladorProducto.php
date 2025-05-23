@@ -367,7 +367,7 @@ class ControladorProducto
                 echo "
                         <script>
                             alert('Registro del Producto Exitoso!');
-                            window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=registroProductosEmp';
+                            window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaProductosEmp';
                         </script>
                         ";
                 exit;
