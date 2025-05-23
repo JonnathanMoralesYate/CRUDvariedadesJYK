@@ -1,20 +1,20 @@
 <?php
 
-session_start();
+//session_start();
 
 // Verifica si $_SESSION está vacío (no tiene ninguna variable)
 if (empty($_SESSION)) {
     // Redirigir a:
-    header("Location: index.php?action=paginaP");
+    header("Location: index.php?action=Principal");
     exit;
 }
 
 // Verificar si el usuario tiene el rol de administrador
-if ($_SESSION['rol'] == 2) {
-     // Redirigir a:
-    header("Location: index.php?action=vistaEmple");
-    exit;
-}
+// if ($_SESSION['rol'] == 2) {
+//      // Redirigir a:
+//     header("Location: index.php?action=vistaEmple");
+//     exit;
+// }
 
 ob_start();
 

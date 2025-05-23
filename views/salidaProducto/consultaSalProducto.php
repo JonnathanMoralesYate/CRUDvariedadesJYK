@@ -7,17 +7,17 @@
             <div class="text-center text-white mt-3">
                 <h4>Consulta Salida de Productos</h4>
             </div>
-            <form class=" mt-4" action="index.php?action=consultaSalProductoId" method="get">
-                <div class="input-group mb-3">
-                    <input type="hidden" class="form-control" name="action" value="consultaSalProductoId">
+            <form class=" mt-4" action="index.php?action=consultaSalProductoCodigo" method="get">
+                    <input type="hidden" class="form-control" name="action" value="consultaSalProductoCodigo">
+                    <div class="input-group mb-3">
                     <input type="text" class="form-control" placeholder="Codigo Producto" name="codProducto" aria-label="Recipient's usernam" aria-describedby="button-addon2" required>
                     <button class="btn btn-outline-secondary text-white" type="submit" id="button-addon2">Buscar</button>
                 </div>
             </form>
 
             <form class=" mt-2" action="index.php?action=consultaSalProductoFecha" method="get">
-                <div class="input-group mb-3">
                     <input type="hidden" class="form-control" name="action" value="consultaSalProductoFecha">
+                    <div class="input-group mb-3">
                     <input type="date" class="form-control" placeholder="Fecha salida Producto" name="fechaSal" aria-label="Recipient's usernam" aria-describedby="button-addon2" required>
                     <button class="btn btn-outline-secondary text-white" type="submit" id="button-addon2">Buscar</button>
                 </div>
@@ -33,7 +33,7 @@
         <div class="col-12 col-md-10 offset-md-1"> <!-- Ocupa toda la pantalla en móviles, con margen en pantallas grandes -->
             <!-- Inicio de tabla -->
             <div class="text-center">
-                <?php if (isset($salProductos) && count($salProductos) > 0): ?>
+                <?php if (isset($data['salProductos']) && count($data['salProductos']) > 0): ?>
                 <h4 class="text-white">Resultados de la Búsqueda:</h4>
             </div>
             <!-- Tabla responsiva -->
@@ -55,7 +55,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($salProductos as $salProducto): ?>
+                        <?php foreach ($data['salProductos'] as $salProducto): ?>
                         <tr>
                             <td class="text-white align-middle"><?= $salProducto['FechaSalida']; ?></td>
                             <td class="text-white align-middle"><?= $salProducto['NumIdentificacion']; ?></td>
@@ -76,9 +76,53 @@
                     </tbody>
                 </table>
             </div>
-                <?php elseif (isset($salProductos)): ?>
-                    <p class="text-white text-center">No se encontraron productos con ese criterio de búsqueda</p>
+
+                <!-- Paginación -->
+            <?php
+                    $totalPaginas = $data['totalPaginas'];
+                    $paginaActual = $data['pagina'];
+                    $tipo = $data['tipo']; // 'codigo' o 'nombre'
+                    $filtro = urlencode($data['filtro']);
+                    $action = $tipo === 'codigo' ? 'consultaSalProductoCodigo' : 'consultaSalProductoFecha';
+                    $param = $tipo === 'codigo' ? "codProducto=$filtro" : "fechaSal=$filtro";
+
+                    $maxPaginasVisibles = 7;
+                    $inicio = max(1, $paginaActual - intval($maxPaginasVisibles / 2));
+                    $fin = min($inicio + $maxPaginasVisibles - 1, $totalPaginas);
+                    if (($fin - $inicio + 1) < $maxPaginasVisibles) {
+                        $inicio = max(1, $fin - $maxPaginasVisibles + 1);
+                    }
+            ?>
+
+            <!-- Paginación PHP -->
+            <?php if ($totalPaginas > 1): ?>
+                <?php if ($totalPaginas > 1): ?>
+                    <nav>
+                        <ul class="pagination justify-content-center flex-wrap mt-3">
+                            <!-- Anterior -->
+                            <li class="page-item <?= $paginaActual <= 1 ? 'disabled' : '' ?>">
+                                <a class="page-link" href="?action=<?= $action ?>&<?= $param ?>&pagina=<?= $paginaActual - 1 ?>">Anterior</a>
+                            </li>
+
+                            <!-- Numeración -->
+                            <?php for ($i = $inicio; $i <= $fin; $i++): ?>
+                                <li class="page-item <?= $paginaActual == $i ? 'active' : '' ?>">
+                                    <a class="page-link" href="?action=<?= $action ?>&<?= $param ?>&pagina=<?= $i ?>"><?= $i ?></a>
+                                </li>
+                            <?php endfor; ?>
+
+                            <!-- Siguiente -->
+                            <li class="page-item <?= $paginaActual >= $totalPaginas ? 'disabled' : '' ?>">
+                                <a class="page-link" href="?action=<?= $action ?>&<?= $param ?>&pagina=<?= $paginaActual + 1 ?>">Siguiente</a>
+                            </li>
+                        </ul>
+                    </nav>
                 <?php endif; ?>
+            <?php endif; ?>
+
+        <?php else: ?>
+            <p class="text-white text-center">No se encontraron productos con ese criterio de búsqueda.</p>
+        <?php endif; ?>
         </div>
     </div>
 </div>

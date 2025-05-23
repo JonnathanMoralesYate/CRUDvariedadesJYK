@@ -36,13 +36,13 @@
                             <div class="collapse navbar-collapse mt-2" id="navbarTogglerDemo01">
                                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                                     <li class="nav-item me-5">
-                                        <a class="nav-link text-white m-1 fs-5" href='index.php?action=paginaP' role="button">Inicio</a>
+                                        <a class="nav-link text-white m-1 fs-5" href='index.php?action=Principal' role="button">Inicio</a>
                                     </li>
                                     <li class="nav-item me-5">
-                                    <a class="nav-link text-white m-1 fs-5" href='index.php?action=paginaN' role="button">Nosotros</a>
+                                    <a class="nav-link text-white m-1 fs-5" href='index.php?action=Nosotros' role="button">Nosotros</a>
                                     </li>
                                     <li class="nav-item me-5">
-                                    <a class="nav-link text-white m-1 fs-5" href='index.php?action=paginaS' role="button">Servicios</a>
+                                    <a class="nav-link text-white m-1 fs-5" href='index.php?action=Servicios' role="button">Servicios</a>
                                     </li>
                                     <li class="nav-item me-5">
                                         <a class="nav-link text-white m-1 fs-5" href="#Ubicacion">Ubicación y Contacto</a>

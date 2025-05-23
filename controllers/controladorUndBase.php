@@ -3,27 +3,30 @@
 require_once('./models/modeloUndBase.php');
 require_once('./config/conexionBDJYK.php');
 
-class ControladorUndBase{
+class ControladorUndBase
+{
 
     private $db;
     private $modeloUndBase;
 
-    public function __construct() {
+    public function __construct()
+    {
 
-        $database= new DataBase();
-        $this->db= $database->getConnectionJYK();
-        $this->modeloUndBase= new ModeloUndBase($this->db);
+        $database = new DataBase();
+        $this->db = $database->getConnectionJYK();
+        $this->modeloUndBase = new ModeloUndBase($this->db);
     }
 
 
     //registro de clase
-    public function RegistroUndBase() {
+    public function RegistroUndBase()
+    {
 
-        if($_SERVER["REQUEST_METHOD"] == "POST") {
-            $nombre= $_POST['nomUndBase'];
-            
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $nombre = $_POST['nomUndBase'];
+
             $this->modeloUndBase->registrarUndBase($nombre);
-            
+
             echo "
                         <script>
                             alert('Registro Exitoso!');
@@ -34,37 +37,82 @@ class ControladorUndBase{
             //header("Location: index.php?action=vistaAdmin");
             exit;
         }
-
     }
 
 
     //Lista de 
-    public function listaUndBase() {
+    public function listaUndBase()
+    {
         return $this->modeloUndBase->consultGenUndBase();
     }
 
 
+    public function listaUndBases($tipo, $valor)
+    {
+        $limite = 10;
+        $pagina = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
+        $inicio = ($pagina - 1) * $limite;
+
+        $undBases = $this->modeloUndBase->listaUndBase($inicio, $limite);
+        $totalClases = $this->modeloUndBase->obtenerTotalUndBase();
+        $totalPaginas = ceil($totalClases / $limite);
+
+        return
+            [
+                'undBases' => $undBases,
+                'pagina' => $pagina,
+                'totalPaginas' => $totalPaginas,
+                'filtro' => $valor,
+                'tipo' => $tipo,
+            ];
+    }
+
+
+    public function listaUndBaseFiltrado($tipo, $valor)
+    {
+        $limite = 10;
+        $pagina = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
+        $inicio = ($pagina - 1) * $limite;
+
+        $undBases = $this->modeloUndBase->consultarFiltrado($tipo, $valor, $inicio, $limite);
+        $total = $this->modeloUndBase->totalFiltrado($tipo, $valor);
+        $totalPaginas = ceil($total / $limite);
+
+        return
+            [
+                'undBases' => $undBases,
+                'pagina' => $pagina,
+                'totalPaginas' => $totalPaginas,
+                'filtro' => $valor,
+                'tipo' => $tipo,
+            ];
+    }
+
+
     //consulta de Unidad Base por ID
-    public function consultUndBaseId() {
-        $idUndBase= $_GET['idUndBase'] ?? '';
+    public function consultUndBaseId()
+    {
+        $idUndBase = $_GET['idUndBase'] ?? '';
         return $this->modeloUndBase->consultUndBaseId($idUndBase);
     }
 
 
     //consulta de Unidad Base por nombre
-    public function consultUndBaseNombre() {
-        $nombre= $_GET['nomUndBase'] ?? '';
+    public function consultUndBaseNombre()
+    {
+        $nombre = $_GET['nomUndBase'] ?? '';
         return $this->modeloUndBase->consultUndBaseNombre($nombre);
     }
 
 
     //Actualizar Unidad Base
-    public function ActualizarUndBase() {
+    public function ActualizarUndBase()
+    {
 
-        if($_SERVER["REQUEST_METHOD"] == "POST") {
-            $nombre= $_POST['nomUndBase'];
-            $idUndBase= $_POST['idUndBase'];
-            
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $nombre = $_POST['nomUndBase'];
+            $idUndBase = $_POST['idUndBase'];
+
             $this->modeloUndBase->actualizarUndBase($nombre, $idUndBase);
             echo "
                         <script>
@@ -75,12 +123,12 @@ class ControladorUndBase{
             //header("Location: index.php?action=consultaUndBasen");
             exit;
         }
-
     }
 
 
     //Eliminar Unidad Base
-    public function EliminarUndBase() {
+    public function EliminarUndBase()
+    {
         $idUndBase = $_GET['idUndBase'] ?? '';
         $this->modeloUndBase->eliminarUndBase($idUndBase);
 
@@ -90,12 +138,7 @@ class ControladorUndBase{
                 window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaUndBasen';
             </script>
             ";
-            //header("Location: index.php?action=consultaUndBasen");
-            exit;
+        //header("Location: index.php?action=consultaUndBasen");
+        exit;
     }
-
-
 }
-
-
-?>

@@ -40,15 +40,14 @@ class ModeloProducto
     public function consultGenProductosvista($inicio, $limite)
     {
         $query = "SELECT idProducto, CodProducto, clase_producto.Clase, Nombre, Marca, Descripcion, 
-                     presentacion_producto.Presentacion, CONCAT(ContNeto,' ', unidad_base.UndBase) AS Contenido, 
-                     formato_venta.FormatoVenta, PrecioVenta, Foto 
-              FROM productos 
-              INNER JOIN clase_producto ON productos.idClase = clase_producto.idClase 
-              INNER JOIN presentacion_producto ON productos.idPresentacion = presentacion_producto.idPresentacion 
-              INNER JOIN unidad_base ON productos.idUndBase = unidad_base.idUndBase 
-              INNER JOIN formato_venta ON productos.idFormatoVenta=formato_venta.idFormatoVenta 
-              ORDER BY Nombre ASC 
-              LIMIT :inicio, :limite";
+                    presentacion_producto.Presentacion, CONCAT(ContNeto,' ', unidad_base.UndBase) AS Contenido, 
+                    formato_venta.FormatoVenta, PrecioVenta, Foto FROM " . $this->table . " 
+            INNER JOIN clase_producto ON productos.idClase = clase_producto.idClase 
+            INNER JOIN presentacion_producto ON productos.idPresentacion = presentacion_producto.idPresentacion 
+            INNER JOIN unidad_base ON productos.idUndBase = unidad_base.idUndBase 
+            INNER JOIN formato_venta ON productos.idFormatoVenta=formato_venta.idFormatoVenta 
+            ORDER BY Nombre ASC 
+            LIMIT :inicio, :limite";
 
         $stmt = $this->conn->prepare($query);
         $stmt->bindValue(':inicio', (int)$inicio, PDO::PARAM_INT);
@@ -59,7 +58,7 @@ class ModeloProducto
 
     public function obtenerTotalProductos()
     {
-        $stmt = $this->conn->query("SELECT COUNT(*) FROM productos");
+        $stmt = $this->conn->query("SELECT COUNT(*) FROM ".$this->table."");
         return (int)$stmt->fetchColumn();
     }
 
@@ -68,16 +67,15 @@ class ModeloProducto
         $campo = $tipo == 'codigo' ? 'CodProducto' : 'Nombre';
 
         $query = "SELECT idProducto, CodProducto, clase_producto.Clase, Nombre, Marca, Descripcion, 
-                     presentacion_producto.Presentacion, CONCAT(ContNeto,' ', unidad_base.UndBase) AS Contenido, 
-                     formato_venta.FormatoVenta, PrecioVenta, Foto 
-              FROM productos 
-              INNER JOIN clase_producto ON productos.idClase = clase_producto.idClase 
-              INNER JOIN presentacion_producto ON productos.idPresentacion = presentacion_producto.idPresentacion 
-              INNER JOIN unidad_base ON productos.idUndBase = unidad_base.idUndBase 
-              INNER JOIN formato_venta ON productos.idFormatoVenta=formato_venta.idFormatoVenta 
-              WHERE $campo LIKE :valor 
-              ORDER BY Nombre ASC 
-              LIMIT :inicio, :limite";
+                        presentacion_producto.Presentacion, CONCAT(ContNeto,' ', unidad_base.UndBase) AS Contenido, 
+                        formato_venta.FormatoVenta, PrecioVenta, Foto FROM " . $this->table . "
+                INNER JOIN clase_producto ON productos.idClase = clase_producto.idClase 
+                INNER JOIN presentacion_producto ON productos.idPresentacion = presentacion_producto.idPresentacion 
+                INNER JOIN unidad_base ON productos.idUndBase = unidad_base.idUndBase 
+                INNER JOIN formato_venta ON productos.idFormatoVenta=formato_venta.idFormatoVenta 
+                WHERE $campo LIKE :valor 
+                ORDER BY Nombre ASC 
+                LIMIT :inicio, :limite";
 
         $stmt = $this->conn->prepare($query);
         $stmt->bindValue(':valor', "%$valor%", PDO::PARAM_STR);
@@ -91,7 +89,7 @@ class ModeloProducto
     {
         $campo = $tipo == 'codigo' ? 'CodProducto' : 'Nombre';
 
-        $stmt = $this->conn->prepare("SELECT COUNT(*) FROM productos WHERE $campo LIKE :valor");
+        $stmt = $this->conn->prepare("SELECT COUNT(*) FROM ".$this->table." WHERE $campo LIKE :valor");
         $stmt->bindValue(':valor', "%$valor%", PDO::PARAM_STR);
         $stmt->execute();
         return (int)$stmt->fetchColumn();
@@ -118,6 +116,16 @@ class ModeloProducto
         $stmt->execute([$idClase]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    //Consulta para mostrar productos segun nombre en pagina principal
+    public function productosPorNombre($nombre)
+    {
+        $query = "SELECT Foto, CONCAT(Nombre,' ',Marca) AS 'Producto', Descripcion FROM " . $this->table . " WHERE Nombre LIKE ?";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute(['%' . $nombre . '%']);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
 
 
     //Consulta general productos con inner join por codigo producto

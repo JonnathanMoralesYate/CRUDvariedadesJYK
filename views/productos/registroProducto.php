@@ -81,7 +81,7 @@
                 </div>
                 <div class="mt-2">
                     <label for="fotoProduc" class="form-label text-white mt-3">Foto:</label>
-                    <input type="file" class="form-control" name="fotoProduc" required>
+                    <input type="file" class="form-control" name="fotoProduc">
                 </div>
                 <div class="text-center mt-4">
                     <button type="submit" class="btn btn-outline-light">Registrar Producto</button>

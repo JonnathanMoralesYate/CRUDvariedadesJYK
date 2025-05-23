@@ -1,10 +1,10 @@
 <?php
-session_start();
+//session_start();
 
 // Verifica si $_SESSION está vacío (no tiene ninguna variable)
 if (empty($_SESSION)) {
     // Redirigir a:
-    header("Location: index.php?action=pagina");
+    header("Location: index.php?action=Principal");
     exit;
 }
 
@@ -77,8 +77,8 @@ if ($_SESSION['rol'] == 1) {
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-white" href="#" id="productosDropdown" role="button" data-bs-toggle="dropdown">Productos</a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="index.php?action=registroProductoemp">Registrar Producto</a></li>
-                                <li><a class="dropdown-item" href="index.php?action=consultaProductoEmp">Consultar Producto</a></li>
+                                <li><a class="dropdown-item" href="index.php?action=registroProductosEmp">Registrar Producto</a></li>
+                                <li><a class="dropdown-item" href="index.php?action=consultaProductosEmp">Consultar Producto</a></li>
                             </ul>
                         </li>
 
@@ -105,8 +105,8 @@ if ($_SESSION['rol'] == 1) {
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-white" href="#" id="clientesDropdown" role="button" data-bs-toggle="dropdown">Clientes</a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="index.php?action=registroClienteemp">Registrar Cliente</a></li>
-                                <li><a class="dropdown-item" href="index.php?action=consultaClienteemp">Consultar Cliente</a></li>
+                                <li><a class="dropdown-item" href="index.php?action=registroClienteEmp">Registrar Cliente</a></li>
+                                <li><a class="dropdown-item" href="index.php?action=consultaClienteEmp">Consultar Cliente</a></li>
                             </ul>
                         </li>
 
@@ -131,12 +131,13 @@ if ($_SESSION['rol'] == 1) {
                             </ul>
                         </li>
                     </ul>
-                </li>
-            </ul>
+                    </li>
+                    </ul>
 
                     <!-- Botón de Logout -->
-                    <form action="index.php?action=cerrarSesion" method="GET">
-                        <button type="submit" class="btn btn-outline-light">Log Out</button>
+                    <form action="index.php?action=cerrarSesion" method="POST">
+                        <input type="hidden" name="action" value="cerrarSesion">
+                        <button type="submit" class="btn btn-outline-secondary text-white">Log Out</button>
                     </form>
                 </div>
             </div>

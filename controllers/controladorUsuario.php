@@ -65,10 +65,47 @@ class ControladorUsuario
 
 
     //Consulta general de usuarios vista
-    public function listaUsuariosVista()
+    public function listaUsuariosVista($tipo, $valor)
     {
-        return $this->modeloUsuario->consultGenUsuaVista();
+        $limite = 10;
+        $pagina = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
+        $inicio = ($pagina - 1) * $limite;
+
+        $usuarios = $this->modeloUsuario->consultGenUsuaVista($inicio, $limite);
+        $totalUsuarios = $this->modeloUsuario->obtenerTotalUsuarios();
+        $totalPaginas = ceil($totalUsuarios / $limite);
+
+        return
+            [
+                'usuarios' => $usuarios,
+                'pagina' => $pagina,
+                'totalPaginas' => $totalPaginas,
+                'filtro' => $valor,
+                'tipo' => $tipo,
+            ];
     }
+
+
+    public function listaUsuariosFiltrado($tipo, $valor)
+    {
+        $limite = 10;
+        $pagina = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
+        $inicio = ($pagina - 1) * $limite;
+
+        $usuarios = $this->modeloUsuario->consultarFiltrado($tipo, $valor, $inicio, $limite);
+        $total = $this->modeloUsuario->totalFiltrado($tipo, $valor);
+        $totalPaginas = ceil($total / $limite);
+
+        return
+            [
+                'usuarios' => $usuarios,
+                'pagina' => $pagina,
+                'totalPaginas' => $totalPaginas,
+                'filtro' => $valor,
+                'tipo' => $tipo,
+            ];
+    }
+
 
     //Consulta por parametro id usuario
     public function datosUsuaPorId()

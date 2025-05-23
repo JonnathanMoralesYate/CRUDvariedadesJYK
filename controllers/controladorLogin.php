@@ -3,145 +3,130 @@
 require_once('./models/modeloLogin.php');
 require_once('./config/conexionBDJYK.php');
 
-class ControladorLogin{
+class ControladorLogin
+{
 
     private $db;
     private $modeloLogin;
 
-    public function __construct() {
+    public function __construct()
+    {
 
-        $database= new DataBase();
-        $this->db= $database->getConnectionJYK();
-        $this->modeloLogin= new ModeloLogin($this->db);
-
+        $database = new DataBase();
+        $this->db = $database->getConnectionJYK();
+        $this->modeloLogin = new ModeloLogin($this->db);
     }
 
-    public function validarUsuario() {
+    public function validarUsuario()
+    {
 
-        if($_SERVER["REQUEST_METHOD"] == "POST") {
-            $usuario= $_POST['usuarioL'];
-            $clave= $_POST['contraseñaL'];
-            
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $usuario = $_POST['usuarioL'];
+            $clave = $_POST['contraseñaL'];
+
             // Consultar el usuario en la base de datos
-            $user= $this->modeloLogin->consultaUsuario($usuario);
+            $user = $this->modeloLogin->consultaUsuario($usuario);
 
 
             if ($user) {
-                
-                $idUsua= $user['idUsuario']; 
-                $rol= $user['idRol'];
-                $contraseñaBD= $user['Contraseña'];     // Contraseña encriptada almacenada
-                $nombre= $user['Nombres'];
-                $apellido= $user['Apellidos'];
-                
 
-            // Verifica la contraseña
-            if(password_verify($clave, $contraseñaBD)) {
+                $idUsua = $user['idUsuario'];
+                $rol = $user['idRol'];
+                $contraseñaBD = $user['Contraseña'];     // Contraseña encriptada almacenada
+                $nombre = $user['Nombres'];
+                $apellido = $user['Apellidos'];
 
-                // Inicia la sesión.
-                session_start();
 
-                // Guarda el id de usuario
-                $_SESSION['idUsua'] = $idUsua;
-                // Guarda el rol de usuario
-                $_SESSION['rol'] = $rol;
-                // Guarda el nombre de usuario
-                $_SESSION['nombre'] = $nombre;
-                // Guarda el apellido de usuario
-                $_SESSION['apellido'] = $apellido;
+                // Verifica la contraseña
+                if (password_verify($clave, $contraseñaBD)) {
 
-                //Redirige según el rol
-                //Administrativo
-                if($_SESSION['rol'] == 1) {
+                    // Inicia la sesión.
+                    session_start();
 
-                   // echo "
-                        //<script>
-                            //alert('Has ingresado como Administrador!');
-                            //window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=vistaAdmin';
-                        //</script>
-                        //";
+                    // Guarda el id de usuario
+                    $_SESSION['idUsua'] = $idUsua;
+                    // Guarda el rol de usuario
+                    $_SESSION['rol'] = $rol;
+                    // Guarda el nombre de usuario
+                    $_SESSION['nombre'] = $nombre;
+                    // Guarda el apellido de usuario
+                    $_SESSION['apellido'] = $apellido;
 
-                    header("Location: index.php?action=vistaAdmin");
-                    exit;
+                    //Redirige según el rol
+                    //Administrativo
+                    if ($_SESSION['rol'] == 1) {
 
-                    //Empleado
-                }elseif($_SESSION['rol'] == 2){
+                        header("Location: index.php?action=vistaAdmin");
+                        exit;
 
-                    //echo "
-                       // <script>
-                           // alert('Has ingresado como Empleado!');
-                        //</script>
-                        //";
+                        //Empleado
+                    } elseif ($_SESSION['rol'] == 2) {
 
-                    header("Location: index.php?action=vistaEmple");
-                    exit;
-
-                }
-            }else {
+                        header("Location: index.php?action=vistaEmple");
+                        exit;
+                    }
+                } else {
 
                     // Contraseña incorrecta
                     echo "
                         <script>
                             alert('Contraseña incorrecta!');
-                            window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=paginaP';
+                            window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=Principal';
                         </script>
-                        ";
-                    //header("Location: index.php?action=paginaS");
+                    ";
                     exit;
+                }
+            } else {
 
-                } 
-
-                // Asegura que no se ejecute más código después del header
-                //exit(); 
-
-    }else{
-
-        // Usuario no encontrado
-        echo "
-            <script>
-                alert('Usuario no encontrado o Incorrecto!');
-                window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=paginaP';
-            </script>
-            ";
-            //header("Location: index.php?action=paginaN");
-            exit;
-
-        // Si las credenciales no son válidas
-        //$error = "Credenciales incorrectas";
-
+                // Usuario no encontrado
+                echo "
+                    <script>
+                        alert('Usuario no encontrado o Incorrecto!');
+                        window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=Principal';
+                    </script>
+                ";
+                exit;
+            }
+        }
     }
-
-}
-
-}
 
     //Cerrar Sesion
-    public function cerraraSesion() {
+    public function cerrarSesion()
+    {
+        // 1. Iniciar sesión sólo si no está iniciada
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
 
-        // Inicia la sesión
-        session_start();
+        // 2. Regenerar ID (opcional, por seguridad)
+        session_regenerate_id(true);
 
-        // Elimina todas las variables de sesión
+        // 3. Borrar todas las variables de sesión
+        $_SESSION = [];
         session_unset();
 
-        // Destruye la sesión
+        // 4. Destruir la sesión en el servidor
         session_destroy();
 
-        // Redirige al login
-        echo "
-            <script>
-                alert('Finalizo Sesion!');
-                window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=paginaP';
-            </script>
-            ";
+        // 5. Eliminar la cookie de sesión del navegador
+        setcookie(
+            session_name(),
+            '',
+            time() - 42000,
+            '/'
+        );
 
-        //header("Location: http://localhost/CRUDvariedadesJYK/index.php");
+        // Redirección con JavaScript
+        echo '
+        <script>
+            alert("Sesión cerrada con éxito");
+            window.location.href = "index.php?action=Principal";
+        </script>';
+        exit;
 
-        exit();
-
+        // 6. Redirigir con header()
+        // Puedes pasar un flag por GET: index.php?action=Principal&msg=logout
+        //header('Location: index.php?action=Principal');
+        //exit;
     }
-
-
 }
-
-?>

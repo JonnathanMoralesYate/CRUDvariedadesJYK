@@ -18,7 +18,7 @@
         <div class="row p-3">
             <div class="col-2 mt-2">
                 <nav class="img-fluid d-block text-center" id="inicio">
-                    <a class="navbar-brand">
+                    <a class="navbar-brand" href='index.php?action=Principal'>
                         <img src="./photo/logoPrin1.1.jpeg" alt="Logo" width="90" height="80" class="rounded-3">
                     </a>
                 </nav>
@@ -37,17 +37,17 @@
                         <div class="collapse navbar-collapse mt-2" id="navbarTogglerDemo01">
                             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                                 <li class="nav-item me-3">
-                                    <a class="nav-link text-white m-1 fs-5" href="index.php?action=paginaN">Nosotros</a>
+                                    <a class="nav-link text-white m-1 fs-5" href="index.php?action=Nosotros">Nosotros</a>
                                 </li>
                                 <li class="nav-item me-3">
-                                    <a class="nav-link text-white m-1 fs-5" href="index.php?action=paginaS">Servicios</a>
+                                    <a class="nav-link text-white m-1 fs-5" href="index.php?action=Servicios">Servicios</a>
                                 </li>
                                 <li class="nav-item me-3">
                                     <a class="nav-link text-white m-1 fs-5" href="#Ubicacion">Ubicación y Contacto</a>
                                 </li>
                                 <li class="nav-item me-3">
-                                    <form class="d-flex" role="search">
-                                        <input class="form-control m-2 me-3" type="search" placeholder="Buscar Producto" aria-label="Search">
+                                    <form id="formBuscarProducto" class="d-flex" action="index.php?action=consultaProductoNombre" method="POST" role="search">
+                                        <input id="inputNombreProducto" class="form-control m-2 me-3" type="search" placeholder="Buscar Producto" name="Nombre" aria-label="Search">
                                         <button class="btn btn-outline-secondary text-white m-2" type="submit">Buscar</button>
                                     </form>
                                 </li>

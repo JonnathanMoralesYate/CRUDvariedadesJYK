@@ -6,7 +6,8 @@ require_once('./models/modeloEntProducto.php');
 require_once('./models/modeloInventario.php');
 require_once('./config/conexionBDJYK.php');
 
-class ControladorEntProductos{
+class ControladorEntProductos
+{
 
     private $db;
     private $modeloEntProducto;
@@ -14,235 +15,354 @@ class ControladorEntProductos{
     private $modeloProveedor;
     private $modeloInventario;
 
-    public function __construct() {
+    public function __construct()
+    {
 
-        $database= new DataBase();
-        $this->db= $database->getConnectionJYK();
-        $this->modeloEntProducto= new ModeloEntProducto($this->db);
-        $this->modeloProducto= new ModeloProducto($this->db);
-        $this->modeloProveedor= new ModeloProveedor($this->db);
-        $this->modeloInventario= new ModeloInventario($this->db);
-
+        $database = new DataBase();
+        $this->db = $database->getConnectionJYK();
+        $this->modeloEntProducto = new ModeloEntProducto($this->db);
+        $this->modeloProducto = new ModeloProducto($this->db);
+        $this->modeloProveedor = new ModeloProveedor($this->db);
+        $this->modeloInventario = new ModeloInventario($this->db);
     }
 
 
     //registro de Entrada Productos
-    public function RegistroEntProducto() {
+    public function RegistroEntProducto()
+    {
 
-        if($_SERVER["REQUEST_METHOD"] == "POST") {
-            $codProducto= $_POST['codProducto'];
-            $nitProveedor= $_POST['nitProveedor'];
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $codProducto = $_POST['codProducto'];
+            $nitProveedor = $_POST['nitProveedor'];
 
-            $productoId= $this->modeloProducto->consultaProducto($codProducto);
+            $productoId = $this->modeloProducto->consultaProducto($codProducto);
 
-            $proveedorId= $this->modeloProveedor->consultaProveedor($nitProveedor);
+            $proveedorId = $this->modeloProveedor->consultaProveedor($nitProveedor);
 
 
-            $idProducto= $productoId['idProducto'];
-            $idProveedor= $proveedorId['idProveedor'];
-            $fechaEnt= $_POST['fechaEnt'];
-            $fechaVencim= $_POST['fechaVencim'];
-            $precioCompra= $_POST['precioCompra'];
-            $cantidadEnt= $_POST['cantidadEnt'];
+            $idProducto = $productoId['idProducto'];
+            $idProveedor = $proveedorId['idProveedor'];
+            $fechaEnt = $_POST['fechaEnt'];
+            $fechaVencim = $_POST['fechaVencim'];
+            $precioCompra = $_POST['precioCompra'];
+            $cantidadEnt = $_POST['cantidadEnt'];
 
-            if($productoId == false){
+            if ($productoId == false) {
 
-                header("Location: index.php?action=registroProductos");
-                //echo "
-                    //<script>
-                        //alert('Producto No Registardo, Realice el Registro!');
-                        //window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=registroProductos';
-                    //</script>
-                    //";
+                //session_start();
+
+                if ($_SESSION['rol'] == 1) {
+                    echo "
+                        <script>
+                            alert('Producto No Registardo, Realice el Registro!');
+                            window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=registroProductos';
+                        </script>
+                        ";
                     exit;
-            }elseif($proveedorId == false) {
-
-                header("Location: index.php?action=registroProveedor");
-
-            }else{
-
-//metodo para cuando se registre una entrada de producto, en el inventario se anexe el producto o sume el stock
-            $estadoInventario = $this->modeloInventario->consultaInventarioId($idProducto);
-
-            if($estadoInventario !== false) {
-                //el producto ya existe
-                $cantidadAct= $cantidadEnt + $estadoInventario['CantActual'];
-                $this->modeloInventario->actualizarStock($cantidadAct, $idProducto);
-                 //Regista la Entrada del Producto
-                $this->modeloEntProducto->registroEntProducto($idProducto, $idProveedor, $fechaEnt, $fechaVencim, $precioCompra, $cantidadEnt);
-                echo "
-                    <script>
-                        alert('Registro Exitoso!');
-                        window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=registroEntProductos';
-                    </script>
-                    ";
+                } elseif ($_SESSION['rol'] == 2) {
+                    echo "
+                                <script>
+                                    alert('Registro Entrada del Producto Exitoso!');
+                                    window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=registroProductosEmp';
+                                </script>
+                                ";
                     exit;
+                }
+            } elseif ($proveedorId == false) {
 
-            }else{
-                //el Producto no existe
+                //session_start();
 
-                $this->modeloInventario->registroInventario($idProducto, $cantidadEnt);
-                 //Regista la Entrada del Producto
-                $this->modeloEntProducto->registroEntProducto($idProducto, $idProveedor, $fechaEnt, $fechaVencim, $precioCompra, $cantidadEnt);
-                echo "
-                <script>
-                    alert('Registro Exitoso!');
-                    window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=registroEntProductos';
-                </script>
-                ";
-                //header("Location: index.php?action=registroEntProductos");
-                exit;
+                if ($_SESSION['rol'] == 1) {
+                    echo "
+                        <script>
+                            alert('Producto No Registardo, Realice el Registro!');
+                            window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=registroProveedor';
+                        </script>
+                        ";
+                    exit;
+                } elseif ($_SESSION['rol'] == 2) {
+                    echo "
+                        <script>
+                            alert('Registro Entrada del Producto Exitoso!');
+                            window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=registroProveedorEmp';
+                        </script>
+                        ";
+                    exit;
+                }
+            } else {
 
+                //metodo para cuando se registre una entrada de producto, en el inventario se anexe el producto o sume el stock
+                $estadoInventario = $this->modeloInventario->consultaInventarioId($idProducto);
+
+                if ($estadoInventario !== false) {
+                    //el producto ya existe
+                    $cantidadAct = $cantidadEnt + $estadoInventario['CantActual'];
+                    $this->modeloInventario->actualizarStock($cantidadAct, $idProducto);
+                    //Regista la Entrada del Producto
+                    $this->modeloEntProducto->registroEntProducto($idProducto, $idProveedor, $fechaEnt, $fechaVencim, $precioCompra, $cantidadEnt);
+
+                    //session_start();
+
+                    if ($_SESSION['rol'] == 1) {
+                        echo "
+                                <script>
+                                    alert('Registro Entrada del Producto Exitoso!');
+                                    window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=registroEntProductos';
+                                </script>
+                                ";
+                        exit;
+                    } elseif ($_SESSION['rol'] == 2) {
+                        echo "
+                                <script>
+                                    alert('Registro Entrada del Producto Exitoso!');
+                                    window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=registroEntProductosEmp';
+                                </script>
+                                ";
+                        exit;
+                    }
+                } else {
+                    //el Producto no existe
+
+                    $this->modeloInventario->registroInventario($idProducto, $cantidadEnt);
+                    //Registra la Entrada del Producto
+                    $this->modeloEntProducto->registroEntProducto($idProducto, $idProveedor, $fechaEnt, $fechaVencim, $precioCompra, $cantidadEnt);
+
+                    //session_start();
+
+                    if ($_SESSION['rol'] == 1) {
+                        echo "
+                                <script>
+                                    alert('Registro Entrada del Producto Exitoso!');
+                                    window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=registroEntProductos';
+                                </script>
+                                ";
+                        exit;
+                    } elseif ($_SESSION['rol'] == 2) {
+                        echo "
+                                <script>
+                                    alert('Registro Entrada del Producto Exitoso!');
+                                    window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=registroEntProductosEmp';
+                                </script>
+                                ";
+                        exit;
+                    }
+                }
             }
-
-            }
-
         }
-
     }
 
 
     //Consulta general join vista
-    public function consultaGenEntProductosVista() {
-        return $this->modeloEntProducto->consultaGenEntProductosVista();
-    }
+    // public function consultaGenEntProductosVista() {
+    //     return $this->modeloEntProducto->consultaGenEntProductosVista();
+    // }
 
     //Consulta por Id Inner Join
-    public function consultaGenEntProductosVistaId() {
-        $codProducto = $_GET['codProducto'] ?? '';
-        return $this->modeloEntProducto->consultaGenEntProductosVistaId($codProducto);
-    }
+    // public function consultaGenEntProductosVistaId() {
+    //     $codProducto = $_GET['codProducto'] ?? '';
+    //     return $this->modeloEntProducto->consultaGenEntProductosVistaId($codProducto);
+    // }
 
 
     //Consulta por Fecha Inner Join
-    public function consultaGenEntProductosVistaFecha() {
-        $fecha = $_GET['fechaEnt'] ?? '';
-        return $this->modeloEntProducto->consultaGenEntProductosVistaFecha($fecha);
+    // public function consultaGenEntProductosVistaFecha() {
+    //     $fecha = $_GET['fechaEnt'] ?? '';
+    //     return $this->modeloEntProducto->consultaGenEntProductosVistaFecha($fecha);
+    // }
+
+
+    public function listaEntProductosVista($tipo, $valor)
+    {
+
+        $limite = 10;
+        $pagina = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
+        $inicio = ($pagina - 1) * $limite;
+
+        $entProductos = $this->modeloEntProducto->consultaGenEntProductosVista($inicio, $limite);
+        $totalEntProductos = $this->modeloEntProducto->obtenerTotalEntProductos();
+        $totalPaginas = ceil($totalEntProductos / $limite);
+
+        return
+            [
+                'entProductos' => $entProductos,
+                'pagina' => $pagina,
+                'totalPaginas' => $totalPaginas,
+                'filtro' => $valor,
+                'tipo' => $tipo,
+            ];
+    }
+
+
+    public function listaEntProductosFiltrado($tipo, $valor)
+    {
+        $limite = 10;
+        $pagina = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
+        $inicio = ($pagina - 1) * $limite;
+
+        $entProductos = $this->modeloEntProducto->consultarFiltrado($tipo, $valor, $inicio, $limite);
+        $total = $this->modeloEntProducto->totalFiltrado($tipo, $valor);
+        $totalPaginas = ceil($total / $limite);
+
+        return
+            [
+                'entProductos' => $entProductos,
+                'pagina' => $pagina,
+                'totalPaginas' => $totalPaginas,
+                'filtro' => $valor,
+                'tipo' => $tipo,
+            ];
     }
 
 
     //Consulta general por Id
-        public function consultaGenEntProductosId() {
-        $idEntProducto = $_GET['idEntProducto'] ?? '';
-        return $this->modeloEntProducto->consultaGenEntProductos($idEntProducto);
+    public function consultaGenEntProductosId()
+    {
+        $idEntProductos = $_GET['idEntProducto'] ?? '';
+        return $this->modeloEntProducto->consultaGenEntProductos($idEntProductos);
     }
 
 
     //Actualizar de Entrada Productos
-    public function ActualizarEntProducto() {
+    public function ActualizarEntProducto()
+    {
 
-        if($_SERVER["REQUEST_METHOD"] == "POST") {
-            $codProducto= $_POST['codProducto'];
-            $nitProveedor= $_POST['nitProveedor'];
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-            $productoId= $this->modeloProducto->consultaProducto($codProducto);
+            $codProducto = $_POST['codProducto'];
+            $nitProveedor = $_POST['nitProveedor'];
 
-            $proveedorId= $this->modeloProveedor->consultaProveedor($nitProveedor);
+            $productoId = $this->modeloProducto->consultaProducto($codProducto);
+
+            $proveedorId = $this->modeloProveedor->consultaProveedor($nitProveedor);
 
 
-            $idProducto= $productoId['idProducto'];
-            $idProveedor= $proveedorId['idProveedor'];
-            $fechaEnt= $_POST['fechaEnt'];
-            $fechaVencim= $_POST['fechaVencim'];
-            $precioCompra= $_POST['precioCompra'];
-            $cantidadEnt= $_POST['cantidadEnt'];
-            $idEntProducto= $_POST['idEntProducto'];
+            $idProducto = $productoId['idProducto'];
+            $idProveedor = $proveedorId['idProveedor'];
+            $fechaEnt = $_POST['fechaEnt'];
+            $fechaVencim = $_POST['fechaVencim'];
+            $precioCompra = $_POST['precioCompra'];
+            $cantidadEnt = $_POST['cantidadEnt'];
+            $idEntProducto = $_POST['idEntProducto'];
 
-            $cantEnt= $this->modeloEntProducto->consultaCantidadEntProductos($idEntProducto);
+            $cantEnt = $this->modeloEntProducto->consultaCantidadEntProductos($idEntProducto);
 
-            $cantidadEntAnterior= $cantEnt['CantEnt'];
+            $cantidadEntAnterior = $cantEnt['CantEnt'];
 
-            if($cantidadEntAnterior == $cantidadEnt) {
+            if ($cantidadEntAnterior == $cantidadEnt) {
 
-                $cantidadEntAct= $cantidadEnt;
+                $cantidadEntAct = $cantidadEnt;
 
                 $this->modeloEntProducto->actualizarEntProducto($idProducto, $idProveedor, $fechaEnt, $fechaVencim, $precioCompra, $cantidadEntAct, $idEntProducto);
 
-                echo "
-                <script>
-                    alert('Actualizacion Exitosa!');
-                    window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaEntProductos';
-                </script>
-                ";
+                //session_start();
 
-                //header("Location: index.php?action=consultaEntProductos");
-                exit;
+                if ($_SESSION['rol'] == 1) {
+                    echo "
+                                    <script>
+                                        alert('Actualizacion Entrada del Producto Exitoso!');
+                                        window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaEntProductos';
+                                    </script>
+                                    ";
+                    exit;
+                } elseif ($_SESSION['rol'] == 2) {
+                    echo "
+                                    <script>
+                                        alert('Actualizacion Entrada del Producto Exitoso!');
+                                        window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaEntProductosEmp';
+                                    </script>
+                                    ";
+                    exit;
+                }
+            } elseif ($cantidadEntAnterior > $cantidadEnt) {
 
-            }elseif ($cantidadEntAnterior > $cantidadEnt) {
-
-                $cantidadEntAct= $cantidadEnt;
+                $cantidadEntAct = $cantidadEnt;
 
                 $this->modeloEntProducto->actualizarEntProducto($idProducto, $idProveedor, $fechaEnt, $fechaVencim, $precioCompra, $cantidadEntAct, $idEntProducto);
 
                 $estadoInventario = $this->modeloInventario->consultaInventarioId($idProducto);
 
                 //Modifica la cantidad Entrada
-                $cantidad= $cantidadEntAnterior - $cantidadEnt;
+                $cantidad = $cantidadEntAnterior - $cantidadEnt;
 
-                $cantidadAct= $estadoInventario['CantActual'] - $cantidad;
+                $cantidadAct = $estadoInventario['CantActual'] - $cantidad;
                 $this->modeloInventario->actualizarStock($cantidadAct, $idProducto);
 
-                echo "
-                <script>
-                    alert('Actualizacion Exitosa!');
-                    window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaEntProductos';
-                </script>
-                ";
+                //session_start();
 
-                //header("Location: index.php?action=consultaEntProductos");
-                exit;
-
+                if ($_SESSION['rol'] == 1) {
+                    echo "
+                                    <script>
+                                        alert('Actualizacion Entrada del Producto Exitoso!');
+                                        window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaEntProductos';
+                                    </script>
+                                    ";
+                    exit;
+                } elseif ($_SESSION['rol'] == 2) {
+                    echo "
+                                        <script>
+                                            alert('Actualizacion Entrada del Producto Exitoso!');
+                                            window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaEntProductosEmp';
+                                        </script>
+                                        ";
+                    exit;
+                }
             } else {
 
-                $cantidadEntAct= $cantidadEnt;
+                $cantidadEntAct = $cantidadEnt;
 
                 $this->modeloEntProducto->actualizarEntProducto($idProducto, $idProveedor, $fechaEnt, $fechaVencim, $precioCompra, $cantidadEntAct, $idEntProducto);
 
                 $estadoInventario = $this->modeloInventario->consultaInventarioId($idProducto);
 
                 //Modifica la cantidad Entrada
-                $cantidad= $cantidadEnt - $cantidadEntAnterior;
+                $cantidad = $cantidadEnt - $cantidadEntAnterior;
 
-                $cantidadAct= $estadoInventario['CantActual'] + $cantidad;
+                $cantidadAct = $estadoInventario['CantActual'] + $cantidad;
                 $this->modeloInventario->actualizarStock($cantidadAct, $idProducto);
 
-                echo "
-                <script>
-                    alert('Actualizacion Exitosa!');
-                    window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaEntProductos';
-                </script>
-                ";
+                //session_start();
 
-                //header("Location: index.php?action=consultaEntProductos");
-                exit;
-
+                if ($_SESSION['rol'] == 1) {
+                    echo "
+                                    <script>
+                                        alert('Actualizacion Entrada del Producto Exitoso!');
+                                        window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaEntProductos';
+                                    </script>
+                                    ";
+                    exit;
+                } elseif ($_SESSION['rol'] == 2) {
+                    echo "
+                                        <script>
+                                            alert('Actualizacion Entrada del Producto Exitoso!');
+                                            window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaEntProductosEmp';
+                                        </script>
+                                        ";
+                    exit;
+                }
             }
-
         }
-
     }
 
 
     //Eliminar Entrada Producto
-    public function EliminarEntProducto() {
+    public function EliminarEntProducto()
+    {
 
         $idEntProducto = $_GET['idEntProducto'] ?? '';
 
-                //Consulta antes de eliminar Cantidad entrada Producto
-            $cantEnt= $this->modeloEntProducto->consultaCantidadEntProductos($idEntProducto);
+        //Consulta antes de eliminar Cantidad entrada Producto
+        $cantEnt = $this->modeloEntProducto->consultaCantidadEntProductos($idEntProducto);
 
-            $idProducto= $cantEnt['idProducto'];
-            $cantidad= $cantEnt['CantEnt'];
+        $idProducto = $cantEnt['idProducto'];
+        $cantidad = $cantEnt['CantEnt'];
 
-            $estadoInventario = $this->modeloInventario->consultaInventarioId($idProducto);
+        $estadoInventario = $this->modeloInventario->consultaInventarioId($idProducto);
 
-                //resta la cantidad Entrada en inventario
-            $cantidadAct= $estadoInventario['CantActual'] - $cantidad;
-            $this->modeloInventario->actualizarStock($cantidadAct, $idProducto);
+        //resta la cantidad Entrada en inventario
+        $cantidadAct = $estadoInventario['CantActual'] - $cantidad;
+        $this->modeloInventario->actualizarStock($cantidadAct, $idProducto);
 
         $this->modeloEntProducto->eliminarEntProductos($idEntProducto);
-
-        
 
         echo "
             <script>
@@ -250,278 +370,320 @@ class ControladorEntProductos{
                 window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaEntProductos';
             </script>
             ";
-
-            //header("Location: index.php?action=consultaEntProductos");
-            exit;
+        exit;
     }
 
 
     //Generar reporte de entrada de productos
-    public function ReporteEntProductos() {       
-        $fechaInc= $_GET['fechaInc'] ?? '';
-        $fechaFin= $_GET['fechaFin'] ?? '';
+    public function ReporteEntProductos()
+    {
+        $fechaInc = $_GET['fechaInc'] ?? '';
+        $fechaFin = $_GET['fechaFin'] ?? '';
 
-        // Depuración: mostrar las fechas antes de la consulta
-        //echo "Fecha inicio: $fechaInc, Fecha fin: $fechaFin";
-
-        $reporteEntProductos= $this->modeloEntProducto->reporteEntProductos($fechaInc, $fechaFin);
+        $reporteEntProductos = $this->modeloEntProducto->reporteEntProductos($fechaInc, $fechaFin);
 
         return [
             'fechaInc' => $fechaInc,
             'fechaFin' => $fechaFin,
             'reporteEntProductos' => $reporteEntProductos
         ];
-
-        }
-
-
-        //Metodo para traer datos de productos con mayor entrada 
-        public function ProductosMayorEntrada() {
-
-            header("Content-Type: application/json; charset=UTF-8");
-
-                $mayorEntrada = $this->modeloEntProducto->productosMayorEntrada();
-
-                    if ($mayorEntrada) {
-                        echo json_encode(["success" => true, "mayorEntrada" => $mayorEntrada]);
-                    } else {
-                        echo json_encode(["success" => false, "error" => "Producto No esta en Inventario o no hay stock"]);
-                    }
-        }
-
-
-//=================================================
-
-
-
-
-    //registro de Entrada Productos Empleado
-    public function RegistroEntProductoEmp() {
-
-        if($_SERVER["REQUEST_METHOD"] == "POST") {
-            $codProducto= $_POST['codProducto'];
-            $nitProveedor= $_POST['nitProveedor'];
-
-            $productoId= $this->modeloProducto->consultaProducto($codProducto);
-
-            $proveedorId= $this->modeloProveedor->consultaProveedor($nitProveedor);
-
-
-            $idProducto= $productoId['idProducto'];
-            $idProveedor= $proveedorId['idProveedor'];
-            $fechaEnt= $_POST['fechaEnt'];
-            $fechaVencim= $_POST['fechaVencim'];
-            $precioCompra= $_POST['precioCompra'];
-            $cantidadEnt= $_POST['cantidadEnt'];
-
-            if($productoId == false){
-
-                header("Location: index.php?action=registroEntProductosEmp");
-                //echo "
-                    //<script>
-                        //alert('Producto No Registardo, Realice el Registro!');
-                        //window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=registroProducto';
-                    //</script>
-                    //";
-                    exit;
-            }else{
-
-//metodo para cuando se registre una entrada de producto, en el inventario se anexe el producto o sume el stock
-            $estadoInventario = $this->modeloInventario->consultaInventarioId($idProducto);
-
-            if($estadoInventario !== false) {
-                //el producto ya existe
-                $cantidadAct= $cantidadEnt + $estadoInventario['CantActual'];
-                $this->modeloInventario->actualizarStock($cantidadAct, $idProducto);
-                 //Regista la Entrada del Producto
-                $this->modeloEntProducto->registroEntProducto($idProducto, $idProveedor, $fechaEnt, $fechaVencim, $precioCompra, $cantidadEnt);
-                echo "
-                    <script>
-                        alert('Registro Exitoso!');
-                        window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=registroEntProductosEmp';
-                    </script>
-                    ";
-                    exit;
-
-            }else{
-                //el Producto no existe
-
-                $this->modeloInventario->registroInventario($idProducto, $cantidadEnt);
-                 //Regista la Entrada del Producto
-                $this->modeloEntProducto->registroEntProducto($idProducto, $idProveedor, $fechaEnt, $fechaVencim, $precioCompra, $cantidadEnt);
-                echo "
-                <script>
-                    alert('Registro Exitoso!');
-                    window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=registroEntProductosEmp';
-                </script>
-                ";
-                //header("Location: index.php?action=registroEntProductos");
-                exit;
-
-            }
-
-            }
-
-        }
-
     }
+
+
+    public function listaEntProductos($valor, $tipo)
+    {
+        $fechaInc = $_GET['fechaInc'] ?? '';
+        $fechaFin = $_GET['fechaFin'] ?? '';
+
+        $limite = 10;
+        $pagina = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
+        $inicio = ($pagina - 1) * $limite;
+
+        $reporteEntProductos = $this->modeloEntProducto->listaEntProductos($inicio, $limite, $fechaInc, $fechaFin);
+        $total = $this->modeloEntProducto->totalEntProductosPorFechas($fechaInc, $fechaFin);
+        $totalPaginas = ceil($total / $limite);
+
+        // echo "<pre>";
+        // var_dump($fechaInc, $fechaFin, $reporteEntProductos, $totalPaginas, $valor, $tipo, $total);
+        // echo "</pre>";
+        // exit;
+
+        return [
+            'fechaInc' => $fechaInc,
+            'fechaFin' => $fechaFin,
+            'reporteEntProductos' => $reporteEntProductos,
+            'pagina' => $pagina,
+            'totalPaginas' => $totalPaginas,
+            'filtro' => $valor,
+            'tipo' => $tipo,
+        ];
+    }
+
+
+    public function listaEntProductosFiltradoNombre($tipo, $valor)
+    {
+        $fechaInc = $_GET['fechaInc'] ?? '';
+        $fechaFin = $_GET['fechaFin'] ?? '';
+
+        $limite = 10;
+        $pagina = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
+        $inicio = ($pagina - 1) * $limite;
+
+        $reporteEntProductos = $this->modeloEntProducto->consultarFiltradoEntProductos($tipo, $valor, $inicio, $limite, $fechaInc, $fechaFin);
+        $total = $this->modeloEntProducto->totalFiltradoEntProductos($tipo, $valor, $fechaInc, $fechaFin);
+        $totalPaginas = ceil($total / $limite);
+
+        return [
+            'fechaInc' => $fechaInc,
+            'fechaFin' => $fechaFin,
+            'reporteEntProductos' => $reporteEntProductos,
+            'pagina' => $pagina,
+            'totalPaginas' => $totalPaginas,
+            'filtro' => $valor,
+            'tipo' => $tipo,
+        ];
+    }
+
+
+    //Metodo para traer datos de productos con mayor entrada 
+    public function ProductosMayorEntrada()
+    {
+
+        header("Content-Type: application/json; charset=UTF-8");
+
+        $mayorEntrada = $this->modeloEntProducto->productosMayorEntrada();
+
+        if ($mayorEntrada) {
+            echo json_encode(["success" => true, "mayorEntrada" => $mayorEntrada]);
+        } else {
+            echo json_encode(["success" => false, "error" => "Producto No esta en Inventario o no hay stock"]);
+        }
+    }
+
+
+    //=================================================
+
+
+
+
+    // //registro de Entrada Productos Empleado
+    // public function RegistroEntProductoEmp()
+    // {
+
+    //     if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    //         $codProducto = $_POST['codProducto'];
+    //         $nitProveedor = $_POST['nitProveedor'];
+
+    //         $productoId = $this->modeloProducto->consultaProducto($codProducto);
+
+    //         $proveedorId = $this->modeloProveedor->consultaProveedor($nitProveedor);
+
+
+    //         $idProducto = $productoId['idProducto'];
+    //         $idProveedor = $proveedorId['idProveedor'];
+    //         $fechaEnt = $_POST['fechaEnt'];
+    //         $fechaVencim = $_POST['fechaVencim'];
+    //         $precioCompra = $_POST['precioCompra'];
+    //         $cantidadEnt = $_POST['cantidadEnt'];
+
+    //         if ($productoId == false) {
+
+    //             header("Location: index.php?action=registroEntProductosEmp");
+    //             //echo "
+    //             //<script>
+    //             //alert('Producto No Registardo, Realice el Registro!');
+    //             //window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=registroProducto';
+    //             //</script>
+    //             //";
+    //             exit;
+    //         } else {
+
+    //             //metodo para cuando se registre una entrada de producto, en el inventario se anexe el producto o sume el stock
+    //             $estadoInventario = $this->modeloInventario->consultaInventarioId($idProducto);
+
+    //             if ($estadoInventario !== false) {
+    //                 //el producto ya existe
+    //                 $cantidadAct = $cantidadEnt + $estadoInventario['CantActual'];
+    //                 $this->modeloInventario->actualizarStock($cantidadAct, $idProducto);
+    //                 //Regista la Entrada del Producto
+    //                 $this->modeloEntProducto->registroEntProducto($idProducto, $idProveedor, $fechaEnt, $fechaVencim, $precioCompra, $cantidadEnt);
+    //                 echo "
+    //                 <script>
+    //                     alert('Registro Exitoso!');
+    //                     window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=registroEntProductosEmp';
+    //                 </script>
+    //                 ";
+    //                 exit;
+    //             } else {
+    //                 //el Producto no existe
+
+    //                 $this->modeloInventario->registroInventario($idProducto, $cantidadEnt);
+    //                 //Regista la Entrada del Producto
+    //                 $this->modeloEntProducto->registroEntProducto($idProducto, $idProveedor, $fechaEnt, $fechaVencim, $precioCompra, $cantidadEnt);
+    //                 echo "
+    //             <script>
+    //                 alert('Registro Exitoso!');
+    //                 window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=registroEntProductosEmp';
+    //             </script>
+    //             ";
+    //                 //header("Location: index.php?action=registroEntProductos");
+    //                 exit;
+    //             }
+    //         }
+    //     }
+    // }
 
 
     //Consulta general join vista
-    public function consultaGenEntProductosVistaEmp() {
-        return $this->modeloEntProducto->consultaGenEntProductosVista();
-    }
+    // public function consultaGenEntProductosVistaEmp() {
+    //     return $this->modeloEntProducto->consultaGenEntProductosVista();
+    // }
 
     //Consulta por Id Inner Join
-    public function consultaGenEntProductosVistaIdEmp() {
-        $idEntProducto = $_GET['idEntProducto'] ?? '';
-        return $this->modeloEntProducto->consultaGenEntProductosVistaId($idEntProducto);
-    }
+    // public function consultaGenEntProductosVistaIdEmp()
+    // {
+    //     $idEntProducto = $_GET['idEntProducto'] ?? '';
+    //     return $this->modeloEntProducto->consultaGenEntProductosVistaId($idEntProducto);
+    // }
 
 
-    //Consulta por Fecha Inner Join
-    public function consultaGenEntProductosVistaFechaEmp() {
-        $fecha = $_GET['fechaEnt'] ?? '';
-        return $this->modeloEntProducto->consultaGenEntProductosVistaFecha($fecha);
-    }
+    // //Consulta por Fecha Inner Join
+    // public function consultaGenEntProductosVistaFechaEmp()
+    // {
+    //     $fecha = $_GET['fechaEnt'] ?? '';
+    //     return $this->modeloEntProducto->consultaGenEntProductosVistaFecha($fecha);
+    // }
 
 
-    //Consulta general por Id
-        public function consultaGenEntProductosIdEmp() {
-        $idEntProducto = $_GET['idEntProducto'] ?? '';
-        return $this->modeloEntProducto->consultaGenEntProductos($idEntProducto);
-    }
+    // //Consulta general por Id
+    // public function consultaGenEntProductosIdEmp()
+    // {
+    //     $idEntProducto = $_GET['idEntProducto'] ?? '';
+    //     return $this->modeloEntProducto->consultaGenEntProductos($idEntProducto);
+    // }
 
 
     //Actualizar de Entrada Productos
-    public function ActualizarEntProductoEmp() {
+    // public function ActualizarEntProductoEmp()
+    // {
 
-        if($_SERVER["REQUEST_METHOD"] == "POST") {
-            $codProducto= $_POST['codProducto'];
-            $nitProveedor= $_POST['nitProveedor'];
+    //     if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    //         $codProducto = $_POST['codProducto'];
+    //         $nitProveedor = $_POST['nitProveedor'];
 
-            $productoId= $this->modeloProducto->consultaProducto($codProducto);
+    //         $productoId = $this->modeloProducto->consultaProducto($codProducto);
 
-            $proveedorId= $this->modeloProveedor->consultaProveedor($nitProveedor);
+    //         $proveedorId = $this->modeloProveedor->consultaProveedor($nitProveedor);
 
 
-            $idProducto= $productoId['idProducto'];
-            $idProveedor= $proveedorId['idProveedor'];
-            $fechaEnt= $_POST['fechaEnt'];
-            $fechaVencim= $_POST['fechaVencim'];
-            $precioCompra= $_POST['precioCompra'];
-            $cantidadEnt= $_POST['cantidadEnt'];
-            $idEntProducto= $_POST['idEntProducto'];
+    //         $idProducto = $productoId['idProducto'];
+    //         $idProveedor = $proveedorId['idProveedor'];
+    //         $fechaEnt = $_POST['fechaEnt'];
+    //         $fechaVencim = $_POST['fechaVencim'];
+    //         $precioCompra = $_POST['precioCompra'];
+    //         $cantidadEnt = $_POST['cantidadEnt'];
+    //         $idEntProducto = $_POST['idEntProducto'];
 
-            $cantEnt= $this->modeloEntProducto->consultaCantidadEntProductos($idEntProducto);
+    //         $cantEnt = $this->modeloEntProducto->consultaCantidadEntProductos($idEntProducto);
 
-            $cantidadEntAnterior= $cantEnt['CantEnt'];
+    //         $cantidadEntAnterior = $cantEnt['CantEnt'];
 
-            if($cantidadEntAnterior == $cantidadEnt) {
+    //         if ($cantidadEntAnterior == $cantidadEnt) {
 
-                $cantidadEntAct= $cantidadEnt;
+    //             $cantidadEntAct = $cantidadEnt;
 
-                $this->modeloEntProducto->actualizarEntProducto($idProducto, $idProveedor, $fechaEnt, $fechaVencim, $precioCompra, $cantidadEntAct, $idEntProducto);
+    //             $this->modeloEntProducto->actualizarEntProducto($idProducto, $idProveedor, $fechaEnt, $fechaVencim, $precioCompra, $cantidadEntAct, $idEntProducto);
 
-                echo "
-                <script>
-                    alert('Actualizacion Exitosa!');
-                    window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaEntProductosEmp';
-                </script>
-                ";
+    //             echo "
+    //             <script>
+    //                 alert('Actualizacion Exitosa!');
+    //                 window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaEntProductosEmp';
+    //             </script>
+    //             ";
 
-                //header("Location: index.php?action=consultaEntProductos");
-                exit;
+    //             //header("Location: index.php?action=consultaEntProductos");
+    //             exit;
+    //         } elseif ($cantidadEntAnterior > $cantidadEnt) {
 
-            }elseif ($cantidadEntAnterior > $cantidadEnt) {
+    //             $cantidadEntAct = $cantidadEnt;
 
-                $cantidadEntAct= $cantidadEnt;
+    //             $this->modeloEntProducto->actualizarEntProducto($idProducto, $idProveedor, $fechaEnt, $fechaVencim, $precioCompra, $cantidadEntAct, $idEntProducto);
 
-                $this->modeloEntProducto->actualizarEntProducto($idProducto, $idProveedor, $fechaEnt, $fechaVencim, $precioCompra, $cantidadEntAct, $idEntProducto);
+    //             $estadoInventario = $this->modeloInventario->consultaInventarioId($idProducto);
 
-                $estadoInventario = $this->modeloInventario->consultaInventarioId($idProducto);
+    //             //Modifica la cantidad Entrada
+    //             $cantidad = $cantidadEntAnterior - $cantidadEnt;
 
-                //Modifica la cantidad Entrada
-                $cantidad= $cantidadEntAnterior - $cantidadEnt;
+    //             $cantidadAct = $estadoInventario['CantActual'] - $cantidad;
+    //             $this->modeloInventario->actualizarStock($cantidadAct, $idProducto);
 
-                $cantidadAct= $estadoInventario['CantActual'] - $cantidad;
-                $this->modeloInventario->actualizarStock($cantidadAct, $idProducto);
+    //             echo "
+    //             <script>
+    //                 alert('Actualizacion Exitosa!');
+    //                 window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaEntProductosEmp';
+    //             </script>
+    //             ";
 
-                echo "
-                <script>
-                    alert('Actualizacion Exitosa!');
-                    window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaEntProductosEmp';
-                </script>
-                ";
+    //             //header("Location: index.php?action=consultaEntProductos");
+    //             exit;
+    //         } else {
 
-                //header("Location: index.php?action=consultaEntProductos");
-                exit;
+    //             $cantidadEntAct = $cantidadEnt;
 
-            } else {
+    //             $this->modeloEntProducto->actualizarEntProducto($idProducto, $idProveedor, $fechaEnt, $fechaVencim, $precioCompra, $cantidadEntAct, $idEntProducto);
 
-                $cantidadEntAct= $cantidadEnt;
+    //             $estadoInventario = $this->modeloInventario->consultaInventarioId($idProducto);
 
-                $this->modeloEntProducto->actualizarEntProducto($idProducto, $idProveedor, $fechaEnt, $fechaVencim, $precioCompra, $cantidadEntAct, $idEntProducto);
+    //             //Modifica la cantidad Entrada
+    //             $cantidad = $cantidadEnt - $cantidadEntAnterior;
 
-                $estadoInventario = $this->modeloInventario->consultaInventarioId($idProducto);
+    //             $cantidadAct = $estadoInventario['CantActual'] + $cantidad;
+    //             $this->modeloInventario->actualizarStock($cantidadAct, $idProducto);
 
-                //Modifica la cantidad Entrada
-                $cantidad= $cantidadEnt - $cantidadEntAnterior;
+    //             echo "
+    //             <script>
+    //                 alert('Actualizacion Exitosa!');
+    //                 window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaEntProductosEmp';
+    //             </script>
+    //             ";
 
-                $cantidadAct= $estadoInventario['CantActual'] + $cantidad;
-                $this->modeloInventario->actualizarStock($cantidadAct, $idProducto);
-
-                echo "
-                <script>
-                    alert('Actualizacion Exitosa!');
-                    window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaEntProductosEmp';
-                </script>
-                ";
-
-                //header("Location: index.php?action=consultaEntProductos");
-                exit;
-
-            }
-
-        }
-
-    }
+    //             //header("Location: index.php?action=consultaEntProductos");
+    //             exit;
+    //         }
+    //     }
+    // }
 
     //Generar reporte de entrada de productos
-    public function ReporteEntProductosEmp() {       
-        $fechaInc= $_GET['fechaInc'] ?? '';
-        $fechaFin= $_GET['fechaFin'] ?? '';
+    public function ReporteEntProductosEmp()
+    {
+        $fechaInc = $_GET['fechaInc'] ?? '';
+        $fechaFin = $_GET['fechaFin'] ?? '';
 
         // Depuración: mostrar las fechas antes de la consulta
         //echo "Fecha inicio: $fechaInc, Fecha fin: $fechaFin";
 
-        $reporteEntProductos= $this->modeloEntProducto->reporteEntProductos($fechaInc, $fechaFin);
+        $reporteEntProductos = $this->modeloEntProducto->reporteEntProductos($fechaInc, $fechaFin);
 
         return [
             'fechaInc' => $fechaInc,
             'fechaFin' => $fechaFin,
             'reporteEntProductos' => $reporteEntProductos
         ];
+    }
 
+
+    //Metodo para traer datos de productos con mayor entrada 
+    public function ProductosMayorEntradaEmp()
+    {
+
+        header("Content-Type: application/json; charset=UTF-8");
+
+        $mayorEntrada = $this->modeloEntProducto->productosMayorEntrada();
+
+        if ($mayorEntrada) {
+            echo json_encode(["success" => true, "mayorEntrada" => $mayorEntrada]);
+        } else {
+            echo json_encode(["success" => false, "error" => "Producto No esta en Inventario o no hay stock"]);
         }
-
-
-        //Metodo para traer datos de productos con mayor entrada 
-        public function ProductosMayorEntradaEmp() {
-
-            header("Content-Type: application/json; charset=UTF-8");
-
-                $mayorEntrada = $this->modeloEntProducto->productosMayorEntrada();
-
-                    if ($mayorEntrada) {
-                        echo json_encode(["success" => true, "mayorEntrada" => $mayorEntrada]);
-                    } else {
-                        echo json_encode(["success" => false, "error" => "Producto No esta en Inventario o no hay stock"]);
-                    }
-        }
-
+    }
 }
-
-
-
-?>

@@ -41,8 +41,13 @@ class ControladorProducto
             $foto = $_FILES['fotoProduc']['name'];
             $target_dir = "photo/";
             $target_file = $target_dir . basename($foto);
-            move_uploaded_file($_FILES['fotoProduc']['tmp_name'], $target_file);
 
+            if (empty($foto)) {
+                $foto = "imagen_default.png";
+                $target_file = $target_dir . $foto;
+            } else {
+                move_uploaded_file($_FILES['fotoProduc']['tmp_name'], $target_file);
+            }
 
             if ($codigoGenerado) {
 
@@ -52,34 +57,56 @@ class ControladorProducto
 
                 $this->modeloGenerarCodigo->actualizarCodigoGenerado($codigoProducto);
 
-                echo "
+                //session_start();
+
+                if ($_SESSION['rol'] == 1) {
+
+                    echo "
                         <script>
                             alert('Registro del Producto Exitoso!');
                             window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=registroProductos';
                         </script>
                         ";
-                //header("Location: index.php?action=registroProductos");
-                exit;
+                    exit;
+                } elseif ($_SESSION['rol'] == 2) {
+                    echo "
+                        <script>
+                            alert('Registro del Producto Exitoso!');
+                            window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=registroProductosEmp';
+                        </script>
+                        ";
+                    exit;
+                } else {
+                    header("Location: index.php?action=principal");
+                }
             } else {
 
                 $this->modeloProducto->registroProducto($codigoProducto, $idClase, $nombre, $marca, $descripcion, $idPresentacion, $idUndBase, $contNeto, $idFormatoVent, $precioVenta, $foto);
 
-                echo "
+                //session_start();
+
+                if ($_SESSION['rol'] == 1) {
+
+                    echo "
                         <script>
                             alert('Registro del Producto Exitoso!');
                             window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=registroProductos';
                         </script>
                         ";
-                //header("Location: index.php?action=registroProductos");
-                exit;
+                    exit;
+                } elseif ($_SESSION['rol'] == 2) {
+                    echo "
+                        <script>
+                            alert('Registro del Producto Exitoso!');
+                            window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=registroProductosEmp';
+                        </script>
+                        ";
+                    exit;
+                }
             }
         }
     }
 
-    //Consulta general de productos vista
-    // public function listaProductosVista() {
-    //     return $this->modeloProducto->consultGenProductosvista();
-    // }
 
     public function listaProductosVista($tipo, $valor)
     {
@@ -129,19 +156,22 @@ class ControladorProducto
         return $this->modeloProducto->darProductosPorClase($idClase);
     }
 
-    //Consulta general de productos por codigo de barras vista
-    public function productoVistaCodigo()
-    {
-        $codigoProducto = $_GET['codProduc'] ?? '';
-        return $this->modeloProducto->consultGenProductosvistaCodigo($codigoProducto);
-    }
 
-    //Consulta general de productos por nombre vista
-    public function productoVistaNombre()
-    {
-        $nombre = $_GET['nombre'] ?? '';
-        return $this->modeloProducto->consultGenProductosvistaNombre($nombre);
-    }
+    // //Consulta general de productos por codigo de barras vista
+    // public function productoVistaCodigo()
+    // {
+    //     $codigoProducto = $_GET['codProduc'] ?? '';
+    //     return $this->modeloProducto->consultGenProductosvistaCodigo($codigoProducto);
+    // }
+
+
+    // //Consulta general de productos por nombre vista
+    // public function productoVistaNombre()
+    // {
+    //     $nombre = $_GET['nombre'] ?? '';
+    //     return $this->modeloProducto->consultGenProductosvistaNombre($nombre);
+    // }
+
 
     //Consulta general de productos por codigo de barras 
     public function productoCodigo()
@@ -257,6 +287,40 @@ class ControladorProducto
     }
 
 
+    //Consulta producto por nombre pagina principal
+    // Consulta para traer informacion del producto por idclase
+    public function ProductosPorNombre()
+    {
+
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+            // Leer JSON desde la solicitud
+            $inputJSON = file_get_contents("php://input");
+
+            $input = json_decode($inputJSON, true);
+
+            if (!isset($input['Nombre']) || empty($input['Nombre'])) {
+                echo json_encode(['error' => 'El nombre del producto es requerido']);
+                exit;
+            }
+
+            $nombre = $input['Nombre'];
+
+            header("Content-Type: application/json; charset=UTF-8");
+
+            $infoProducto = $this->modeloProducto->productosPorNombre($nombre);
+
+            if ($infoProducto) {
+                echo json_encode(["success" => true, "inforProducto" => $infoProducto]);
+            } else {
+                echo json_encode(["success" => false, "error" => "Producto No Registrado"]);
+            }
+        } else {
+            echo json_encode(['error' => 'Método no permitido']);
+        }
+    }
+
+
     //Actualizar producto
     public function actualizarProducto()
     {
@@ -287,16 +351,32 @@ class ControladorProducto
 
             $this->modeloProducto->actualizarProducto($codigoProducto, $idClase, $nombre, $marca, $descripcion, $idPresentacion, $idUndBase, $contNeto, $idFormatoVent, $precioVenta, $foto, $idProducto);
 
-            echo "
+
+            //session_start();
+
+            if ($_SESSION['rol'] == 1) {
+
+                echo "
                         <script>
                             alert('Actualizacion del Producto Exitoso!');
                             window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaProductos';
                         </script>
                         ";
-            //header("Location: index.php?action=consultaProductos");
-            exit;
+                exit;
+            } elseif ($_SESSION['rol'] == 2) {
+                echo "
+                        <script>
+                            alert('Registro del Producto Exitoso!');
+                            window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaProductosEmp';
+                        </script>
+                        ";
+                exit;
+            } else {
+                header("Location: index.php?action=principal");
+            }
         }
     }
+
 
     //Eliminar producto
     public function eliminarProducto()
@@ -310,46 +390,45 @@ class ControladorProducto
                 window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaProductos';
             </script>
             ";
-        //header("Location: index.php?action=consultaProductos");
         exit;
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //Registro de producto empleado
-    public function registroProductosemp()
-    {
+    // public function registroProductosemp()
+    // {
 
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $codigoProducto = $_POST['codProduc'];
-            $idClase = $_POST['tiposClase'];
-            $nombre = $_POST['nombreproduc'];
-            $marca = $_POST['marcaProduc'];
-            $descripcion = $_POST['descriProduc'];
-            $idPresentacion = $_POST['tiposPresenta'];
-            $idUndBase = $_POST['tiposUnd'];
-            $contNeto = $_POST['contNeto'];
-            $idFormatoVent = $_POST['formatovent'];
-            $precioVenta = $_POST['precioVenta'];
+    //     if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    //         $codigoProducto = $_POST['codProduc'];
+    //         $idClase = $_POST['tiposClase'];
+    //         $nombre = $_POST['nombreproduc'];
+    //         $marca = $_POST['marcaProduc'];
+    //         $descripcion = $_POST['descriProduc'];
+    //         $idPresentacion = $_POST['tiposPresenta'];
+    //         $idUndBase = $_POST['tiposUnd'];
+    //         $contNeto = $_POST['contNeto'];
+    //         $idFormatoVent = $_POST['formatovent'];
+    //         $precioVenta = $_POST['precioVenta'];
 
-            $foto = $_FILES['fotoProduc']['name'];
-            $target_dir = "photo/";
-            $target_file = $target_dir . basename($foto);
-            move_uploaded_file($_FILES['fotoProduc']['tmp_name'], $target_file);
+    //         $foto = $_FILES['fotoProduc']['name'];
+    //         $target_dir = "photo/";
+    //         $target_file = $target_dir . basename($foto);
+    //         move_uploaded_file($_FILES['fotoProduc']['tmp_name'], $target_file);
 
-            $this->modeloProducto->registroProducto($codigoProducto, $idClase, $nombre, $marca, $descripcion, $idPresentacion, $idUndBase, $contNeto, $idFormatoVent, $precioVenta, $foto);
+    //         $this->modeloProducto->registroProducto($codigoProducto, $idClase, $nombre, $marca, $descripcion, $idPresentacion, $idUndBase, $contNeto, $idFormatoVent, $precioVenta, $foto);
 
-            echo "
-                        <script>
-                            alert('Registro del Producto Exitoso!');
-                            window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=registroProductoemp';
-                        </script>
-                        ";
+    //         echo "
+    //                     <script>
+    //                         alert('Registro del Producto Exitoso!');
+    //                         window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=registroProductoemp';
+    //                     </script>
+    //                     ";
 
-            //header("Location: index.php?action=vistaemple");
-            exit;
-        }
-    }
+    //         //header("Location: index.php?action=vistaemple");
+    //         exit;
+    //     }
+    // }
 
     //Consulta general de productos vista empleado
     // public function listaProductosVistaemp()
@@ -357,24 +436,24 @@ class ControladorProducto
     //     return $this->modeloProducto->consultGenProductosvista();
     // }
 
-    //Consulta general de productos por codigo de barras vista empleado
-    public function productoVistaCodigoemp()
-    {
-        $codigoProducto = $_GET['codProduc'] ?? '';
-        return $this->modeloProducto->consultGenProductosvistaCodigo($codigoProducto);
-    }
+    // //Consulta general de productos por codigo de barras vista empleado
+    // public function productoVistaCodigoemp()
+    // {
+    //     $codigoProducto = $_GET['codProduc'] ?? '';
+    //     return $this->modeloProducto->consultGenProductosvistaCodigo($codigoProducto);
+    // }
 
-    //Consulta general de productos por nombre vista empleado
-    public function productoVistaNombreemp()
-    {
-        $nombre = $_GET['nombre'] ?? '';
-        return $this->modeloProducto->consultGenProductosvistaNombre($nombre);
-    }
+    // //Consulta general de productos por nombre vista empleado
+    // public function productoVistaNombreemp()
+    // {
+    //     $nombre = $_GET['nombre'] ?? '';
+    //     return $this->modeloProducto->consultGenProductosvistaNombre($nombre);
+    // }
 
-    //Consulta general de productos por codigo de barras empleado
-    public function productoCodigoemp()
-    {
-        $codigoProducto = $_GET['codProduc'] ?? '';
-        return $this->modeloProducto->consultGenProductos($codigoProducto);
-    }
+    // //Consulta general de productos por codigo de barras empleado
+    // public function productoCodigoemp()
+    // {
+    //     $codigoProducto = $_GET['codProduc'] ?? '';
+    //     return $this->modeloProducto->consultGenProductos($codigoProducto);
+    // }
 }

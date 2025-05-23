@@ -31,11 +31,67 @@ class ModeloUsuario
 
 
     //consulta general con inner join
-    public function consultGenUsuaVista()
+    // public function consultGenUsuaVista()
+    // {
+    //     $query = "SELECT idUsuario, tipo_documento.tipoDocum, NumIdentificacion, Nombres, Apellidos, NumCelular, Email, roles.Rol, Usuario, Contraseña FROM " . $this->table . " INNER JOIN tipo_documento ON registro_usuarios.idTipoDocum = tipo_documento.idTipoDocum INNER JOIN roles ON registro_usuarios.idRol = roles.idRol";
+    //     $stmt = $this->conn->query($query);
+    //     return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    // }
+
+
+    public function consultGenUsuaVista($inicio, $limite)
     {
-        $query = "SELECT idUsuario, tipo_documento.tipoDocum, NumIdentificacion, Nombres, Apellidos, NumCelular, Email, roles.Rol, Usuario, Contraseña FROM " . $this->table . " INNER JOIN tipo_documento ON registro_usuarios.idTipoDocum = tipo_documento.idTipoDocum INNER JOIN roles ON registro_usuarios.idRol = roles.idRol";
-        $stmt = $this->conn->query($query);
+        $query = "SELECT idUsuario, tipo_documento.tipoDocum, NumIdentificacion, Nombres, Apellidos, 
+                NumCelular, Email, roles.Rol, Usuario, Contraseña FROM " . $this->table . " 
+                INNER JOIN tipo_documento ON registro_usuarios.idTipoDocum = tipo_documento.idTipoDocum 
+                INNER JOIN roles ON registro_usuarios.idRol = roles.idRol
+                ORDER BY Nombres ASC 
+                LIMIT :inicio, :limite";
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindValue(':inicio', (int)$inicio, PDO::PARAM_INT);
+        $stmt->bindValue(':limite', (int)$limite, PDO::PARAM_INT);
+        $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+
+    public function obtenerTotalUsuarios()
+    {
+        $stmt = $this->conn->query("SELECT COUNT(*) FROM " . $this->table . " ");
+        return (int)$stmt->fetchColumn();
+    }
+
+
+    public function consultarFiltrado($tipo, $valor, $inicio, $limite)
+    {
+        $campo = $tipo == 'codigo' ? 'NumIdentificacion' : 'Nombres';
+
+        $query = "SELECT idUsuario, tipo_documento.tipoDocum, NumIdentificacion, Nombres, Apellidos, 
+                NumCelular, Email, roles.Rol, Usuario, Contraseña FROM " . $this->table . " 
+                INNER JOIN tipo_documento ON registro_usuarios.idTipoDocum = tipo_documento.idTipoDocum 
+                INNER JOIN roles ON registro_usuarios.idRol = roles.idRol
+                WHERE $campo LIKE :valor
+                ORDER BY Nombres ASC 
+                LIMIT :inicio, :limite";
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindValue(':valor', "%$valor%", PDO::PARAM_STR);
+        $stmt->bindValue(':inicio', (int)$inicio, PDO::PARAM_INT);
+        $stmt->bindValue(':limite', (int)$limite, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+
+    public function totalFiltrado($tipo, $valor)
+    {
+        $campo = $tipo == 'codigo' ? 'NumIdentificacion' : 'Nombres';
+
+        $stmt = $this->conn->prepare("SELECT COUNT(*) FROM ".$this->table." WHERE $campo LIKE :valor");
+        $stmt->bindValue(':valor', "%$valor%", PDO::PARAM_STR);
+        $stmt->execute();
+        return (int)$stmt->fetchColumn();
     }
 
 

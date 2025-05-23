@@ -1,4 +1,4 @@
-<?php include('./views/layautModAdmin/headerModAdmin.php'); ?>
+<?php include('./views/layautModEmple/headerModEmplea.php');  ?>
 
 <!--Incio de Formulario Reporte de Salida de Producto-->
 <div class="container">
@@ -34,8 +34,8 @@
                 <h4>Filtro de Producto Nombre</h4>
             </div>
             <!-- Buscar por Nombre -->
-            <form class="mt-3" action="index.php?action=consultaSalProductosNombre" method="get">
-                <input type="hidden" name="action" value="consultaSalProductosNombre">
+            <form class="mt-3" action="index.php?action=consultaSalProductosNombreEmp" method="get">
+                <input type="hidden" name="action" value="consultaSalProductosNombreEmp">
                 <input type="hidden" name="fechaInc" value="<?= htmlspecialchars($data['fechaInc']); ?>">
                 <input type="hidden" name="fechaFin" value="<?= htmlspecialchars($data['fechaFin']); ?>">
                 <div class="input-group mb-3">
@@ -95,7 +95,7 @@
                     $tipo = $data['tipo']; // 'codigo' o 'nombre'
                     $filtro = urlencode($data['filtro']);
                     $param = "nombre=$filtro";
-                    $action = 'consultaSalProductosNombre';
+                    $action = 'consultaSalProductosNombreEmp';
 
                     $maxPaginasVisibles = 7;
                     $inicio = max(1, $paginaActual - intval($maxPaginasVisibles / 2));
@@ -145,4 +145,4 @@
         </div>
     </div>
 
-    <?php include('./views/layautModAdmin/footerModAdmin.php'); ?>
+    <?php include('./views/layautModEmple/footerModEmplea.php');  ?>
