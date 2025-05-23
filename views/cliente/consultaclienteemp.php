@@ -1,13 +1,11 @@
 <?php include('./views/layautModEmple/headerModEmplea.php');  ?>
 
 <!--Incio de Formulario Consultar Clientes-->
-<div class="row">
-    <div class="col-2">
-    </div>
-
-    <div class="col-8">
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10 col-sm-12">
             <div class="text-center text-white mt-3">
-                <h4>Consulta Clases</h4>
+                <h4>Consulta Clientes</h4>
             </div>
             <form class=" mt-4" action="index.php?action=consultaClienteCedulaemp" method="get">
                 <div class="input-group mb-3">
@@ -24,8 +22,7 @@
                     <button class="btn btn-outline-secondary text-white" type="submit" id="button-addon2">Buscar</button>
                 </div>
             </form>
-    </div>
-    <div class="col-2">
+        </div>
     </div>
 </div>
 <!--Fin de consultar-->
@@ -46,7 +43,6 @@
             <table class="table table-hover table-striped text-white text-center">
                 <thead>
                     <tr>
-                        <th>ID</th>
                         <th>Tipo Documento</th>
                         <th>Numero Documento</th>
                         <th>Nombre</th>
@@ -60,7 +56,6 @@
                 <tbody class="">
                 <?php foreach ($clientes as $cliente): ?>
                     <tr>
-                        <td class="text-white align-middle"><?= $cliente['idCliente']; ?></td>
                         <td class="text-white align-middle"><?= $cliente['tipoDocum']; ?></td>
                         <td class="text-white align-middle"><?= $cliente['NumIdentificacion']; ?></td>
                         <td class="text-white align-middle"><?= $cliente['Nombres']; ?></td>

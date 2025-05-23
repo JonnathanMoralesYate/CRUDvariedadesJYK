@@ -48,7 +48,6 @@
             <table class="table table-hover text-white">
                 <thead>
                     <tr>
-                        <th>ID</th>
                         <th>Fecha Entrada</th>
                         <th>Proveedor</th>
                         <th>Codigo Producto</th>
@@ -65,7 +64,6 @@
                 <tbody class="">
                 <?php foreach ($entProductos as $entProducto): ?>
                     <tr>
-                        <td class="text-white align-middle"><?= $entProducto['idEntProducto']; ?></td>
                         <td class="text-white align-middle"><?= $entProducto['FechaEnt']; ?></td>
                         <td class="text-white align-middle"><?= $entProducto['NombreProveedor']; ?></td>
                         <td class="text-white align-middle"><?= $entProducto['CodProducto']; ?></td>

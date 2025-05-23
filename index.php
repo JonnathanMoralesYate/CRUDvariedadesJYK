@@ -213,22 +213,26 @@ switch($action){
             }
             break;
 
-
-        //Consulta Producto empleado
-    // case'consultaProductosemp';
-    //     $productos = $controladorProducto->listaProductosVistaemp();
-    //     include('./views/productos/consultaProductoemp.php');
-    //     break;
-
-    case'consultaProductosCodigoemp';
-        $productos = $controladorProducto->productoVistaCodigoemp();
+        //Consulta Producto
+    case 'consultaProductoEmp':
+        $tipo = 'codigo'; // Puedes poner cualquier valor predeterminado
+        $filtro = ''; 
+        $productos = $controladorProducto->listaProductosVistaEmp($tipo, $filtro);
         include('./views/productos/consultaProductoemp.php');
         break;
 
-    case'consultaProductosNombreemp';
-        $productos = $controladorProducto->productoVistaNombreemp();
-        include('./views/productos/consultaProductoemp.php');
-        break;
+
+    case 'consultaProductosCodigoEmp':
+    $valor = $_GET['codProduc'] ?? '';
+    $productos = $controladorProducto->listaProductosFiltradoEmp('codigo', $valor);
+    include('./views/productos/consultaProductosemp.php');
+    break;
+
+    case 'consultaProductosNombreEmp':
+    $valor = $_GET['nombre'] ?? '';
+    $productos = $controladorProducto->listaProductosFiltradoEmp('nombre', $valor);
+    include('./views/productos/consultaProductosemp.php');
+    break;
 
 //============================================================================================================================================
 
@@ -476,7 +480,7 @@ switch($action){
         if($_SERVER["REQUEST_METHOD"] == "POST"){
                 $controladorProveedor->RegistroProveedorEmp();
             }else{
-                include('./views/proveedor/reguistroProveedorEmp.php');
+                include('./views/proveedor/registroProveedorEmp.php');
             }
             break;
 
@@ -503,14 +507,14 @@ switch($action){
         break;
 
 
-        //Actualizar Proveedor empleado
+         //Actualizar Proveedor
     case'actualizarProveedorIdEmp':
-        $proveedores= $controladorProveedor->proveedorNitEmp();
+        $proveedores= $controladorProveedor->proveedorId();
         include('./views/proveedor/actualizarProveedorEmp.php');
         break;
 
         case'actualizarProveedorEmp':
-            $controladorProveedor->ActualizarProductoEmp();
+            $controladorProveedor->actualizarProveedorEmp();
             break;
 
 //============================================================================================================================================

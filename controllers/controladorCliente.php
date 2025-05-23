@@ -260,7 +260,9 @@ class ControladorCliente{
                 echo "
                             <script>
                                 alert('Actualizacion Exitoso!');
-                                window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=vistaAdmin';
+                                window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaClienteemp  
+                                
+                                ';
                             </script>
                             ";
     

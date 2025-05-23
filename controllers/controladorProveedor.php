@@ -169,7 +169,7 @@ class ControladorProveedor{
             echo "
                         <script>
                             alert('Registro del Proveedor Exitoso!');
-                            window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=registroProveedoremp';
+                            window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=registroProveedorEmp';
                         </script>
                         ";
 
@@ -205,9 +205,15 @@ class ControladorProveedor{
         return $this->modeloProveedor->consultGenProveedorNit($idProveedor);
     }
 
+        //Consulta general de proveedor por id
+    public function proveedorIdEmp() {
+        $idProveedor = $_GET['idProveedor'] ?? '';
+        return $this->modeloProveedor->consultGenProveedorId($idProveedor);
+    }
+
 
     //Actualizar proveedor
-    public function ActualizarProductoEmp() {
+    public function actualizarProveedorEmp() {
 
         if($_SERVER["REQUEST_METHOD"] == "POST") {
             $nitProve= $_POST['nitProveedor'];

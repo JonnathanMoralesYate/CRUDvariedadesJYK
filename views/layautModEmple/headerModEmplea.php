@@ -78,7 +78,7 @@ if ($_SESSION['rol'] == 1) {
                             <a class="nav-link dropdown-toggle text-white" href="#" id="productosDropdown" role="button" data-bs-toggle="dropdown">Productos</a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="index.php?action=registroProductoemp">Registrar Producto</a></li>
-                                <li><a class="dropdown-item" href="index.php?action=consultaProductosemp">Consultar Producto</a></li>
+                                <li><a class="dropdown-item" href="index.php?action=consultaProductoEmp">Consultar Producto</a></li>
                             </ul>
                         </li>
 

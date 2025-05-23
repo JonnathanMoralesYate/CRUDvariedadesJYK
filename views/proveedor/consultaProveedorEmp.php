@@ -54,7 +54,6 @@
             <table class="table table-hover text-white">
                 <thead>
                     <tr>
-                        <th>ID</th>
                         <th>Nit</th>
                         <th>Nombre Empresa</th>
                         <th>Correo</th>
@@ -67,7 +66,6 @@
                 <tbody class="">
                 <?php foreach ($proveedores as $proveedor): ?>
                     <tr>
-                        <td class="text-white align-middle"><?= $proveedor['idProveedor']; ?></td>
                         <td class="text-white align-middle"><?= $proveedor['NitProveedor']; ?></td>
                         <td class="text-white align-middle"><?= $proveedor['NombreProveedor']; ?></td>
                         <td class="text-white align-middle"><?= $proveedor['Email']; ?></td>
