@@ -89,6 +89,9 @@
         <div class="col-1">            
         </div>
     </div>
+</div>
+</div>
+</main>
 
     <script src="./js/agregaProductoTabla.js?v=1.0"></script>
 

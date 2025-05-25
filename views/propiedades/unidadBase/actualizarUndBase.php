@@ -17,12 +17,14 @@
                     <input type="text" class="form-control" name="nomUndBase" value="<?= $undBase['UndBase']; ?>" required>
                 </div>
                 <div class="text-center mt-4">
-                    <button type="submit" class="btn btn-outline-light">Actualizar</button>
+                    <button type="submit" class="btn btn-outline-secondary text-white">Actualizar</button>
                 </div>
                 <?php endforeach; ?>
             </form>
         </div>
     </div>
 </div>
+</div>
+</main>
 
 <?php include('./views/layautModAdmin/footerModAdmin.php'); ?>

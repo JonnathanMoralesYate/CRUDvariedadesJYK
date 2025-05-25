@@ -6,7 +6,7 @@
             <div class="text-center text-white mt-3">
                 <h4>Registro de Producto</h4>
             </div>
-            <form class="mt-2" action="index.php?action=registroProductos" method="post" enctype="multipart/form-data">
+            <form class="mt-2" action="index.php?action=registroProductosEmp" method="post" enctype="multipart/form-data">
                 <div class="mt-2">
                     <label for="codProduc" class="form-label text-white mt-3">Código Producto:</label>
                     <input type="text" class="form-control" id="codProduc" name="codProduc" placeholder="Código de barras" required>
@@ -84,12 +84,15 @@
                     <input type="file" class="form-control" name="fotoProduc">
                 </div>
                 <div class="text-center mt-4">
-                    <button type="submit" class="btn btn-outline-light">Registrar Producto</button>
+                    <button type="submit" class="btn btn-outline-secondary text-white">Registrar Producto</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
+</div>
+</main>
+
     <script src="./js/verificarCodProducto.js?v=1.0"></script>
     <script src="./js/generarCodigoProducto.js?v=1.0"></script>
 <?php include('./views/layautModEmple/footerModEmplea.php'); ?>

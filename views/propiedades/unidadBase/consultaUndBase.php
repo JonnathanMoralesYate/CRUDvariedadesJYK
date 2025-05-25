@@ -110,5 +110,7 @@
             </div>
         </div>
     </div>
+</div>
+</main>
 
-    <?php include('./views/layautModAdmin/footerModAdmin.php'); ?>
+<?php include('./views/layautModAdmin/footerModAdmin.php'); ?>

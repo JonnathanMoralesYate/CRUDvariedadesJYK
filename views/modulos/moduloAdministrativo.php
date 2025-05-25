@@ -49,9 +49,10 @@
             </div>
         </div>
     </div>
-
-
 </div>
+</div>
+</main>
+
 <script src="./js/verificaProductosAvencer.js?v=1.0"></script>
 <script src="./js/graficasModuloAdm.js?v=1.0"></script>
 <?php include('./views/layautModAdmin/footerModAdmin.php'); ?>

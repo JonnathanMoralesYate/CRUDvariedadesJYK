@@ -13,11 +13,13 @@
                     <input type="text" class="form-control" name="nomPresentacion" required>
                 </div>
                 <div class="text-center mt-4">
-                    <button type="submit" class="btn btn-outline-light">Registrar</button>
+                    <button type="submit" class="btn btn-outline-secondary text-white">Registrar</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
+</div>
+</main>
 
 <?php include('./views/layautModAdmin/footerModAdmin.php'); ?>

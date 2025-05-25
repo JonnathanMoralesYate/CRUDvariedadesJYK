@@ -7,7 +7,7 @@
             <div class="text-center text-white mt-3">
                 <h4>Consulta Clientes</h4>
             </div>
-            <form class=" mt-4" action="index.php?action=consultaClienteCedula" method="get">
+            <form class=" mt-4" action="index.php?action=consultaClienteCedulaEmp" method="get">
                 <input type="hidden" class="form-control" name="action" value="consultaClienteCedulaEmp">
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" placeholder="Numero de Cedula" name="documCliente" aria-label="Recipient's usernam" aria-describedby="button-addon2" required>
@@ -15,7 +15,7 @@
                 </div>
             </form>
 
-            <form class=" mt-2" action="index.php?action=consultaClienteNombre" method="get">
+            <form class=" mt-2" action="index.php?action=consultaClienteNombreEmp" method="get">
                 <input type="hidden" class="form-control" name="action" value="consultaClienteNombreEmp">
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" placeholder="Nombre Cliente" name="nomCliente" aria-label="Recipient's usernam" aria-describedby="button-addon2" required>
@@ -120,6 +120,7 @@
         </div>
     </div>
 </div>
-
+</div>
+</main>
 
 <?php include('./views/layautModEmple/footerModEmplea.php');  ?>

@@ -16,14 +16,6 @@
                     <label for="codProduc" class="form-label text-white mt-3">Codigo Producto:</label>
                     <input type="text" class="form-control" name="codProduc" value="<?= $producto['CodProducto']; ?>" placeholder="Codigo de barras" required>
                 </div>
-                <!-- <div class="mt-4">
-                    <div class="text-center">
-                            <label class="check-label text-white" for="flexCheckDefault">Generar Codigo</label>
-                        <div class="">
-                            <input class="checkbox-inline" type="checkbox" value="" id="flexCheckDefault">
-                        </div>
-                    </div>
-                </div> -->
                 <div class="mt-1">
                 <label for="tiposClase" class="form-label text-white mt-3">Clase:</label>
                     <?php $tipoClase= $producto['idClase']; ?>
@@ -102,12 +94,14 @@
                     <input type="file" class="form-control" name="fotoProduc" placeholder="">
                 </div>
                 <div class="text-center mt-4">
-                    <button type="submit" class="btn btn-outline-light">Actualizar Producto</button>
+                    <button type="submit" class="btn btn-outline-secondary text-white">Actualizar Producto</button>
                 </div>
                 <?php endforeach; ?>
             </form>
         </div>
     </div>
 </div>
+</div>
+</main>
 
 <?php include('./views/layautModAdmin/footerModAdmin.php'); ?>

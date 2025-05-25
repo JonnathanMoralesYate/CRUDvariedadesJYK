@@ -131,5 +131,8 @@
         </div>
     </div>
 </div>
+</div>
+</main>
+
 
 <?php include('./views/layautModEmple/footerModEmplea.php');  ?>

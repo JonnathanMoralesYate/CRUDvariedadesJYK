@@ -1,10 +1,7 @@
 <?php
 
-//session_start();
-
 // Verifica si $_SESSION está vacío (no tiene ninguna variable)
 if (empty($_SESSION)) {
-    // Redirigir a:
     header("Location: index.php?action=Principal");
     exit;
 }
@@ -281,9 +278,6 @@ use Dompdf\Options;
 
 // Crear una nueva instancia de Dompdf
 $dompdf = new Dompdf();
-
-// Cargar el HTML si esta en otra ruta
-//$html = file_get_contents('./views/productosAvencer/reporteProductosAvencerPDF.php');
 
 // Configurar las opciones para permitir el uso de recursos remotos
 $options = $dompdf->getOptions();

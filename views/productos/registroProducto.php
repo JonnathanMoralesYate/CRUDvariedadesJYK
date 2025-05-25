@@ -84,12 +84,15 @@
                     <input type="file" class="form-control" name="fotoProduc">
                 </div>
                 <div class="text-center mt-4">
-                    <button type="submit" class="btn btn-outline-light">Registrar Producto</button>
+                    <button type="submit" class="btn btn-outline-secondary text-white">Registrar Producto</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
+</div>
+</main>
+
     <script src="./js/verificarCodProducto.js?v=1.0"></script>
     <script src="./js/generarCodigoProducto.js?v=1.0"></script>
 <?php include('./views/layautModAdmin/footerModAdmin.php'); ?>

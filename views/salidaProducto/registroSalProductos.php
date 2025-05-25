@@ -10,7 +10,7 @@
 
     <div class="row mt-4">
         <div class="col-1 d-none d-lg-block"></div>
-        
+
         <div class="col-12 col-md-6 col-lg-5 d-flex justify-content-center align-items-center">
             <div>
                 <label for="codProductoS" class="form-label text-white mt-3">Código Producto:</label>
@@ -34,7 +34,7 @@
                 <div class="mt-2">
                     <label for="tipoPago" class="form-label text-white mt-3">Modo de Pago:</label>
                     <select id="tipoPago" name="tipoPago" class="form-control" required>
-                        <?php foreach($formaPagos as $formaPago): ?>
+                        <?php foreach ($formaPagos as $formaPago): ?>
                             <option value="<?= $formaPago['idModoPago']; ?>"><?= $formaPago['ModoPago']; ?></option>
                         <?php endforeach; ?>
                     </select>
@@ -46,7 +46,7 @@
     </div>
 
     <div class="container-fluid row">
-        <div class="col-1">            
+        <div class="col-1">
         </div>
         <div class="col-10">
             <div class="mt-5">
@@ -79,16 +79,19 @@
                         </tfoot>
                     </table>
                 </div>
-            
+
                 <!-- Botón para registrar las salidas -->
-            <div class="text-center mt-4">
-                <button id="registrarSalida" class="btn btn-outline-secondary text-white mt-3 text-center">Registrar Salidas</button>
+                <div class="text-center mt-4">
+                    <button id="registrarSalida" class="btn btn-outline-secondary text-white mt-3 text-center">Registrar Salidas</button>
+                </div>
             </div>
         </div>
-        </div>
-        <div class="col-1">            
+        <div class="col-1">
         </div>
     </div>
+</div>
+</div>
+</main>
 
     <script src="./js/agregaProductoTabla.js?v=1.0"></script>
-<?php include('./views/layautModAdmin/footerModAdmin.php'); ?> 
+    <?php include('./views/layautModAdmin/footerModAdmin.php'); ?>

@@ -10,7 +10,7 @@
                 <h4>Consulta de Productos</h4>
             </div>
             <!-- Buscar por Código -->
-            <form class="mt-4" action="index.php?action=consultaProductosCodigo" method="get">
+            <form class="mt-4" action="index.php?action=consultaProductosCodigoEmp" method="get">
                 <input type="hidden" name="action" value="consultaProductosCodigoEmp">
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" placeholder="Código Producto" name="codProduc" required>
@@ -18,7 +18,7 @@
                 </div>
             </form>
             <!-- Buscar por Nombre -->
-            <form class="mt-2" action="index.php?action=consultaProductosNombre" method="get">
+            <form class="mt-2" action="index.php?action=consultaProductosNombreEmp" method="get">
                 <input type="hidden" name="action" value="consultaProductosNombreEmp">
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" placeholder="Nombre Producto" name="nombre" required>
@@ -125,5 +125,7 @@
         </div>
     </div>
 </div>
+</div>
+</main>
 
 <?php include('./views/layautModEmple/footerModEmplea.php');  ?>

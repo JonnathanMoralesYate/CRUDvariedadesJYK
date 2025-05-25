@@ -1,12 +1,13 @@
     <!--Inicio de Pie de Pagina-->
-    <div class="row mt-1">
-        <div class="col-12 text-center text-white mt-5">
-            <p>© 2024 - VariedadesJyk® / Minimarket Variedades S.A.S. NIT. 110.370.428-1 - Todos los Derechos Reservados.</p>
-        </div>
-    </div>
-<!--Fin de Pie de Pagina-->
-</div>
+    <footer class="text-white text-center py-3 mt-auto">
+        <p class="mb-0">
+            © 2024 - VariedadesJyk® / Minimarket Variedades S.A.S. NIT. 110.370.428-1 - Todos los Derechos Reservados.
+        </p>
+    </footer>
+
+    <!--Fin de Pie de Pagina-->
 
     <script src="./js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+    </body>
+
+    </html>

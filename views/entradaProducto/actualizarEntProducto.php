@@ -37,12 +37,15 @@
                     <input type="number" class="form-control" name="cantidadEnt" value="<?= $entProducto['CantEnt']; ?>" placeholder="" required>
                 </div>             
                 <div class="text-center mt-4">
-                    <button type="submit" class="btn btn-outline-light">Actualizar Entrada</button>
+                    <button type="submit" class="btn btn-outline-secondary text-white">Actualizar Entrada</button>
                 </div>
                 <?php endforeach; ?>
             </form>
         </div>
     </div>
 </div>
+</div>
+</main>
+
 
 <?php include('./views/layautModAdmin/footerModAdmin.php'); ?>

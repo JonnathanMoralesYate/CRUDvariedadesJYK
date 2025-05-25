@@ -25,6 +25,9 @@
         </div>
     </div>
 </div>
+</div>
+</main>
+
 <!--Fin de consultar-->
 
 <?php include('./views/layautModEmple/footerModEmplea.php');  ?>

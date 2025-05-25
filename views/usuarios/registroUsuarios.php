@@ -63,6 +63,9 @@
         </div>
     </div>
 </div>
+</div>
+</main>
+
         <script src="./js//verificarUsuario.js?v=1.0"></script>
         <script src="./js/validarCorreo.js?v=1.0"></script>
 <?php include('./views/layautModAdmin/footerModAdmin.php'); ?>

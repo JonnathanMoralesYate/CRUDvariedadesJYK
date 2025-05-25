@@ -49,11 +49,14 @@
                         </select>
                 </div>
                 <div class="text-center mt-4">
-                    <button type="submit" class="btn btn-outline-light">Registrar Salida</button>
+                    <button type="submit" class="btn btn-outline-secondary text-white">Registrar Salida</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
+</div>
+</main>
+
         <script src="./js/agregarPrecioProducto.js"></script>
 <?php include('./views/layautModAdmin/footerModAdmin.php'); ?>

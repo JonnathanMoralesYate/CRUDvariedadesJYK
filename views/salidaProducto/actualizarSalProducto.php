@@ -38,23 +38,26 @@
                 </div>
                 <div class=" mt-2">
                 <label for="tipoPago" class="form-label text-white mt-3">Modo de Pago:</label>
-                <?php $formaDePago= $salProducto['idModoPago']; ?>
+                <?php $formaDePago= $salProducto['ModoPago']; ?>
                         <select id="tipoPago" name="tipoPago" class="form-control" required>
                             <option selected>Seleccione la Forma de Pago</option>
                             <?php foreach($formaPagos as $formaPago): ?>
-                            <option value="<?= $formaPago['idModoPago']; ?>" <?= $formaPago['idModoPago'] == $formaDePago ? 'selected' : '' ?>>
+                            <option value="<?= $formaPago['idModoPago']; ?>" <?= $formaPago['ModoPago'] == $formaDePago ? 'selected' : '' ?>>
                             <?= $formaPago['ModoPago']; ?>
                             </option>
                             <?php endforeach; ?>
                         </select>
                 </div>
                 <div class="text-center mt-4">
-                    <button type="submit" class="btn btn-outline-light">Actualizar Salida</button>
+                    <button type="submit" class="btn btn-outline-secondary text-white">Actualizar Salida</button>
                 </div>
                 <?php endforeach; ?>
             </form>
         </div>
     </div>
 </div>
+</div>
+</main>
+
         <script src="./js/agregaPrecioProductoAct.js?v=1.0"></script>
 <?php include('./views/layautModAdmin/footerModAdmin.php'); ?>

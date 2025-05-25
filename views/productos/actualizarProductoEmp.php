@@ -7,7 +7,7 @@
             <div class="text-center text-white mt-3">
                     <h4>Registro de Producto</h4>
                 </div>
-                <form class=" mt-2" action="index.php?action=actualizarProducto" method="post" enctype="multipart/form-data">
+                <form class=" mt-2" action="index.php?action=actualizarProductoEmp" method="post" enctype="multipart/form-data">
                     <?php foreach($productos as $producto): ?>
                 <div>
                     <input type="hidden" class="form-control" name="idProducto" value="<?= $producto['idProducto']; ?>" required>
@@ -94,12 +94,14 @@
                     <input type="file" class="form-control" name="fotoProduc" placeholder="">
                 </div>
                 <div class="text-center mt-4">
-                    <button type="submit" class="btn btn-outline-light">Actualizar Producto</button>
+                    <button type="submit" class="btn btn-outline-secondary text-white">Actualizar Producto</button>
                 </div>
                 <?php endforeach; ?>
             </form>
         </div>
     </div>
 </div>
+</div>
+</main>
 
 <?php include('./views/layautModEmple/footerModEmplea.php');  ?>

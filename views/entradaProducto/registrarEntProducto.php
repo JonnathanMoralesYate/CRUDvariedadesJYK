@@ -39,10 +39,14 @@
                     <input type="number" class="form-control" name="cantidadEnt" placeholder="" required>
                 </div>             
                 <div class="text-center mt-4">
-                    <button type="submit" class="btn btn-outline-light">Registrar Entrada</button>
+                    <button type="submit" class="btn btn-outline-secondary text-white">Registrar Entrada</button>
                 </div>
             </form>
         </div>
     </div>
-        <script src="./js/agregaFechaActualEntProductos.js"></script>
+</div>
+</div>
+</main>
+
+    <script src="./js/agregaFechaActualEntProductos.js"></script>
 <?php include('./views/layautModAdmin/footerModAdmin.php'); ?>
