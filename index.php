@@ -1259,13 +1259,56 @@ switch ($action) {
 
 //==============================================================================================================================
 
-//Modulo Principal
+//Modulo Administrativo
 
 //Carousel
 
-        case '':
+        //Registro Promociones
+    case 'registroPromocion':
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $controladorCarousel->registroPromociones();
+        } else {
+            include('./views/promociones/registrarPromocion.php');
+        }
+        break;
 
-            break;
+
+        //Consulta Promociones
+    case 'consultaPromociones':
+        $tipo = '';
+        $filtro = '';
+        $data = $controladorCarousel->listaCarouselVista($tipo, $filtro);
+        include('./views/promociones/consultaPromociones.php');
+        break;
+
+    case 'consultaPromocionesCodigo':
+        $valor = $_GET['codProducto'] ?? '';
+        $data = $controladorCarousel->listaPromocionesFiltrado('codigo', $valor);
+        include('./views/promociones/consultaPromociones.php');
+        break;
+
+    case 'consultaPromocionesNombre':
+        $valor = $_GET['nombre'] ?? '';
+        $data = $controladorCarousel->listaPromocionesFiltrado('nombre', $valor);
+        include('./views/promociones/consultaPromociones.php');
+        break;
+
+
+        //Actualizar Promociones
+    case 'actualizarPromocionId':
+        $promocion = $controladorCarousel->consultarPromocionId();
+        include('./views/promociones/actualizarPromociones.php');
+        break;
+
+    case 'actualizarPromocion':
+        $controladorCarousel->ActualizarPromocion();
+        break;
+
+
+    //Eliminar Promociones
+    case 'eliminarPromocionId':
+        $controladorCarousel->EliminarPromocion();
+        break;
 
 
     default:

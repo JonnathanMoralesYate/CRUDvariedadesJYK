@@ -133,6 +133,14 @@ if ($_SESSION['rol'] == 2) {
                                 </ul>
                             </li>
 
+                            <!-- Promociones -->
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle text-white" href="#" id="empleadosDropdown" role="button" data-bs-toggle="dropdown">Promociones</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="index.php?action=registroPromocion">Registrar Promocion</a></li>
+                                    <li><a class="dropdown-item" href="index.php?action=consultaPromociones">Consultar Promociones</a></li>
+                                </ul>
+                            </li>
 
                             <!-- Propiedades -->
                             <li class="nav-item dropdown">
