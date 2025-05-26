@@ -19,6 +19,7 @@ require_once('./controllers/controladorSalProducto.php');
 require_once('./controllers/controladorInventario.php');
 require_once('./controllers/controladorModoPago.php');
 require_once('./controllers/controladorGenerarCodigo.php');
+require_once('./controllers/controladorCarousel.php');
 
 $vistaAdmin = new ControladorPaginaAdmin();
 $vistaEmple = new ControladorPaginaEmple();
@@ -39,6 +40,7 @@ $controladorSalProducto = new ControladorSalProducto();
 $controladorInventario = new ControladorInventario();
 $controladorModoPago = new ControladorModoPago();
 $controladorGenerarCodigo = new ControladorGenerarCodigo();
+$controladorCarousel = new ControladorCarousel();
 
 $action = htmlspecialchars($_GET['action'] ?? 'Principal', ENT_QUOTES, 'UTF-8');
 
@@ -58,6 +60,7 @@ switch ($action) {
         break;
 
     case 'Principal':
+        $promociones = $controladorCarousel->consultarCarousel();
         $clases = $controladorProducto->listaClasesP();
         include('./views/paginasWeb/paginaPrincipal.php');
         break;
@@ -1253,6 +1256,16 @@ switch ($action) {
         $data = $controladorInventario->listaProductosAvencerFiltrado('nombre', $valor);
         include('./views/productosAvencer/prodProxAVencerEmp.php');
         break;
+
+//==============================================================================================================================
+
+//Modulo Principal
+
+//Carousel
+
+        case '':
+
+            break;
 
 
     default:

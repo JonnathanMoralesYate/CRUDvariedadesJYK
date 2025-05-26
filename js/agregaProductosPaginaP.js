@@ -38,7 +38,7 @@ function mostrarProductos(productosPagina) {
                 <div class="card mx-auto h-100" style="width: 14rem;">
                     <img src="photo/${producto.Foto}" class="card-img-top rounded" alt="${producto.Producto}">
                     <div class="card-body">
-                        <h5 class="card-title">${producto.Producto}</h5>
+                        <h6 class="card-title">${producto.Producto}</h6>
                         <p class="card-text">${producto.Descripcion}</p>
                     </div>
                 </div>
@@ -163,7 +163,7 @@ function mostrarProductosMayorVenta(producto) {
                 <div class="card mx-auto h-100" style="width: 14rem;">
                     <img src="photo/${productos.Foto}" class="card-img-top rounded" alt="${productos.Producto}">
                     <div class="card-body">
-                        <h5 class="card-title">${productos.Producto}</h5>
+                        <h6 class="card-title">${productos.Producto}</h6>
                         <p class="card-text">${productos.Descripcion}</p>
                     </div>
                 </div>

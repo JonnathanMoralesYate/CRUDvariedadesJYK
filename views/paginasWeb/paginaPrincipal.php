@@ -66,223 +66,178 @@
     <!--Final Barra Navegacion-->
 
     <!--Inicio Carrusel-->
-    <div class="row col-12">
-        <div id="carouselExampleControls" class="carousel slide mt-3" data-bs-ride="carousel">
-            <div class="carousel-inner text-center">
-                <!-- Primera imagen (sede) -->
-                <div class="carousel-item active">
-                    <div class="card mx-auto" style="max-width: 30rem;">
-                        <img src="./photo/variedadesJyK.jpg" class="img-fluid mx-auto rounded" alt="Sede">
-                        <div class="card-body container-fluid">
-                            <h5 class="card-title">Nuestra Sede</h5>
-                        </div>
-                    </div>
-                </div>
-                <!-- Segunda sección (productos promocion1) -->
-                <div class="carousel-item text-center">
-                    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3 d-flex justify-content-evenly">
-                        <div class="col">
-                            <div class="card mx-auto" style="width: 16rem;">
-                                <img id="" src="./photo/atun.png" class="img-fluid mx-auto" alt="">
-                                <div class="card-body container-fluid">
-                                    <h5 id="" class="card-title">Atun</h5>
-                                    <p id="" class="card-text">En Aceite</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card mx-auto" style="width: 16rem;">
-                                <img id="" src="./photo/cervezas.png" class="img-fluid mx-auto" alt="">
-                                <div class="card-body">
-                                    <h5 id="" class="card-title">Cerveza</h5>
-                                    <p id="" class="card-text">Al por mayor y detal</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card mx-auto" style="width: 16rem;">
-                                <img id="" src="./photo/Jamoneta.png" class="img-fluid mx-auto" alt="">
-                                <div class="card-body">
-                                    <h5 id="" class="card-title">Jamoneta</h5>
-                                    <p id="" class="card-text">Zenu</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Tercera sección (productos promocion2) -->
-                <div class="carousel-item text-center">
-                    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3 d-flex justify-content-evenly">
-                        <div class="col">
-                            <div class="card mx-auto" style="width: 16rem;">
-                                <img id="" src="./photo/atun.png" class="img-fluid mx-auto" alt="">
-                                <div class="card-body container-fluid">
-                                    <h5 id="" class="card-title">Atun</h5>
-                                    <p id="" class="card-text">En Aceite</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card mx-auto" style="width: 16rem;">
-                                <img id="" src="./photo/cervezas.png" class="img-fluid mx-auto" alt="">
-                                <div class="card-body">
-                                    <h5 id="" class="card-title">Cerveza</h5>
-                                    <p id="" class="card-text">Al por mayor y detal</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card mx-auto" style="width: 16rem;">
-                                <img id="" src="./photo/Jamoneta.png" class="img-fluid mx-auto" alt="">
-                                <div class="card-body">
-                                    <h5 id="" class="card-title">Jamoneta</h5>
-                                    <p id="" class="card-text">Zenu</p>
-                                </div>
-                            </div>
-                        </div>
+    <div id="carouselExampleControls" class="carousel slide mt-3" data-bs-ride="carousel">
+        <div class="carousel-inner text-center">
 
+            <!-- Slide fijo: Nuestra Sede -->
+            <div class="carousel-item active">
+                <div class="card mx-auto" style="max-width: 30rem;">
+                    <img src="./photo/variedadesJyK.jpg" class="img-fluid mx-auto rounded" alt="Sede">
+                    <div class="card-body container-fluid">
+                        <h5 class="card-title">Nuestra Sede</h5>
                     </div>
                 </div>
             </div>
 
-            <!-- Controles del Carrusel -->
+            <!-- Slides dinámicos agrupados de 3 en 3 -->
+            <?php
+            $grupos = array_chunk($promociones, 3); // Agrupa de 3 en 3
+            foreach ($grupos as $index => $grupo):
+            ?>
+                <div class="carousel-item<?= $index === 0 ? '' : '' ?>"> <!-- sin active, ya lo tiene la sede -->
+                    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3 d-flex justify-content-evenly">
+                        <?php foreach ($grupo as $promo): ?>
+                            <div class="col">
+                                <div class="card mx-auto" style="width: 16rem;">
+                                    <img src="./photo/<?= htmlspecialchars($promo['Foto']) ?>" class="img-fluid mx-auto" alt="<?= htmlspecialchars($promo['Producto']) ?>">
+                                    <div class="card-body">
+                                        <h5 class="card-title"><?= htmlspecialchars($promo['Producto']) ?></h5>
+                                        <p class="card-text"><?= htmlspecialchars($promo['Descripcion']) ?></p>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+
+            <!-- Controles del carrusel -->
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Atras</span>
+                <span class="visually-hidden">Atrás</span>
             </button>
             <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Adelante</span>
             </button>
         </div>
-    </div>
-    <!--Fin Carrusel -->
+        <!--Fin Carrusel -->
 
-    <!--Inicio de Barra Categorias -->
-    <div class="row container-fluid mt-5 text-center d-flex flex-column flex-md-row">
-        <!-- Sección de Categorías -->
-        <div class="col-12 col-md-4 col-lg-3">
-            <div class="text-center text-white">
-                <span class="fs-3">Categorías</span>
-            </div>
-            <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-offset="0" class="scrollspy-example" tabindex="0">
-                <div class="overflow-auto" style="max-height: 500px;">
-                    <?php foreach ($clases as $clase): ?>
-                        <div class="mt-1">
-                            <div class="btn-group dropend w-100">
-                                <button type="button" class="btn btn-outline-secondary text-white w-100" aria-expanded="false" onclick="obtenerInforProductoPorClase(<?= $clase['idClase']; ?>)">
-                                    <?= $clase['Clase']; ?>
-                                </button>
+        <!--Inicio de Barra Categorias -->
+        <div class="row container-fluid mt-5 text-center d-flex flex-column flex-md-row">
+            <!-- Sección de Categorías -->
+            <div class="col-12 col-md-4 col-lg-3">
+                <div class="text-center text-white">
+                    <span class="fs-3">Categorías</span>
+                </div>
+                <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-offset="0" class="scrollspy-example" tabindex="0">
+                    <div class="overflow-auto" style="max-height: 500px;">
+                        <?php foreach ($clases as $clase): ?>
+                            <div class="mt-1">
+                                <div class="btn-group dropend w-100">
+                                    <button type="button" class="btn btn-outline-secondary text-white w-100" aria-expanded="false" onclick="obtenerInforProductoPorClase(<?= $clase['idClase']; ?>)">
+                                        <?= $clase['Clase']; ?>
+                                    </button>
+                                </div>
                             </div>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vista de Productos por Categoría -->
+            <div class="col-12 col-md-8 col-lg-9 mt-3">
+                <div id="productos-container" class="row row-cols-1 row-cols-md-3 g-4"></div>
+                <div id="paginacion-container" class="mt-3 d-flex justify-content-center"></div>
+            </div>
+        </div>
+        <!--Fin Barra Categorias -->
+
+        <!--Inicio de Footer-->
+        <div class="row" id="Ubicacion">
+            <!--Imagen-->
+            <div class="col-12 col-lg-3 mt-5">
+                <div class="img-fluid d-block text-center">
+                    <a class="navbar-brand" href="index.php"><img src="./photo/logopest2.ico" alt="Logo" class="img-fluid text-center rounded-3"></a>
+                </div>
+            </div>
+            <!--Informacion general de VariedadesJYK-->
+            <div class="col-12 col-lg-3">
+                <div class="text-start">
+                    <div class="d-block mt-5 text-white">
+                        <div>
+                            <p>Línea de Servicio al Cliente</p>
                         </div>
-                    <?php endforeach; ?>
-                </div>
-            </div>
-        </div>
-
-        <!-- Vista de Productos por Categoría -->
-        <div class="col-12 col-md-8 col-lg-9 mt-3">
-            <div id="productos-container" class="row row-cols-1 row-cols-md-3 g-4"></div>
-            <div id="paginacion-container" class="mt-3 d-flex justify-content-center"></div>
-        </div>
-    </div>
-    <!--Fin Barra Categorias -->
-
-    <!--Inicio de Footer-->
-    <div class="row" id="Ubicacion">
-        <!--Imagen-->
-        <div class="col-12 col-lg-3 mt-5">
-            <div class="img-fluid d-block text-center">
-                <a class="navbar-brand" href="index.php"><img src="./photo/logopest2.ico" alt="Logo" class="img-fluid text-center rounded-3"></a>
-            </div>
-        </div>
-        <!--Informacion general de VariedadesJYK-->
-        <div class="col-12 col-lg-3">
-            <div class="text-start">
-                <div class="d-block mt-5 text-white">
-                    <div>
-                        <p>Línea de Servicio al Cliente</p>
-                    </div>
-                    <div id="Contacto" class="mt-1">
-                        <p>Cel: 320 338 4589</p>
-                    </div>
-                    <div class="d-flex mt-1">
-                        <div class="aling-item-center mt-1  me-auto">
-                            <p>Cra. 16 Sur # 96-48</p>
+                        <div id="Contacto" class="mt-1">
+                            <p>Cel: 320 338 4589</p>
                         </div>
-                        <div class=""><a class="navbar-brand" target="_blank" href="https://g.co/kgs/WpQrABT"><img src="./photo/ubicacion.ico" alt="Ubicacion" width="35" height="35"></a></div>
-                    </div>
-                    <div class="mt-1">
-                        <p>Ibagué - Tolima</p>
-                    </div>
-                    <div class="mt-1">
-                        <p>Servicioalcliente@Variedades.com</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-12 col-lg-3">
-            <div class="text-start">
-                <div class="d-block mt-5 text-white">
-                    <div class="mt-1">
-                        <p>INFORMACIÓN LEGAL</p>
-                    </div>
-                    <div class="mt-1">
-                        <p>Términos y Condiciones de Cambio </p>
-                    </div>
-                    <div class="mt-1">
-                        <p>Política Tratamiento de Datos Personales</p>
-                    </div>
-                    <div class="mt-1">
-                        <p>Términos y Condiciones Eventos</p>
+                        <div class="d-flex mt-1">
+                            <div class="aling-item-center mt-1  me-auto">
+                                <p>Cra. 16 Sur # 96-48</p>
+                            </div>
+                            <div class=""><a class="navbar-brand" target="_blank" href="https://g.co/kgs/WpQrABT"><img src="./photo/ubicacion.ico" alt="Ubicacion" width="35" height="35"></a></div>
+                        </div>
+                        <div class="mt-1">
+                            <p>Ibagué - Tolima</p>
+                        </div>
+                        <div class="mt-1">
+                            <p>Servicioalcliente@Variedades.com</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!--Iconos de Redes Sociales-->
-        <div class="col-12 col-sm-3">
-            <div class="text-white mt-5">
-                <h3 class="text-center">Redes Sociales</h3>
+            <div class="col-12 col-lg-3">
+                <div class="text-start">
+                    <div class="d-block mt-5 text-white">
+                        <div class="mt-1">
+                            <p>INFORMACIÓN LEGAL</p>
+                        </div>
+                        <div class="mt-1">
+                            <p>Términos y Condiciones de Cambio </p>
+                        </div>
+                        <div class="mt-1">
+                            <p>Política Tratamiento de Datos Personales</p>
+                        </div>
+                        <div class="mt-1">
+                            <p>Términos y Condiciones Eventos</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="d-flex mt-4 justify-content-evenly aling-item-center">
-                <ul class="nav">
-                    <li class="nav-item">
-                        <a class="navbar-brand" target="_blank" href="https://es-es.facebook.com/">
-                            <img src="./photo/facebook.ico" alt="Facebook" width="50" height="50">
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="navbar-brand" target="_blank" href="https://www.instagram.com/">
-                            <img src="./photo/instagam.ico" alt="instagram" width="50" height="50">
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="navbar-brand" target="_blank" href="https://www.youtube.com/">
-                            <img src="./photo/youtube.ico" alt="youtube" width="50" height="50">
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="navbar-brand" target="_blank" href="https://www.whatsapp.com/">
-                            <img src="./photo/whatsapp.ico" alt="whatsapp" width="50" height="50">
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <div class="text-white text-center mt-4">
-                <h3>Síguenos</h3>
+            <!--Iconos de Redes Sociales-->
+            <div class="col-12 col-sm-3">
+                <div class="text-white mt-5">
+                    <h3 class="text-center">Redes Sociales</h3>
+                </div>
+                <div class="d-flex mt-4 justify-content-evenly aling-item-center">
+                    <ul class="nav">
+                        <li class="nav-item">
+                            <a class="navbar-brand" target="_blank" href="https://es-es.facebook.com/">
+                                <img src="./photo/facebook.ico" alt="Facebook" width="50" height="50">
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="navbar-brand" target="_blank" href="https://www.instagram.com/">
+                                <img src="./photo/instagam.ico" alt="instagram" width="50" height="50">
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="navbar-brand" target="_blank" href="https://www.youtube.com/">
+                                <img src="./photo/youtube.ico" alt="youtube" width="50" height="50">
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="navbar-brand" target="_blank" href="https://www.whatsapp.com/">
+                                <img src="./photo/whatsapp.ico" alt="whatsapp" width="50" height="50">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="text-white text-center mt-4">
+                    <h3>Síguenos</h3>
 
+                </div>
             </div>
         </div>
-    </div>
-    <!--Final de Footer-->
+        <!--Final de Footer-->
 
-    <!--Inicio de Pie de Pagina-->
-    <div class="row">
-        <div class="col-12 text-center text-white">
-            <p>© 2024 - VariedadesJyk® / Minimarket Variedades S.A.S. NIT. 110.370.428-1 - Todos los Derechos Reservados.</p>
+        <!--Inicio de Pie de Pagina-->
+        <div class="row">
+            <div class="col-12 text-center text-white">
+                <p>© 2024 - VariedadesJyk® / Minimarket Variedades S.A.S. NIT. 110.370.428-1 - Todos los Derechos Reservados.</p>
+            </div>
         </div>
-    </div>
-    <!--Fin de Pie de Pagina-->
+        <!--Fin de Pie de Pagina-->
     </div>
 
 

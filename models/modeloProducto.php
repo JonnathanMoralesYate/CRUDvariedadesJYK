@@ -109,7 +109,11 @@ class ModeloProducto
     //Consulta para mostrar productos segun clase en pagina principal
     public function productosPorClase($idClase)
     {
-        $query = "SELECT Foto, CONCAT(Nombre,' ',Marca) AS 'Producto', Descripcion FROM " . $this->table . " WHERE idClase=?";
+        $query = "SELECT Foto, CONCAT(Nombre,' ',Marca,' ',presentacion_producto.Presentacion,' ',ContNeto,' ', unidad_base.UndBase) AS 'Producto', 
+                Descripcion FROM " . $this->table . " 
+                INNER JOIN presentacion_producto ON productos.idPresentacion = presentacion_producto.idPresentacion 
+                INNER JOIN unidad_base ON productos.idUndBase = unidad_base.idUndBase 
+                WHERE idClase=?";
         $stmt = $this->conn->prepare($query);
         $stmt->execute([$idClase]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);

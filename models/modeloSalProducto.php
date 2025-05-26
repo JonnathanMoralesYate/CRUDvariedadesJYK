@@ -277,8 +277,13 @@ class ModeloSalProducto
     //Consulta para ver los productos mas vendidos 
     public function productosMasVendidos()
     {
-        //echo "<script>alert('Modelo salida producto');</script>";
-        $query = "SELECT CONCAT(productos.Nombre, ' ', productos.Marca) AS 'Producto', SUM(salida_productos.CantSalida) AS totalVendido FROM " . $this->table . " INNER JOIN productos ON salida_productos.idProducto = productos.idProducto GROUP BY productos.idProducto, productos.Nombre, productos.Descripcion ORDER BY totalVendido DESC LIMIT 10";
+        $query = "SELECT CONCAT(productos.Nombre,' ', productos.Marca,' ', presentacion_producto.Presentacion,' ', productos.ContNeto,' ', unidad_base.UndBase) AS 'Producto', 
+        SUM(salida_productos.CantSalida) AS totalVendido FROM " . $this->table . " 
+        INNER JOIN productos ON salida_productos.idProducto = productos.idProducto 
+        INNER JOIN presentacion_producto ON productos.idPresentacion = presentacion_producto.idPresentacion 
+        INNER JOIN unidad_base ON productos.idUndBase = unidad_base.idUndBase
+        GROUP BY productos.idProducto, productos.Nombre, productos.Descripcion 
+        ORDER BY totalVendido DESC LIMIT 10";
         $stmt = $this->conn->query($query);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -296,7 +301,13 @@ class ModeloSalProducto
     //Consulta para ver los productos mas vendidos en pagina principal
     public function productosMayorVenta()
     {
-        $query = "SELECT CONCAT(productos.Nombre, ' ', productos.Marca) AS 'Producto', productos.Descripcion, productos.Foto, SUM(salida_productos.CantSalida) AS totalVendido FROM " . $this->table . " INNER JOIN productos ON salida_productos.idProducto = productos.idProducto GROUP BY productos.idProducto, productos.Nombre, productos.Descripcion ORDER BY totalVendido DESC LIMIT 10";
+        $query = "SELECT CONCAT(productos.Nombre,' ', productos.Marca,' ', presentacion_producto.Presentacion,' ', productos.ContNeto,' ', unidad_base.UndBase) AS 'Producto',
+                    productos.Descripcion, productos.Foto, SUM(salida_productos.CantSalida) AS totalVendido FROM " . $this->table . " 
+                    INNER JOIN productos ON salida_productos.idProducto = productos.idProducto 
+                    INNER JOIN presentacion_producto ON productos.idPresentacion = presentacion_producto.idPresentacion 
+                    INNER JOIN unidad_base ON productos.idUndBase = unidad_base.idUndBase
+                    GROUP BY productos.idProducto, productos.Nombre, productos.Descripcion 
+                    ORDER BY totalVendido DESC LIMIT 10";
         $stmt = $this->conn->query($query);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
