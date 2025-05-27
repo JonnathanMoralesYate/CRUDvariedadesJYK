@@ -315,4 +315,16 @@ class ModeloInventario
         $stmt = $this->conn->query($query);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    //Consulta 
+    public function verificarproductoPromo($codProducto)
+    {
+        $query = "SELECT productos.CodProducto FROM " . $this->table . " 
+            INNER JOIN productos ON inventario.idProducto=productos.idProducto
+            WHERE productos.CodProducto = ? AND CantActual > 0";
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute([$codProducto]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    } 
 }

@@ -1165,6 +1165,11 @@ switch ($action) {
         }
         break;
 
+    //Consulta de Producto por codigo
+    case 'verificacionCodigoProductosPromo':
+        $controladorInventario->VerificarCodProductoPromo();
+        break;
+
 //============================================================================================================================================
 
 //Modulo Empleado

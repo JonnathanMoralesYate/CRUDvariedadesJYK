@@ -26,4 +26,5 @@
 </div>
 </main>
 
+    <script src="./js/verificarCodProductoPromo.js?v=1.0"></script>
 <?php include('./views/layautModAdmin/footerModAdmin.php'); ?>

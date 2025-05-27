@@ -311,4 +311,36 @@ class ControladorInventario
         }
         exit;
     }
-}
+
+
+    //metodo para verificar si el producto existe y hay stock para promociones
+    public function VerificarCodProductoPromo()
+    {
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+            $inputJSON = file_get_contents("php://input");
+
+            $input = json_decode($inputJSON, true);
+
+            if (!isset($input['codProducto']) || empty($input['codProducto'])) {
+                echo json_encode(['error' => 'El código del producto es requerido']);
+                exit;
+            }
+
+            $codProducto = $input['codProducto'];
+
+            header("Content-Type: application/json; charset=UTF-8");
+
+            $producto = $this->modeloInventario->verificarproductoPromo($codProducto);
+
+            if ($producto) {
+                echo json_encode(["success" => true, "producto" => $producto]);
+            } else {
+                echo json_encode(["success" => false, "error" => "Producto No Registrado"]);
+            }
+        } else {
+            echo json_encode(['error' => 'Método no permitido']);
+        }
+        exit;
+        }
+    }
