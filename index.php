@@ -1181,8 +1181,6 @@ switch ($action) {
         $tipo = '';
         $filtro = '';
         $data = $controladorInventario->listaInventarioActualizado($tipo, $filtro);
-        // var_dump($data);
-        // exit;
         include('./views/inventario/inventarioActualEmp.php');
         break;
 
