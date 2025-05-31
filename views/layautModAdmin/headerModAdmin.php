@@ -1,16 +1,6 @@
 <?php
-
-// Verifica si $_SESSION está vacío (no tiene ninguna variable)
-if (empty($_SESSION)) {
-    header("Location: index.php?action=Principal");
-    exit;
-}
-
-// Verificar si el usuario tiene el rol de administrador
-if ($_SESSION['rol'] == 2) {
-    header("Location: index.php?action=vistaEmple");
-    exit;
-}
+    require_once ('util/middleware.php');
+    permisoAdministardor();
 ?>
 
 <!DOCTYPE html>

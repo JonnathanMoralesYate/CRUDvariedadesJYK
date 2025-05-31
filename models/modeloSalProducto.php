@@ -307,7 +307,7 @@ class ModeloSalProducto
                     INNER JOIN presentacion_producto ON productos.idPresentacion = presentacion_producto.idPresentacion 
                     INNER JOIN unidad_base ON productos.idUndBase = unidad_base.idUndBase
                     GROUP BY productos.idProducto, productos.Nombre, productos.Descripcion 
-                    ORDER BY totalVendido DESC LIMIT 10";
+                    ORDER BY totalVendido DESC LIMIT 9";
         $stmt = $this->conn->query($query);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }

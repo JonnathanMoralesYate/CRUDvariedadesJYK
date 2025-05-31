@@ -18,7 +18,7 @@
                 <div class="mt-2">
                     <label for="tiposClase" class="form-label text-white mt-3">Clase:</label>
                     <select id="tiposClase" name="tiposClase" class="form-select" required>
-                        <option selected>Seleccione Clase del Producto</option>
+                        <option value="">Seleccione Clase del Producto</option>
                         <?php foreach($clases as $clase): ?>
                             <option value="<?= $clase['idClase']; ?>">
                                 <?= $clase['Clase']; ?>
@@ -41,7 +41,7 @@
                 <div class="mt-2">
                     <label for="tiposPresenta" class="form-label text-white mt-3">Presentación:</label>
                     <select id="tiposPresenta" name="tiposPresenta" class="form-select" required>
-                        <option selected>Seleccione presentación del Producto</option>
+                        <option value="">Seleccione presentación del Producto</option>
                         <?php foreach($presentaciones as $presentacion): ?>
                             <option value="<?= $presentacion['idPresentacion']; ?>">
                                 <?= $presentacion['Presentacion']; ?>
@@ -52,7 +52,7 @@
                 <div class="mt-2">
                     <label for="tiposUnd" class="form-label text-white mt-3">Unidad Base:</label>
                     <select id="tiposUnd" name="tiposUnd" class="form-select" required>
-                        <option selected>Seleccione Unidad Base</option>
+                        <option value="">Seleccione Unidad Base</option>
                         <?php foreach($undBases as $undBase): ?>
                             <option value="<?= $undBase['idUndBase']; ?>">
                                 <?= $undBase['UndBase']; ?>
@@ -67,7 +67,7 @@
                 <div class="mt-2">
                     <label for="formatoVent" class="form-label text-white mt-3">Formato Venta:</label>
                     <select id="formatoVent" name="formatovent" class="form-select" required>
-                        <option selected>Seleccione Formato Venta</option>
+                        <option value="">Seleccione Formato Venta</option>
                         <?php foreach($formatoVents as $formatoVent): ?>
                             <option value="<?= $formatoVent['idFormatoVenta']; ?>">
                                 <?= $formatoVent['FormatoVenta']; ?>

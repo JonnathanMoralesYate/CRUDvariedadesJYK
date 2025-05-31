@@ -20,7 +20,7 @@
                 <label for="tiposClase" class="form-label text-white mt-3">Clase:</label>
                     <?php $tipoClase= $producto['idClase']; ?>
                         <select id="tiposClase" name="tiposClase" class="form-control" required>
-                            <option selected>Seleccione Clase del Producto</option>
+                            <option value="">Seleccione Clase del Producto</option>
                             <?php foreach($clases as $clase): ?>
                             <option value="<?= $clase['idClase']; ?>" <?= $clase['idClase'] == $tipoClase ? 'selected' : '' ?>>
                             <?= $clase['Clase']; ?>
@@ -44,7 +44,7 @@
                 <label for="tiposPresenta" class="form-label text-white mt-3">Presentacion:</label>
                     <?php $tipoPresent= $producto['idPresentacion']; ?>
                         <select id="tiposPresenta" name="tiposPresenta" class="form-control" required>
-                            <option selected>Seleccione presentacion del Producto</option>
+                            <option value="">Seleccione presentacion del Producto</option>
                             <?php foreach($presentaciones as $presentacion): ?>
                             <option value="<?= $presentacion['idPresentacion']; ?>" <?= $presentacion['idPresentacion'] == $tipoPresent ? 'selected' : '' ?>>
                             <?= $presentacion['Presentacion']; ?>
@@ -56,7 +56,7 @@
                 <label for="tiposUnd" class="form-label text-white mt-3">Unidad Base:</label>
                     <?php $tipoUndB= $producto['idUndBase']; ?>
                         <select id="tiposUnd" name="tiposUnd" class="form-control" required>
-                            <option selected>Seleccione Unidad Base</option>
+                            <option value="">Seleccione Unidad Base</option>
                             <?php foreach($undBases as $undBase): ?>
                             <option value="<?= $undBase['idUndBase']; ?>" <?= $undBase['idUndBase'] == $tipoUndB ? 'selected' : '' ?>>
                             <?= $undBase['UndBase']; ?>
@@ -72,7 +72,7 @@
                 <label for="formatoVent" class="form-label text-white mt-3">Formato Venta:</label>
                     <?php $tipoVenta= $producto['idFormatoVenta']; ?>
                         <select id="formatoVent" name="formatoVent" class="form-control" required>
-                            <option selected>Seleccione Formato Venta</option>
+                            <option value="">Seleccione Formato Venta</option>
                             <?php foreach($formatoVents as $formatoVent): ?>
                             <option value="<?= $formatoVent['idFormatoVenta']; ?>" <?= $formatoVent['idFormatoVenta'] == $tipoVenta ? 'selected' : '' ?>>
                             <?= $formatoVent['FormatoVenta']; ?>

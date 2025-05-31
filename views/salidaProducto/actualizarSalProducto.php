@@ -40,7 +40,7 @@
                 <label for="tipoPago" class="form-label text-white mt-3">Modo de Pago:</label>
                 <?php $formaDePago= $salProducto['ModoPago']; ?>
                         <select id="tipoPago" name="tipoPago" class="form-control" required>
-                            <option selected>Seleccione la Forma de Pago</option>
+                            <option value="">Seleccione la Forma de Pago</option>
                             <?php foreach($formaPagos as $formaPago): ?>
                             <option value="<?= $formaPago['idModoPago']; ?>" <?= $formaPago['ModoPago'] == $formaDePago ? 'selected' : '' ?>>
                             <?= $formaPago['ModoPago']; ?>
