@@ -24,7 +24,8 @@ class ControladorFormatoVenta
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") 
         {
-            $nombre = $_POST['nomFormatoVenta'];
+            $nombreIn = $_POST['nomFormatoVenta'];
+            $nombre = ucwords(strtolower(trim($nombreIn)));
 
             $this->modeloFormatoVenta->registrarFormatoVenta($nombre);
 
@@ -110,7 +111,8 @@ class ControladorFormatoVenta
     {
         if ($_SERVER["REQUEST_METHOD"] == "POST") 
         {
-            $nombre = $_POST['nomFormatoVenta'];
+            $nombreIn = $_POST['nomFormatoVenta'];
+            $nombre = ucwords(strtolower(trim($nombreIn)));
             $idFormatoVenta = $_POST['idFormatoVenta'];
 
             $this->modeloFormatoVenta->actualizarFormatoVenta($nombre, $idFormatoVenta);

@@ -23,7 +23,8 @@ class ControladorClases
     {
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $nombre = $_POST['nomClase'];
+            $nombreIn = $_POST['nomClase'];
+            $nombre = ucwords(strtolower(trim($nombreIn)));
 
             $this->modeloClases->registrarClases($nombre);
 
@@ -111,7 +112,8 @@ class ControladorClases
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-            $nombre = $_POST['nomClase'];
+            $nombreIn = $_POST['nomClase'];
+            $nombre = ucwords(strtolower(trim($nombreIn)));
             $idClase = $_POST['idClase'];
 
             $this->modeloClases->actualizarClase($nombre, $idClase);

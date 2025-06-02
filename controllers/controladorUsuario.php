@@ -23,13 +23,15 @@ class ControladorUsuario
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $idTipoDocum = $_POST['tipoDocum'];
             $numDocumento = $_POST['documUsu'];
-            $nombre = $_POST['nomUsu'];
-            $apellido = $_POST['apellUsu'];
+            $nombreIn = $_POST['nomUsu'];
+            $nombre = ucwords(strtolower(trim($nombreIn)));
+            $apellidoIn = $_POST['apellUsu'];
+            $apellido = ucwords(strtolower(trim($apellidoIn)));
             $numCelular = $_POST['numCel'];
-            $correoE = $_POST['correoUsu'];
+            $correoE = strtolower($_POST['correoUsu']);
             $rol = $_POST['seleccionRol'];
-            $usuario = $_POST['usuario'];
-            $clave = $_POST['contraseña'];
+            $usuario = strtolower($_POST['usuario']);
+            $clave = trim($_POST['contraseña']);
 
             $claveSegura = password_hash($clave, PASSWORD_BCRYPT);
 
@@ -126,13 +128,14 @@ class ControladorUsuario
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $idTipoDocum = $_POST['tipoDocum'];
             $numDocumento = $_POST['documUsu'];
-            $nombre = $_POST['nomUsu'];
-            $apellido = $_POST['apellUsu'];
+            $nombreIn = $_POST['nomUsu'];
+            $nombre = ucwords(strtolower(trim($nombreIn)));
+            $apellidoIn = $_POST['apellUsu'];
+            $apellido = ucwords(strtolower(trim($apellidoIn)));
             $numCelular = $_POST['numCel'];
-            $correoE = $_POST['correoUsu'];
+            $correoE = strtolower($_POST['correoUsu']);
             $rol = $_POST['seleccionRol'];
-            $usuario = $_POST['usuario'];
-            $clave = $_POST['contraseña'];
+            $usuario = strtolower($_POST['usuario']);
             $idUsua = $_POST['idUsuario'];
 
             $clave = trim($_POST['contraseña']);

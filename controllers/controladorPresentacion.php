@@ -21,7 +21,8 @@ class ControladorPresentacion
     public function RegistroPresentacion()
     {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $nombre = $_POST['nomPresentacion'];
+            $nombreIn = $_POST['nomPresentacion'];
+            $nombre = ucwords(strtolower(trim($nombreIn)));
 
             $this->modeloPresentacion->registrarPresentacion($nombre);
 
@@ -107,7 +108,8 @@ class ControladorPresentacion
     public function ActualizarPresentacion()
     {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $nombre = $_POST['nomPresentacion'];
+            $nombreIn = $_POST['nomPresentacion'];
+            $nombre = ucwords(strtolower(trim($nombreIn)));
             $idPresentacion = $_POST['idPresentacion'];
 
             $this->modeloPresentacion->actualizarPresentacion($nombre, $idPresentacion);

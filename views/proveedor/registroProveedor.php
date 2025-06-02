@@ -34,7 +34,7 @@
                     <input type="text" class="form-control" name="celVendedor" placeholder="" required>
                 </div>
                 <div class="text-center mt-4">
-                    <button type="submit" class="btn btn-outline-light">Registrar</button>
+                    <button type="submit" class="btn btn-outline-secondary text-white">Registrar</button>
                 </div>
             </form>
         </div>

@@ -22,14 +22,15 @@ class ControladorCliente
     public function registroCliente()
     {
 
-        if ($_SERVER["REQUEST_METHOD"] == "POST") 
-        {
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $idTipoDocumC = $_POST['tipoDocum'];
             $numDocumentoC = $_POST['documCliente'];
-            $nombreC = $_POST['nomCliente'];
-            $apellidoC = $_POST['apellCliente'];
+            $nombreCIn = $_POST['nomCliente'];
+            $nombreC = ucwords(strtolower(trim($nombreCIn)));
+            $apellidoCIn = $_POST['apellCliente'];
+            $apellidoC = ucwords(strtolower(trim($apellidoCIn)));
             $numCelularC = $_POST['numCel'];
-            $correoC = $_POST['correoCliente'];
+            $correoC = strtolower($_POST['correoCliente']);
             $puntos = $_POST['puntos'];
 
             $this->modeloCliente->registroCliente($idTipoDocumC, $numDocumentoC, $nombreC, $apellidoC, $numCelularC, $correoC, $puntos);
@@ -112,8 +113,7 @@ class ControladorCliente
     public function verificacionCliente()
     {
 
-        if ($_SERVER["REQUEST_METHOD"] == "POST") 
-        {
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $inputJSON = file_get_contents("php://input");
 
             $input = json_decode($inputJSON, true);
@@ -179,10 +179,12 @@ class ControladorCliente
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $idTipoDocumC = $_POST['tipoDocum'];
             $numDocumentoC = $_POST['documCliente'];
-            $nombreC = $_POST['nomCliente'];
-            $apellidoC = $_POST['apellCliente'];
+            $nombreCIn = $_POST['nomCliente'];
+            $nombreC = ucwords(strtolower(trim($nombreCIn)));
+            $apellidoCIn = $_POST['apellCliente'];
+            $apellidoC = ucwords(strtolower(trim($apellidoCIn)));
             $numCelularC = $_POST['numCel'];
-            $correoC = $_POST['correoCliente'];
+            $correoC = strtolower($_POST['correoCliente']);
             $puntos = $_POST['puntos'];
             $idCliente = $_POST['idCliente'];
 

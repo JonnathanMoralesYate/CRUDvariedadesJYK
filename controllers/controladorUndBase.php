@@ -21,7 +21,8 @@ class ControladorUndBase
     public function RegistroUndBase()
     {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $nombre = $_POST['nomUndBase'];
+            $nombreIn = $_POST['nomUndBase'];
+            $nombre = ucwords(strtolower(trim($nombreIn)));
 
             $this->modeloUndBase->registrarUndBase($nombre);
 
@@ -107,7 +108,8 @@ class ControladorUndBase
     public function ActualizarUndBase()
     {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $nombre = $_POST['nomUndBase'];
+            $nombreIn = $_POST['nomUndBase'];
+            $nombre = ucwords(strtolower(trim($nombreIn)));
             $idUndBase = $_POST['idUndBase'];
 
             $this->modeloUndBase->actualizarUndBase($nombre, $idUndBase);

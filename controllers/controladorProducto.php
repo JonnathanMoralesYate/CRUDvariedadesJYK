@@ -27,8 +27,10 @@ class ControladorProducto
             $codigoProducto = $_POST['codProduc'];
             $codigoGenerado = $_POST['codigoGenerado'];
             $idClase = $_POST['tiposClase'];
-            $nombre = $_POST['nombreproduc'];
-            $marca = $_POST['marcaProduc'];
+            $nombreIn = $_POST['nombreproduc'];
+            $nombre = ucwords(strtolower(trim($nombreIn)));
+            $marcaIn = $_POST['marcaProduc'];
+            $marca = ucwords(strtolower(trim($marcaIn)));
             $descripcion = $_POST['descriProduc'];
             $idPresentacion = $_POST['tiposPresenta'];
             $idUndBase = $_POST['tiposUnd'];
@@ -295,8 +297,10 @@ class ControladorProducto
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $codigoProducto = $_POST['codProduc'];
             $idClase = $_POST['tiposClase'];
-            $nombre = $_POST['nombreproduc'];
-            $marca = $_POST['marcaProduc'];
+            $nombreIn = $_POST['nombreproduc'];
+            $nombre = ucwords(strtolower(trim($nombreIn)));
+            $marcaIn = $_POST['marcaProduc'];
+            $marca = ucwords(strtolower(trim($marcaIn)));
             $descripcion = $_POST['descriProduc'];
             $idPresentacion = $_POST['tiposPresenta'];
             $idUndBase = $_POST['tiposUnd'];

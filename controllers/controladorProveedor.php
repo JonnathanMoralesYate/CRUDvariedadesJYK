@@ -22,10 +22,12 @@ class ControladorProveedor
     {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $nitProve = $_POST['nitProveedor'];
-            $nomProve = $_POST['nomProveedor'];
-            $correoProve = $_POST['correoProv'];
+            $nomProveIn = $_POST['nomProveedor'];
+            $nomProve = ucwords(strtolower(trim($nomProveIn)));
+            $correoProve = strtolower($_POST['correoProv']);
             $celProve = $_POST['celProveedor'];
-            $nomVende = $_POST['nomVendedor'];
+            $nomVendeIn = $_POST['nomVendedor'];
+            $nomVende = ucwords(strtolower(trim($nomVendeIn)));
             $celVende = $_POST['celVendedor'];
 
             $this->modeloProveedor->registroProveedor($nitProve, $nomProve, $correoProve, $celProve, $nomVende, $celVende);
@@ -140,10 +142,12 @@ class ControladorProveedor
     {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $nitProve = $_POST['nitProveedor'];
-            $nomProve = $_POST['nomProveedor'];
-            $correoProve = $_POST['correoProv'];
+            $nomProveIn = $_POST['nomProveedor'];
+            $nomProve = ucwords(strtolower(trim($nomProveIn)));
+            $correoProve = strtolower($_POST['correoProv']);
             $celProve = $_POST['celProveedor'];
-            $nomVende = $_POST['nomVendedor'];
+            $nomVendeIn = $_POST['nomVendedor'];
+            $nomVende = ucwords(strtolower(trim($nomVendeIn)));
             $celVende = $_POST['celVendedor'];
             $idProveedor = $_POST['idProveedor'];
 
