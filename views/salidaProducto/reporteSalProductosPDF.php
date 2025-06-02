@@ -244,7 +244,7 @@ font-weight: bold;
                 </tbody>
             </table>
         <?php else: ?>
-            <p class="text-white">No se Encontro Productos con ese Criterio de Busqueda</p>
+            <p class="no-data">No se Encontro Productos con ese Criterio de Busqueda</p>
         <?php endif; ?>
     </div>
 

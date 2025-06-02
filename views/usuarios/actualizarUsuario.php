@@ -66,7 +66,7 @@
                     <input type="text" class="form-control" name="contraseña" value="">
                 </div>
                 <div class="text-center mt-4">
-                    <button type="submit" class="btn btn-outline-light">Actualizar</button>
+                    <button type="submit" class="btn btn-outline-secondary text-white">Actualizar</button>
                 </div>
                 <?php endforeach; ?>
             </form>

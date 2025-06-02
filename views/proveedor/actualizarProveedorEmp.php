@@ -38,7 +38,7 @@
                     <input type="text" class="form-control" name="celVendedor" value="<?= $proveedor['CelularVendedor']; ?>" pattern="3[0-9]{9}" maxlength="10" title="Ingresa un número de celular válido (10 dígitos, inicia en 3)" required>
                 </div>
                 <div class="text-center mt-4">
-                    <button type="submit" class="btn btn-outline-light">Actualizar</button>
+                    <button type="submit" class="btn btn-outline-secondary text-white">Actualizar</button>
                 </div>
                 <?php endforeach; ?>
             </form>

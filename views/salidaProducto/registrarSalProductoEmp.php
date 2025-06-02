@@ -49,7 +49,7 @@
                         </select>
                 </div>
                 <div class="text-center mt-4">
-                    <button type="submit" class="btn btn-outline-light">Registrar Salida</button>
+                    <button type="submit" class="btn btn-outline-secondary text-white">Registrar Salida</button>
                 </div>
             </form>
         </div>
