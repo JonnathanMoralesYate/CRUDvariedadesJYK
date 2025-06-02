@@ -33,7 +33,7 @@
                 </div>
                 <div class=" mt-2">
                     <label for="numCel" class="form-label text-white mt-3">No. Celular:</label>
-                    <input type="text" class="form-control" name="numCel" placeholder="" required>
+                    <input type="text" class="form-control" name="numCel" pattern="3[0-9]{9}" maxlength="10" title="Ingresa un número de celular válido (10 dígitos, inicia en 3)" required>
                 </div>
                 <div class="mt-2">
                     <label for="correoCliente" class="form-label text-white mt-3">Email:</label>

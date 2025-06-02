@@ -38,11 +38,12 @@
                         </div>
                         <div class=" mt-2">
                             <label for="numCel" class="form-label text-white mt-3">No. Celular:</label>
-                            <input type="text" class="form-control" name="numCel" value="<?= $cliente['NumCelular']; ?>" placeholder="" required>
+                            <input type="text" class="form-control" name="numCel" value="<?= $cliente['NumCelular']; ?>" pattern="3[0-9]{9}" maxlength="10" title="Ingresa un número de celular válido (10 dígitos, inicia en 3)" required>
                         </div>
                         <div class="mt-2">
                             <label for="correoCliente" class="form-label text-white mt-3">Email:</label>
-                            <input type="email" class="form-control" name="correoCliente" value="<?= $cliente['Email']; ?>" placeholder="" required>
+                            <input type="email" class="form-control" id="correo" name="correoCliente" value="<?= $cliente['Email']; ?>" placeholder="" required>
+                            <small id="correoError" class="text-danger" style="display:none;">Correo no válido</small>
                         </div>
                         <div class="mt-2">
                             <label for="puntos" class="form-label text-white mt-3">Puntos Acumulados:</label>
@@ -59,5 +60,5 @@
 </div>
 </main>
 
-
+                <script src="./js/validarCorreo.js"></script>
 <?php include('./views/layautModAdmin/footerModAdmin.php'); ?>

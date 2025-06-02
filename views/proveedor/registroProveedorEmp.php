@@ -23,7 +23,7 @@
                 </div>
                 <div class=" mt-2">
                     <label for="celProveedor" class="form-label text-white mt-3">No. Celular Empresa:</label>
-                    <input type="text" class="form-control" name="celProveedor" placeholder="" required>
+                    <input type="text" class="form-control" name="celProveedor" pattern="3[0-9]{9}" maxlength="10" title="Ingresa un número de celular válido (10 dígitos, inicia en 3)" required>
                 </div>
                 <div class="mt-2">
                     <label for="nomVendedor" class="form-label text-white mt-3">Nombre Vendedor:</label>
@@ -31,7 +31,7 @@
                 </div>
                 <div class=" mt-2">
                     <label for="celVendedor" class="form-label text-white mt-3">No. Celular Vendedor:</label>
-                    <input type="text" class="form-control" name="celVendedor" placeholder="" required>
+                    <input type="text" class="form-control" name="celVendedor" pattern="3[0-9]{9}" maxlength="10" title="Ingresa un número de celular válido (10 dígitos, inicia en 3)" required>
                 </div>
                 <div class="text-center mt-4">
                     <button type="submit" class="btn btn-outline-secondary text-white">Registrar</button>

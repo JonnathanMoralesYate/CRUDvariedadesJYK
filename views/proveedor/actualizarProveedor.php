@@ -22,11 +22,12 @@
                 </div>
                 <div class="mt-2">
                     <label for="correoProv" class="form-label text-white mt-3">Email Empresa:</label>
-                    <input type="email" class="form-control" name="correoProv" value="<?= $proveedor['Email']; ?>" placeholder="" required>
+                    <input type="email" class="form-control" id="correo" name="correoProv" value="<?= $proveedor['Email']; ?>" placeholder="" required>
+                    <small id="correoError" class="text-danger" style="display:none;">Correo no válido</small>
                 </div>
                 <div class=" mt-2">
                     <label for="celProveedor" class="form-label text-white mt-3">No. Celular Empresa:</label>
-                    <input type="text" class="form-control" name="celProveedor" value="<?= $proveedor['CelularProveedor']; ?>" placeholder="" required>
+                    <input type="text" class="form-control" name="celProveedor" value="<?= $proveedor['CelularProveedor']; ?>" pattern="3[0-9]{9}" maxlength="10" title="Ingresa un número de celular válido (10 dígitos, inicia en 3)" required>
                 </div>
                 <div class="mt-2">
                     <label for="nomVendedor" class="form-label text-white mt-3">Nombre Vendedor:</label>
@@ -34,7 +35,7 @@
                 </div>
                 <div class=" mt-2">
                     <label for="celVendedor" class="form-label text-white mt-3">No. Celular Vendedor:</label>
-                    <input type="text" class="form-control" name="celVendedor" value="<?= $proveedor['CelularVendedor']; ?>" placeholder="" required>
+                    <input type="text" class="form-control" name="celVendedor" value="<?= $proveedor['CelularVendedor']; ?>" pattern="3[0-9]{9}" maxlength="10" title="Ingresa un número de celular válido (10 dígitos, inicia en 3)" required>
                 </div>
                 <div class="text-center mt-4">
                     <button type="submit" class="btn btn-outline-light">Actualizar</button>
@@ -47,4 +48,5 @@
 </div>
 </main>
 
+                    <script src="./js/validarCorreo.js?v=1.0"></script>
 <?php include('./views/layautModAdmin/footerModAdmin.php'); ?>
