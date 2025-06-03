@@ -1,25 +1,32 @@
 document.addEventListener("DOMContentLoaded", function () {
-  //Función pare el botón Login: Muestra el formulario de inicio:
+  const loginBtn = document.getElementById("login_inic");
+  const loginForm = document.getElementById("login_form");
+  const cerrarBtn = document.getElementById("cerrarL");
 
-  document.getElementById("login_inic").addEventListener("click", function () {
-    var elemento = document.getElementById("login_form");
+  // Mostrar/Ocultar formulario
+  loginBtn.addEventListener("click", function (event) {
+    event.preventDefault();
+    loginForm.style.display =
+      loginForm.style.display === "block" ? "none" : "block";
+  });
 
-    if (elemento.style.display === "none" || elemento.style.display === "") {
-      elemento.style.display = "block"; // Muestra el elemento
-    } else {
-      elemento.style.display = "none"; // Oculta el elemento si ya está visible
+  // Cerrar con botón X
+  cerrarBtn.addEventListener("click", function () {
+    loginForm.style.display = "none";
+  });
+
+  // Cerrar al hacer clic fuera
+  document.addEventListener("click", function (event) {
+    const isClickInside = loginForm.contains(event.target) || loginBtn.contains(event.target);
+    if (!isClickInside) {
+      loginForm.style.display = "none";
     }
   });
-});
 
-//Función para el botón cerrarL (X) : Cierra el formulario de inicio de sesión.
-
-document.addEventListener("DOMContentLoaded", function () {
-  document.getElementById("cerrarL").addEventListener("click", function () {
-    var elemento = document.getElementById("login_form");
-
-    if (elemento.style.display === "block") {
-      elemento.style.display = "none";
+  // Cerrar con tecla ESC
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape") {
+      loginForm.style.display = "none";
     }
   });
 });

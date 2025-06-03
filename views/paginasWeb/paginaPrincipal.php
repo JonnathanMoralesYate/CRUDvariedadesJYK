@@ -54,7 +54,7 @@
                             <!-- Sección Login alineada a la derecha -->
                             <ul class="navbar-nav ms-auto">
                                 <li class="nav-item">
-                                    <a id="login_inic" class="nav-link text-white fs-5" href="#">Login</a>
+                                    <a id="login_inic" class="nav-link text-white fs-5" href="javascript:void(0)">Login</a>
                                 </li>
                             </ul>
                         </div>
@@ -268,6 +268,7 @@
     <script src="./js/agregaProductosPaginaP.js"></script>
     <script src="./js/bootstrap.bundle.min.js"></script>
     <script src="./js/LoginInicio.js?v=1.0"></script>
+    <script src="./js/recargaPagina.js?v=1.0"></script>
 
 </body>
 
