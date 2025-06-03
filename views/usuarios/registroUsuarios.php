@@ -9,15 +9,15 @@
             </div>
             <form class=" mt-2" action="index.php?action=registroUsuario" method="post">
                 <div class=" mt-2">
-                        <label for="tipoDocum" class="form-label text-white mt-3">Tipo Documento:</label>
-                        <select id="tipoDocum" name="tipoDocum" class="form-control" required>
-                            <option value="">Seleccione Tipo Documento</option>
-                            <?php foreach($tipoDocum as $tipos): ?>
+                    <label for="tipoDocum" class="form-label text-white mt-3">Tipo Documento:</label>
+                    <select id="tipoDocum" name="tipoDocum" class="form-control" required>
+                        <option value="">Seleccione Tipo Documento</option>
+                        <?php foreach ($tipoDocum as $tipos): ?>
                             <option value="<?= $tipos['idTipoDocum']; ?>">
-                            <?= $tipos['tipoDocum']; ?>
+                                <?= $tipos['tipoDocum']; ?>
                             </option>
-                            <?php endforeach; ?>
-                        </select>
+                        <?php endforeach; ?>
+                    </select>
                 </div>
                 <div class=" mt-2">
                     <label for="documUsu" class="form-label text-white mt-3">Numero del Documento:</label>
@@ -42,19 +42,24 @@
                 </div>
                 <div class="mb-3">
                     <label for="seleccionRol" class="form-label text-white mt-3">Rol:</label>
-                        <select id="seleccionRol" name="seleccionRol" class="form-control" required>
-                            <option value="">Seleccione el Rol</option>
-                            <option value="2">Empleado</option>
-                            <option value="1">Administrador</option>
-                        </select>
+                    <select id="seleccionRol" name="seleccionRol" class="form-control" required>
+                        <option value="">Seleccione el Rol</option>
+                        <option value="2">Empleado</option>
+                        <option value="1">Administrador</option>
+                    </select>
                 </div>
                 <div class=" mt-2">
                     <label for="usuario" class="form-label text-white mt-3">Usuario:</label>
                     <input type="text" class="form-control" name="usuario" required>
                 </div>
-                <div class=" mt-2">
+                <div class="mt-2">
                     <label for="contraseña" class="form-label text-white mt-3">Contraseña:</label>
-                    <input type="text" class="form-control" name="contraseña" required>
+                    <div class="input-group">
+                        <input type="password" class="form-control" name="contraseña" id="contrasena" required>
+                        <button type="button" class="btn btn-outline-secondary" id="togglePassword">
+                            <i class="bi bi-eye-slash icon-white icon-thick"></i> </button>
+                    </div>
+                    <small id="passwordError" class="text-danger" style="display:none;">La contraseña debe tener al menos 8 caracteres, una mayúscula, una minúscula, un número y un carácter especial.</small>
                 </div>
                 <div class="text-center mt-4">
                     <button type="submit" class="btn btn-outline-secondary text-white">Registrar</button>
@@ -66,6 +71,7 @@
 </div>
 </main>
 
-        <script src="./js//verificarUsuario.js?v=1.0"></script>
-        <script src="./js/validarCorreo.js?v=1.0"></script>
+<script src="./js/verificacionContraseña.js"></script>
+<script src="./js/verificarUsuario.js?v=1.0"></script>
+<script src="./js/validarCorreo.js?v=1.0"></script>
 <?php include('./views/layautModAdmin/footerModAdmin.php'); ?>

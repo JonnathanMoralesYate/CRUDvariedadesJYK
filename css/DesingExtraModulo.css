@@ -72,3 +72,8 @@ select.form-select:focus {
     margin-top: 30px;
     margin-bottom: 30px;
 }
+
+.icon-thick {
+  text-shadow: 1px 0 0 currentColor, 0 1px 0 currentColor,
+                -1px 0 0 currentColor, 0 -1px 0 currentColor;
+}

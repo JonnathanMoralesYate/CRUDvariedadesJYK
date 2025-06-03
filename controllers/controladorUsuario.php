@@ -33,17 +33,24 @@ class ControladorUsuario
             $usuario = strtolower($_POST['usuario']);
             $clave = trim($_POST['contraseña']);
 
+            $patron = "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/";
+
+            if (!preg_match($patron, $clave)) {
+                echo "<script>alert('La contraseña no cumple los requisitos de seguridad.'); window.history.back();</script>";
+                exit;
+            }
+
             $claveSegura = password_hash($clave, PASSWORD_BCRYPT);
 
             $this->modeloUsuario->registroUsuario($idTipoDocum, $numDocumento, $nombre, $apellido, $numCelular, $correoE, $rol, $usuario, $claveSegura);
 
-                echo "
+            echo "
                     <script>
                         alert('Registro Exitoso!');
                         window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=registroUsuario';
                     </script>
                     ";
-                exit;
+            exit;
         }
     }
 
@@ -139,11 +146,23 @@ class ControladorUsuario
             $idUsua = $_POST['idUsuario'];
 
             $clave = trim($_POST['contraseña']);
-            $claveSegura = $clave !== '' ? password_hash($clave, PASSWORD_BCRYPT) : null;
+
+            if($clave === '') {
+                $claveSegura = null; // No se actualiza la contraseña si no se proporciona una nueva
+            } else {
+                $patron = "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/";
+
+                if (!preg_match($patron, $clave)) {
+                    echo "<script>alert('La contraseña no cumple los requisitos de seguridad.'); window.history.back();</script>";
+                    exit;
+                }
+                
+                $claveSegura = password_hash($clave, PASSWORD_BCRYPT);
+            }
 
             $this->modeloUsuario->actualizarUsua($idTipoDocum, $numDocumento, $nombre, $apellido, $numCelular, $correoE, $rol, $usuario, $claveSegura, $idUsua);
 
-                echo "
+            echo "
                     <script>
                         alert('Actualizacion Exitosa!');
                         window.location.href='http://localhost/CRUDvariedadesJYK/index.php?action=consultaUsuarios';
