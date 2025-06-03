@@ -225,14 +225,14 @@
             <div class="col-12 justify-content-around aling-item-center">
                     <div class="mt-5 text-white">
                             <div class="text-center mt-1 p-2">
-                                <p class="text-center">Cra. 16 Sur # 96-48 Ibagué - Tolima 
+                                <p class="text-center">cll 131 # 146-17 Ibagué - Tolima 
                                     <a class="navbar-brand" target="_blank" href="https://g.co/kgs/WpQrABT">
                                         <img src="./photo/ubicacion.ico" alt="Ubicacion" width="35" height="35">
                                     </a>
                                 </p>
                             </div>
                             <div id="Contacto" class="text-center">
-                                <p>Cel: 320 338 4589</p>
+                                <p>Cel: 314 266 5184</p>
                             </div>
                     </div>
                 </div>

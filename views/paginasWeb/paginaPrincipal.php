@@ -159,11 +159,11 @@
                             <p>Línea de Servicio al Cliente</p>
                         </div>
                         <div id="Contacto" class="mt-1">
-                            <p>Cel: 320 338 4589</p>
+                            <p>Cel: 314 266 5184</p>
                         </div>
                         <div class="d-flex mt-1">
                             <div class="aling-item-center mt-1  me-auto">
-                                <p>Cra. 16 Sur # 96-48</p>
+                                <p>Cll 131 # 146-17</p>
                             </div>
                             <div class=""><a class="navbar-brand" target="_blank" href="https://g.co/kgs/WpQrABT"><img src="./photo/ubicacion.ico" alt="Ubicacion" width="35" height="35"></a></div>
                         </div>
