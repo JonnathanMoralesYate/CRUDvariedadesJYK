@@ -196,9 +196,9 @@ strong {
                 </td>
                 <td class="header-content">
                     <h2>MINIMARKET VARIEDADES JYK S.A.S</h2>
-                    <p>NIT: 110.370.428-1</p>
-                    <p>Cra. 16 Sur # 96-48, Ibagué - Tolima</p>
-                    <p>Cel: 320 338 4589</p>
+                    <p>NIT/C.C: 28548662</p>
+                    <p>Cll 131 # 146-17 Ibagué - Tolima</p>
+                    <p>Cel: 314 266 5184</p>
                 </td>
             </tr>
         </table>
