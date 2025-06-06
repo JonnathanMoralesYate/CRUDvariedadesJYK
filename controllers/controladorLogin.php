@@ -91,36 +91,11 @@ class ControladorLogin
         // Borrar cookie manualmente
         setcookie("PHPSESSID", "", time() - 3600, "/");
 
-        header("Location: index.php?action=Principal");
-        exit();
-        // //Iniciar sesión sólo si no está iniciada
-        // if (session_status() === PHP_SESSION_NONE) {
-        //     session_start();
-        // }
-
-        // //Regenerar ID (opcional, por seguridad)
-        // session_regenerate_id(true);
-
-        // //Borrar todas las variables de sesión
-        // $_SESSION = [];
-        // session_unset();
-
-        // //Destruir la sesión en el servidor
-        // session_destroy();
-
-        // //Eliminar la cookie de sesión del navegador
-        // setcookie(
-        //     session_name(),
-        //     '',
-        //     time() - 42000,
-        //     '/'
-        // );
-
-        // echo '
-        // <script>
-        //     alert("Sesión cerrada con éxito");
-        //     window.location.href = "index.php?action=Principal";
-        // </script>';
-        // exit;
+        echo '
+            <script>
+                alert("Sesión cerrada con éxito");
+                window.location.href = "index.php?action=Principal";
+            </script>';
+        exit;
     }
 }
