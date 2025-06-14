@@ -8,7 +8,8 @@
     <title>Minimarket Variedades JYK</title>
     <link rel="stylesheet" href="./css/bootstrap.min.css?v=1.0">
     <link rel="stylesheet" href="./css/DesingBody.css?v=1.0">
-    <link rel="stylesheet" href="./css/DesingLogin2.css?v=1.0">
+    <link rel="stylesheet" href="./css/DesingLogin2.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="./css/DesingServicios.css?v=1.0">
 </head>
 
@@ -166,152 +167,153 @@
         <div class="container">
             <h2 class="display-5 mb-4">¡Descuentos Especiales para Clientes Frecuentes!</h2>
             <p class="lead mb-4">Regístrate en nuestro programa de fidelidad y obtén beneficios exclusivos</p>
+    </section>
 
 
-            <!-- Servicios Adicionales -->
-            <section class="py-5">
-                <div class="container">
-                    <h2 class="text-center section-title">Otros Servicios</h2>
-                    <div class="row">
-                        <div class="col-lg-3 col-md-6 mb-4">
-                            <div class="service-card p-4 text-light text-center h-100">
-                                <div class="service-icon">
-                                    <i class="fas fa-piggy-bank"></i>
-                                </div>
-                                <h4>Pago de Servicios</h4>
-                                <p>Realiza el pago de tus servicios públicos sin salir de tu barrio.</p>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-3 col-md-6 mb-4">
-                            <div class="service-card p-4 text-light text-center h-100">
-                                <div class="service-icon">
-                                    <i class="fas fa-mobile-alt"></i>
-                                </div>
-                                <h4>Recargas</h4>
-                                <p>Recargas para todos los operadores móviles al instante.</p>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-3 col-md-6 mb-4">
-                            <div class="service-card p-4 text-center text-light h-100">
-                                <div class="service-icon">
-                                    <i class="fas fa-gifts"></i>
-                                </div>
-                                <h4>Regalos</h4>
-                                <p>Variedad de artículos para regalo para todas las ocasiones.</p>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-3 col-md-6 mb-4">
-                            <div class="service-card p-4 text-light text-center h-100">
-                                <div class="service-icon">
-                                    <i class="fas fa-ice-cream"></i>
-                                </div>
-                                <h4>Productos Congelados</h4>
-                                <p>Amplia selección de productos congelados de calidad.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-            <!--Fin -->
-
-
-
-            <!--Inicio de Footer-->
-            <div class="row" id="Ubicacion">
-                <div class="col-12 justify-content-around aling-item-center">
-                    <div class="mt-5 text-white">
-                        <div class="text-center mt-1 p-2">
-                            <p class="text-center">Cra. 16 Sur # 96-48 Ibagué - Tolima
-                                <a class="navbar-brand" target="_blank" href="https://g.co/kgs/WpQrABT">
-                                    <img src="./photo/ubicacion.ico" alt="Ubicacion" width="35" height="35">
-                                </a>
-                            </p>
-                        </div>
-                        <div id="Contacto" class="text-center">
-                            <p>Cel: 320 338 4589</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--Iconos de Redes Sociales-->
+    <!-- Servicios Adicionales -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="text-center section-title">Otros Servicios</h2>
             <div class="row">
-                <div class="col-12 justify-content-evenly aling-item-center text-center">
-                    <div class="text-white mt-1">
-                        <h3 class="text-center">Redes Sociales</h3>
-                    </div>
-                    <div class="d-flex mt-4 justify-content-evenly aling-item-center">
-                        <ul class="nav">
-                            <li class="nav-item">
-                                <a class="navbar-brand" target="_blank" href="https://es-es.facebook.com/">
-                                    <img src="./photo/facebook.ico" alt="Facebook" width="40" height="40">
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="navbar-brand" target="_blank" href="https://www.instagram.com/">
-                                    <img src="./photo/instagam.ico" alt="instagram" width="40" height="40">
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="navbar-brand" target="_blank" href="https://www.youtube.com/">
-                                    <img src="./photo/youtube.ico" alt="youtube" width="40" height="40">
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="navbar-brand" target="_blank" href="https://www.whatsapp.com/">
-                                    <img src="./photo/whatsapp.ico" alt="whatsapp" width="40" height="40">
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="text-white text-center mt-4">
-                        <h3>Síguenos</h3>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="service-card p-4 text-light text-center h-100">
+                        <div class="service-icon">
+                            <i class="fas fa-piggy-bank"></i>
+                        </div>
+                        <h4>Pago de Servicios</h4>
+                        <p>Realiza el pago de tus servicios públicos sin salir de tu barrio.</p>
                     </div>
                 </div>
-            </div>
-            <!--Final de Footer-->
 
-            <!--Inicio de Pie de Pagina-->
-            <div class="row">
-                <div class="col-12 text-center text-white mt-3">
-                    <p>© 2024 - VariedadesJyk® / Minimarket Variedades S.A.S. NIT. 110.370.428-1 - Todos los Derechos Reservados.</p>
-                </div>
-            </div>
-            <!--Fin de Pie de Pagina-->
-        </div>
-
-        <!--Fin ??--->
-
-        <!--Formulario de login-->
-        <div id="login_form" class="contenedor_loginG">
-            <div class="contenedor-login mt-2">
-                <h2>Inicio de sesión</h2>
-                <form action="index.php?action=login" method="post">
-                    <div class="formulario1">
-                        <div class="campo mt-3">
-                            <label for="usuarioL">Usuario:</label>
-                            <input type="text" id="usuario" name="usuarioL" placeholder="Ingrese su usuario" required>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="service-card p-4 text-light text-center h-100">
+                        <div class="service-icon">
+                            <i class="fas fa-mobile-alt"></i>
                         </div>
-                        <div class="campo">
-                            <label for="contraseñaL">Contraseña:</label>
-                            <input type="password" id="contraseña" name="contraseñaL" placeholder="Ingrese su contraseña" required>
-                        </div>
-                        <div class="campo">
-                            <button type="submit" class="btn btn-outline-secondary m-2 text-white text-center">Iniciar sesión</button>
-                        </div>
-                        <button id="cerrarL">X</button>
+                        <h4>Recargas</h4>
+                        <p>Recargas para todos los operadores móviles al instante.</p>
                     </div>
-                </form>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="service-card p-4 text-center text-light h-100">
+                        <div class="service-icon">
+                            <i class="fas fa-gifts"></i>
+                        </div>
+                        <h4>Regalos</h4>
+                        <p>Variedad de artículos para regalo para todas las ocasiones.</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="service-card p-4 text-light text-center h-100">
+                        <div class="service-icon">
+                            <i class="fas fa-ice-cream"></i>
+                        </div>
+                        <h4>Productos Congelados</h4>
+                        <p>Amplia selección de productos congelados de calidad.</p>
+                    </div>
+                </div>
             </div>
         </div>
+    </section>
 
-        <script src="./js/bootstrap.bundle.min.js?v=1.0"></script>
-        <script src="./js/LoginInicio.js?v=1.0"></script>
-        <script src="./js/recargaPagina.js"></script>
+    <!--Inicio de Footer-->
+    <div class="row" id="Ubicacion">
+        <div class="col-12 justify-content-around aling-item-center">
+            <div class="mt-5 text-white">
+                <div class="text-center mt-1 p-2">
+                    <p class="text-center">Cra. 16 Sur # 96-48 Ibagué - Tolima
+                        <a class="navbar-brand" target="_blank" href="https://g.co/kgs/WpQrABT">
+                            <img src="./photo/ubicacion.ico" alt="Ubicacion" width="35" height="35">
+                        </a>
+                    </p>
+                </div>
+                <div id="Contacto" class="text-center">
+                    <p>Cel: 320 338 4589</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Iconos de Redes Sociales-->
+    <div class="row">
+        <div class="col-12 justify-content-evenly aling-item-center text-center">
+            <div class="text-white mt-1">
+                <h3 class="text-center">Redes Sociales</h3>
+            </div>
+            <div class="d-flex mt-4 justify-content-evenly aling-item-center">
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a class="navbar-brand" target="_blank" href="https://es-es.facebook.com/">
+                            <img src="./photo/facebook.ico" alt="Facebook" width="40" height="40">
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="navbar-brand" target="_blank" href="https://www.instagram.com/">
+                            <img src="./photo/instagam.ico" alt="instagram" width="40" height="40">
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="navbar-brand" target="_blank" href="https://www.youtube.com/">
+                            <img src="./photo/youtube.ico" alt="youtube" width="40" height="40">
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="navbar-brand" target="_blank" href="https://www.whatsapp.com/">
+                            <img src="./photo/whatsapp.ico" alt="whatsapp" width="40" height="40">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="text-white text-center mt-4">
+                <h3>Síguenos</h3>
+            </div>
+        </div>
+    </div>
+    <!--Final de Footer-->
+
+    <!--Inicio de Pie de Pagina-->
+    <div class="row">
+        <div class="col-12 text-center text-white mt-3">
+            <p>© 2024 - VariedadesJyk® / Minimarket Variedades S.A.S. NIT. 110.370.428-1 - Todos los Derechos Reservados.</p>
+        </div>
+    </div>
+    <!--Fin de Pie de Pagina-->
+
+    <!--Fin ??--->
+
+    <!--Formulario de login-->
+    <div id="login_form" class="contenedor_loginG">
+        <div class="contenedor-login mt-2">
+            <h2>Inicio de sesión</h2>
+            <form action="index.php?action=login" method="post">
+                <div class="formulario1">
+                    <div class="campo mt-3">
+                        <label for="usuarioL">Usuario:</label>
+                        <input type="text" id="usuario" name="usuarioL" placeholder="Ingrese su usuario" required>
+                    </div>
+                    <div class="campo">
+                        <label for="contraseñaL">Contraseña:</label>
+                        <div class="input-con-icono">
+                            <input type="password" id="contrasena" name="contraseñaL" placeholder="Ingrese su contraseña" required>
+                        </div>
+                    </div>
+                    <div class="campo">
+                        <button type="submit" class="btn btn-outline-secondary m-2 text-white text-center">Iniciar sesión</button>
+                    </div>
+                    <button id="cerrarL">X</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+
+    <script src="./js/muestraContraseñaLogin.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./js/bootstrap.bundle.min.js?v=1.0"></script>
+    <script src="./js/LoginInicio.js?v=1.0"></script>
+    <script src="./js/recargaPagina.js"></script>
 </body>
 
 </html>

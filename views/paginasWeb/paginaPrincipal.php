@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="./css/bootstrap.min.css?v=1.0">
     <link rel="stylesheet" href="./css/DesingBody.css">
     <link rel="stylesheet" href="./css/DesingLogin2.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -253,7 +255,9 @@
                     </div>
                     <div class="campo">
                         <label for="contraseñaL">Contraseña:</label>
-                        <input type="password" id="contraseña" name="contraseñaL" placeholder="Ingrese su contraseña" required>
+                        <div class="input-con-icono">
+                            <input type="password" id="contrasena" name="contraseñaL" placeholder="Ingrese su contraseña" required>
+                        </div>
                     </div>
                     <div class="campo">
                         <button type="submit" class="btn btn-outline-secondary m-2 text-white text-center">Iniciar sesión</button>
@@ -265,6 +269,8 @@
     </div>
 
 
+
+    <script src="./js/muestraContraseñaLogin.js"></script>
     <script src="./js/agregaProductosPaginaP.js"></script>
     <script src="./js/bootstrap.bundle.min.js"></script>
     <script src="./js/LoginInicio.js?v=1.0"></script>

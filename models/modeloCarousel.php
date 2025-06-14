@@ -84,7 +84,6 @@ class ModeloCarousel
     }
 
 
-
     //Consulta por id para actualizar promociones
     public function consultarPromocionId($idPromocion)
     {
@@ -96,16 +95,6 @@ class ModeloCarousel
         $stmt->execute([$idPromocion]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
-
-
-
-
-
-
-
-
-
-
 
 
     //Consulta general carousel
@@ -120,6 +109,7 @@ class ModeloCarousel
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
 
     //Actualizar carousel
     public function actualizarPromocion($idProducto, $descrpcion, $idPromocion)

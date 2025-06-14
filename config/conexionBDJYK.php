@@ -1,31 +1,28 @@
 <?php
 
-class DataBase{
-
+class DataBase
+{
     private $host = "localhost";
     private $db_name = "jykbd1";
     private $username = "root";
-    private $password ="";
-    public $conn;
+    private $password = "";
+    private static $conn = null;
 
-    public function getConnectionJYK() {
-
-        $this->conn=null;
-
-        try{
-
-            $this->conn=new PDO("mysql:host=" . $this->host . ";dbname=" . $this->db_name, $this->username, $this->password);
-            $this->conn->exec("set names utf8");
-
-        }catch(PDOException $exeption) {
-
-            echo "Error de Conexion: ". $exeption->getMessage();
-
+    public function getConnectionJYK()
+    {
+        if (self::$conn === null) {
+            try {
+                self::$conn = new PDO(
+                    "mysql:host=" . $this->host . ";dbname=" . $this->db_name,
+                    $this->username,
+                    $this->password
+                );
+                self::$conn->exec("set names utf8");
+            } catch (PDOException $e) {
+                echo "Error de Conexión: " . $e->getMessage();
+                exit;
+            }
         }
-
-        return $this->conn;
-
+        return self::$conn;
     }
 }
-
-?>

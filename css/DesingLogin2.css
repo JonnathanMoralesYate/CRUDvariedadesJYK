@@ -1,3 +1,4 @@
+/* Contenedor del modal de login */
 .contenedor_loginG {
     display: none;
     position: fixed;
@@ -15,10 +16,12 @@
     z-index: 9999;
 }
 
+/* Título del login */
 h2 {
     color: white;
 }
 
+/* Formulario */
 .formulario1 {
     display: flex;
     flex-direction: column;
@@ -31,9 +34,10 @@ h2 {
 .contenedor-login {
     text-align: center;
     margin-bottom: 20px;
-    color: #000000;
+    color: white;
 }
 
+/* Campo de formulario */
 .campo {
     margin-bottom: 20px;
 }
@@ -44,6 +48,7 @@ h2 {
     color: white;
 }
 
+/* Estilo base para inputs */
 .campo input[type="text"],
 .campo input[type="password"] {
     width: 100%;
@@ -51,24 +56,53 @@ h2 {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    box-sizing: border-box;
 }
 
-.boton {
+/* Contenedor del input + ícono de ojo */
+.input-con-icono {
+    position: relative;
+    width: 100%;
+}
+
+.input-con-icono input {
+    width: 100%;
+    height: 40px;
+    padding: 10px 40px 10px 10px; /* espacio a la derecha para el ícono */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.icono-ojo {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: black;
+    font-size: 1.2rem;
+}
+
+/* Botón Iniciar Sesión */
+.boton-iniciar {
     width: 100%;
     height: 50px;
     background-color: #10213d;
-    color: #ffffff;
+    color: white;
     text-align: center;
     padding: 10px;
-    border: 1px solid #ffffff;
+    border: 1px solid white;
     border-radius: 5px;
+    font-weight: bold;
     cursor: pointer;
 }
 
-.boton:hover {
+.boton-iniciar:hover {
     background-color: #081935;
 }
 
+/* Botón de cerrar (X) */
 #cerrarL {
     position: absolute;
     width: 30px;
@@ -99,6 +133,7 @@ h2 {
         top: 20%;
         padding: 15px;
     }
+
     #cerrarL {
         width: 25px;
         height: 25px;

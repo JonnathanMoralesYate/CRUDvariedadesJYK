@@ -11,7 +11,6 @@ class ControladorInventario
 
     public function __construct()
     {
-
         $database = new DataBase();
         $this->db = $database->getConnectionJYK();
         $this->modeloInventario = new ModeloInventario($this->db);
