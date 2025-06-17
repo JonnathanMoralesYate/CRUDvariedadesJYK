@@ -191,7 +191,7 @@
                             <p>Política Tratamiento de Datos Personales</p>
                         </div>
                         <div class="mt-1">
-                            <p>Términos y Condiciones Eventos</p>
+                            <p><a href="./util/Manual_de_Usuario_INGEW.pdf" target="_blank" class="text-white text-decoration-none">Manual del Usuario</a></p>
                         </div>
                     </div>
                 </div>
